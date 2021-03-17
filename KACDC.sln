@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1433
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KACDC", "KACDC\KACDC.csproj", "{71F266F4-C382-4CEB-8C05-2C1EA172A519}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71F266F4-C382-4CEB-8C05-2C1EA172A519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F266F4-C382-4CEB-8C05-2C1EA172A519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F266F4-C382-4CEB-8C05-2C1EA172A519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F266F4-C382-4CEB-8C05-2C1EA172A519}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E750C58-6D8D-40B0-BD8D-5CC1864F17AF}
+	EndGlobalSection
+EndGlobal
