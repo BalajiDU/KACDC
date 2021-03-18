@@ -135,6 +135,9 @@
     <Reference Include="Otp">
       <HintPath>C:\Users\balaj\OneDrive\Desktop\API 2.5\Dot Net Kit\required dll's\New DLL\Otp.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -192,6 +195,8 @@
       <Link>SqlServerTypes\x86\SqlServerSpatial110.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="AadhaarServiceTest.aspx" />
+    <Content Include="AadhaarTest.aspx" />
     <Content Include="AdminApprove.aspx" />
     <Content Include="AdminHome.aspx" />
     <Content Include="CheckRD.aspx" />
@@ -394,6 +399,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AadhaarServiceTest.aspx.cs">
+      <DependentUpon>AadhaarServiceTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AadhaarServiceTest.aspx.designer.cs">
+      <DependentUpon>AadhaarServiceTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AadhaarTest.aspx.cs">
+      <DependentUpon>AadhaarTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AadhaarTest.aspx.designer.cs">
+      <DependentUpon>AadhaarTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminApprove.aspx.cs">
       <DependentUpon>AdminApprove.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -417,6 +436,14 @@
       <DependentUpon>CheckRD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Class\BankDetails_SelfEmployment.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\FileOperations.cs" />
+    <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
+    <Compile Include="Class\Declaration\Aadhaar\AadhaarServiceData.cs" />
+    <Compile Include="Class\Declaration\BankDetails\BankDetails_SelfEmployment.cs" />
+    <Compile Include="Class\Declaration\CollegeData\Applicant_College_Data.cs" />
+    <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
+    <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri_SelfEmployment.cs" />
+    <Compile Include="Class\MessageSending\SendMessage.cs" />
     <Compile Include="Class\NadaKacheri_SelfEmployment.cs" />
     <Compile Include="Class\OtherData_SelfEmployment.cs" />
     <Compile Include="Class\SelfEmployment.cs" />
@@ -537,6 +564,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Class\DataProcessing\Aadhaar\" />
+    <Folder Include="Class\DataProcessing\Nadakacheri\" />
+    <Folder Include="Class\DataProcessing\OnlineApplication\" />
+    <Folder Include="Class\Declaration\OnlineApplication\" />
     <Folder Include="Controllers\" />
     <Folder Include="DownloadFiles\" />
     <Folder Include="Models\" />
