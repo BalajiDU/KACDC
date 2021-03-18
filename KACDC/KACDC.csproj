@@ -58,6 +58,9 @@
     <Reference Include="AspNet.ScriptManager.jQuery, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.5.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
+    <Reference Include="Auth">
+      <HintPath>C:\Users\balaj\OneDrive\Desktop\API 2.5\Dot Net Kit\required dll's\New DLL\Auth.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
@@ -70,11 +73,20 @@
     <Reference Include="GoogleMaps.LocationServices, Version=1.2.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GoogleMaps.LocationServices.1.2.0.5\lib\netstandard2.0\GoogleMaps.LocationServices.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xmlworker, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itextsharp.xmlworker.5.5.13.2\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="KRDHConnector">
+      <HintPath>C:\Users\balaj\OneDrive\Desktop\API 2.5\Dot Net Kit\required dll's\New DLL\KRDHConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="Kyc">
+      <HintPath>..\..\..\..\KACDC\KACDC\KACDC\bin\Kyc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
@@ -120,10 +132,15 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Otp">
+      <HintPath>C:\Users\balaj\OneDrive\Desktop\API 2.5\Dot Net Kit\required dll's\New DLL\Otp.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -177,6 +194,45 @@
     </Content>
     <Content Include="AdminApprove.aspx" />
     <Content Include="AdminHome.aspx" />
+    <Content Include="CheckRD.aspx" />
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.CheckGSCNumberResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.GetGSCStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.GetXmlDataWithDSCVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.GetXmlDataWoDSCVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.GetXmlRCDataWODSCVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.Get_DSC_StatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.InsertRCAppTranResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.UpdateRCAgainstAppIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.UpdateRCGSCNoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\NadaKacheriServiceReference\WebService.disco" />
+    <None Include="Connected Services\NadaKacheriServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\NadaKacheriServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\NadaKacheriServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -198,8 +254,10 @@
     <Content Include="CustomCSS\KACDC_Loading.gif" />
     <Content Include="CustomCSS\LoginPage.css" />
     <Content Include="CustomCSS\Success_Animation.css" />
+    <Content Include="CW_Form.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DistrictwiseApplications.aspx" />
+    <Content Include="DM_Form.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ImageUpload\Aadhar.jpg" />
     <Content Include="ImageUpload\Photo.jpg" />
@@ -230,6 +288,9 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="libman.json" />
+    <Content Include="ZM_Form.aspx" />
+    <None Include="Connected Services\NadaKacheriServiceReference\WebService.wsdl" />
+    <Content Include="Properties\DataSources\System.Xml.Linq.XElement.datasource" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -348,10 +409,36 @@
       <DependentUpon>AdminHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CheckRD.aspx.cs">
+      <DependentUpon>CheckRD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckRD.aspx.designer.cs">
+      <DependentUpon>CheckRD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Class\BankDetails_SelfEmployment.cs" />
     <Compile Include="Class\NadaKacheri_SelfEmployment.cs" />
     <Compile Include="Class\OtherData_SelfEmployment.cs" />
     <Compile Include="Class\SelfEmployment.cs" />
+    <Compile Include="Connected Services\NadaKacheriServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CW_Form.aspx.cs">
+      <DependentUpon>CW_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CW_Form.aspx.designer.cs">
+      <DependentUpon>CW_Form.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -365,6 +452,13 @@
     </Compile>
     <Compile Include="DistrictwiseApplications.aspx.designer.cs">
       <DependentUpon>DistrictwiseApplications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DM_Form.aspx.cs">
+      <DependentUpon>DM_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DM_Form.aspx.designer.cs">
+      <DependentUpon>DM_Form.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -392,6 +486,13 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ZM_Form.aspx.cs">
+      <DependentUpon>ZM_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ZM_Form.aspx.designer.cs">
+      <DependentUpon>ZM_Form.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImageUpload\APPLICATION ASHWINI.pdf" />
@@ -445,6 +546,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\NadaKacheriServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

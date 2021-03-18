@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Get_DSC_Status">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gscno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hashpassed" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_DSC_StatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_DSC_StatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGSCStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GSC_No" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGSCStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGSCStatusResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckGSCNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GSC_No" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckGSCNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckGSCNumberResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetXmlDataWithDSCV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GSC_No" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlDataWithDSCVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetXmlDataWithDSCVResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlDataWoDSCV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GSC_No" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlDataWoDSCVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetXmlDataWoDSCVResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlRCDataWODSCV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RCNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlRCDataWODSCVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetXmlRCDataWODSCVResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertRCAppTran">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="Photo" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertRCAppTranResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertRCAppTranResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRCGSCNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="args" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRCGSCNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateRCGSCNoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRCAgainstAppId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RCNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flag2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRCAgainstAppIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateRCAgainstAppIdResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Get_DSC_StatusSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_DSC_Status" />
+  </wsdl:message>
+  <wsdl:message name="Get_DSC_StatusSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_DSC_StatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGSCStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGSCStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetGSCStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGSCStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckGSCNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckGSCNumber" />
+  </wsdl:message>
+  <wsdl:message name="CheckGSCNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckGSCNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlDataWithDSCVSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXmlDataWithDSCV" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlDataWithDSCVSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXmlDataWithDSCVResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlDataWoDSCVSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXmlDataWoDSCV" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlDataWoDSCVSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXmlDataWoDSCVResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlRCDataWODSCVSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXmlRCDataWODSCV" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlRCDataWODSCVSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXmlRCDataWODSCVResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertRCAppTranSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertRCAppTran" />
+  </wsdl:message>
+  <wsdl:message name="InsertRCAppTranSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertRCAppTranResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRCGSCNoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRCGSCNo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRCGSCNoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRCGSCNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRCAgainstAppIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRCAgainstAppId" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRCAgainstAppIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRCAgainstAppIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="Get_DSC_Status">
+      <wsdl:input message="tns:Get_DSC_StatusSoapIn" />
+      <wsdl:output message="tns:Get_DSC_StatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGSCStatus">
+      <wsdl:input message="tns:GetGSCStatusSoapIn" />
+      <wsdl:output message="tns:GetGSCStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckGSCNumber">
+      <wsdl:input message="tns:CheckGSCNumberSoapIn" />
+      <wsdl:output message="tns:CheckGSCNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlDataWithDSCV">
+      <wsdl:input message="tns:GetXmlDataWithDSCVSoapIn" />
+      <wsdl:output message="tns:GetXmlDataWithDSCVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlDataWoDSCV">
+      <wsdl:input message="tns:GetXmlDataWoDSCVSoapIn" />
+      <wsdl:output message="tns:GetXmlDataWoDSCVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlRCDataWODSCV">
+      <wsdl:input message="tns:GetXmlRCDataWODSCVSoapIn" />
+      <wsdl:output message="tns:GetXmlRCDataWODSCVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRCAppTran">
+      <wsdl:input message="tns:InsertRCAppTranSoapIn" />
+      <wsdl:output message="tns:InsertRCAppTranSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRCGSCNo">
+      <wsdl:input message="tns:UpdateRCGSCNoSoapIn" />
+      <wsdl:output message="tns:UpdateRCGSCNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRCAgainstAppId">
+      <wsdl:input message="tns:UpdateRCAgainstAppIdSoapIn" />
+      <wsdl:output message="tns:UpdateRCAgainstAppIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_DSC_Status">
+      <soap:operation soapAction="http://tempuri.org/Get_DSC_Status" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGSCStatus">
+      <soap:operation soapAction="http://tempuri.org/GetGSCStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckGSCNumber">
+      <soap:operation soapAction="http://tempuri.org/CheckGSCNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlDataWithDSCV">
+      <soap:operation soapAction="http://tempuri.org/GetXmlDataWithDSCV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlDataWoDSCV">
+      <soap:operation soapAction="http://tempuri.org/GetXmlDataWoDSCV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlRCDataWODSCV">
+      <soap:operation soapAction="http://tempuri.org/GetXmlRCDataWODSCV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRCAppTran">
+      <soap:operation soapAction="http://tempuri.org/InsertRCAppTran" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRCGSCNo">
+      <soap:operation soapAction="http://tempuri.org/UpdateRCGSCNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRCAgainstAppId">
+      <soap:operation soapAction="http://tempuri.org/UpdateRCAgainstAppId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_DSC_Status">
+      <soap12:operation soapAction="http://tempuri.org/Get_DSC_Status" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGSCStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetGSCStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckGSCNumber">
+      <soap12:operation soapAction="http://tempuri.org/CheckGSCNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlDataWithDSCV">
+      <soap12:operation soapAction="http://tempuri.org/GetXmlDataWithDSCV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlDataWoDSCV">
+      <soap12:operation soapAction="http://tempuri.org/GetXmlDataWoDSCV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlRCDataWODSCV">
+      <soap12:operation soapAction="http://tempuri.org/GetXmlRCDataWODSCV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRCAppTran">
+      <soap12:operation soapAction="http://tempuri.org/InsertRCAppTran" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRCGSCNo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateRCGSCNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRCAgainstAppId">
+      <soap12:operation soapAction="http://tempuri.org/UpdateRCAgainstAppId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://164.100.133.30/ASY_WS/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://164.100.133.30/ASY_WS/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
