@@ -508,8 +508,8 @@ namespace KACDC
                 //    txtCollegeAddress.Text = jObject1["CollegeAddress"].ToString();
                 //}
                 //CollegeDataArivu cd = new CollegeDataArivu();
-                //txtCollegeName.Text = cd.CollegeName;
-                //txtCollegeAddress.Text = cd.CollegeAddress;
+                ////txtCollegeName.Text = cd.CollegeName;
+                ////txtCollegeAddress.Text = cd.CollegeAddress;
             }
             catch (System.Web.Services.Protocols.SoapException soapEx)
             {
