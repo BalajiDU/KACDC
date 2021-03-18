@@ -1,0 +1,141 @@
+﻿.textbox {
+    width: 120%;
+    background: transparent;
+    padding: 5px;
+    padding-left: 15px;
+    /*margin:10px;*/
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 500px;
+    backdrop-filter: blur(20px);
+    /*box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);*/
+    color: #111;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    
+    margin-top: 25px;
+    margin-left: 10px;
+    background: rgba(0, 206, 0, 0.40);
+    letter-spacing:2px;
+}
+    .textbox:focus{
+        border:none;
+    }
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #111 !important;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    
+}
+.Button {
+    background: transparent;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+    background:rgba(122, 122, 122, 0.47);
+    color:brown;
+    font-weight:bold;
+    min-width: 60%;
+    border: none;
+    margin-top: 13px;
+    font-size: 25px;
+    padding: 2px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration:none;
+}
+td {
+    font-size: 20px;
+    text-align: center;
+    padding-top: -12px;
+    /*align-content:center;
+    vertical-align:middle;*/
+}
+tr {
+    margin: auto;
+    vertical-align: middle;
+    padding: -10px;
+}
+/*input {
+    background: transparent;
+    width: 220px;
+    padding: 1em;
+    margin-bottom: 2em;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 500px;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+    color: #111;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}*/
+
+/*input:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+}
+
+ input[type="email"]:focus,  input[type="password"]:focus {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+form input:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+}
+
+form input[type="email"]:focus, form input[type="password"]:focus {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+}*/
+
+form input[type="checkbox"] {
+    margin-right:10px;
+}
+.AdminLogin {
+    margin: auto;
+    width: 30%;
+    height: 100%;
+    /*border: 3px solid #73AD21;*/
+    padding: 10px;
+    align-content: center;
+    align-items: center;
+    vertical-align: middle;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(232, 232, 232, 0.49)), url('../Image/KACDC.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    opacity: 0.9;
+    z-index: -100;
+    /*background: rgba(232, 232, 232, 0.72);*/
+    border-radius: 15px;
+    /*transform: translate(-50%, -50%);*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+}
+
+@media (max-width: 768px) {
+    .AdminLogin {
+        width: 95%;
+    }
+}

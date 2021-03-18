@@ -1,0 +1,705 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Tangerine');
+@import url('https://fonts.googleapis.com/css?family=Piazzolla');
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+@import url('https://fonts.googleapis.com/css?family=Kalam');
+@import url('https://fonts.googleapis.com/css?family=Philosopher');
+@import url('https://fonts.googleapis.com/css?family=Signika+Negative');
+
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    overflow-x:hidden;
+}
+form {
+    width: 100%;
+}
+.NeumorphicDiv {
+    border-radius: 25px;
+    background: #008008;
+    box-shadow: 10px 10px 10px #797878, -10px -10px 10px #ffffff;
+    justify-content: center;
+    padding: 25px;
+    margin: 20px;
+    margin-top: 10px;
+    align-items: center;
+    letter-spacing: 1.5px;
+    font-family: sans-serif;
+    width: 60%;
+    color: #620000;
+}
+.form-row-label {
+    padding-right: 10px;
+    flex: 1;
+    font-size: 15px;
+    padding: 5px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: white;
+    /*background-color:aquamarine;
+    position: absolute;*/
+}
+.form-row-input {
+    flex: 2;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.ContantMain {
+    margin-top: 0;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    text-align: center;
+    /*background-color:aquamarine;*/
+    margin-top: 65px;
+    padding: 10px;
+    flex-direction: column;
+}
+.NeoTextBox {
+    width: 95%;
+}
+
+
+
+.NeoTextBox {
+    font-family: 'Piazzolla', serif;
+    font-size: 23px;
+    letter-spacing: 1px;
+    width: 25%;
+    box-sizing: border-box;
+    height: 30px;
+    width: 80%;
+    font-size: 18px;
+    border: none;
+    padding: 5px;
+    margin: 10px;
+    outline: none;
+    flex-wrap: wrap;
+    text-align: center;
+    background: #eeecec;
+    border-radius: 6px;
+    text-shadow: 1px 1px 0 #fff;
+    color: #303030;
+    /*box-shadow: inset 5px 5px 10px #dddbdb, inset -5px -5px 10px #fffdfd;*/
+    text-transform: uppercase;
+}
+.Popup-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    text-align: center;
+    /*background-color:aquamarine;*/
+    padding: 10px;
+    flex-direction: column;
+}
+
+.formData {
+    /*background-color: blue;*/
+    margin-top: 65px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.navFormHeading {
+    font-size: 48px;
+    font-family: 'Kalam', cursive;
+    /*font-family: 'Tangerine', serif;*/
+    text-shadow: 4px 4px 4px #aaa;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 2px;
+}
+.navFormWelcomeDistrict {
+    font-size: 35px;
+    font-family: 'Courgette', cursive;
+    text-shadow: 4px 4px 4px #aaa;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    margin-top: -20px;
+    letter-spacing: 3px;
+}
+.navFormWelcomeDistrictStat {
+    font-size: 30px;
+    font-family: 'Philosopher', cursive;
+    text-shadow: 4px 4px 4px #aaa;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    margin-top: -10px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color:brown;
+}
+
+.StatisticsTable {
+    font-size: 22px;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    margin-left:10%;
+    width:80%;
+}
+
+
+
+.DownloadButton {
+    /*box-shadow: 1px 1px 3px 0px #1b71c2;*/
+    background: linear-gradient(to bottom, #009ac9 5%, #009ac9 100%);
+    background-color: #4575c7;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    /*font-size: 19px;*/
+    font-weight: bold;
+    font-style: italic;
+    padding: 5px 15px;
+    text-decoration: none;
+    text-shadow: 2px 2px 3px #2f6627;
+    /*height:10px;
+    width:30px;*/
+    min-width: 20%;
+    margin: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    letter-spacing: 1px;
+    border: solid 2px #0089ba;
+}
+
+    .DownloadButton:hover {
+        background: linear-gradient(to bottom, #009ac9 5%, #009ac9 100%);
+        background-color: #2a7dbd;
+    }
+
+    .DownloadButton:active {
+        position: relative;
+        top: 1px;
+    }
+    .ViewButton {
+    box-shadow: 1px 1px 3px 0px #1b71c2;
+    background: linear-gradient(to bottom, #4575c7 5%, #2a7dbd 100%);
+    background-color: #4575c7;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    /*font-size: 19px;*/
+    font-weight: bold;
+    font-style: italic;
+    padding: 5px 15px;
+    text-decoration: none;
+    text-shadow: 2px 2px 3px #2f6627;
+    /*height:10px;
+    width:30px;*/
+    min-width: 100px;
+    margin: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    letter-spacing: 1px;
+}
+
+    .ViewButton:hover {
+        background: linear-gradient(to bottom, #2a7dbd 5%, #4575c7 100%);
+        background-color: #2a7dbd;
+    }
+
+    .ViewButton:active {
+        position: relative;
+        top: 1px;
+    }
+.HoldButton {
+    box-shadow: 2px 2px 3px 0px #917746;
+    background: linear-gradient(to bottom, #d4a666 5%, #ab6724 100%);
+    background-color: #469146;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    /*font-size: 17px;*/
+    font-weight: bold;
+    padding: 5px 15px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    /*height:10px;
+    width:30px;*/
+    min-width: 100px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+    .HoldButton:hover {
+        background: linear-gradient(to bottom, #ab6724 5%, #d4a666 100%);
+        background-color: #ab6724;
+    }
+
+.HoldButton:active {
+    position: relative;
+    top: 1px;
+}
+.radioButton label {
+    margin-left: 5px;
+    /*color: BLACK;*/
+    font-weight: bold;
+}
+.WaitingButton {
+    box-shadow: 2px 2px 3px 0px #917746;
+    background: linear-gradient(to bottom, #66bfd4 5%, #269ab5 100%);
+    background-color: #269ab5;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    /*font-size: 17px;*/
+    font-weight: bold;
+    padding: 5px 15px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    /*height:10px;
+    width:30px;*/
+    min-width: 100px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+    .WaitingButton:hover {
+        background: linear-gradient(to bottom, #269ab5 5%, #66bfd4 100%);
+        background-color: #269ab5;
+    }
+
+.WaitingButton:active {
+    position: relative;
+    top: 1px;
+}
+.InEligibleButton {
+    box-shadow: 2px 2px 3px 0px #914646;
+    background: linear-gradient(to bottom, #d46666 5%, #ab2424 100%);
+    background-color: #914646;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    /*font-size: 17px;*/
+    font-weight: bold;
+    padding: 5px 15px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    /*height:10px;*/
+    min-width: 100px;
+    letter-spacing: 1px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+    .InEligibleButton:hover {
+        background: linear-gradient(to bottom, #ab2424 5%, #d46666 100%);
+        background-color: #ab2424;
+    }
+
+.InEligibleButton:active {
+    position: relative;
+    top: 1px;
+}
+.EligibleButton {
+    box-shadow: 2px 2px 3px 0px #469146;
+    background: linear-gradient(to bottom, #66d46f 5%, #2dab24 100%);
+    background-color: #469146;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    /*font-size: 17px;*/
+    font-weight: bold;
+    padding: 5px 15px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    /*height:10px;
+    width:30px;*/
+    min-width: 100px;
+    letter-spacing: 1px;
+    margin: 10px;
+}
+    .EligibleButton:hover {
+        background: linear-gradient(to bottom, #2dab24 5%, #66d46f 100%);
+        background-color: #2dab24;
+    }
+
+    .EligibleButton:active {
+        position: relative;
+        top: 1px;
+    }
+
+
+
+.ActionButton {
+    box-shadow: 1px 1px 3px 0px #1b71c2;
+    background-color: #1b97cc;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-weight: bold;
+    font-style: italic;
+    padding: 5px 15px;
+    text-decoration: none;
+    text-shadow: 2px 2px 3px #2f6627;
+    min-width: 100px;
+    margin: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    letter-spacing: 1px;
+}
+
+    .ActionButton:hover {
+        background-color: #2a7dbd;
+    }
+.CancelButton {
+    box-shadow: 1px 1px 3px 0px #1b71c2;
+    background-color: #cc1b1b;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-weight: bold;
+    font-style: italic;
+    padding: 5px 15px;
+    text-decoration: none;
+    text-shadow: 2px 2px 3px #2f6627;
+    min-width: 100px;
+    margin: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    letter-spacing: 1px;
+}
+.PopupTextBox {
+    box-sizing: border-box;
+    width: 280px;
+    height: 50px;
+    font-size: 18px;
+    padding: 7px;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    background: #eeecec;
+    border-radius: 10px;
+    text-shadow: 1px 1px 0 #fff;
+    color: #303030;
+}
+.PopupTextBoxSingleLine {
+    box-sizing: border-box;
+    width: 280px;
+    font-size: 18px;
+    padding: 7px;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    background: #eeecec;
+    border-radius: 10px;
+    text-shadow: 1px 1px 0 #fff;
+    color: #303030;
+}
+
+.NeuoDropdown {
+    outline: none;
+    border: none;
+    background: #eeecec;
+    border-radius: 10px;
+    text-shadow: 1px 1px 0 #fff;
+    display: flex;
+    justify-content: center;
+    /*margin-right: 4rem;*/
+    padding: 7px;
+    /*margin: 5px;*/
+    text-align: center;
+    align-items: center;
+    letter-spacing: 1.5px;
+    font-size: 20px;
+    font-family: "poppins", sans-serief;
+    color:black;
+}
+    .CancelButton:hover {
+        background-color: #bd2a2a;
+    }
+
+.modalBackground {
+    background-color: Black;
+    filter: alpha(opacity=90);
+    opacity: 0.3;
+}
+.navFormBody {
+    font-size: 18px;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+}
+.formFlex-row {
+    flex-direction: row;
+}
+.labelStyle1 {
+    font-family: 'Piazzolla', serif;
+    font-size: 25px;
+    letter-spacing:1.2px;
+}
+
+.modalPopup {
+    margin: 35px 5px 0px 10px;
+    padding: 10px;
+    /*background-color: white;*/
+    border-radius: 25px;
+    box-shadow: 1px 1px 2px #cac9c9, -1px -1px 2px #ffffff;
+    /*margin: 20px;
+            margin-top: 30px;*/
+    font-size: 20px;
+    align-items: center;
+    letter-spacing: 1.5px;
+    overflow: auto;
+    font-family: sans-serif;
+    /*max-Width: 50%;*/
+    /*Height: 720px;*/
+    max-height: 85%;
+    border: 3px solid brown;
+    color: whitesmoke;
+    backdrop-filter: blur(20px);
+    border: 10px solid #0000001c;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    transform: scaleY(0.01) scaleX(0);
+    animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    /*animation: mymove 2s;*/
+}
+/*@keyframes mymove {
+
+    to {
+        background: brown;
+    }
+}*/
+    .modalPopup .modal {
+        transform: scale(0);
+        animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+
+    .modalPopup.out {
+        transform: scale(1);
+        animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+
+        .modalPopup.out .modalBackground .modal {
+            animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        }
+
+.form-row {
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.Popup-row-label {
+    padding-right: 10px;
+    flex: 1;
+    font-size: 15px;
+    padding: 5px;
+    font-weight: bolder;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: #01064c;
+    text-align: left;
+    text-shadow: .5px 0px 0 #081c51;
+    font-family: 'Signika Negative', sans-serif;
+    /*background-color:aquamarine;*/
+}
+
+.Popup-row-label-Heading {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7b0a0a;
+}
+
+.Popup-row-input {
+    padding-right: 10px;
+    flex: 1;
+    font-size: 13px;
+    padding: 5px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    /*color: black;*/
+    /*background-color:aquamarine;*/
+}
+
+
+
+
+.textboxStyle1 {
+    font-family: 'Piazzolla', serif;
+    font-size: 23px;
+    letter-spacing: 1px;
+    width: 25%;
+    box-sizing: border-box;
+    height: 35px;
+    font-size: 18px;
+    border: none;
+    padding: 5px;
+    margin: 10px;
+    outline: none;
+    flex-wrap: wrap;
+    text-align: center;
+    background: #eeecec;
+    border-radius: 6px;
+    text-shadow: 1px 1px 0 #fff;
+    color: #303030;
+    /*box-shadow: inset 5px 5px 10px #dddbdb, inset -5px -5px 10px #fffdfd;*/
+    text-transform: uppercase;
+}
+    .textboxStyle1:focus {
+        box-shadow: inset 2px 2px 2px #e2e0e0, inset -2px -2px 2px #faf8f8;
+    }
+
+
+@media (max-width: 768px) {
+    .DownloadButton {
+        width: 60%;
+    }
+}
+
+@media (max-width: 600px) {
+    .DownloadButton {
+        width: 80%;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+
+
+
+
+
+
+
+
+
+    .inp {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        max-width: 280px;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+        .inp .label {
+            position: absolute;
+            top: 20px;
+            left: 12px;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .inp .focus-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.05);
+            z-index: -1;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transform-origin: left;
+            transform-origin: left;
+        }
+
+        .inp input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 100%;
+            border: 0;
+            font-family: inherit;
+            padding: 16px 12px 0 12px;
+            height: 56px;
+            font-size: 16px;
+            font-weight: 400;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            color: #000;
+            -webkit-transition: all 0.15s ease;
+            transition: all 0.15s ease;
+        }
+
+            .inp input:hover {
+                /*background: rgba(0, 0, 0, 0.04);*/
+                box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+            }
+
+            .inp input:not(:placeholder-shown) + .label {
+                color: rgba(0, 0, 0, 0.5);
+                -webkit-transform: translate3d(0, -12px, 0) scale(0.75);
+                transform: translate3d(0, -12px, 0) scale(0.75);
+            }
+
+            .inp input:focus {
+                /*background: rgba(0, 0, 0, 0.05);*/
+                outline: none;
+                box-shadow: inset 0 -2px 0 #0077FF;
+            }
+
+                .inp input:focus + .label {
+                    color: brown;
+                    font: 10px;
+                    -webkit-transform: translate3d(0, -12px, 0) scale(0.75);
+                    transform: translate3d(0, -12px, 0) scale(0.75);
+                }
+
+                    .inp input:focus + .label + .focus-bg {
+                        -webkit-transform: scaleX(1);
+                        transform: scaleX(1);
+                        -webkit-transition: all 0.1s ease;
+                        transition: all 0.1s ease;
+                    }
+
+
+

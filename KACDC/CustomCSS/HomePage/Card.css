@@ -1,0 +1,59 @@
+﻿.container
+{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    width:100%;
+}
+
+.container .card{
+    border-radius:6px;
+    width:320px;
+    margin:20px;
+    padding:40px 30px;
+    background:#ebf5fc;
+    box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.1),
+                -6px -6px 20px rgba(0, 0, 0, 0.1);
+}
+.container .card:hover{
+    box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.5),
+                inset -6px -6px 10px rgba(0, 0, 0, 0.05);
+}
+.container .card .ImgBx img{
+    max-width:120px;
+}
+.container .card .ContentBox{
+    position:relative;
+    margin-top:20px;
+    text-align:center;
+}
+.container .card .ContentBox h2{
+    color:#32a3b1;
+    font-weight:700;
+    font-size:1.3em;
+    letter-spacing:2px;
+}
+.container .card .ContentBox p{
+    color:#32a3b1;
+}
+.container .card .ContentBox h3{
+    margin-top:15px;
+    color:#32a3b1;
+}
+.container .card .ContentBox a{
+    display:inline-block;
+    padding:10px 20px;
+    margin-top:5px;
+    font-size:15px;
+    text-decoration:none;
+    color:#32a3b1;
+    border-radius:5px;
+box-shadow: -1px -1px 20px rgba(255, 255, 255, 0.1),
+                -1px -1px 40px rgba(0, 0, 0, 0.1);
+}
+.container .card .ContentBox a:hover{
+    box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.1),
+                inset -4px -4px 10px rgba(0, 0, 0, 0.1);
+}

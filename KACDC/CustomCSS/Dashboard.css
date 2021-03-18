@@ -1,0 +1,210 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Kalam');
+
+
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.NeumorphicDiv {
+    border-radius: 25px;
+    background: #008008;
+    box-shadow: 10px 10px 10px #797878, -10px -10px 10px #ffffff;
+    justify-content: center;
+    padding: 25px;
+    margin: 20px;
+    margin-top: 10px;
+    align-items: center;
+    letter-spacing: 1.5px;
+    font-family: sans-serif;
+    width: 80%;
+    color: #620000;
+}
+
+.modalPopup {
+    margin: 35px 5px 0px 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 1px 1px 2px #cac9c9, -1px -1px 2px #ffffff;
+    /*margin: 20px;
+            margin-top: 30px;*/
+    font-size: 20px;
+    align-items: center;
+    letter-spacing: 1.5px;
+    overflow: auto;
+    font-family: sans-serif;
+    color: black;
+    /*max-Width: 50%;*/
+    /*Height: 720px;*/
+    max-height: 85%;
+    border: 3px solid brown;
+}
+
+.modalBackground {
+    background-color: Black;
+    filter: alpha(opacity=90);
+    opacity: 0.8;
+}
+
+.NeoTextBox {
+    font-family: 'Piazzolla', serif;
+    font-size: 23px;
+    letter-spacing: 1px;
+    width: 25%;
+    box-sizing: border-box;
+    height: 30px;
+    width: 80%;
+    font-size: 18px;
+    border: none;
+    padding: 5px;
+    margin: 10px;
+    outline: none;
+    flex-wrap: wrap;
+    text-align: center;
+    background: #eeecec;
+    border-radius: 6px;
+    text-shadow: 1px 1px 0 #fff;
+    color: #303030;
+    /*box-shadow: inset 5px 5px 10px #dddbdb, inset -5px -5px 10px #fffdfd;*/
+    height:100px;
+}
+.navFormHeading {
+    font-size: 48px;
+    font-family: 'Kalam', cursive;
+    /*font-family: 'Tangerine', serif;*/
+    text-shadow: 4px 4px 4px #aaa;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 2px;
+}
+
+.NeoButton {
+    border: none;
+    padding: 3px;
+    margin: 7px;
+    outline: none;
+    /*width: 80%;*/
+    padding-right: 20px;
+    padding-left: 20px;
+    height: 35px;
+    align-items: center;
+    align-content: center;
+    border-radius: 3px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    font-size: 13px;
+    background: transparent;
+    color: #fff;
+    background: rgba(3,154,244,0.8);
+    cursor: pointer;
+    border-style: none;
+    outline: none;
+    background: #dbdbdb;
+    color: black;
+    flex-wrap: wrap;
+    -webkit-appearance: button;
+    outline: none;
+    /*box-shadow: 5px 5px 10px #797878, -5px -5px 10px #ffffff;*/
+    font-size: 15px;
+}
+
+    .NeoButton:hover {
+        box-shadow: 5px 5px 10px white, -5px -5px 10px white;
+    }
+
+    .NeoButton:active {
+        box-shadow: inset 5px 5px 10px #d4d2d2, inset -5px -5px 10px #ffffff;
+    }
+
+.form-row-label-Heading {
+    padding-right: 10px;
+    flex: 1;
+    padding: 10px;
+    width: 50%;
+    font-weight: 300;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 35px;
+    color: #7b0000;
+    Background: white;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+.form-row-label {
+    padding-right: 10px;
+    flex: 1;
+    font-size: 15px;
+    padding: 5px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: white;
+    /*background-color:aquamarine;*/
+}
+
+.form-row-input {
+    flex: 2;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.Popup-form-row-input {
+    flex: 2;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.form-row {
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.form-row-Button {
+    flex: 1;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.SubButton {
+    /*box-shadow: 1px 1px 3px 0px #1b71c2;*/
+    background-color: #1286b8;
+    display: inline-block;
+    cursor: pointer;
+    color: palegoldenrod;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 3px 15px;
+    text-decoration: none;
+    text-shadow: 2px 2px 3px #2f6627;
+    /*height:10px;
+    width:30px;*/
+    min-width: 100%;
+    margin: 8px;
+    border: none;
+    letter-spacing: 1px;
+    border: solid 2px #08658c;
+}
+
+.SubButton:hover {
+    background: linear-gradient(to bottom, #006f91 5%, #0089b3 100%);
+    background-color: #08658c;
+}
+
+.SubButton:active {
+    position: relative;
+    top: 1px;
+}
+
