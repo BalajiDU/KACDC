@@ -199,6 +199,9 @@
     <Content Include="AadhaarTest.aspx" />
     <Content Include="AdminApprove.aspx" />
     <Content Include="AdminHome.aspx" />
+    <Content Include="ApprovalPage\CW_Approval.aspx" />
+    <Content Include="ApprovalPage\DM_Approval.aspx" />
+    <Content Include="ApprovalPage\ZM_Approval.aspx" />
     <Content Include="CheckRD.aspx" />
     <Content Include="Connected Services\NadaKacheriServiceReference\KACDC.NadaKacheriServiceReference.ArrayOfString.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -273,6 +276,14 @@
     <Content Include="Image\img3.jpeg" />
     <Content Include="KACDC_AppInfo.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Schemes\Arivu\AboutArivu.aspx" />
+    <Content Include="Schemes\Arivu\ArivuPrerequisite.aspx" />
+    <Content Include="Schemes\Arivu\Arivu_Application.aspx" />
+    <Content Include="Schemes\Arivu\Arivu_Renewal.aspx" />
+    <Content Include="Schemes\AryaVysyaPortal\AryaVysyaPortal.aspx" />
+    <Content Include="Schemes\Self Employment\AboutSelfEmployment.aspx" />
+    <Content Include="Schemes\Self Employment\SelfEmploymentPrerequisite.aspx" />
+    <Content Include="Schemes\Self Employment\Self_Employment_Application.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -293,6 +304,17 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="libman.json" />
+    <Content Include="Service\Admin_Dashboard.aspx" />
+    <Content Include="Service\BulkMessageService.aspx" />
+    <Content Include="WebServices\FetchSelfEmploymentData.asmx" />
+    <Content Include="WebServices\GetCollegeDetails.asmx" />
+    <Content Include="WebServices\Get_AR_Applications.asmx" />
+    <Content Include="WebServices\Get_SE_Applications.asmx" />
+    <Content Include="WebServices\KACDCMahitiKanaja.asmx" />
+    <Content Include="WebServices\KACDC_Send_Message.asmx" />
+    <Content Include="WebServices\NadaKacheri_GetData.asmx" />
+    <Content Include="WebServices\SelfEmploymentData.asmx" />
+    <Content Include="WebServices\TallyApprovedData.asmx" />
     <Content Include="ZM_Form.aspx" />
     <None Include="Connected Services\NadaKacheriServiceReference\WebService.wsdl" />
     <Content Include="Properties\DataSources\System.Xml.Linq.XElement.datasource" />
@@ -427,6 +449,27 @@
     <Compile Include="AdminHome.aspx.designer.cs">
       <DependentUpon>AdminHome.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ApprovalPage\CW_Approval.aspx.cs">
+      <DependentUpon>CW_Approval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApprovalPage\CW_Approval.aspx.designer.cs">
+      <DependentUpon>CW_Approval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovalPage\DM_Approval.aspx.cs">
+      <DependentUpon>DM_Approval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApprovalPage\DM_Approval.aspx.designer.cs">
+      <DependentUpon>DM_Approval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovalPage\ZM_Approval.aspx.cs">
+      <DependentUpon>ZM_Approval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApprovalPage\ZM_Approval.aspx.designer.cs">
+      <DependentUpon>ZM_Approval.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="CheckRD.aspx.cs">
       <DependentUpon>CheckRD.aspx</DependentUpon>
@@ -439,10 +482,13 @@
     <Compile Include="Class\DataProcessing\FileProcessing\FileOperations.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\Declaration\Aadhaar\AadhaarServiceData.cs" />
+    <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalArivu.cs" />
+    <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalSelfEmploymentcs.cs" />
     <Compile Include="Class\Declaration\BankDetails\BankDetails_SelfEmployment.cs" />
     <Compile Include="Class\Declaration\CollegeData\Applicant_College_Data.cs" />
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri_SelfEmployment.cs" />
+    <Compile Include="Class\GetCountStatistics\GetCount.cs" />
     <Compile Include="Class\MessageSending\SendMessage.cs" />
     <Compile Include="Class\NadaKacheri_SelfEmployment.cs" />
     <Compile Include="Class\OtherData_SelfEmployment.cs" />
@@ -505,6 +551,76 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schemes\Arivu\AboutArivu.aspx.cs">
+      <DependentUpon>AboutArivu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\Arivu\AboutArivu.aspx.designer.cs">
+      <DependentUpon>AboutArivu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\Arivu\ArivuPrerequisite.aspx.cs">
+      <DependentUpon>ArivuPrerequisite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\Arivu\ArivuPrerequisite.aspx.designer.cs">
+      <DependentUpon>ArivuPrerequisite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\Arivu\Arivu_Application.aspx.cs">
+      <DependentUpon>Arivu_Application.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\Arivu\Arivu_Application.aspx.designer.cs">
+      <DependentUpon>Arivu_Application.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\Arivu\Arivu_Renewal.aspx.cs">
+      <DependentUpon>Arivu_Renewal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\Arivu\Arivu_Renewal.aspx.designer.cs">
+      <DependentUpon>Arivu_Renewal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\AryaVysyaPortal\AryaVysyaPortal.aspx.cs">
+      <DependentUpon>AryaVysyaPortal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\AryaVysyaPortal\AryaVysyaPortal.aspx.designer.cs">
+      <DependentUpon>AryaVysyaPortal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\Self Employment\AboutSelfEmployment.aspx.cs">
+      <DependentUpon>AboutSelfEmployment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\Self Employment\AboutSelfEmployment.aspx.designer.cs">
+      <DependentUpon>AboutSelfEmployment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\Self Employment\SelfEmploymentPrerequisite.aspx.cs">
+      <DependentUpon>SelfEmploymentPrerequisite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\Self Employment\SelfEmploymentPrerequisite.aspx.designer.cs">
+      <DependentUpon>SelfEmploymentPrerequisite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\Self Employment\Self_Employment_Application.aspx.cs">
+      <DependentUpon>Self_Employment_Application.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\Self Employment\Self_Employment_Application.aspx.designer.cs">
+      <DependentUpon>Self_Employment_Application.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Admin_Dashboard.aspx.cs">
+      <DependentUpon>Admin_Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Service\Admin_Dashboard.aspx.designer.cs">
+      <DependentUpon>Admin_Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\BulkMessageService.aspx.cs">
+      <DependentUpon>BulkMessageService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Service\BulkMessageService.aspx.designer.cs">
+      <DependentUpon>BulkMessageService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -513,6 +629,42 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="WebServices\FetchSelfEmploymentData.asmx.cs">
+      <DependentUpon>FetchSelfEmploymentData.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\GetCollegeDetails.asmx.cs">
+      <DependentUpon>GetCollegeDetails.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\Get_AR_Applications.asmx.cs">
+      <DependentUpon>Get_AR_Applications.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\Get_SE_Applications.asmx.cs">
+      <DependentUpon>Get_SE_Applications.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\KACDCMahitiKanaja.asmx.cs">
+      <DependentUpon>KACDCMahitiKanaja.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\KACDC_Send_Message.asmx.cs">
+      <DependentUpon>KACDC_Send_Message.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\NadaKacheri_GetData.asmx.cs">
+      <DependentUpon>NadaKacheri_GetData.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\SelfEmploymentData.asmx.cs">
+      <DependentUpon>SelfEmploymentData.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\TallyApprovedData.asmx.cs">
+      <DependentUpon>TallyApprovedData.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ZM_Form.aspx.cs">
       <DependentUpon>ZM_Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
