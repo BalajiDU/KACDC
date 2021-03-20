@@ -479,16 +479,21 @@
       <DependentUpon>CheckRD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Class\BankDetails_SelfEmployment.cs" />
+    <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\FileOperations.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
+    <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
+    <Compile Include="Class\Declaration\Aadhaar\Aadhaarlog.cs" />
     <Compile Include="Class\Declaration\Aadhaar\AadhaarServiceData.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalArivu.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalSelfEmploymentcs.cs" />
     <Compile Include="Class\Declaration\BankDetails\BankDetails_SelfEmployment.cs" />
     <Compile Include="Class\Declaration\CollegeData\Applicant_College_Data.cs" />
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
-    <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri_SelfEmployment.cs" />
+    <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />
+    <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
+    <Compile Include="Class\Log\DataLogging.cs" />
     <Compile Include="Class\MessageSending\SendMessage.cs" />
     <Compile Include="Class\NadaKacheri_SelfEmployment.cs" />
     <Compile Include="Class\OtherData_SelfEmployment.cs" />
@@ -716,10 +721,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Class\DataProcessing\Aadhaar\" />
-    <Folder Include="Class\DataProcessing\Nadakacheri\" />
     <Folder Include="Class\DataProcessing\OnlineApplication\" />
-    <Folder Include="Class\Declaration\OnlineApplication\" />
     <Folder Include="Controllers\" />
     <Folder Include="DownloadFiles\" />
     <Folder Include="Models\" />

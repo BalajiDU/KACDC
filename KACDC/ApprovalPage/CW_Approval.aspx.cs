@@ -49,5 +49,6 @@ namespace KACDC.ApprovalPage
             message = message.ToUpper();
             ScriptManager.RegisterClientScriptBlock(owner, owner.GetType(), "alertMessage", "alert(" + message + ")", true);
         }
+        //9870346347
     }
 }
