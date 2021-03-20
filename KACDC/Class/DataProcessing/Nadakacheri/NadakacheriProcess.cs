@@ -61,7 +61,6 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                         }
 
                         NKSER.NCVerification = "Success";
-
                     }
                     //Label11.Text = NKSER.NCLanguage;
 
