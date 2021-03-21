@@ -12,7 +12,7 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
     public class NadakacheriProcess
     {
         NadaKacheri NKSER = new NadaKacheri();
-        private void GetCasteAndIncomeCertificate(string RDNumber)
+        public bool GetCasteAndIncomeCertificate(string RDNumber)
         {
             XElement xElement = null;
             try
@@ -51,7 +51,7 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                         if (nodeRes["ApplicantCAddress2"] != null) { NKSER.NCApplicantCAddress2 = nodeRes["ApplicantCAddress2"].InnerText; } else { NKSER.NCApplicantCAddress2 = ""; }
                         if (nodeRes["ApplicantCAddress3"] != null) { NKSER.NCApplicantCAddress3 = nodeRes["ApplicantCAddress3"].InnerText; } else { NKSER.NCApplicantCAddress2 = ""; }
                         NKSER.NCFullAddress = NKSER.NCApplicantCAddress1 + ", " + NKSER.NCApplicantCAddress2 + ", " + NKSER.NCApplicantCAddress3 + ", " + NKSER.NCTalukName + ", " + NKSER.NCDistrictName;
-                        if (nodeRes["App_Title"].InnerText == "ಶ್ರೀ." || nodeRes["App_Title"].InnerText == "ಕುಮಾರ." || nodeRes["App_Title"].InnerText == "Sri." || nodeRes["App_Title"].InnerText == "Kumar.")
+                        if (nodeRes["App_Title"].InnerText == "ಶ್ರೀ." || nodeRes["App_Title"].InnerText == "ಕುಮಾರ." || nodeRes["App_Title"].InnerText == "Sri." || nodeRes["App_Title"].InnerText == "Kumar." || nodeRes["App_Title"].InnerText == "ಕುಮಾರ.")
                         {
                             NKSER.NCGender = "MALE";
                         }
@@ -65,6 +65,7 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                     //Label11.Text = NKSER.NCLanguage;
 
                 }
+                return true;
             }
             catch (Exception ex)
             {
@@ -74,7 +75,9 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                     //lblEligibility.Text = xElement.Element("StatusMsg").Value.ToString();
                     //lblEligibility.Style.Add("color", "RED");
                     //DisplayAlert(xElement.Element("StatusMsg").Value.ToString(), this);
+
                 }
+                return false;
             }
         }
     }

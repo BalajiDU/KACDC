@@ -20,6 +20,7 @@ namespace KACDC.Schemes.Self_Employment
         NadaKacheri NDAR = new NadaKacheri();
         NadakacheriProcess NKAR = new NadakacheriProcess();
         OtherDataSelfEmployment ODSE = new OtherDataSelfEmployment();
+        NadaKacheri NKSER = new NadaKacheri();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -78,13 +79,56 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnVerifyRDNumber(object sender, EventArgs e)
         {
-            txtRDNumber.Text.Trim();
-            if(NDAR.NCGender == "MALE")
+            if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
             {
-                ODSE.Widow = "NA";
-                ODSE.Divorced = "NA";
+                if (Int32.Parse(NKSER.NCStatusCode) == 1)
+                {
+                    if (Int32.Parse(NKSER.NCFacilityCode) == 42)
+                    {
+                        if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
+                        {
+                            if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                            {
+                                if (NDAR.NCGender == "MALE")
+                                {
+                                    ODSE.Widow = "NA";
+                                    ODSE.Divorced = "NA";
+                                }
+                                lblNCGSCNumber.Text = NKSER.NCGSCNumber;
+                                lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                //NKSER.NCDateOfIssue;
+                                lblNCApplicantName.Text = NKSER.NCApplicantName;
+                                lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
+                                lblNCDistrict.Text = NKSER.NCDistrictName;
+                                lblNCTaluk.Text = NKSER.NCTalukName;
+                                lblNCFullAddress.Text = NKSER.NCFullAddress;
+                            }
+                        }
+                    }
+                }
+                CasteCertificatePopup.Show();
+            }
+            else
+            {
+
             }
         }
-
+        protected void btnNadakachriBack_Click(object sender, EventArgs e)
+        {
+            divRDNumber.Visible = true;
+        }
+        protected void rbContactAddress_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbContactAddressYes.Checked == true)
+            {
+                divContactAddress.Visible = false;
+                btnSaveContactAddress.Visible = false;
+            }
+            else if (rbContactAddressNo.Checked == true)
+            {
+                divContactAddress.Visible = true;
+                btnSaveContactAddress.Visible = true;
+            }
+        }
     }
 }
