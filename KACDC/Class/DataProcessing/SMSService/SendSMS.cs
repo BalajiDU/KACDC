@@ -10,14 +10,14 @@ namespace KACDC.Class.DataProcessing.SMSService
 {
     public class SendSMS
     {
-
-        public void sendSMS(string MobileNumber, string Message, int Language, string Cetegory)
+        CreateSMSLog LOG = new CreateSMSLog();
+        public string sendSMS(string MobileNumber, string Message, int Language, string Cetegory)
         {
             ///API service key: 8116a1fe - c69c - 49a0 - 8f9f - 0e0b2b2dcac1
             ///Sender id: KAVDES
             ///Username: Mobile_1 - KAVDES
             ///Password: kavdes@1234
-            ///
+
             ///API service key: 9a7aebf7-843a-4da8-8ed7-48ebd2ea71af
             ///Sender id: GKACDC
             ///Username: Mobile_1 - GKACDC
@@ -26,7 +26,6 @@ namespace KACDC.Class.DataProcessing.SMSService
             ///Language
             ///Unicode:1
             ///English:2
-            ///
 
             ///Template: PAYMENT STATUS
             ///Category: PAYSTS
@@ -178,12 +177,24 @@ namespace KACDC.Class.DataProcessing.SMSService
                     APIkey = GKACDCAPIkey;
                     TemplateID = "1107161001582618828";
                     break;
-
+            }
+            string CheckCetegory = "";
+            if (Cetegory == "PAYSTS" || Cetegory == "APPCAL" || Cetegory == "LANCLR" || Cetegory == "ACKNOW")
+            {
+                CheckCetegory = "SINGLE";
+            }
+            else if(Cetegory== "SAAPPS"||Cetegory== "USRCRE"||Cetegory== "PAYREM"||Cetegory== "APPSTS")
+            {
+                CheckCetegory = "BULK";
+            }
+            else
+            {
+                CheckCetegory = Cetegory;
             }
 
             if (Language == 2)
             {
-                switch (Cetegory)
+                switch (CheckCetegory)
                 {
                     case "SINGLE":
                         MessageStatus = sendSingleSMS(UserName, Password, SenderId, MobileNumber, Message, APIkey, TemplateID);
@@ -197,6 +208,9 @@ namespace KACDC.Class.DataProcessing.SMSService
                     case "OTP":
                         MessageStatus = sendOTPMSG(UserName, Password, SenderId, MobileNumber, Message, APIkey, TemplateID);
                         break;
+                    default:
+                        MessageStatus = sendBulkSMS(UserName, Password, SenderId, MobileNumber, Message, APIkey, TemplateID);
+                        break;
 
                 }
             }
@@ -204,27 +218,16 @@ namespace KACDC.Class.DataProcessing.SMSService
             {
                 MessageStatus = sendUnicodeSMS(UserName, Password, SenderId, MobileNumber, Message, APIkey, TemplateID);
             }
+            LOG.CreateLog(Cetegory, MobileNumber, MessageStatus, Message);
+            if (MessageStatus.StartsWith("402"))
+            {
+                return "Message Sent";
+            }
+            else
+            {
+                return MessageStatus;
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

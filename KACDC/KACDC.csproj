@@ -483,6 +483,7 @@
     <Compile Include="Class\DataProcessing\FileProcessing\FileOperations.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
+    <Compile Include="Class\DataProcessing\SMSService\CreateSMSLog.cs" />
     <Compile Include="Class\DataProcessing\SMSService\SendSMS.cs" />
     <Compile Include="Class\Declaration\Aadhaar\Aadhaarlog.cs" />
     <Compile Include="Class\Declaration\Aadhaar\AadhaarServiceData.cs" />

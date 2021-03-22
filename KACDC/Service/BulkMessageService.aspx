@@ -27,7 +27,7 @@
                     <asp:Button ID="btnSendMessage" runat="server" Text="Send Single Message" OnClick="btnSendSingleMessage_Click" class="DownloadButton" />
                     <asp:Button ID="Button2" runat="server" Text="Send Single Unicode Message" OnClick="btnSendSingleUnicodeMessage_Click" class="DownloadButton" />
                     <asp:Button ID="Button1" runat="server" Text="Send Bulk Message (Non Unicode)" OnClick="btnSendServerBulkMessage_Click" class="DownloadButton" />
-                    <asp:Button ID="Button3" runat="server" Visible="false" Text="Send Bulk Unicode Message" OnClick="btnSendMessage_Click" class="DownloadButton" /><br />
+<%--                    <asp:Button ID="Button3" runat="server" Visible="false" Text="Send Bulk Unicode Message" OnClick="btnSendMessage_Click" class="DownloadButton" /><br />--%>
                     <asp:Label ID="lblCountDisplay" runat="server" Text=""></asp:Label>
                 </div>
             </div>
