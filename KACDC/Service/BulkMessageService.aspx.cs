@@ -20,22 +20,41 @@ namespace KACDC.Service
         {
             if(txtMobileNumber.Text.Trim() != "")
             {
-                if(Regex.IsMatch(txtMobileNumber.Text.Trim(), @"^\d+$"))
+                if (txtMobileNumber.Text.Trim().Length == 10)
                 {
-                    string status = "";
-                    if (txtMessage.Text.Trim() != "")
+                    if (Regex.IsMatch(txtMobileNumber.Text.Trim(), @"^\d+$"))
                     {
-                        status = SSMS.sendSMS(txtMobileNumber.Text.Trim(), txtMessage.Text.Trim(), 2, "SINGLE");
-                        if (status.StartsWith("402"))
+                        string status = "";
+                        if (txtMessage.Text.Trim() != "")
                         {
-                            DisplayAlert("Message Sent",this);
+                            status = SSMS.sendSMS(txtMobileNumber.Text.Trim(), txtMessage.Text.Trim(), 2, "SINGLE");
+                            if (status.StartsWith("402")||status== "Message Sent")
+                            {
+                                DisplayAlert("Message Sent", this);
+                            }
+                            else
+                            {
+                                DisplayAlert(status, this);
+                            }
                         }
                         else
                         {
-                            DisplayAlert(status, this);
+                            DisplayAlert("Enter Valid Message Number", this);
                         }
                     }
+                    else
+                    {
+                        DisplayAlert("Enter Valid Mobile Number", this);
+                    }
                 }
+                else
+                {
+                    DisplayAlert("Enter Valid Mobile Number", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Enter Mobile Number", this);
             }
         }
         protected void btnSendSingleUnicodeMessage_Click(object sender, EventArgs e)
@@ -76,6 +95,11 @@ namespace KACDC.Service
                 }
             }
         }
+        protected void btnMessageLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("~/Login.aspx");
+        }
         public static void DisplayAlert(string message, Control owner)
         {
             Page page = (owner as Page) ?? owner.Page;
@@ -83,7 +107,7 @@ namespace KACDC.Service
 
             //page.ClientScript.RegisterStartupScript(owner.GetType(),"ShowMessage", string.Format("<script type='text/javascript'>alert('{0}')</script>",
             //    message));
-            ScriptManager.RegisterClientScriptBlock(owner, owner.GetType(), "alertMessage", "alert('" + message + "')", true);
+            ScriptManager.RegisterClientScriptBlock(owner, owner.GetType(), "alertMessage", "alert('" + message.ToUpper() + "')", true);
         }
     }
 }

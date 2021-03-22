@@ -97,12 +97,12 @@ namespace KACDC.Class.DataProcessing.SMSService
 
             string KAVDESAPIkey = "8116a1fe-c69c-49a0-8f9f-0e0b2b2dcac1";
             string KAVDESSenderId = "KAVDES";
-            string KAVDESUserName = "Mobile_1 - KAVDES";
+            string KAVDESUserName = "Mobile_1-KAVDES";
             string KAVDESPassword = "kavdes@1234";
 
             string GKACDCAPIkey = "9a7aebf7-843a-4da8-8ed7-48ebd2ea71af";
             string GKACDCSenderId = "GKACDC";
-            string GKACDCUserName = "Mobile_1 - GKACDC";
+            string GKACDCUserName = "Mobile_1-GKACDC";
             string GKACDCPassword = "gkacdc@1234";
 
             switch (Cetegory)

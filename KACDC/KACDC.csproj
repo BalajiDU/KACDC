@@ -726,6 +726,7 @@
     <Folder Include="Class\DataProcessing\OnlineApplication\" />
     <Folder Include="Controllers\" />
     <Folder Include="DownloadFiles\" />
+    <Folder Include="LogFiles\LoginLogFile\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
