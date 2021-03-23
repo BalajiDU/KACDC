@@ -20,8 +20,10 @@ namespace KACDC.Class.DataProcessing.Aadhaar
     public class AadhaarService
     {
         AadhaarServiceData ADSER = new AadhaarServiceData();
-        Aadhaarlog ADLOG = new Aadhaarlog();
+        Aadhaarlog ADLOG = new Aadhaarlog(); //Transaction History
         DataLogging DL = new DataLogging();
+        AadhaarEnceyption AADENC = new AadhaarEnceyption();
+        StoreAadhaarData ADStore = new StoreAadhaarData();
         public bool SendOTP(string AadhaarNumber)
         {
             RequestObject request = new RequestObject();
@@ -110,6 +112,7 @@ namespace KACDC.Class.DataProcessing.Aadhaar
 
             ResponseObject response = krdhConnector.requestKYC(request);
             //Response.Write("Got Response\n");
+            ADLOG.AadhaarHistoryLog("KYC", response.getStatus(), response.getTransaction(), response.getTimeStamp().ToString());
 
             //Response.Write(response.getInfo());
             if (response.getStatus().Equals("N"))
@@ -132,21 +135,57 @@ namespace KACDC.Class.DataProcessing.Aadhaar
                     //Response.Write("SUCCESS" + "\n");
 
                     //lblToken.Text = ADSER.AadhaarVaultToken;
+                    if (AADENC.GetAadhaarToken(ADSER.AadhaarNumber))
+                    {
+                        ADSER.DOB = response.GetKycRes().UidData.Poi.dob;
+                        ADSER.Gender = response.GetKycRes().UidData.Poi.gender;
+                        ADSER.Name = response.GetKycRes().UidData.Poi.name;
 
-                    ADSER.DOB = response.GetKycRes().UidData.Poi.dob;
-                    ADSER.Gender = response.GetKycRes().UidData.Poi.gender;
-                    ADSER.Name = response.GetKycRes().UidData.Poi.name;
+                        ADSER.State = response.GetKycRes().UidData.Poa.state;
 
-                    ADSER.State = response.GetKycRes().UidData.Poa.state;
+                        ADSER.Photo = response.GetKycRes().UidData.Pht;
+                        ADSER.Pincode = response.GetKycRes().UidData.Poa.pc;
 
-                    ADSER.Photo = response.GetKycRes().UidData.Pht;
-                    ADSER.Pincode = response.GetKycRes().UidData.Poa.pc;
+                        ADSER.District = response.GetKycRes().UidData.Poa.dist;
 
-                    ADSER.District = response.GetKycRes().UidData.Poa.dist;
-                    //Response.Write("___" + ADSER.Name + "___" + ADSER.DOB + "_" + ADSER.Gender + "_" + ADSER.District + "_" + ADSER.State);
-                    //string fileName = Path.Combine(Server.MapPath("C:\inetpub\wwwroot\AadhaarApplicantPhoto"));
 
-                    return true;
+                        ADStore.StoreAadhaar(
+                            response.getTransaction(),
+                            ADSER.AadhaarNumber,ADSER.AadhaarVaultToken, response.GetKycRes().UidData.uid, ADSER.Name, ADSER.DOB, ADSER.Gender,
+                            response.GetKycRes().UidData.Poa.co,
+                            response.GetKycRes().UidData.Poa.house,
+                            response.GetKycRes().UidData.Poa.street,
+                            response.GetKycRes().UidData.Poa.lm,
+                            response.GetKycRes().UidData.Poa.loc,
+                            response.GetKycRes().UidData.Poa.vtc,
+                            response.GetKycRes().UidData.Poa.subdist,
+                            response.GetKycRes().UidData.Poa.dist,
+                            response.GetKycRes().UidData.Poa.state,
+                            response.GetKycRes().UidData.Poa.pc,
+                            response.GetKycRes().UidData.Poa.po,
+
+                            response.GetKycRes().UidData.LData.name,
+                            response.GetKycRes().UidData.LData.co,
+                            response.GetKycRes().UidData.LData.house,
+                            response.GetKycRes().UidData.LData.street,
+                            response.GetKycRes().UidData.LData.lm,
+                            response.GetKycRes().UidData.LData.loc,
+                            response.GetKycRes().UidData.LData.vtc,
+                            response.GetKycRes().UidData.LData.subdist,
+                            response.GetKycRes().UidData.LData.dist,
+                            response.GetKycRes().UidData.LData.state,
+                            response.GetKycRes().UidData.LData.pc,
+                            response.GetKycRes().UidData.LData.po);
+                        //Response.Write("___" + ADSER.Name + "___" + ADSER.DOB + "_" + ADSER.Gender + "_" + ADSER.District + "_" + ADSER.State);
+                        //string fileName = Path.Combine(Server.MapPath("C:\inetpub\wwwroot\AadhaarApplicantPhoto"));
+
+                        return true;
+                    }
+                    else
+                    {
+
+                        return false;
+                    }
                 }
                 else
                 {
@@ -159,6 +198,7 @@ namespace KACDC.Class.DataProcessing.Aadhaar
                     return false;
                 }
             }
+
         }
     }
 }

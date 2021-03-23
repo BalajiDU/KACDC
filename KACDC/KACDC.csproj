@@ -479,10 +479,13 @@
       <DependentUpon>CheckRD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Class\BankDetails_SelfEmployment.cs" />
+    <Compile Include="Class\DataProcessing\Aadhaar\AadhaarEnceyption.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
+    <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\FileOperations.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
+    <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
     <Compile Include="Class\DataProcessing\SMSService\CreateSMSLog.cs" />
     <Compile Include="Class\DataProcessing\SMSService\SendSMS.cs" />
     <Compile Include="Class\Declaration\Aadhaar\Aadhaarlog.cs" />

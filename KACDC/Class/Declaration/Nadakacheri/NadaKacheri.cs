@@ -132,5 +132,86 @@ namespace KACDC.Class.Declaration.Nadakacheri
             set { HttpContext.Current.Session["NCGender"] = value; }
             get { return HttpContext.Current.Session["NCGender"] as string; }
         }
+        public string App_Title
+        {
+            set { HttpContext.Current.Session["App_Title"] = value; }
+            get { return HttpContext.Current.Session["App_Title"] as string; }
+        }
+        public string TLIFileNo
+        {
+            set { HttpContext.Current.Session["TLIFileNo"] = value; }
+            get { return HttpContext.Current.Session["TLIFileNo"] as string; }
+        }
+        public string HobliName
+        {
+            set { HttpContext.Current.Session["HobliName"] = value; }
+            get { return HttpContext.Current.Session["HobliName"] as string; }
+        }
+        public string VillageName
+        {
+            set { HttpContext.Current.Session["VillageName"] = value; }
+            get { return HttpContext.Current.Session["VillageName"] as string; }
+        }
+        public string HabitationName
+        {
+            set { HttpContext.Current.Session["HabitationName"] = value; }
+            get { return HttpContext.Current.Session["HabitationName"] as string; }
+        }
+        public string ApplicantBincom
+        {
+            set { HttpContext.Current.Session["ApplicantBincom"] = value; }
+            get { return HttpContext.Current.Session["ApplicantBincom"] as string; }
+        }
+        public string Fat_Title
+        {
+            set { HttpContext.Current.Session["Fat_Title"] = value; }
+            get { return HttpContext.Current.Session["Fat_Title"] as string; }
+        }
+        public string ApplicantMotherName
+        {
+            set { HttpContext.Current.Session["ApplicantMotherName"] = value; }
+            get { return HttpContext.Current.Session["ApplicantMotherName"] as string; }
+        }
+        public string ReservationCategory
+        {
+            set { HttpContext.Current.Session["ReservationCategory"] = value; }
+            get { return HttpContext.Current.Session["ReservationCategory"] as string; }
+        }
+        public string Caste
+        {
+            set { HttpContext.Current.Session["Caste"] = value; }
+            get { return HttpContext.Current.Session["Caste"] as string; }
+        }
+        public string AnnualIncomeInWords
+        {
+            set { HttpContext.Current.Session["AnnualIncomeInWords"] = value; }
+            get { return HttpContext.Current.Session["AnnualIncomeInWords"] as string; }
+        }
+        public string Purpose
+        {
+            set { HttpContext.Current.Session["Purpose"] = value; }
+            get { return HttpContext.Current.Session["Purpose"] as string; }
+        }
+        public string ValidPeriod
+        {
+            set { HttpContext.Current.Session["ValidPeriod"] = value; }
+            get { return HttpContext.Current.Session["ValidPeriod"] as string; }
+        }
+        public string SpecialTaluk
+        {
+            set { HttpContext.Current.Session["SpecialTaluk"] = value; }
+            get { return HttpContext.Current.Session["SpecialTaluk"] as string; }
+        }
+        public string DocumentsSubmitted
+        {
+            set { HttpContext.Current.Session["DocumentsSubmitted"] = value; }
+            get { return HttpContext.Current.Session["DocumentsSubmitted"] as string; }
+        }
+        public string DisplayDocumentsSubmitted
+        {
+            set { HttpContext.Current.Session["DisplayDocumentsSubmitted"] = value; }
+            get { return HttpContext.Current.Session["DisplayDocumentsSubmitted"] as string; }
+        }
+       
     }
 }
