@@ -55,7 +55,22 @@ namespace KACDC.Schemes.Self_Employment
             }
             else
             {
-
+                if (ADSER.OTPErrorCode == "AUA-OTP-01")
+                {
+                    DisplayAlert("Invalid OTP", this);
+                }
+                else if (ADSER.OTPErrorCode == "AUA-OTP-05")
+                {
+                    DisplayAlert("OTP Expired", this);
+                }
+                else if (ADSER.OTPErrorCode == "AUA-OTP-05")
+                {
+                    DisplayAlert("OTP Expired", this);
+                }
+                else
+                {
+                    DisplayAlert("Unable to Connect, Try again", this);
+                }
             }
         }
         protected void btnAadhaarkDetailsProceed_Click(object sender, EventArgs e)
@@ -129,6 +144,15 @@ namespace KACDC.Schemes.Self_Employment
                 divContactAddress.Visible = true;
                 btnSaveContactAddress.Visible = true;
             }
+        }
+        public static void DisplayAlert(string message, Control owner)
+        {
+            Page page = (owner as Page) ?? owner.Page;
+            if (page == null) return;
+
+            //page.ClientScript.RegisterStartupScript(owner.GetType(),"ShowMessage", string.Format("<script type='text/javascript'>alert('{0}')</script>",
+            //    message));
+            ScriptManager.RegisterClientScriptBlock(owner, owner.GetType(), "alertMessage", "alert('" + message.ToUpper() + "')", true);
         }
     }
 }

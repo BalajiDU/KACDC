@@ -14,6 +14,8 @@ using System.Web.UI;
 using KACDC.Class.Declaration.Aadhaar;
 using System.Configuration;
 using KACDC.Class.Log;
+using System.IO;
+using System.Drawing;
 
 namespace KACDC.Class.DataProcessing.Aadhaar
 {
@@ -147,7 +149,7 @@ namespace KACDC.Class.DataProcessing.Aadhaar
                         ADSER.Pincode = response.GetKycRes().UidData.Poa.pc;
 
                         ADSER.District = response.GetKycRes().UidData.Poa.dist;
-
+                        File.WriteAllBytes(HttpContext.Current.Server.MapPath("~/DownloadFiles/AadhaarLogImage/" + ADSER.AadhaarVaultToken + ".png"), ADSER.Photo);
 
                         ADStore.StoreAadhaar(
                             response.getTransaction(),
