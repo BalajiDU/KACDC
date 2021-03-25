@@ -306,6 +306,7 @@
     <Content Include="libman.json" />
     <Content Include="Service\Admin_Dashboard.aspx" />
     <Content Include="Service\BulkMessageService.aspx" />
+    <Content Include="TestForms\TestForm1.aspx" />
     <Content Include="WebServices\FetchSelfEmploymentData.asmx" />
     <Content Include="WebServices\GetCollegeDetails.asmx" />
     <Content Include="WebServices\Get_AR_Applications.asmx" />
@@ -639,6 +640,13 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="TestForms\TestForm1.aspx.cs">
+      <DependentUpon>TestForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestForms\TestForm1.aspx.designer.cs">
+      <DependentUpon>TestForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebServices\FetchSelfEmploymentData.asmx.cs">
       <DependentUpon>FetchSelfEmploymentData.asmx</DependentUpon>
       <SubType>Component</SubType>

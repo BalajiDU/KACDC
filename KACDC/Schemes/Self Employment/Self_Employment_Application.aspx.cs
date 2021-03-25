@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -27,9 +28,18 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnAadhaarGetOTP_Click(object sender, EventArgs e)
         {
-            ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
-            ADAR.SendOTP(txtAadhaarNumber.Text.Trim());
-            divMobileOTP.Visible = true;
+            if (Regex.IsMatch(txtAadhaarNumber.Text.Trim(), @"^\d+$"))
+            {
+                ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
+                if (ADAR.SendOTP(txtAadhaarNumber.Text.Trim()))
+                {
+                    divMobileOTP.Visible = true;
+                }
+                else
+                {
+                    DisplayAlert(ADSER.SendOTPErrorMessage, this);
+                }
+            }
         }
         protected void btnVerifyAadhaarOTP_Click(object sender, EventArgs e)
         {
@@ -94,38 +104,69 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnVerifyRDNumber(object sender, EventArgs e)
         {
-            if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
+            if (txtRDNumber.Text.Trim().ToUpper().Substring(0, 2) == "RD")
             {
-                if (Int32.Parse(NKSER.NCStatusCode) == 1)
+                if (Regex.IsMatch(txtRDNumber.Text.Trim().Substring(2, 13), @"^\d+$"))
                 {
-                    if (Int32.Parse(NKSER.NCFacilityCode) == 42)
+                    if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
                     {
-                        if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
+                        if (Int32.Parse(NKSER.NCStatusCode) == 1)
                         {
-                            if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                            if (Int32.Parse(NKSER.NCFacilityCode) == 42)
                             {
-                                if (NDAR.NCGender == "MALE")
+                                if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
                                 {
-                                    ODSE.Widow = "NA";
-                                    ODSE.Divorced = "NA";
+                                    if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                    {
+                                        if (NDAR.NCGender == "MALE")
+                                        {
+                                            ODSE.Widow = "NA";
+                                            ODSE.Divorced = "NA";
+                                        }
+                                        lblNCGSCNumber.Text = NKSER.NCGSCNumber;
+                                        lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                        //NKSER.NCDateOfIssue;
+                                        lblNCApplicantName.Text = NKSER.NCApplicantName;
+                                        lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
+                                        lblNCDistrict.Text = NKSER.NCDistrictName;
+                                        lblNCTaluk.Text = NKSER.NCTalukName;
+                                        lblNCFullAddress.Text = NKSER.NCFullAddress;
+                                        CasteCertificatePopup.Show();
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                    }
                                 }
-                                lblNCGSCNumber.Text = NKSER.NCGSCNumber;
-                                lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
-                                //NKSER.NCDateOfIssue;
-                                lblNCApplicantName.Text = NKSER.NCApplicantName;
-                                lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
-                                lblNCDistrict.Text = NKSER.NCDistrictName;
-                                lblNCTaluk.Text = NKSER.NCTalukName;
-                                lblNCFullAddress.Text = NKSER.NCFullAddress;
+                                else
+                                {
+                                    DisplayAlert("Income must be less then 1,00,000", this);
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("Only Arya vysya Community is eligible", this);
                             }
                         }
+                        else
+                        {
+                            DisplayAlert("Invalid RD Number", this);
+                        }
+                        
+                    }
+                    else
+                    {
+                        DisplayAlert("Invalid RD Number", this);
                     }
                 }
-                CasteCertificatePopup.Show();
+                else
+                {
+                    DisplayAlert("Invalid RD Number", this);
+                }
             }
             else
             {
-
+                DisplayAlert("Invalid RD Number", this);
             }
         }
         protected void btnNadakachriBack_Click(object sender, EventArgs e)
