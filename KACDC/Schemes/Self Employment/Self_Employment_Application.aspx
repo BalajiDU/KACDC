@@ -1104,7 +1104,7 @@
                                 <div id="divRDNumChkError" runat="server" class="DisplayError" style="font-size:18px; font-weight: bold;color:#7b0000"></div>
                             </div>
                             <div class="form-row-Botton">
-                                <asp:Button ID="btnVerifyRDNumber" runat="server" CssClass="NeoButton" OnClick="btnVerifyRDNumber_Click" Text="Verify" onpaste="return false" AutoCompleteType="Disabled" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
+                                <asp:Button ID="btnVerifyRdNumber" runat="server" CssClass="NeoButton" OnClick="btnVerifyRDNumber_Click" Text="Verify" onpaste="return false" AutoCompleteType="Disabled" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
                                 <asp:Button ID="btnViewRDNumber" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnViewRDNumber_Click" Text="View" />
                                 <asp:Label ID="lblRDNumberVerified" Visible="false" runat="server" Text=" Verified" CssClass=" fa fa-check VerifiedLabel"></asp:Label>
                             </div>

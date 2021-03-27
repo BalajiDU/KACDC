@@ -1,10 +1,15 @@
 ﻿using KACDC.Class.DataProcessing.Aadhaar;
+using KACDC.Class.DataProcessing.BankData;
 using KACDC.Class.DataProcessing.Nadakacheri;
 using KACDC.Class.Declaration.Aadhaar;
+using KACDC.Class.Declaration.BankDetails;
 using KACDC.Class.Declaration.Nadakacheri;
 using KACDC.Class.Declaration.OnlineApplication;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -22,23 +27,36 @@ namespace KACDC.Schemes.Self_Employment
         NadakacheriProcess NKAR = new NadakacheriProcess();
         OtherDataSelfEmployment ODSE = new OtherDataSelfEmployment();
         NadaKacheri NKSER = new NadaKacheri();
+        BankDetails GETBD = new BankDetails();
+        DecBankDetails BD = new DecBankDetails();
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
         protected void btnAadhaarGetOTP_Click(object sender, EventArgs e)
         {
-            if (Regex.IsMatch(txtAadhaarNumber.Text.Trim(), @"^\d+$"))
+            if (txtRDNumber.Text.Trim().Length == 12)
             {
-                ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
-                if (ADAR.SendOTP(txtAadhaarNumber.Text.Trim()))
+                if (Regex.IsMatch(txtAadhaarNumber.Text.Trim(), @"^\d+$"))
                 {
-                    divMobileOTP.Visible = true;
+                    ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
+                    if (ADAR.SendOTP(txtAadhaarNumber.Text.Trim()))
+                    {
+                        divMobileOTP.Visible = true;
+                    }
+                    else
+                    {
+                        DisplayAlert(ADSER.SendOTPErrorMessage, this);
+                    }
                 }
                 else
                 {
-                    DisplayAlert(ADSER.SendOTPErrorMessage, this);
+                    DisplayAlert("Invalid Aadhaar Number", this);
                 }
+            }
+            else
+            {
+                DisplayAlert("Invalid Aadhaar Number", this);
             }
         }
         protected void btnVerifyAadhaarOTP_Click(object sender, EventArgs e)
@@ -102,57 +120,72 @@ namespace KACDC.Schemes.Self_Employment
             divMobileOTP.Visible = false;
             divRDNumber.Visible = true;
         }
-        protected void btnVerifyRDNumber(object sender, EventArgs e)
+        protected void btnVerifyRDNumber_Click(object sender, EventArgs e)
         {
-            if (txtRDNumber.Text.Trim().ToUpper().Substring(0, 2) == "RD")
+            if (txtRDNumber.Text.Trim().Length == 15)
             {
-                if (Regex.IsMatch(txtRDNumber.Text.Trim().Substring(2, 13), @"^\d+$"))
+                if (txtRDNumber.Text.Trim().ToUpper().Substring(0, 2) == "RD")
                 {
-                    if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
+                    if (Regex.IsMatch(txtRDNumber.Text.Trim().Substring(2, 13), @"^\d+$"))
                     {
-                        if (Int32.Parse(NKSER.NCStatusCode) == 1)
+                        string IsRDExist = NKAR.CheckRDNumberExist(txtRDNumber.Text.Trim());
+                        if (IsRDExist == "NA")
                         {
-                            if (Int32.Parse(NKSER.NCFacilityCode) == 42)
+                            if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
                             {
-                                if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
+                                if (Int32.Parse(NKSER.NCStatusCode) == 1)
                                 {
-                                    if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                    if (Int32.Parse(NKSER.NCFacilityCode) == 42)
                                     {
-                                        if (NDAR.NCGender == "MALE")
+                                        if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
                                         {
-                                            ODSE.Widow = "NA";
-                                            ODSE.Divorced = "NA";
+                                            if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                            {
+                                                if (NDAR.NCGender == "MALE")
+                                                {
+                                                    ODSE.Widow = "NA";
+                                                    ODSE.Divorced = "NA";
+                                                }
+                                                lblNCGSCNumber.Text = NKSER.NCGSCNumber;
+                                                lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                                //NKSER.NCDateOfIssue;
+                                                lblNCApplicantName.Text = NKSER.NCApplicantName;
+                                                lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
+                                                lblNCDistrict.Text = NKSER.NCDistrictName;
+                                                lblNCTaluk.Text = NKSER.NCTalukName;
+                                                lblNCFullAddress.Text = NKSER.NCFullAddress;
+                                                CasteCertificatePopup.Show();
+                                            }
+                                            else
+                                            {
+                                                DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                            }
                                         }
-                                        lblNCGSCNumber.Text = NKSER.NCGSCNumber;
-                                        lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
-                                        //NKSER.NCDateOfIssue;
-                                        lblNCApplicantName.Text = NKSER.NCApplicantName;
-                                        lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
-                                        lblNCDistrict.Text = NKSER.NCDistrictName;
-                                        lblNCTaluk.Text = NKSER.NCTalukName;
-                                        lblNCFullAddress.Text = NKSER.NCFullAddress;
-                                        CasteCertificatePopup.Show();
+                                        else
+                                        {
+                                            DisplayAlert("Income must be less then 1,00,000", this);
+                                        }
                                     }
                                     else
                                     {
-                                        DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                        DisplayAlert("Only Arya vysya Community is eligible", this);
                                     }
                                 }
                                 else
                                 {
-                                    DisplayAlert("Income must be less then 1,00,000", this);
+                                    DisplayAlert("Invalid RD Number", this);
                                 }
+
                             }
                             else
                             {
-                                DisplayAlert("Only Arya vysya Community is eligible", this);
+                                DisplayAlert("Invalid RD Number", this);
                             }
                         }
                         else
                         {
-                            DisplayAlert("Invalid RD Number", this);
+                            DisplayAlert("You have already avail the loan in "+ IsRDExist + " financial year", this);
                         }
-                        
                     }
                     else
                     {
@@ -179,12 +212,174 @@ namespace KACDC.Schemes.Self_Employment
             {
                 divContactAddress.Visible = false;
                 btnSaveContactAddress.Visible = false;
+                this.DropDownBinding();
             }
             else if (rbContactAddressNo.Checked == true)
             {
                 divContactAddress.Visible = true;
                 btnSaveContactAddress.Visible = true;
             }
+        }
+        private void DropDownBinding()
+        {
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("select DistrictName from MstDistrict where ZoneName=@Zone"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = kvdConn;
+                    kvdConn.Open();
+                    drpContDistrict.DataSource = cmd.ExecuteReader();
+                    drpContDistrict.DataTextField = "DistrictName";
+                    drpContDistrict.DataValueField = "DistrictName";
+                    drpContDistrict.DataBind();
+                    drpContDistrict.Items.Insert(0, "--SELECT--");
+                    kvdConn.Close();
+                }
+            }
+        }
+        protected void drpContDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("select MstTaluk.DistrictCD,MstTaluk.TalukNm from MstTaluk,MstDistrict where MstTaluk.DistrictCd=MstDistrict.DistrictCD and MstDistrict.DistrictName=@District"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@District", drpContDistrict.SelectedValue);
+                    cmd.Connection = kvdConn;
+                    kvdConn.Open();
+                    drpContTaluk.DataSource = cmd.ExecuteReader();
+                    drpContTaluk.DataTextField = "TalukNm";
+                    drpContTaluk.DataValueField = "TalukNm";
+                    drpContTaluk.DataBind();
+                    drpContTaluk.Items.Insert(0, "--SELECT--");
+                    kvdConn.Close();
+                }
+            }
+        }
+        protected void btnSaveContactAddress_Click(object sender, EventArgs e)
+        {
+            if (txtContactAddress.Text.Trim() != "" && txtContactAddress.Text.Trim() != null)
+            {
+                if (txtContactAddress.Text.Trim().Length>=10)
+                {
+                    if (drpContDistrict.SelectedValue != "" && drpContDistrict.SelectedValue != null)
+                    {
+                        if (drpContTaluk.SelectedValue != "" && drpContTaluk.SelectedValue != null)
+                        {
+                            if (txtContPincode.Text.Trim() != "" && txtContPincode.Text.Trim() != null)
+                            {
+                                if (txtContPincode.Text.Trim().Length == 6)
+                                {
+                                    ODSE.ContactFullAddress = txtContactAddress.Text.Trim();
+                                    ODSE.ContactDistrictName = drpContDistrict.SelectedValue;
+                                    ODSE.ContactTalukName = drpContTaluk.SelectedValue;
+                                    ODSE.ContactPinCode = txtContPincode.Text.Trim();
+                                    divButtonBankDetails.Visible = true;
+                                    btnVerifyRdNumber.Visible = false;
+                                    btnViewRDNumber.Visible = true;
+                                    txtRDNumber.ReadOnly = true;
+                                }
+                                else { DisplayAlert("enter valid pincode", this); }
+                            }
+                            else { DisplayAlert("enter pincode", this); }
+                        }
+                        else { DisplayAlert("select taluk", this); }
+                    }
+                    else { DisplayAlert("select district", this); }
+                }
+                else { DisplayAlert("enter valid address", this); }
+            }
+            else { DisplayAlert("enter contact address", this); }
+        }
+        protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)
+        {
+            divButtonBankDetails.Visible = false;
+            divBankDetails.Visible = true;
+            txtRDNumber.ReadOnly = true;
+        }
+        protected void btnNextChangeRDNumber_Click(object sender, EventArgs e)
+        {
+            divButtonBankDetails.Visible = false;
+            txtRDNumber.ReadOnly = false;
+        }
+        protected void btnGetBankDetails_Click(object sender, EventArgs e)
+        {
+            if(txtAccountNumber.Text.Trim()!=null && txtAccountNumber.Text.Trim() != "")
+            {
+                if (txtAccountNumber.Text.Trim().Length>5)
+                {
+                    BD.AccountNumber = txtAccountNumber.Text.Trim();
+                    if (txtIFSCCode.Text.Trim() != null && txtIFSCCode.Text.Trim() != "")
+                    {
+                        if (txtIFSCCode.Text.Trim().Length > 10)
+                        {
+                            if (GETBD.GetBankDetails(txtIFSCCode.Text.Trim()))
+                            {
+                                if(BD.STATE== "KARNATAKA")
+                                {
+                                    if (BD.NEFT.ToUpper() == "TRUE")
+                                    {
+                                        if (BD.RTGS.ToUpper() == "TRUE")
+                                        {
+                                            lblAccountHolderName.Text = ADSER.Name;
+                                            lblAccountNumber.Text = BD.AccountNumber;
+                                            lblBankName.Text = BD.BANK;
+                                            lblBranch.Text = BD.BRANCH;
+                                            lblIFSCCode.Text = BD.IFSC;
+                                            lblBankAddress.Text = BD.FULLADDRESS;
+                                            BankDetailsPopup.Show();
+
+                                            txtAccountNumber.ReadOnly = true;
+                                            txtIFSCCode.ReadOnly = true;
+                                            btnGetBankDetails.Visible = false;
+                                            btnViewBankDetails.Visible = true;
+                                            btnBankDetailsBack.Visible = false;
+                                            divButtonToOtherDetails.Visible = true;
+                                        }
+                                        else
+                                        {
+                                            DisplayAlert("ENTER RTGS FACILITY AVAILABLE BANK", this);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("ENTER NEFT FACILITY AVAILABLE BANK", this);
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("bank must be related to karnataka state", this);
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("invalid ifsc code",this);
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("invalid ifsc code", this);
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("enter ifsc code", this);
+                    }
+                }
+                else
+                {
+                    DisplayAlert("invalid bank account number", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("enter bank account number", this);
+            }
+        }
+        protected void btnBankDetailsBack_Click(object sender, EventArgs e)
+        {
+
         }
         public static void DisplayAlert(string message, Control owner)
         {

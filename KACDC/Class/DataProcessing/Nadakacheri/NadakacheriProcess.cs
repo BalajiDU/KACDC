@@ -2,6 +2,9 @@
 using KACDC.NadaKacheriServiceReference;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Xml;
@@ -103,6 +106,60 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
 
                 }
                 return false;
+            }
+        }
+
+        public string CheckRDNumberExist(string RDNumber)
+        {
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("spRDNumExistExist", kvdConn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@NewRDNum", RDNumber);
+                    cmd.Parameters.AddWithValue("@MethodName", "SE");
+                    cmd.Parameters.Add("@RetValue", SqlDbType.VarChar, -1);
+                    cmd.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+                    kvdConn.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        kvdConn.Close();
+                        string Temp = cmd.Parameters["@RetValue"].Value.ToString();
+                        if (Temp == "NA")
+                        {
+                            return CheckRDNumberExistAR(RDNumber);
+                        }
+                        else
+                        {
+                            return Temp;
+                        }
+                    }
+                }
+            }
+        }
+
+        private string CheckRDNumberExistAR(string RDNumber)
+        {
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("spRDNumExistExist", kvdConn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@NewRDNum", RDNumber);
+                    cmd.Parameters.AddWithValue("@MethodName", "AR");
+                    cmd.Parameters.Add("@RetValue", SqlDbType.VarChar, -1);
+                    cmd.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+                    kvdConn.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        kvdConn.Close();
+                        return  cmd.Parameters["@RetValue"].Value.ToString();
+                    }
+                }
             }
         }
     }
