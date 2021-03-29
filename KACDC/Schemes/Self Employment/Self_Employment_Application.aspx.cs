@@ -154,6 +154,7 @@ namespace KACDC.Schemes.Self_Employment
                                                 lblNCDistrict.Text = NKSER.NCDistrictName;
                                                 lblNCTaluk.Text = NKSER.NCTalukName;
                                                 lblNCFullAddress.Text = NKSER.NCFullAddress;
+                                                ConstituencyDropDownBinding();
                                                 CasteCertificatePopup.Show();
                                             }
                                             else
@@ -235,6 +236,55 @@ namespace KACDC.Schemes.Self_Employment
                     drpContDistrict.DataBind();
                     drpContDistrict.Items.Insert(0, "--SELECT--");
                     kvdConn.Close();
+                }
+            }
+        }
+        private void ConstituencyDropDownBinding()
+        {
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("select AssemblyCode,AssemblyName from MstConstituencies,MstDistrict where MstDistrict.DistrictCD=MstConstituencies.DistrictCD and NC_District_Name_Eng=@District"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
+                    cmd.Connection = kvdConn;
+                    kvdConn.Open();
+                    drpConst.DataSource = cmd.ExecuteReader();
+                    drpConst.DataTextField = "AssemblyName";
+                    drpConst.DataValueField = "AssemblyName";
+                    drpConst.DataBind();
+                    drpConst.Items.Insert(0, "--SELECT--");
+                    kvdConn.Close();
+                }
+            }
+        }
+        protected void drpConst_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NKSER.NCConstituency = drpConst.SelectedValue;
+            if (NKSER.NCDistrictName == "Bengaluru")
+            {
+                using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("select DistrictName from MstConstituencies,MstDistrict where MstDistrict.DistrictCD=MstConstituencies.DistrictCD and AssemblyName=@Assembly", kvdConn))
+                    {
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Assembly", NKSER.NCConstituency);
+                        cmd.Parameters.Add("@RetValue", SqlDbType.VarChar, -1);
+                        cmd.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+                        kvdConn.Open();
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            kvdConn.Close();
+                            NKSER.NCDistrictName = cmd.Parameters["@RetValue"].Value.ToString();
+                        }
+                        //int count = (int)cmd.ExecuteScalar();
+                        //return count.ToString();
+                    }
+
                 }
             }
         }
@@ -334,7 +384,6 @@ namespace KACDC.Schemes.Self_Employment
                                             txtIFSCCode.ReadOnly = true;
                                             btnGetBankDetails.Visible = false;
                                             btnViewBankDetails.Visible = true;
-                                            btnBankDetailsBack.Visible = false;
                                             divButtonToOtherDetails.Visible = true;
                                         }
                                         else
@@ -379,7 +428,24 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnBankDetailsBack_Click(object sender, EventArgs e)
         {
-
+            txtAccountNumber.ReadOnly = false;
+            txtIFSCCode.ReadOnly = false;
+            btnGetBankDetails.Visible = true;
+            btnViewBankDetails.Visible = false;
+            divButtonToOtherDetails.Visible = false;
+        }
+        protected void btnNextChangeBankDetails_Click(object sender, EventArgs e)
+        {
+            txtAccountNumber.ReadOnly = false;
+            txtIFSCCode.ReadOnly = false;
+            btnGetBankDetails.Visible = true;
+            btnViewBankDetails.Visible = false;
+            divButtonToOtherDetails.Visible = false;
+        }
+        protected void btnNextDisplayOtherDetails_Click(object sender, EventArgs e)
+        {
+            divOtherDetails.Visible = true;
+            divOtherDetailsNew.Visible = true;
         }
         public static void DisplayAlert(string message, Control owner)
         {
@@ -390,5 +456,134 @@ namespace KACDC.Schemes.Self_Employment
             //    message));
             ScriptManager.RegisterClientScriptBlock(owner, owner.GetType(), "alertMessage", "alert('" + message.ToUpper() + "')", true);
         }
+        protected void btnVerifyOTP_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnViewRDNumber_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnViewBankDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnNextShowRDNumber_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnOtherDetailsUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnOtherDetailsView_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void rbApplicantPWD_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbApplicantPWDYes.Checked == true)
+            {
+             
+            }
+            else if (rbApplicantPWDNo.Checked == true)
+            {
+                
+            }
+        }
+        protected void rbMarriedYes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbMarriedYes.Checked == true)
+            {
+             
+            }
+            else if (rbMarriedNo.Checked == true)
+            {
+               
+            }
+        }
+        protected void rbWidow_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbWidowYes.Checked == true)
+            {
+             
+            }
+            else if (rbWidowNo.Checked == true)
+            {
+                
+            }
+        }
+        protected void rbDivorced_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbDivorcedYes.Checked == true)
+            {
+             
+            }
+            else if (rbDivorcedNo.Checked == true)
+            {
+                
+            }
+        }
+        protected void btnOtherDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnOtherDetailsSave_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnOtherDetailsOk_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnNextShowBankDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnNextChangeOtherDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnNextDisplayAgrement_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void ChkDeclarationChange(object sender, EventArgs e)
+        {
+            if (ChkSelfDeclaration.Checked == true)
+            {
+
+            }
+            else if (ChkAadharDeclaration.Checked == true)
+            {
+
+            }
+        }
+        protected void btnPreviewApplication_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnPreviewEditOtherDetails_Click1(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnPreviewEditBankDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnPreviewSubmitApplication_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        protected void drpContTaluk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnPrintApplication_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

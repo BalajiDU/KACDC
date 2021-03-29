@@ -28,6 +28,12 @@ namespace KACDC.Class.Declaration.Nadakacheri
             get { return HttpContext.Current.Session["SMSNotifyURL"] as string; }
         }
 
+        public string NCConstituency
+        {
+            set { HttpContext.Current.Session["NCConstituency"] = value; }
+            get { return HttpContext.Current.Session["NCConstituency"] as string; }
+        }
+
 
 
 

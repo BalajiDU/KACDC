@@ -1084,7 +1084,7 @@
                             </div>
                         </div>
                         <%--Button to Display RD--%>
-                        <div id="divButtonToRDNum" runat="server" visible="false" class="form-row">
+                        <div id="divButtonToRDNum" runat="server" visible="true" class="form-row">
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
@@ -1206,13 +1206,13 @@
                                         <asp:Label ID="Label35" runat="server">Is Applicant with Disabilities?<span style="color:red"> *</span><br />ಅರ್ಜಿದಾರರು ವಿಶೇಷ ಚೇತನರೇ?</asp:Label>
                                     </div>
                                     <div class="form-row-input">
-                                        <%--<asp:DropDownList ID="drpApplicantPWD" Class="rowMargin txtcolor text-uppercase NeuoDropdown" AutoPostBack="true" OnSelectedIndexChanged="drpApplicantPWD_SelectedIndexChanged" runat="server">
+                                        <%--<asp:DropDownList ID="drpApplicantPWD" Class="rowMargin txtcolor text-uppercase NeuoDropdown" AutoPostBack="true" OnSelectedIndexChanged="rbApplicantPWD_CheckedChanged" runat="server">
                                         <asp:ListItem Value="0">--SELECT--</asp:ListItem>
                                         <asp:ListItem Value="YES">YES</asp:ListItem>
                                         <asp:ListItem Value="NO">NO</asp:ListItem>
                                     </asp:DropDownList>--%>
-                                        <asp:RadioButton ID="rbApplicantPWDYes" runat="server" Class="radioButton" GroupName="ApplicantPWD" Text="Yes" AutoPostBack="true" OnCheckedChanged="drpApplicantPWD_SelectedIndexChanged"  />
-                                        <asp:RadioButton ID="rbApplicantPWDNo" runat="server" Class="radioButton" GroupName="ApplicantPWD" Text="No" AutoPostBack="true" OnCheckedChanged="drpApplicantPWD_SelectedIndexChanged" />
+                                        <asp:RadioButton ID="rbApplicantPWDYes" runat="server" Class="radioButton" GroupName="ApplicantPWD" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbApplicantPWD_CheckedChanged"  />
+                                        <asp:RadioButton ID="rbApplicantPWDNo" runat="server" Class="radioButton" GroupName="ApplicantPWD" Text="No" AutoPostBack="true" OnCheckedChanged="rbApplicantPWD_CheckedChanged" />
 
                                     </div>
                                 </div>
@@ -1288,13 +1288,13 @@
                                             <asp:Label ID="Label45" runat="server">Widow<span style="color:red"> *</span><br />ವಿಧವೆ</asp:Label>
                                         </div>
                                         <div class="form-row-input">
-                                            <%--  <asp:DropDownList ID="rbWidow" Class="rowMargin txtcolor text-uppercase NeuoDropdown" OnSelectedIndexChanged="rbWidow_SelectedIndexChanged" runat="server" >
+                                            <%--  <asp:DropDownList ID="rbWidow" Class="rowMargin txtcolor text-uppercase NeuoDropdown" OnSelectedIndexChanged="rbWidow_CheckedChanged" runat="server" >
                                         <asp:ListItem Value="0">--SELECT--</asp:ListItem>
                                         <asp:ListItem Value="YES">YES</asp:ListItem>
                                         <asp:ListItem Value="NO">NO</asp:ListItem>
                                     </asp:DropDownList>--%>
-                                            <asp:RadioButton ID="rbWidowYes" runat="server" Class="radioButton" GroupName="Widow" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbWidow_SelectedIndexChanged" />
-                                            <asp:RadioButton ID="rbWidowNo" runat="server" Class="radioButton" GroupName="Widow" Text="No" AutoPostBack="true" OnCheckedChanged="rbWidow_SelectedIndexChanged" />
+                                            <asp:RadioButton ID="rbWidowYes" runat="server" Class="radioButton" GroupName="Widow" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbWidow_CheckedChanged" />
+                                            <asp:RadioButton ID="rbWidowNo" runat="server" Class="radioButton" GroupName="Widow" Text="No" AutoPostBack="true" OnCheckedChanged="rbWidow_CheckedChanged" />
 
                                         </div>
                                     </div>
@@ -1308,8 +1308,8 @@
                                         <asp:ListItem Value="YES">YES</asp:ListItem>
                                         <asp:ListItem Value="NO">NO</asp:ListItem>
                                     </asp:DropDownList>--%>
-                                            <asp:RadioButton ID="rbDivorcedYes" runat="server" Class="radioButton" GroupName="Divorced" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbDivorced_SelectedIndexChanged" />
-                                            <asp:RadioButton ID="rbDivorcedNo" runat="server" Class="radioButton" GroupName="Divorced" Text="No" AutoPostBack="true" OnCheckedChanged="rbDivorced_SelectedIndexChanged" />
+                                            <asp:RadioButton ID="rbDivorcedYes" runat="server" Class="radioButton" GroupName="Divorced" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbDivorced_CheckedChanged" />
+                                            <asp:RadioButton ID="rbDivorcedNo" runat="server" Class="radioButton" GroupName="Divorced" Text="No" AutoPostBack="true" OnCheckedChanged="rbDivorced_CheckedChanged" />
 
                                         </div>
                                     </div>

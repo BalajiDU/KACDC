@@ -22,7 +22,7 @@ namespace KACDC.TestForms
         {
             try
             {
-                //lbl1.Text = NKAR.CheckRDNumberExist(txt1.Text.Trim());
+                lbl1.Text = NKAR.CheckRDNumberExist(txt1.Text.Trim());
                 string json = (new WebClient()).DownloadString("https://ifsc.razorpay.com/" + txt1.Text.Trim());
 
 
