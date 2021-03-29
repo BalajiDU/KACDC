@@ -146,6 +146,8 @@ namespace KACDC.Schemes.Self_Employment
                                                     ODSE.Widow = "NA";
                                                     ODSE.Divorced = "NA";
                                                 }
+                                                ConstituencyDropDownBinding();
+
                                                 lblNCGSCNumber.Text = NKSER.NCGSCNumber;
                                                 lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
                                                 //NKSER.NCDateOfIssue;
@@ -154,7 +156,8 @@ namespace KACDC.Schemes.Self_Employment
                                                 lblNCDistrict.Text = NKSER.NCDistrictName;
                                                 lblNCTaluk.Text = NKSER.NCTalukName;
                                                 lblNCFullAddress.Text = NKSER.NCFullAddress;
-                                                ConstituencyDropDownBinding();
+                                                NKAR.UpdateDistrict();
+                                                
                                                 CasteCertificatePopup.Show();
                                             }
                                             else
@@ -243,18 +246,37 @@ namespace KACDC.Schemes.Self_Employment
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("select AssemblyCode,AssemblyName from MstConstituencies,MstDistrict where MstDistrict.DistrictCD=MstConstituencies.DistrictCD and NC_District_Name_Eng=@District"))
+                if (NKSER.NCLanguage == "1")
                 {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
-                    cmd.Connection = kvdConn;
-                    kvdConn.Open();
-                    drpConst.DataSource = cmd.ExecuteReader();
-                    drpConst.DataTextField = "AssemblyName";
-                    drpConst.DataValueField = "AssemblyName";
-                    drpConst.DataBind();
-                    drpConst.Items.Insert(0, "--SELECT--");
-                    kvdConn.Close();
+                    using (SqlCommand cmd = new SqlCommand("select AssemblyCode,AssemblyName from MstConstituencies,MstDistrict where MstDistrict.DistrictCD=MstConstituencies.DistrictCD and NC_District_Name_Kan=@District"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
+                        cmd.Connection = kvdConn;
+                        kvdConn.Open();
+                        drpConst.DataSource = cmd.ExecuteReader();
+                        drpConst.DataTextField = "AssemblyName";
+                        drpConst.DataValueField = "AssemblyName";
+                        drpConst.DataBind();
+                        drpConst.Items.Insert(0, "--SELECT--");
+                        kvdConn.Close();
+                    }
+                }
+                if (NKSER.NCLanguage == "2")
+                {
+                    using (SqlCommand cmd = new SqlCommand("select AssemblyCode,AssemblyName from MstConstituencies,MstDistrict where MstDistrict.DistrictCD=MstConstituencies.DistrictCD and NC_District_Name_Eng=@District"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
+                        cmd.Connection = kvdConn;
+                        kvdConn.Open();
+                        drpConst.DataSource = cmd.ExecuteReader();
+                        drpConst.DataTextField = "AssemblyName";
+                        drpConst.DataValueField = "AssemblyName";
+                        drpConst.DataBind();
+                        drpConst.Items.Insert(0, "--SELECT--");
+                        kvdConn.Close();
+                    }
                 }
             }
         }
@@ -267,26 +289,20 @@ namespace KACDC.Schemes.Self_Employment
                 {
                     using (SqlCommand cmd = new SqlCommand("select DistrictName from MstConstituencies,MstDistrict where MstDistrict.DistrictCD=MstConstituencies.DistrictCD and AssemblyName=@Assembly", kvdConn))
                     {
-
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@Assembly", NKSER.NCConstituency);
-                        cmd.Parameters.Add("@RetValue", SqlDbType.VarChar, -1);
-                        cmd.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = kvdConn;
                         kvdConn.Open();
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
-                            DataSet ds = new DataSet();
-                            da.Fill(ds);
-                            kvdConn.Close();
-                            NKSER.NCDistrictName = cmd.Parameters["@RetValue"].Value.ToString();
+                            sdr.Read();
+                            NKSER.NCDistrictName = sdr["DistrictName"].ToString();
                         }
-                        //int count = (int)cmd.ExecuteScalar();
-                        //return count.ToString();
+                        kvdConn.Close();
                     }
 
                 }
             }
+            
         }
         protected void drpContDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {

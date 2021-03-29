@@ -108,7 +108,53 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                 return false;
             }
         }
-
+        public void UpdateDistrict()
+        {
+            if (NKSER.NCLanguage == "1")
+            {
+                if (NKSER.NCDistrictName != "ಬೆಂಗಳೂರು")
+                {
+                    using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT DistrictName FROM MstDistrict Where NC_District_Name_Eng=@District"))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
+                            cmd.Connection = kvdConn;
+                            kvdConn.Open();
+                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            {
+                                sdr.Read();
+                                NKSER.NCDistrictName = sdr["DistrictName"].ToString();
+                            }
+                            kvdConn.Close();
+                        }
+                    }
+                }
+            }
+            if (NKSER.NCLanguage == "2")
+            {
+                if (NKSER.NCDistrictName != "Bengaluru")
+                {
+                    using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT DistrictName FROM MstDistrict Where NC_District_Name_Eng=@District"))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
+                            cmd.Connection = kvdConn;
+                            kvdConn.Open();
+                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            {
+                                sdr.Read();
+                                NKSER.NCDistrictName = sdr["DistrictName"].ToString();
+                            }
+                            kvdConn.Close();
+                        }
+                    }
+                }
+            }
+        }
         public string CheckRDNumberExist(string RDNumber)
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
@@ -141,6 +187,28 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
         }
 
         private string CheckRDNumberExistAR(string RDNumber)
+        {
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("spRDNumExistExist", kvdConn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@NewRDNum", RDNumber);
+                    cmd.Parameters.AddWithValue("@MethodName", "AR");
+                    cmd.Parameters.Add("@RetValue", SqlDbType.VarChar, -1);
+                    cmd.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+                    kvdConn.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        kvdConn.Close();
+                        return  cmd.Parameters["@RetValue"].Value.ToString();
+                    }
+                }
+            }
+        }
+        private string UpdateDistrict(string RDNumber)
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
