@@ -1034,6 +1034,21 @@
             }
         }
     </script>
+    <!--Check PINCODE -->
+    <script type="text/javascript">
+        function CheckPinCode(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (((charCode >= 48 && charCode <= 57)|| (e.keyCode >= 96 && e.keyCode <= 105)) || charCode == 46)) {
+                $('#txtContPincode').keyup(function () {
+                    
+                });
+            }
+            else {
+                alert('Please Enter Numeric values.');
+                return false;
+            }
+        }
+    </script>
 
 </head>
 <body onload="Disable()"> <%--  onload="Disable()" --%>
@@ -1084,7 +1099,7 @@
                             </div>
                         </div>
                         <%--Button to Display RD--%>
-                        <div id="divButtonToRDNum" runat="server" visible="true" class="form-row">
+                        <div id="divButtonToRDNum" runat="server" visible="false" class="form-row">
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
@@ -1095,7 +1110,7 @@
                             </div>
                         </div>
                         <%--RD Number--%>
-                        <div id="divRDNumber" runat="server" visible="false" class="form-row">
+                        <div id="divRDNumber" runat="server" visible="true" class="form-row">
                             <div class="form-row-label">
                                 <asp:Label ID="Label10" class="" runat="server">RD Number(Form - G)<span style="color:red"> *</span><br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ(ನಮೂನೆ - ಜಿ)</asp:Label>
                             </div>
@@ -1141,7 +1156,7 @@
                             </div>
                         </div>
                          <%--Button to Other Details--%>
-                        <div id="divButtonToOtherDetails" runat="server" visible="false" class="form-row">
+                        <div id="divButtonToOtherDetails" runat="server" visible="true" class="form-row">
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
@@ -1849,7 +1864,7 @@
                                     <asp:Label ID="lblNCDistrict" runat="server"></asp:Label>
                                 </div>
                             </div>
-                            <div id="divContactAddressOption" visible="false" runat="server" class="form-row">
+                            <div id="divContactAddressOption" visible="true" runat="server" class="form-row">
                                 <div class="Popup-row-label">
                                     <asp:Label ID="Label21" runat="server" >Contact Address same as above<span style="color:red"> *</span></asp:Label>
                                 </div>
@@ -1895,7 +1910,7 @@
                                         <asp:Label ID="Label55" runat="server">Pin code  ಅಂಚೆ ಸಂಖ್ಯೆ <span style="color:red"> *</span></asp:Label>
                                     </div>
                                     <div class="Popup-row-label">
-                                        <asp:TextBox ID="txtContPincode" CssClass="NeoTextBox"  placeholder="Pin code" onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32);" runat="server" ForeColor="Black" TextMode="Number" MaxLength="6" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
+                                        <asp:TextBox ID="txtContPincode" CssClass="NeoTextBox"  placeholder="Pin code" onkeypress="return CheckPinCode(event)" runat="server" ForeColor="Black" TextMode="Number" MaxLength="6" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -1909,7 +1924,7 @@
                                     <asp:Button ID="btnSaveContactAddress" runat="server"   CssClass="NeoButton" Text="Save and Proceed" OnClick="btnSaveContactAddress_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
                                 </div>
                                 <div class="form-row-Botton">
-                                    <asp:Button ID="btnNadakachriOK" runat="server" CssClass="NeoButton" Text="Proceed" OnClientClick="return CasteCertificateHidePopup()" />
+                                    <asp:Button ID="btnNadakachriOK" runat="server"  CssClass="NeoButton" Text="Proceed" OnClientClick="return CasteCertificateHidePopup()" />
                                 </div>
                             </div>
                                

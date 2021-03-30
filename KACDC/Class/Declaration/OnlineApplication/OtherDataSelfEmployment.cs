@@ -27,10 +27,20 @@ namespace KACDC.Class.Declaration.OnlineApplication
             set { HttpContext.Current.Session["AlternateMobileNumber"] = value; }
             get { return HttpContext.Current.Session["AlternateMobileNumber"] as string; }
         }
+        public string MobileNumber
+        {
+            set { HttpContext.Current.Session["MobileNumber"] = value; }
+            get { return HttpContext.Current.Session["MobileNumber"] as string; }
+        }
         public string PurposeOfLoan
         {
             set { HttpContext.Current.Session["PurposeOfLoan"] = value; }
             get { return HttpContext.Current.Session["PurposeOfLoan"] as string; }
+        }
+        public string LoanDESCRIPTION
+        {
+            set { HttpContext.Current.Session["LoanDESCRIPTION"] = value; }
+            get { return HttpContext.Current.Session["LoanDESCRIPTION"] as string; }
         }
         public string PersonWithDisabilities
         {

@@ -117,6 +117,7 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnNextDisplayRDNum_Click(object sender, EventArgs e)
         {
+            divButtonToRDNum.Visible = false;
             divMobileOTP.Visible = false;
             divRDNumber.Visible = true;
         }
@@ -146,8 +147,16 @@ namespace KACDC.Schemes.Self_Employment
                                                     ODSE.Widow = "NA";
                                                     ODSE.Divorced = "NA";
                                                 }
+                                                rbContactAddressYes.Checked = false;
+                                                rbContactAddressNo.Checked = false;
+                                                btnNadakachriOK.Visible = false;
+                                                btnSaveContactAddress.Visible = false;
+                                                divContactAddress.Visible = false;
+                                                divButtonBankDetails.Visible = true;
+                                                btnViewRDNumber.Visible = true;
+                                                btnVerifyRdNumber.Visible = false;
+                                                NKAR.UpdateDistrict();
                                                 ConstituencyDropDownBinding();
-
                                                 lblNCGSCNumber.Text = NKSER.NCGSCNumber;
                                                 lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
                                                 //NKSER.NCDateOfIssue;
@@ -156,7 +165,6 @@ namespace KACDC.Schemes.Self_Employment
                                                 lblNCDistrict.Text = NKSER.NCDistrictName;
                                                 lblNCTaluk.Text = NKSER.NCTalukName;
                                                 lblNCFullAddress.Text = NKSER.NCFullAddress;
-                                                NKAR.UpdateDistrict();
                                                 
                                                 CasteCertificatePopup.Show();
                                             }
@@ -208,6 +216,9 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnNadakachriBack_Click(object sender, EventArgs e)
         {
+            divButtonBankDetails.Visible = false;
+            btnViewRDNumber.Visible = false;
+            btnVerifyRdNumber.Visible = true;
             divRDNumber.Visible = true;
         }
         protected void rbContactAddress_CheckedChanged(object sender, EventArgs e)
@@ -215,20 +226,24 @@ namespace KACDC.Schemes.Self_Employment
             if (rbContactAddressYes.Checked == true)
             {
                 divContactAddress.Visible = false;
-                btnSaveContactAddress.Visible = false;
                 this.DropDownBinding();
+                btnNadakachriOK.Visible = false;
+                btnSaveContactAddress.Visible = true;
+                CasteCertificatePopup.Show();
             }
             else if (rbContactAddressNo.Checked == true)
             {
                 divContactAddress.Visible = true;
                 btnSaveContactAddress.Visible = true;
+                btnNadakachriOK.Visible = false;
+                CasteCertificatePopup.Show();
             }
         }
         private void DropDownBinding()
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("select DistrictName from MstDistrict where ZoneName=@Zone"))
+                using (SqlCommand cmd = new SqlCommand("select DistrictName from MstDistrict"))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = kvdConn;
@@ -262,7 +277,7 @@ namespace KACDC.Schemes.Self_Employment
                         kvdConn.Close();
                     }
                 }
-                if (NKSER.NCLanguage == "2")
+                if (NKSER.NCLanguage == "99")
                 {
                     using (SqlCommand cmd = new SqlCommand("select AssemblyCode,AssemblyName from MstConstituencies,MstDistrict where MstDistrict.DistrictCD=MstConstituencies.DistrictCD and NC_District_Name_Eng=@District"))
                     {
@@ -283,13 +298,15 @@ namespace KACDC.Schemes.Self_Employment
         protected void drpConst_SelectedIndexChanged(object sender, EventArgs e)
         {
             NKSER.NCConstituency = drpConst.SelectedValue;
-            if (NKSER.NCDistrictName == "Bengaluru")
+            if (NKSER.NCDistrictName == "Bengaluru" || NKSER.NCDistrictName == "Bengaluru Uttara" || NKSER.NCDistrictName == "Bengaluru Dakshina")
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
                     using (SqlCommand cmd = new SqlCommand("select DistrictName from MstConstituencies,MstDistrict where MstDistrict.DistrictCD=MstConstituencies.DistrictCD and AssemblyName=@Assembly", kvdConn))
                     {
                         cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@Assembly", drpConst.SelectedValue);
+
                         cmd.Connection = kvdConn;
                         kvdConn.Open();
                         using (SqlDataReader sdr = cmd.ExecuteReader())
@@ -302,7 +319,8 @@ namespace KACDC.Schemes.Self_Employment
 
                 }
             }
-            
+            lblNCDistrict.Text = NKSER.NCDistrictName;
+            CasteCertificatePopup.Show();
         }
         protected void drpContDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -322,41 +340,72 @@ namespace KACDC.Schemes.Self_Employment
                     kvdConn.Close();
                 }
             }
+            CasteCertificatePopup.Show();
+        }
+        protected void drpContTaluk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CasteCertificatePopup.Show();
         }
         protected void btnSaveContactAddress_Click(object sender, EventArgs e)
         {
-            if (txtContactAddress.Text.Trim() != "" && txtContactAddress.Text.Trim() != null)
-            {
-                if (txtContactAddress.Text.Trim().Length>=10)
+            if (drpConst.SelectedIndex!=0) {
+                if (rbContactAddressNo.Checked == true)
                 {
-                    if (drpContDistrict.SelectedValue != "" && drpContDistrict.SelectedValue != null)
+                    if (txtContactAddress.Text.Trim() != "" && txtContactAddress.Text.Trim() != null)
                     {
-                        if (drpContTaluk.SelectedValue != "" && drpContTaluk.SelectedValue != null)
+                        if (txtContactAddress.Text.Trim().Length >= 10)
                         {
-                            if (txtContPincode.Text.Trim() != "" && txtContPincode.Text.Trim() != null)
+                            if (drpContDistrict.SelectedValue != "" && drpContDistrict.SelectedValue != null && drpContDistrict.SelectedIndex!=0)
                             {
-                                if (txtContPincode.Text.Trim().Length == 6)
+                                if (drpContTaluk.SelectedValue != "" && drpContTaluk.SelectedValue != null && drpContTaluk.SelectedIndex!=0)
                                 {
-                                    ODSE.ContactFullAddress = txtContactAddress.Text.Trim();
-                                    ODSE.ContactDistrictName = drpContDistrict.SelectedValue;
-                                    ODSE.ContactTalukName = drpContTaluk.SelectedValue;
-                                    ODSE.ContactPinCode = txtContPincode.Text.Trim();
-                                    divButtonBankDetails.Visible = true;
-                                    btnVerifyRdNumber.Visible = false;
-                                    btnViewRDNumber.Visible = true;
-                                    txtRDNumber.ReadOnly = true;
+                                    if (txtContPincode.Text.Trim() != "" && txtContPincode.Text.Trim() != null)
+                                    {
+                                        if (Regex.IsMatch(txtContPincode.Text.Trim(), @"^\d+$"))
+                                        {
+                                            if (txtContPincode.Text.Trim().Length == 6)
+                                            {
+                                                ODSE.ContactFullAddress = txtContactAddress.Text.Trim();
+                                                ODSE.ContactDistrictName = drpContDistrict.SelectedValue;
+                                                ODSE.ContactTalukName = drpContTaluk.SelectedValue;
+                                                ODSE.ContactPinCode = txtContPincode.Text.Trim();
+                                                divButtonBankDetails.Visible = true;
+                                                btnVerifyRdNumber.Visible = false;
+                                                btnViewRDNumber.Visible = true;
+                                                txtRDNumber.ReadOnly = true;
+                                            }
+                                            else
+                                            {
+                                                DisplayAlert("enter valid pincode", this);
+                                                CasteCertificatePopup.Show(); txtContPincode.Focus();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            DisplayAlert("enter valid pincode", this);
+                                            CasteCertificatePopup.Show(); txtContPincode.Focus();
+                                        }
+                                    }
+                                    else { DisplayAlert("enter pincode", this); CasteCertificatePopup.Show(); txtContPincode.Focus(); }
                                 }
-                                else { DisplayAlert("enter valid pincode", this); }
+                                else { DisplayAlert("select taluk", this); CasteCertificatePopup.Show(); drpContTaluk.Focus(); }
                             }
-                            else { DisplayAlert("enter pincode", this); }
+                            else { DisplayAlert("select district", this); CasteCertificatePopup.Show(); drpContDistrict.Focus(); }
                         }
-                        else { DisplayAlert("select taluk", this); }
+                        else { DisplayAlert("enter valid address", this); CasteCertificatePopup.Show(); txtContactAddress.Focus(); }
                     }
-                    else { DisplayAlert("select district", this); }
+                    else { DisplayAlert("enter contact address", this); CasteCertificatePopup.Show(); txtContactAddress.Focus(); }
                 }
-                else { DisplayAlert("enter valid address", this); }
+                else if (rbContactAddressYes.Checked == true)
+                {
+
+                }
             }
-            else { DisplayAlert("enter contact address", this); }
+            else
+            {
+                DisplayAlert("Select Constituency", this);
+                CasteCertificatePopup.Show();
+            }
         }
         protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)
         {
@@ -368,6 +417,8 @@ namespace KACDC.Schemes.Self_Employment
         {
             divButtonBankDetails.Visible = false;
             txtRDNumber.ReadOnly = false;
+            btnVerifyRdNumber.Visible = true;
+            btnViewRDNumber.Visible = false;
         }
         protected void btnGetBankDetails_Click(object sender, EventArgs e)
         {
@@ -420,26 +471,31 @@ namespace KACDC.Schemes.Self_Employment
                             else
                             {
                                 DisplayAlert("invalid ifsc code",this);
+                                txtIFSCCode.Focus();
                             }
                         }
                         else
                         {
                             DisplayAlert("invalid ifsc code", this);
+                            txtIFSCCode.Focus();
                         }
                     }
                     else
                     {
                         DisplayAlert("enter ifsc code", this);
+                        txtIFSCCode.Focus();
                     }
                 }
                 else
                 {
-                    DisplayAlert("invalid bank account number", this);
+                    DisplayAlert("enter valid bank account number", this);
+                    txtAccountNumber.Focus();
                 }
             }
             else
             {
                 DisplayAlert("enter bank account number", this);
+                txtAccountNumber.Focus();
             }
         }
         protected void btnBankDetailsBack_Click(object sender, EventArgs e)
@@ -460,8 +516,209 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnNextDisplayOtherDetails_Click(object sender, EventArgs e)
         {
-            divOtherDetails.Visible = true;
+            //divOtherDetails.Visible = true;
             divOtherDetailsNew.Visible = true;
+            divButtonToOtherDetails.Visible = false;
+        }
+        protected void btnOtherDetailsSave_Click(object sender, EventArgs e)
+        {
+            if (txtEmailID.Text.Trim() != "")
+            {
+                if (IsValidEmail(txtEmailID.Text.Trim()))
+                {
+                    if (txtApplicantMobileNumber.Text.Trim() != "")
+                    {
+                        if (Regex.IsMatch(txtApplicantMobileNumber.Text.Trim(), @"^\d+$"))
+                        {
+                            if (txtApplicantMobileNumber.Text.Trim().Length == 10)
+                            {
+                                if (txtAlternateMobileNumber.Text.Trim() != "")
+                                {
+                                    if (Regex.IsMatch(txtAlternateMobileNumber.Text.Trim(), @"^\d+$"))
+                                    {
+                                        if (txtAlternateMobileNumber.Text.Trim().Length == 10)
+                                        {
+                                            if(rbApplicantPWDYes.Checked==true || rbApplicantPWDNo.Checked == true)
+                                            {
+                                                if (rbApplicantPWDYes.Checked == true && txtPwdIdNumber.Text.Trim() == "")
+                                                {
+                                                    DisplayAlert("enter person with disabilities ID number", this);
+                                                    txtPwdIdNumber.Focus();
+                                                }
+                                                else if(txtPwdIdNumber.Text.Trim() != "")
+                                                {
+                                                    ODSE.PersonWithDisabilities = txtPwdIdNumber.Text.Trim();
+                                                }
+
+
+                                                if (drpLoanPurpose.SelectedIndex != 0)
+                                                {
+                                                    if (txtLoanDescription.Text.Trim() != "")
+                                                    {
+                                                        if (txtLoanDescription.Text.Trim().Length > 10 && txtLoanDescription.Text.Trim().Length <= 100)
+                                                        {
+                                                            ODSE.EmailID = txtEmailID.Text.Trim();
+                                                            ODSE.MobileNumber = txtApplicantMobileNumber.Text.Trim();
+                                                            ODSE.AlternateMobileNumber = txtAlternateMobileNumber.Text.Trim();
+                                                            ODSE.PurposeOfLoan = drpLoanPurpose.SelectedValue;
+                                                            ODSE.LoanDESCRIPTION = txtLoanDescription.Text.Trim();
+                                                            ODSE.PersonWithDisabilities = rbApplicantPWDYes.Checked == true ? txtPwdIdNumber.Text.Trim() : "NA";
+                                                        }
+                                                        else
+                                                        {
+                                                            DisplayAlert("enter valid DESCRIPTION OF LOAN", this);
+                                                            txtLoanDescription.Focus();
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        DisplayAlert("enter DESCRIPTION OF LOAN", this);
+                                                        txtLoanDescription.Focus();
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    DisplayAlert("select purpose of loan", this);
+                                                    drpLoanPurpose.Focus();
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                DisplayAlert("select person with disabilities option", this);
+                                                txtAlternateMobileNumber.Focus();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            DisplayAlert("enter valid mobile number", this);
+                                            txtAlternateMobileNumber.Focus();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("enter valid mobile number", this);
+                                        txtAlternateMobileNumber.Focus();
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("enter mobile number", this);
+                                    txtAlternateMobileNumber.Focus();
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("enter valid mobile number", this);
+                                txtApplicantMobileNumber.Focus();
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("enter valid mobile number", this);
+                            txtApplicantMobileNumber.Focus();
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("enter mobile number", this);
+                        txtApplicantMobileNumber.Focus();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("enter valid email id", this);
+                    txtEmailID.Focus();
+                }
+            }
+            else
+            {
+                DisplayAlert("enter email id",this);
+                txtEmailID.Focus();
+            }
+        }
+        protected void rbApplicantPWD_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbApplicantPWDYes.Checked == true)
+            {
+                divPWDIdNumber.Visible = true;
+            }
+            else if (rbApplicantPWDNo.Checked == true)
+            {
+                divPWDIdNumber.Visible = false;
+            }
+        }
+        private bool CheckMobileNumber(string MobileNumber)
+        {
+            if (txtApplicantMobileNumber.Text.Trim() != "")
+            {
+                if (Regex.IsMatch(txtApplicantMobileNumber.Text.Trim(), @"^\d+$"))
+                {
+                    if (txtApplicantMobileNumber.Text.Trim().Length == 10)
+                    {
+
+                    }
+                    else
+                    {
+                        DisplayAlert("enter valid mobile number", this);
+                        txtApplicantMobileNumber.Focus();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("enter valid mobile number", this);
+                    txtApplicantMobileNumber.Focus();
+                }
+            }
+            else
+            {
+                DisplayAlert("enter mobile number", this);
+                txtApplicantMobileNumber.Focus();
+            }
+            return true;
+        }
+        private bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new System.Globalization.IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    string domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
         }
         public static void DisplayAlert(string message, Control owner)
         {
@@ -496,17 +753,7 @@ namespace KACDC.Schemes.Self_Employment
         {
 
         }
-        protected void rbApplicantPWD_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbApplicantPWDYes.Checked == true)
-            {
-             
-            }
-            else if (rbApplicantPWDNo.Checked == true)
-            {
-                
-            }
-        }
+        
         protected void rbMarriedYes_CheckedChanged(object sender, EventArgs e)
         {
             if (rbMarriedYes.Checked == true)
@@ -544,10 +791,7 @@ namespace KACDC.Schemes.Self_Employment
         {
 
         }
-        protected void btnOtherDetailsSave_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnOtherDetailsOk_Click(object sender, EventArgs e)
         {
 
@@ -592,10 +836,7 @@ namespace KACDC.Schemes.Self_Employment
 
         }
         
-        protected void drpContTaluk_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnPrintApplication_Click(object sender, EventArgs e)
         {
 

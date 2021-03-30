@@ -116,7 +116,7 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                 {
                     using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT DistrictName FROM MstDistrict Where NC_District_Name_Eng=@District"))
+                        using (SqlCommand cmd = new SqlCommand("SELECT DistrictName FROM MstDistrict Where NC_District_Name_Kan=@District"))
                         {
                             cmd.CommandType = CommandType.Text;
                             cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
