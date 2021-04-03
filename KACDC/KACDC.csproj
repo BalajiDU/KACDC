@@ -525,7 +525,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CreateTextSharpPDF\MultiLineText.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\MultiLineText.cs" />
     <Compile Include="CreateTextSharpPDF\Process\AgreeCell.cs" />
     <Compile Include="CreateTextSharpPDF\Process\AgreementTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\BankTable.cs" />

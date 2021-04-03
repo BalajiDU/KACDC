@@ -20,7 +20,7 @@ namespace KACDC.CreateTextSharpPDF
             {
                 TextArea.Append($"{value.Substring(0, length).ToString()}".PadLeft(length) + "\r\n");
                 value = value.Substring(length, (value.Length) - (length));
-                GenerateMultiLineTextAreaPAddress(value, length);
+                GenerateMultiLineText(value, length);
             }
             return TextArea.ToString();
         }

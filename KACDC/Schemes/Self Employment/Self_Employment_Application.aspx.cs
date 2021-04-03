@@ -859,7 +859,7 @@ namespace KACDC.Schemes.Self_Employment
 
             PdfPTable Table = null;
             Table = new PdfPTable(4);
-            Table = APPLITAB.ApplicantMainTable(Table);
+            Table = APPLITAB.SEApplicantMainTable(Table);
             PdfPTable BankTable = null;
             BankTable = new PdfPTable(4);
             BankTable = BT.GenerateBankTable(BankTable);
@@ -871,252 +871,252 @@ namespace KACDC.Schemes.Self_Employment
             SignatureTable = ST.GenerateSignatureTable(SignatureTable);
 
         }
-        protected void btnpdfprint_Click()
-        {
-            Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
-            //PdfWriter writer = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-            Phrase phrase = null;
-            //PdfPCell cell = null;
-            PdfPTable table = null;
+        //protected void btnpdfprint_Click()
+        //{
+        //    Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
+        //    //PdfWriter writer = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+        //    Phrase phrase = null;
+        //    //PdfPCell cell = null;
+        //    PdfPTable table = null;
 
-            PdfPTable BankTable = null;
-            PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-            pdfDoc.Open();
-            int Center = PdfPCell.ALIGN_CENTER;
-            int VCenter = PdfPCell.ALIGN_MIDDLE;
-            int Left = PdfPCell.ALIGN_LEFT;
-            //int Justify = PdfPCell.ALIGN_JUSTIFIED;
-            //BaseFont bf = BaseFont.CreateFont(Environment.GetEnvironmentVariable("windir") + @"\fonts\ArialUni.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            BaseFont bf = BaseFont.CreateFont(Environment.GetEnvironmentVariable("windir") + @"\fonts\tunga.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            string arialuniTff = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIALUNI.TTF");
-            iTextSharp.text.FontFactory.Register(arialuniTff);
-            //List<IElement> list = HTMLWorker.ParseToList(new StringReader(stringBuilder.ToString()), ST);
+        //    PdfPTable BankTable = null;
+        //    PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+        //    pdfDoc.Open();
+        //    int Center = PdfPCell.ALIGN_CENTER;
+        //    int VCenter = PdfPCell.ALIGN_MIDDLE;
+        //    int Left = PdfPCell.ALIGN_LEFT;
+        //    //int Justify = PdfPCell.ALIGN_JUSTIFIED;
+        //    //BaseFont bf = BaseFont.CreateFont(Environment.GetEnvironmentVariable("windir") + @"\fonts\ArialUni.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        //    BaseFont bf = BaseFont.CreateFont(Environment.GetEnvironmentVariable("windir") + @"\fonts\tunga.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        //    string arialuniTff = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIALUNI.TTF");
+        //    iTextSharp.text.FontFactory.Register(arialuniTff);
+        //    //List<IElement> list = HTMLWorker.ParseToList(new StringReader(stringBuilder.ToString()), ST);
 
-            iTextSharp.text.html.simpleparser.StyleSheet ST = new iTextSharp.text.html.simpleparser.StyleSheet();
-            ST.LoadTagStyle(HtmlTags.BODY, HtmlTags.FACE, "Arial Unicode MS");
-            ST.LoadTagStyle(HtmlTags.BODY, HtmlTags.ENCODING, BaseFont.IDENTITY_H);
-
-
-            iTextSharp.text.Font font = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.BOLD);
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
-                pdfDoc.Open();
-                table = new PdfPTable(4);
+        //    iTextSharp.text.html.simpleparser.StyleSheet ST = new iTextSharp.text.html.simpleparser.StyleSheet();
+        //    ST.LoadTagStyle(HtmlTags.BODY, HtmlTags.FACE, "Arial Unicode MS");
+        //    ST.LoadTagStyle(HtmlTags.BODY, HtmlTags.ENCODING, BaseFont.IDENTITY_H);
 
 
-                table.TotalWidth = 550f;
-                table.LockedWidth = true;
-                table.SetWidths(new float[] { 0.3f, 0.4f, 0.3f, 0.4f });
-
-                BankTable = new PdfPTable(4);
-                BankTable.TotalWidth = 550f;
-                BankTable.LockedWidth = true;
-                BankTable.SetWidths(new float[] { 0.3f, 0.4f, 0.3f, 0.4f });
-
-                pdfDoc.Add(PrintPageHeading(phrase, "Self Employment Loan"));
-                PdfPCell cellWithRowspan = new PdfPCell(ImageCell("~/Image/KACDC_PDF.png", 30f, PdfPCell.ALIGN_CENTER, BaseColor.BLACK));
-
-                //System.Drawing.Image imageBIt = ConvertTextToImage("ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ನನಗೆ ತಿಳಿದ<br />ABCjhk", "Arial", 10, Color.Yellow, Color.Black);
-                //iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(imageBIt, System.Drawing.Imaging.ImageFormat.Jpeg);
-                //pdfImage.ScaleToFit( 0.3f, 0.4f, 0.3f, 0.4f );
-
-                //Row 2
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                PdfPCell cell = new PdfPCell(PrintHeaderCell("Applicant Details".ToUpper(), "sans-serif", 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Center, VCenter));
-                cell.Colspan = 2;
-                table.AddCell(cell);
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //    iTextSharp.text.Font font = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.BOLD);
+        //    using (MemoryStream memoryStream = new MemoryStream())
+        //    {
+        //        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
+        //        pdfDoc.Open();
+        //        table = new PdfPTable(4);
 
 
-                //Row 2
-                table.AddCell(GenerateCell("Application Number", 12, "ಅರ್ಜಿ ಸಂಖ್ಯೆ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(GenerateCell("Application Date", 12, "ಅರ್ಜಿ ದಿನಾಂಕ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.TotalWidth = 550f;
+        //        table.LockedWidth = true;
+        //        table.SetWidths(new float[] { 0.3f, 0.4f, 0.3f, 0.4f });
 
-                //Row 3
-                table.AddCell(GenerateCell("NAME", 12, "ಹೆಸರು", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                // Applicant Photo
-                cellWithRowspan.Rowspan = 5;
-                cellWithRowspan.BorderColor = BaseColor.WHITE;
-                table.AddCell(cellWithRowspan);
+        //        BankTable = new PdfPTable(4);
+        //        BankTable.TotalWidth = 550f;
+        //        BankTable.LockedWidth = true;
+        //        BankTable.SetWidths(new float[] { 0.3f, 0.4f, 0.3f, 0.4f });
 
-                //Row 4
-                table.AddCell(GenerateCell("Father / Guardian Name", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        pdfDoc.Add(PrintPageHeading(phrase, "Self Employment Loan"));
+        //        PdfPCell cellWithRowspan = new PdfPCell(ImageCell("~/Image/KACDC_PDF.png", 30f, PdfPCell.ALIGN_CENTER, BaseColor.BLACK));
 
-                //Row 5
-                table.AddCell(GenerateCell("Gender", 12, "ಲಿಂಗ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        //System.Drawing.Image imageBIt = ConvertTextToImage("ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ನನಗೆ ತಿಳಿದ<br />ABCjhk", "Arial", 10, Color.Yellow, Color.Black);
+        //        //iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(imageBIt, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //        //pdfImage.ScaleToFit( 0.3f, 0.4f, 0.3f, 0.4f );
 
-                //Row 6
-                table.AddCell(GenerateCell("DOB", 12, "ಜನ್ಮ ದಿನಾಂಕ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                //Row 7
-                table.AddCell(GenerateCell("RD Number", 12, "R D ಸಂಖ್ಯೆ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                //Row 8
-                table.AddCell(GenerateCell("Father / Guardian Name", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(GenerateCell("Person With Disablities", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                //Row 9
-                table.AddCell(GenerateCell("Anual Income", 12, "ವಾರ್ಷಿಕ ಆದಾಯ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(GenerateCell("Purpose of Loan", 12, "ಸಾಲದ ಉದ್ದೇಶ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                //Row 10
-                table.AddCell(GenerateCell("Mobile Number", 12, "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(GenerateCell("Alternate Mobile Number", 12, "ಪರ್ಯಾಯ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                //Row 9
-                table.AddCell(GenerateCell("Emai ID", 12, "ಇ-ಮೇಲ್ ಐಡಿ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(GenerateCell("Aadhar", 12, "ಆಧಾರ್", 20f));
-                table.AddCell(PrintCell("VERIFIED", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                //Row 10
-                table.AddCell(GenerateCell("Parmanent Address", 12, "ಶಾಶ್ವತ ವಿಳಾಸ", 20f));
-                PdfPCell FullAddresscell;
-
-                iTextSharp.text.Image FullAddressImage = ConvertTextToImagePAddress(GenerateMultiLineTextAreaPAddress("ಅನವಾಲ , ಬಾದಾಮಿ, ಬಾಗಲಕೋಟ", 18), "sans-serif", 10, Color.White, Color.Black);
-                FullAddressImage.ScalePercent(20f);
+        //        //Row 2
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        PdfPCell cell = new PdfPCell(PrintHeaderCell("Applicant Details".ToUpper(), "sans-serif", 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Center, VCenter));
+        //        cell.Colspan = 2;
+        //        table.AddCell(cell);
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
 
-                FullAddresscell = new PdfPCell(FullAddressImage);
-                FullAddresscell.VerticalAlignment = VCenter;
-                FullAddresscell.HorizontalAlignment = Left;
-                FullAddresscell.BorderColor = BaseColor.WHITE;
+        //        //Row 2
+        //        table.AddCell(GenerateCell("Application Number", 12, "ಅರ್ಜಿ ಸಂಖ್ಯೆ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(GenerateCell("Application Date", 12, "ಅರ್ಜಿ ದಿನಾಂಕ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                table.AddCell(FullAddresscell); table.AddCell(GenerateCell("Contact Address", 12, "ಸಂಪರ್ಕ ವಿಳಾಸ", 20f));
-                PdfPCell ContactAddresscell;
+        //        //Row 3
+        //        table.AddCell(GenerateCell("NAME", 12, "ಹೆಸರು", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        // Applicant Photo
+        //        cellWithRowspan.Rowspan = 5;
+        //        cellWithRowspan.BorderColor = BaseColor.WHITE;
+        //        table.AddCell(cellWithRowspan);
 
-                string Caddress = GenerateMultiLineTextAreaCAddress("ಮದು ಬಸವರಾಜ ಬಿಜಾಪುರ", 18);
-                iTextSharp.text.Image ContactFullAddressImage = ConvertTextToImageCAddress(Caddress, "sans-serif", 10, Color.White, Color.Black);
-                ContactFullAddressImage.ScalePercent(20f);
+        //        //Row 4
+        //        table.AddCell(GenerateCell("Father / Guardian Name", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                ContactAddresscell = new PdfPCell(ContactFullAddressImage);
-                ContactAddresscell.VerticalAlignment = VCenter;
-                ContactAddresscell.HorizontalAlignment = Left;
-                ContactAddresscell.BorderColor = BaseColor.WHITE;
+        //        //Row 5
+        //        table.AddCell(GenerateCell("Gender", 12, "ಲಿಂಗ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                table.AddCell(ContactAddresscell);
-                //Row 11
-                table.AddCell(GenerateCell("District", 12, "ಜಿಲ್ಲೆ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(GenerateCell("District", 12, "ಜಿಲ್ಲೆ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        //Row 6
+        //        table.AddCell(GenerateCell("DOB", 12, "ಜನ್ಮ ದಿನಾಂಕ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                //Row 12
-                table.AddCell(GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        //Row 7
+        //        table.AddCell(GenerateCell("RD Number", 12, "R D ಸಂಖ್ಯೆ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                //Row 13
-                table.AddCell(GenerateCell("Pin code", 12, "ಪಿನ್ ಕೋಡ್", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(GenerateCell("Pin code", 12, "ಪಿನ್ ಕೋಡ್", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        //Row 8
+        //        table.AddCell(GenerateCell("Father / Guardian Name", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(GenerateCell("Person With Disablities", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                //Row 13
-                table.AddCell(GenerateCell("Constituency", 12, "ಕ್ಷೇತ್ರ", 20f));
-                table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        //Row 9
+        //        table.AddCell(GenerateCell("Anual Income", 12, "ವಾರ್ಷಿಕ ಆದಾಯ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(GenerateCell("Purpose of Loan", 12, "ಸಾಲದ ಉದ್ದೇಶ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
+        //        //Row 10
+        //        table.AddCell(GenerateCell("Mobile Number", 12, "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(GenerateCell("Alternate Mobile Number", 12, "ಪರ್ಯಾಯ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                PdfPCell BankDetailsHeader = new PdfPCell(PrintHeaderCell("Bank Details".ToUpper(), "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Center, VCenter));
-                BankDetailsHeader.Colspan = 4;
-                BankTable.AddCell(BankDetailsHeader);
+        //        //Row 9
+        //        table.AddCell(GenerateCell("Emai ID", 12, "ಇ-ಮೇಲ್ ಐಡಿ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(GenerateCell("Aadhar", 12, "ಆಧಾರ್", 20f));
+        //        table.AddCell(PrintCell("VERIFIED", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                BankTable.AddCell(GenerateCell("Account Holder Name", 12, "ಖಾತೆದಾರರ ಹೆಸರು", 20f));
-                BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                BankTable.AddCell(GenerateCell("A/C Number", 12, "ಖಾತೆ ಸಂಖ್ಯೆ", 20f));
-                BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        //Row 10
+        //        table.AddCell(GenerateCell("Parmanent Address", 12, "ಶಾಶ್ವತ ವಿಳಾಸ", 20f));
+        //        PdfPCell FullAddresscell;
 
-                BankTable.AddCell(GenerateCell("Bank", 12, "ಬ್ಯಾಂಕ್", 20f));
-                BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                BankTable.AddCell(GenerateCell("Branch", 12, "ಶಾಖೆ", 20f));
-                BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                BankTable.AddCell(GenerateCell("IFSC Code", 12, "ಐಎಫ್‌ಎಸ್‌ಸಿ ಕೋಡ್", 20f));
-                BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                BankTable.AddCell(GenerateCell("Address", 12, "ವಿಳಾಸ", 20f));
-                BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                //BankTable.AddCell(GenerateCell("Account Holder Name", 12, "ಖಾತೆದಾರರ ಹೆಸರು", 20f));
-                //BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                //BankTable.AddCell(GenerateCell("A/C Number", 12, "ಖಾತೆ ಸಂಖ್ಯೆ", 20f));
-                //BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-
-                string abc = @"I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation, (Government of Karnataka Undertaking), to use my Aadhaar number for performing all such validations which may be, required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
-                PdfPCell BankDetailsHeade = new PdfPCell(PrintCell(abc, "Times New Roman", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, PdfPCell.ALIGN_JUSTIFIED, PdfPCell.ALIGN_JUSTIFIED));
-                BankDetailsHeade.Colspan = 4;
-                //BankTable.AddCell(BankDetailsHeade);
+        //        iTextSharp.text.Image FullAddressImage = ConvertTextToImagePAddress(GenerateMultiLineTextAreaPAddress("ಅನವಾಲ , ಬಾದಾಮಿ, ಬಾಗಲಕೋಟ", 18), "sans-serif", 10, Color.White, Color.Black);
+        //        FullAddressImage.ScalePercent(20f);
 
 
+        //        FullAddresscell = new PdfPCell(FullAddressImage);
+        //        FullAddresscell.VerticalAlignment = VCenter;
+        //        FullAddresscell.HorizontalAlignment = Left;
+        //        FullAddresscell.BorderColor = BaseColor.WHITE;
 
-                string SelfEnglish = "I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Arivu Education Loan. If any discrepancies are found later, I agree to take legal action against me.";
-                string SelfKannada = "\n ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು  ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು  ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ.  ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ  ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು \n ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿಯ ಕ್ರಮ ಜರುಗಿಸಲು ಒಪ್ಪಿರುತ್ತೇನೆ.";
-                string AadhaarEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
-                string AadhaarKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
+        //        table.AddCell(FullAddresscell); table.AddCell(GenerateCell("Contact Address", 12, "ಸಂಪರ್ಕ ವಿಳಾಸ", 20f));
+        //        PdfPCell ContactAddresscell;
+
+        //        string Caddress = GenerateMultiLineTextAreaCAddress("ಮದು ಬಸವರಾಜ ಬಿಜಾಪುರ", 18);
+        //        iTextSharp.text.Image ContactFullAddressImage = ConvertTextToImageCAddress(Caddress, "sans-serif", 10, Color.White, Color.Black);
+        //        ContactFullAddressImage.ScalePercent(20f);
+
+        //        ContactAddresscell = new PdfPCell(ContactFullAddressImage);
+        //        ContactAddresscell.VerticalAlignment = VCenter;
+        //        ContactAddresscell.HorizontalAlignment = Left;
+        //        ContactAddresscell.BorderColor = BaseColor.WHITE;
+
+        //        table.AddCell(ContactAddresscell);
+        //        //Row 11
+        //        table.AddCell(GenerateCell("District", 12, "ಜಿಲ್ಲೆ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(GenerateCell("District", 12, "ಜಿಲ್ಲೆ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+
+        //        //Row 12
+        //        table.AddCell(GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+
+        //        //Row 13
+        //        table.AddCell(GenerateCell("Pin code", 12, "ಪಿನ್ ಕೋಡ್", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(GenerateCell("Pin code", 12, "ಪಿನ್ ಕೋಡ್", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+
+        //        //Row 13
+        //        table.AddCell(GenerateCell("Constituency", 12, "ಕ್ಷೇತ್ರ", 20f));
+        //        table.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        table.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
 
-                PdfPCell SelfDeclaration = new PdfPCell(GenerateCell(SelfEnglish, 8, SelfKannada, 15f, BaseFont.COURIER));
-                SelfDeclaration.Colspan = 4;
-                BankTable.AddCell(SelfDeclaration);
+        //        PdfPCell BankDetailsHeader = new PdfPCell(PrintHeaderCell("Bank Details".ToUpper(), "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Center, VCenter));
+        //        BankDetailsHeader.Colspan = 4;
+        //        BankTable.AddCell(BankDetailsHeader);
 
-                PdfPCell AadhaarDeclaration = new PdfPCell(GenerateCell(AadhaarEnglish, 8, AadhaarKannada, 15f, BaseFont.COURIER));
-                AadhaarDeclaration.Colspan = 4;
-                BankTable.AddCell(AadhaarDeclaration);
+        //        BankTable.AddCell(GenerateCell("Account Holder Name", 12, "ಖಾತೆದಾರರ ಹೆಸರು", 20f));
+        //        BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        BankTable.AddCell(GenerateCell("A/C Number", 12, "ಖಾತೆ ಸಂಖ್ಯೆ", 20f));
+        //        BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                PdfPCell EmptyHeader = new PdfPCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Center, VCenter));
-                EmptyHeader.Colspan = 4;
-                BankTable.AddCell(EmptyHeader);
+        //        BankTable.AddCell(GenerateCell("Bank", 12, "ಬ್ಯಾಂಕ್", 20f));
+        //        BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        BankTable.AddCell(GenerateCell("Branch", 12, "ಶಾಖೆ", 20f));
+        //        BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-                PdfPCell SignatureCell = new PdfPCell(GenerateCell("Signature", 15, "    ಸಹಿ", 25f));
-                BankTable.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                BankTable.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                BankTable.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-                BankTable.AddCell(SignatureCell);
+        //        BankTable.AddCell(GenerateCell("IFSC Code", 12, "ಐಎಫ್‌ಎಸ್‌ಸಿ ಕೋಡ್", 20f));
+        //        BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        BankTable.AddCell(GenerateCell("Address", 12, "ವಿಳಾಸ", 20f));
+        //        BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+
+        //        //BankTable.AddCell(GenerateCell("Account Holder Name", 12, "ಖಾತೆದಾರರ ಹೆಸರು", 20f));
+        //        //BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        //BankTable.AddCell(GenerateCell("A/C Number", 12, "ಖಾತೆ ಸಂಖ್ಯೆ", 20f));
+        //        //BankTable.AddCell(PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+
+        //        string abc = @"I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation, (Government of Karnataka Undertaking), to use my Aadhaar number for performing all such validations which may be, required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+        //        PdfPCell BankDetailsHeade = new PdfPCell(PrintCell(abc, "Times New Roman", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, PdfPCell.ALIGN_JUSTIFIED, PdfPCell.ALIGN_JUSTIFIED));
+        //        BankDetailsHeade.Colspan = 4;
+        //        //BankTable.AddCell(BankDetailsHeade);
 
 
 
-                pdfDoc.Add(table);
-                pdfDoc.NewPage();
-                pdfDoc.Add(BankTable);
+        //        string SelfEnglish = "I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Arivu Education Loan. If any discrepancies are found later, I agree to take legal action against me.";
+        //        string SelfKannada = "\n ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು  ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು  ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ.  ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ  ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು \n ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿಯ ಕ್ರಮ ಜರುಗಿಸಲು ಒಪ್ಪಿರುತ್ತೇನೆ.";
+        //        string AadhaarEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+        //        string AadhaarKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
+
+
+        //        PdfPCell SelfDeclaration = new PdfPCell(GenerateCell(SelfEnglish, 8, SelfKannada, 15f, BaseFont.COURIER));
+        //        SelfDeclaration.Colspan = 4;
+        //        BankTable.AddCell(SelfDeclaration);
+
+        //        PdfPCell AadhaarDeclaration = new PdfPCell(GenerateCell(AadhaarEnglish, 8, AadhaarKannada, 15f, BaseFont.COURIER));
+        //        AadhaarDeclaration.Colspan = 4;
+        //        BankTable.AddCell(AadhaarDeclaration);
+
+        //        PdfPCell EmptyHeader = new PdfPCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Center, VCenter));
+        //        EmptyHeader.Colspan = 4;
+        //        BankTable.AddCell(EmptyHeader);
+
+        //        PdfPCell SignatureCell = new PdfPCell(GenerateCell("Signature", 15, "    ಸಹಿ", 25f));
+        //        BankTable.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        BankTable.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        BankTable.AddCell(PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+        //        BankTable.AddCell(SignatureCell);
 
 
 
-                pdfDoc.Close();
-                byte[] bytes = memoryStream.ToArray();
-                memoryStream.Close();
-                Response.Clear();
-                Response.ContentEncoding = System.Text.Encoding.UTF8;
-                string fname = "EmpFile";
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + fname + ".pdf");
-                Response.ContentType = "application/pdf";
-                Response.Buffer = true;
-                Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                Response.BinaryWrite(bytes);
-                Response.End();
-                Response.Close();
-            }
-        }
+        //        pdfDoc.Add(table);
+        //        pdfDoc.NewPage();
+        //        pdfDoc.Add(BankTable);
+
+
+
+        //        pdfDoc.Close();
+        //        byte[] bytes = memoryStream.ToArray();
+        //        memoryStream.Close();
+        //        Response.Clear();
+        //        Response.ContentEncoding = System.Text.Encoding.UTF8;
+        //        string fname = "EmpFile";
+        //        Response.AddHeader("Content-Disposition", "attachment; filename=" + fname + ".pdf");
+        //        Response.ContentType = "application/pdf";
+        //        Response.Buffer = true;
+        //        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        //        Response.BinaryWrite(bytes);
+        //        Response.End();
+        //        Response.Close();
+        //    }
+        //}
 
 
         private bool IsValidEmail(string email)

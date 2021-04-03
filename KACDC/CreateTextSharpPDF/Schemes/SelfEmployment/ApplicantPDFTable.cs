@@ -17,7 +17,7 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
         TextToImage TTI = new TextToImage();
         MultiLineText MLT = new MultiLineText();
         LOGOImageCell LOGO = new LOGOImageCell();
-        public PdfPTable ApplicantMainTable(PdfPTable Table)
+        public PdfPTable SEApplicantMainTable(PdfPTable Table)
         {
             Table.TotalWidth = 550f;
             Table.LockedWidth = true;
@@ -158,41 +158,41 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
             Table.AddCell(EmptyCell);
 
            
-            //BankTable.AddCell(LAN.GenerateCell("Account Holder Name", 12, "ಖಾತೆದಾರರ ಹೆಸರು", 20f));
-            //BankTable.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-            //BankTable.AddCell(LAN.GenerateCell("A/C Number", 12, "ಖಾತೆ ಸಂಖ್ಯೆ", 20f));
-            //BankTable.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            ////BankTable.AddCell(LAN.GenerateCell("Account Holder Name", 12, "ಖಾತೆದಾರರ ಹೆಸರು", 20f));
+            ////BankTable.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            ////BankTable.AddCell(LAN.GenerateCell("A/C Number", 12, "ಖಾತೆ ಸಂಖ್ಯೆ", 20f));
+            ////BankTable.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-            string abc = @"I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation, (Government of Karnataka Undertaking), to use my Aadhaar number for performing all such validations which may be, required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
-            PdfPCell BankDetailsHeade = new PdfPCell(PCell.PrintCell(abc, "Times New Roman", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, PdfPCell.ALIGN_JUSTIFIED, PdfPCell.ALIGN_JUSTIFIED));
-            BankDetailsHeade.Colspan = 4;
-            //BankTable.AddCell(BankDetailsHeade);
-
-
-
-            string SelfEnglish = "I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Arivu Education Loan. If any discrepancies are found later, I agree to take legal action against me.";
-            string SelfKannada = "\n ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು  ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು  ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ.  ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ  ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು \n ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿಯ ಕ್ರಮ ಜರುಗಿಸಲು ಒಪ್ಪಿರುತ್ತೇನೆ.";
-            string AadhaarEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
-            string AadhaarKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
+            //string abc = @"I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation, (Government of Karnataka Undertaking), to use my Aadhaar number for performing all such validations which may be, required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+            //PdfPCell BankDetailsHeade = new PdfPCell(PCell.PrintCell(abc, "Times New Roman", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, PdfPCell.ALIGN_JUSTIFIED, PdfPCell.ALIGN_JUSTIFIED));
+            //BankDetailsHeade.Colspan = 4;
+            ////BankTable.AddCell(BankDetailsHeade);
 
 
-            PdfPCell SelfDeclaration = new PdfPCell(LAN.GenerateCell(SelfEnglish, 8, SelfKannada, 15f, BaseFont.COURIER));
-            SelfDeclaration.Colspan = 4;
-            BankTable.AddCell(SelfDeclaration);
 
-            PdfPCell AadhaarDeclaration = new PdfPCell(LAN.GenerateCell(AadhaarEnglish, 8, AadhaarKannada, 15f, BaseFont.COURIER));
-            AadhaarDeclaration.Colspan = 4;
-            BankTable.AddCell(AadhaarDeclaration);
+            //string SelfEnglish = "I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Arivu Education Loan. If any discrepancies are found later, I agree to take legal action against me.";
+            //string SelfKannada = "\n ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು  ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು  ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ.  ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ  ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು \n ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿಯ ಕ್ರಮ ಜರುಗಿಸಲು ಒಪ್ಪಿರುತ್ತೇನೆ.";
+            //string AadhaarEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+            //string AadhaarKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
 
-            PdfPCell EmptyHeader = new PdfPCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Center, VCenter));
-            EmptyHeader.Colspan = 4;
-            BankTable.AddCell(EmptyHeader);
 
-            PdfPCell SignatureCell = new PdfPCell(LAN.GenerateCell("Signature", 15, "    ಸಹಿ", 25f));
-            BankTable.AddCell(EmptyCell);
-            BankTable.AddCell(EmptyCell);
-            BankTable.AddCell(EmptyCell);
-            BankTable.AddCell(SignatureCell);
+            //PdfPCell SelfDeclaration = new PdfPCell(LAN.GenerateCell(SelfEnglish, 8, SelfKannada, 15f, BaseFont.COURIER));
+            //SelfDeclaration.Colspan = 4;
+            //BankTable.AddCell(SelfDeclaration);
+
+            //PdfPCell AadhaarDeclaration = new PdfPCell(LAN.GenerateCell(AadhaarEnglish, 8, AadhaarKannada, 15f, BaseFont.COURIER));
+            //AadhaarDeclaration.Colspan = 4;
+            //BankTable.AddCell(AadhaarDeclaration);
+
+            //PdfPCell EmptyHeader = new PdfPCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Center, VCenter));
+            //EmptyHeader.Colspan = 4;
+            //BankTable.AddCell(EmptyHeader);
+
+            //PdfPCell SignatureCell = new PdfPCell(LAN.GenerateCell("Signature", 15, "    ಸಹಿ", 25f));
+            //BankTable.AddCell(EmptyCell);
+            //BankTable.AddCell(EmptyCell);
+            //BankTable.AddCell(EmptyCell);
+            //BankTable.AddCell(SignatureCell);
 
             return Table;
         }
