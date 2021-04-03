@@ -271,9 +271,16 @@
     <Content Include="ImageUpload\Photo.jpg" />
     <Content Include="ImageUpload\Signature.png" />
     <Content Include="Image\GOK.png" />
+    <Content Include="Image\GOK_PDF.png" />
     <Content Include="Image\img1.jpeg" />
     <Content Include="Image\img2.jpeg" />
     <Content Include="Image\img3.jpeg" />
+    <Content Include="Image\KACDC.png" />
+    <Content Include="Image\KACDC_App.png" />
+    <Content Include="Image\KACDC_PDF.jpg" />
+    <Content Include="Image\KACDC_PDF.png" />
+    <Content Include="Image\KACDC_PDF_Old.png" />
+    <Content Include="Image\loadingAnim.gif" />
     <Content Include="KACDC_AppInfo.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Schemes\Arivu\AboutArivu.aspx" />
@@ -306,6 +313,7 @@
     <Content Include="libman.json" />
     <Content Include="Service\Admin_Dashboard.aspx" />
     <Content Include="Service\BulkMessageService.aspx" />
+    <Content Include="TestBa.aspx" />
     <Content Include="TestForms\TestForm1.aspx" />
     <Content Include="WebServices\FetchSelfEmploymentData.asmx" />
     <Content Include="WebServices\GetCollegeDetails.asmx" />
@@ -517,6 +525,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CreateTextSharpPDF\Schemes\SelfEmployment\ApplicantPDFTable.cs" />
     <Compile Include="CW_Form.aspx.cs">
       <DependentUpon>CW_Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -641,6 +650,13 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="TestBa.aspx.cs">
+      <DependentUpon>TestBa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestBa.aspx.designer.cs">
+      <DependentUpon>TestBa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TestForms\TestForm1.aspx.cs">
       <DependentUpon>TestForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -740,6 +756,8 @@
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
     <Folder Include="LogFiles\LoginLogFile\" />
     <Folder Include="Models\" />
+    <Folder Include="Reports\SchemeApplication\Arivu\" />
+    <Folder Include="Reports\SchemeApplication\SelfEmployment\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

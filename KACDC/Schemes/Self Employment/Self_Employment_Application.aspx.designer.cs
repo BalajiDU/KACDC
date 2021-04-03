@@ -778,6 +778,15 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divApproveAggrement;
         
         /// <summary>
+        /// ChkAadharDeclaration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ChkAadharDeclaration;
+        
+        /// <summary>
         /// ChkSelfDeclaration control.
         /// </summary>
         /// <remarks>
@@ -787,13 +796,13 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.CheckBox ChkSelfDeclaration;
         
         /// <summary>
-        /// ChkAadharDeclaration control.
+        /// ChkAgreetoProvideData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkAadharDeclaration;
+        protected global::System.Web.UI.WebControls.CheckBox ChkAgreetoProvideData;
         
         /// <summary>
         /// divPreviewButton control.
