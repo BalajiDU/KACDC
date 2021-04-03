@@ -10,21 +10,41 @@ namespace KACDC.CreateTextSharpPDF.Process
     {
         PDFLanCell LAN = new PDFLanCell();
         PDFCellPrint PCell = new PDFCellPrint();
+        SetTableSize TS = new SetTableSize();
 
         int VCenter = PdfPCell.ALIGN_MIDDLE;
         int Left = PdfPCell.ALIGN_LEFT;
 
         public PdfPTable GenerateSignatureTable(PdfPTable Table)
         {
-            Table = new PdfPTable(4);
-            Table.TotalWidth = 550f;
-            Table.LockedWidth = true;
-            Table.SetWidths(new float[] { 0.3f, 0.4f, 0.3f, 0.4f });
+            Table = TS.SetSize(Table);
+
 
             PdfPCell EmptyCell = new PdfPCell();
             EmptyCell = PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, iTextSharp.text.BaseColor.BLACK, 20f, Left, VCenter);
 
             PdfPCell SignatureCell = new PdfPCell(LAN.GenerateCell("Signature", 15, "    ಸಹಿ", 25f));
+
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+
             Table.AddCell(EmptyCell);
             Table.AddCell(EmptyCell);
             Table.AddCell(EmptyCell);

@@ -530,9 +530,11 @@
     <Compile Include="CreateTextSharpPDF\Process\AgreementTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\BankTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\LOGOImageCell.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\HeadingTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\PDFLanCell.cs" />
     <Compile Include="CreateTextSharpPDF\Process\PDFCellPrint.cs" />
     <Compile Include="CreateTextSharpPDF\Process\PDFHeaderCell.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\SetTableSize.cs" />
     <Compile Include="CreateTextSharpPDF\Process\SignatureTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\TextToImage.cs" />
     <Compile Include="CreateTextSharpPDF\Schemes\SelfEmployment\ApplicantPDFTable.cs" />

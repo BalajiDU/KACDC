@@ -12,13 +12,12 @@ namespace KACDC.CreateTextSharpPDF.Process
         PDFLanCell LAN = new PDFLanCell();
         PDFCellPrint PCell = new PDFCellPrint();
         PDFHeaderCell HCell = new PDFHeaderCell();
+        SetTableSize TS = new SetTableSize();
 
         public PdfPTable GenerateBankTable(PdfPTable Table)
         {
-            Table = new PdfPTable(4);
-            Table.TotalWidth = 550f;
-            Table.LockedWidth = true;
-            Table.SetWidths(new float[] { 0.3f, 0.4f, 0.3f, 0.4f });
+            Table = TS.SetSize(Table);
+
 
             int Center = PdfPCell.ALIGN_CENTER;
             int VCenter = PdfPCell.ALIGN_MIDDLE;

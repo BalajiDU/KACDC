@@ -30,6 +30,8 @@ using System.Drawing.Imaging;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using KACDC.CreateTextSharpPDF.Schemes.SelfEmployment;
+using KACDC.CreateTextSharpPDF.Process;
 
 namespace KACDC
 {
@@ -39,6 +41,12 @@ namespace KACDC
         NadaKacheri_SelfEmployment NCSE = new NadaKacheri_SelfEmployment();
         BankDetails_SelfEmployment BD = new BankDetails_SelfEmployment();
 
+
+        ApplicantPDFTable APPLITAB = new ApplicantPDFTable();
+        BankTable BT = new BankTable();
+        AgreementTable AT = new AgreementTable();
+        SignatureTable ST = new SignatureTable();
+        HeadingTable HT = new HeadingTable();
         private string ApplicantMobileNumber
         {
             set { ViewState["ApplicantMobileNumber"] = value; }
@@ -1009,6 +1017,61 @@ namespace KACDC
         }
         protected void btnpdfprint_Click(object sender, EventArgs e)
         {
+            string SelfEnglish = "I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Arivu Education Loan. If any discrepancies are found later, I agree to take legal action against me.";
+            string SelfKannada = "\n ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು  ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು  ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ.  ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ  ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು \n ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿಯ ಕ್ರಮ ಜರುಗಿಸಲು ಒಪ್ಪಿರುತ್ತೇನೆ.";
+            string AadhaarEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+            string AadhaarKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
+            string ShareEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+            string ShareKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
+
+            
+            PdfPTable HeadingTable = null;
+            HeadingTable = new PdfPTable(4);
+            HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan");
+            //pdfDoc.Add(GenerateHeading(phrase, "Self Employment Loan"));
+            PdfPTable Table = null;
+            Table = new PdfPTable(4);
+            Table = APPLITAB.SEApplicantMainTable(Table);
+            PdfPTable BankTable = null;
+            BankTable = new PdfPTable(4);
+            BankTable = BT.GenerateBankTable(BankTable);
+            PdfPTable AgreeTable = null;
+            AgreeTable = new PdfPTable(4);
+            AgreeTable = AT.GenerateAgreementTable(AgreeTable, SelfEnglish, SelfKannada, AadhaarEnglish, AadhaarKannada, ShareEnglish, ShareKannada);
+            PdfPTable SignatureTable = null;
+            SignatureTable = new PdfPTable(4);
+            SignatureTable = ST.GenerateSignatureTable(SignatureTable);
+
+
+
+            Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
+                pdfDoc.Open();
+                pdfDoc.Add(HeadingTable);
+                pdfDoc.Add(Table);
+                pdfDoc.Add(BankTable);
+                pdfDoc.Add(AgreeTable);
+                pdfDoc.Add(SignatureTable);
+
+                pdfDoc.Close();
+                byte[] bytes = memoryStream.ToArray();
+                memoryStream.Close();
+                Response.Clear();
+                Response.ContentEncoding = System.Text.Encoding.UTF8;
+                string fname = "EmpFile";
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + fname + ".pdf");
+                Response.ContentType = "application/pdf";
+                Response.Buffer = true;
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.BinaryWrite(bytes);
+                Response.End();
+                Response.Close();
+            }
+        }
+        protected void btnpdfprint_Click1(object sender, EventArgs e)
+        {
             Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
             //PdfWriter writer = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
             Phrase phrase = null;
@@ -1140,7 +1203,11 @@ namespace KACDC
                 FullAddresscell.HorizontalAlignment = Left;
                 FullAddresscell.BorderColor = BaseColor.WHITE;
 
-                table.AddCell(FullAddresscell); table.AddCell(GenerateCell("Contact Address", 12, "ಸಂಪರ್ಕ ವಿಳಾಸ", 20f));
+                table.AddCell(FullAddresscell);
+
+
+
+                table.AddCell(GenerateCell("Contact Address", 12, "ಸಂಪರ್ಕ ವಿಳಾಸ", 20f));
                 PdfPCell ContactAddresscell;
 
                 string Caddress = GenerateMultiLineTextAreaCAddress("ಮದು ಬಸವರಾಜ ಬಿಜಾಪುರ", 18);

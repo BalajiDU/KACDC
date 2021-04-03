@@ -11,13 +11,12 @@ namespace KACDC.CreateTextSharpPDF.Process
         PDFLanCell LAN = new PDFLanCell();
         AgreeCell AGC = new AgreeCell();
         PDFCellPrint PCell = new PDFCellPrint();
+        SetTableSize TS = new SetTableSize();
 
         public PdfPTable GenerateAgreementTable(PdfPTable Table, string SelfEnglish, string SelfKannada, string AadhaarEnglish, string AadhaarKannada, string ShareEnglish, string ShareKannada)
         {
-            Table = new PdfPTable(4);
-            Table.TotalWidth = 550f;
-            Table.LockedWidth = true;
-            Table.SetWidths(new float[] { 0.3f, 0.4f, 0.3f, 0.4f });
+            Table = TS.SetSize(Table);
+
 
             int VCenter = PdfPCell.ALIGN_MIDDLE;
             int Left = PdfPCell.ALIGN_LEFT;
@@ -26,6 +25,9 @@ namespace KACDC.CreateTextSharpPDF.Process
             EmptyCell = PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, iTextSharp.text.BaseColor.BLACK, 20f, Left, VCenter);
 
 
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
+            Table.AddCell(EmptyCell);
             Table.AddCell(EmptyCell);
             Table.AddCell(AGC.AGCell(SelfEnglish, SelfKannada));
             Table.AddCell(AGC.AGCell(AadhaarEnglish, AadhaarKannada));

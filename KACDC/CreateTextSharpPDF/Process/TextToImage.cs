@@ -31,7 +31,7 @@ namespace KACDC.CreateTextSharpPDF.Process
         {
             text = text.Replace("<br />", "\n").Replace("<br/>", "\n");
             Bitmap bitmap = new Bitmap(1, 1);
-            System.Drawing.Font font11 = new System.Drawing.Font("sans-serif", 50, FontStyle.Regular, GraphicsUnit.Pixel);
+            System.Drawing.Font font11 = new System.Drawing.Font("Arial", 50, FontStyle.Regular, GraphicsUnit.Pixel);
             Graphics graphics = Graphics.FromImage(bitmap);
             int width = (int)graphics.MeasureString(text, font11).Width;
             int height = (int)graphics.MeasureString(text, font11).Height;
@@ -44,7 +44,6 @@ namespace KACDC.CreateTextSharpPDF.Process
             graphics.Flush();
             graphics.Dispose();
             iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(bitmap, System.Drawing.Imaging.ImageFormat.Jpeg);
-            text = "";
             return pdfImage;
         }
     }
