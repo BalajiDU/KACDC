@@ -525,6 +525,16 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CreateTextSharpPDF\MultiLineText.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\AgreeCell.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\AgreementTable.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\BankTable.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\LOGOImageCell.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\PDFLanCell.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\PDFCellPrint.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\PDFHeaderCell.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\SignatureTable.cs" />
+    <Compile Include="CreateTextSharpPDF\Process\TextToImage.cs" />
     <Compile Include="CreateTextSharpPDF\Schemes\SelfEmployment\ApplicantPDFTable.cs" />
     <Compile Include="CW_Form.aspx.cs">
       <DependentUpon>CW_Form.aspx</DependentUpon>
