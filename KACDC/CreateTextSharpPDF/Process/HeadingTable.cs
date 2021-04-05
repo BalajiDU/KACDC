@@ -10,21 +10,26 @@ namespace KACDC.CreateTextSharpPDF.Process
     public class HeadingTable
     {
 
-        public PdfPTable GenerateHeading(PdfPTable Table, string LoanName)
+        public PdfPTable GenerateHeading(PdfPTable Table, string LoanName,string AppDate)
         {
             Phrase phrase = null;
             //Create Header Table
             Table.TotalWidth = 550f;
             Table.LockedWidth = true;
             Table.SetWidths(new float[] { 0.2f, 0.3f, 0.3f, 0.2f });
-            PageHeader(Table, phrase, LoanName);
+            PageHeader(Table, phrase, LoanName,AppDate);
             return Table;
         }
-        private PdfPTable PageHeader(PdfPTable table, Phrase phrase, string LoanType)
+        private PdfPTable PageHeader(PdfPTable table, Phrase phrase, string LoanType, string AppDate)
         {
+            //DateTime.ParseExact(AppDate, "MM-dd-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            //Convert.ToDateTime(AppDate, System.Globalization.CultureInfo.InvariantCulture);
+            //DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss:fffffff tt");
+            //Convert.ToDateTime(AppDate, System.Globalization.CultureInfo.InvariantCulture).ToString("dd MMMM yyyy hh:mm tt");
+
             string FinancialYear = "";
             table.AddCell(AddLogo("~/Image/GOK_PDF.png", phrase, PdfPCell.ALIGN_LEFT)); //GOV Logo  
-            PdfPCell nested = NameAddr(LoanType, FinancialYear, phrase, DateTime.Now.ToString("dd MMMM yyyy hh:mm tt"));
+            PdfPCell nested = NameAddr(LoanType, FinancialYear, phrase, Convert.ToDateTime(AppDate, System.Globalization.CultureInfo.InvariantCulture).ToString("dd MMMM yyyy hh:mm tt"));
             nested.Colspan = 2;
             table.AddCell(nested);//Page Heading
             table.AddCell(AddLogo("~/Image/KACDC_PDF.png", phrase, PdfPCell.ALIGN_RIGHT));//KACDC Logo   

@@ -10,9 +10,9 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
 {
     public class StoreSEApplication
     {
-        public string StoreAadhaar(string ApplicantName, string FatherName, string Gender, string Widowed, string Divorced, string PhysicallyChallenged, string AnualIncome, string RDNumber, string EmailID, string MobileNumber, string AlternateNumber, string DoB, string LoanPurpose, string AadharNum, string Occupation,
+        public string StoreSE(string ApplicantName, string FatherName, string Gender, string Widowed, string Divorced, string PhysicallyChallenged, string AnualIncome, string RDNumber, string EmailID, string MobileNumber, string AlternateNumber, string DoB, string LoanPurpose, string AadharNum, string Occupation,
             string ContactAddress, string ContDistrict, string ContPincode, string ParmanentAddress, string ParDistrict, string ParConstituency, string ParPincode, string AccHolderName, string AccountNumber, string BankName, string Branch, 
-            string IFSCCode, string BankAddress, string AppliedDate, string ModifiedDate, string ParTaluk, string ContTaluk)
+            string IFSCCode, string BankAddress, string AppliedDate, string ModifiedDate, string ParTaluk, string ContTaluk, string LoanDescription, string ApplicantNameNC)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@EmailID", EmailID);
                         cmd.Parameters.AddWithValue("@MobileNumber", MobileNumber);
                         cmd.Parameters.AddWithValue("@AlternateNumber", AlternateNumber);
-                        cmd.Parameters.AddWithValue("@DoB", DoB);
+                        cmd.Parameters.AddWithValue("@DoB", Convert.ToDateTime(DoB));
                         cmd.Parameters.AddWithValue("@LoanPurpose", LoanPurpose);
                         cmd.Parameters.AddWithValue("@AadharNum", AadharNum);
                         cmd.Parameters.AddWithValue("@Occupation", Occupation);
@@ -55,8 +55,8 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@Branch", Branch);
                         cmd.Parameters.AddWithValue("@IFSCCode", IFSCCode);
                         cmd.Parameters.AddWithValue("@BankAddress", BankAddress);
-                        cmd.Parameters.AddWithValue("@AppliedDate", AppliedDate);
-                        cmd.Parameters.AddWithValue("@ModifiedDate", ModifiedDate);
+                        cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
+                        cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
                         cmd.Parameters.AddWithValue("@ModifiedDate", ParTaluk);
                         cmd.Parameters.AddWithValue("@ModifiedDate", ContTaluk);
                         cmd.Parameters.AddWithValue("@ImgCandidate", DBNull.Value);
@@ -66,6 +66,8 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@DocBankPassbook", DBNull.Value);
                         cmd.Parameters.AddWithValue("@DocCasteIncome", DBNull.Value);
                         cmd.Parameters.AddWithValue("@DocPhyCha", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@LoanDescription", LoanDescription);
+                        cmd.Parameters.AddWithValue("@ApplicantNameNC", ApplicantNameNC);
 
 
                         kvdConn.Open();

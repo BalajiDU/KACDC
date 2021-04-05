@@ -32,6 +32,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using KACDC.CreateTextSharpPDF.Schemes.SelfEmployment;
 using KACDC.CreateTextSharpPDF.Process;
+using KACDC.Class.FileSaving;
 
 namespace KACDC
 {
@@ -1027,7 +1028,7 @@ namespace KACDC
             
             PdfPTable HeadingTable = null;
             HeadingTable = new PdfPTable(4);
-            HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan");
+            HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss tt"));
             //pdfDoc.Add(GenerateHeading(phrase, "Self Employment Loan"));
             PdfPTable Table = null;
             Table = new PdfPTable(4);
@@ -1059,6 +1060,8 @@ namespace KACDC
                 byte[] bytes = memoryStream.ToArray();
                 memoryStream.Close();
                 Response.Clear();
+                SaveFile SV = new SaveFile();
+                SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/App/"), "Test.PDF", bytes);
                 Response.ContentEncoding = System.Text.Encoding.UTF8;
                 string fname = "EmpFile";
                 Response.AddHeader("Content-Disposition", "attachment; filename=" + fname + ".pdf");

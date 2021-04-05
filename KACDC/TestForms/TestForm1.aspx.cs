@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,11 +21,42 @@ namespace KACDC.TestForms
 
         protected void btn1_Click(object sender, EventArgs e)
         {
+            //lbl1.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss:fffffff tt");
+            //lbl1.Text = CheckDirExist();
+            string AppDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
+            DateTime newdate = Convert.ToDateTime(AppDate, System.Globalization.CultureInfo.InvariantCulture); 
+            lbl1.Text = newdate.ToString("dd MMMM yyyy hh:mm tt");
+
+        }
+        public string CheckDirExist()
+        {
+            string path = Server.MapPath("~/Files_SelfEmployment/App/");
+            // ... Set to folder path we must ensure exists.
+            try
+            {
+                // ... If the directory doesn't exist, create it.
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                    return "Created";
+                }
+                else
+                {
+                    return "Exist";
+                }
+            }
+            catch (Exception e)
+            {
+                return "Error : "+e.Message;
+                // Fail silently.
+            }
+        }
+        public void RazorPay()
+        {
             try
             {
                 lbl1.Text = NKAR.CheckRDNumberExist(txt1.Text.Trim());
                 string json = (new WebClient()).DownloadString("https://ifsc.razorpay.com/" + txt1.Text.Trim());
-
 
 
                 var details = JObject.Parse(json);

@@ -87,6 +87,11 @@ namespace KACDC.Class.Declaration.OnlineApplication
             set { HttpContext.Current.Session["GeneratedApplicationNumber"] = value; }
             get { return HttpContext.Current.Session["GeneratedApplicationNumber"] as string; }
         }
+        public string ApplicationDateTime
+        {
+            set { HttpContext.Current.Session["ApplicationDateTime"] = value; }
+            get { return HttpContext.Current.Session["ApplicationDateTime"] as string; }
+        }
 
         public string FinancialYear
         {

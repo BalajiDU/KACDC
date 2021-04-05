@@ -488,6 +488,7 @@
       <DependentUpon>CheckRD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Class\BankDetails_SelfEmployment.cs" />
+    <Compile Include="Class\CreateLog\ApplicationLog.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarEnceyption.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
@@ -508,6 +509,7 @@
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
+    <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
     <Compile Include="Class\Log\DataLogging.cs" />
     <Compile Include="Class\MessageSending\SendMessage.cs" />

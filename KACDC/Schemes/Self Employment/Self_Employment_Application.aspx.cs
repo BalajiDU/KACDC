@@ -1,13 +1,16 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.html;
 using iTextSharp.text.pdf;
+using KACDC.Class.CreateLog;
 using KACDC.Class.DataProcessing.Aadhaar;
 using KACDC.Class.DataProcessing.BankData;
 using KACDC.Class.DataProcessing.Nadakacheri;
+using KACDC.Class.DataProcessing.OnlineApplication;
 using KACDC.Class.Declaration.Aadhaar;
 using KACDC.Class.Declaration.BankDetails;
 using KACDC.Class.Declaration.Nadakacheri;
 using KACDC.Class.Declaration.OnlineApplication;
+using KACDC.Class.FileSaving;
 using KACDC.CreateTextSharpPDF.Process;
 using KACDC.CreateTextSharpPDF.Schemes.SelfEmployment;
 using System;
@@ -852,20 +855,45 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnPreviewSubmitApplication_Click(object sender, EventArgs e)
         {
+            ODSE.ApplicationDateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss tt");
             if (SaveApplicationDB())
             {
                 if (GenerateApplicantPDF())
                 {
                     
+
                 }
             }
         }
         private bool SaveApplicationDB()
         {
-            return true;
+            //NDAR;
+            //ADSER;
+            StoreSEApplication SaveSE = new StoreSEApplication();
+
+            ODSE.GeneratedApplicationNumber = SaveSE.StoreSE(ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODSE.Widow, ODSE.Divorced, ODSE.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODSE.EmailID, ODSE.MobileNumber, ODSE.AlternateMobileNumber,
+            ADSER.DOB, ODSE.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODSE.ContactFullAddress, ODSE.ContactDistrictName, ODSE.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
+            ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS, ODSE.ApplicationDateTime, ODSE.ApplicationDateTime, NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName);
+            if (ODSE.GeneratedApplicationNumber != "NA") 
+            {
+                string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                if (ipaddress == "" || ipaddress == null)
+                    ipaddress = Request.ServerVariables["REMOTE_ADDR"];
+                ApplicationLog LOG = new ApplicationLog();
+                LOG.OnlineApplicationLog(ipaddress, Path.GetFileName(Request.Path), "SaveSE", ODSE.GeneratedApplicationNumber, "Success", ODSE.ApplicationDateTime);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
         private bool GenerateApplicantPDF()
         {
+            string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (ipaddress == "" || ipaddress == null)
+                ipaddress = Request.ServerVariables["REMOTE_ADDR"];
             try
             {
                 string SelfEnglish = "I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Arivu Education Loan. If any discrepancies are found later, I agree to take legal action against me.";
@@ -877,7 +905,7 @@ namespace KACDC.Schemes.Self_Employment
 
                 PdfPTable HeadingTable = null;
                 HeadingTable = new PdfPTable(4);
-                HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan");
+                HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", ODSE.ApplicationDateTime);
                 PdfPTable Table = null;
                 Table = new PdfPTable(4);
                 Table = APPLITAB.SEApplicantMainTable(Table);
@@ -890,6 +918,36 @@ namespace KACDC.Schemes.Self_Employment
                 PdfPTable SignatureTable = null;
                 SignatureTable = new PdfPTable(4);
                 SignatureTable = ST.GenerateSignatureTable(SignatureTable);
+
+                Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(HeadingTable);
+                    pdfDoc.Add(Table);
+                    pdfDoc.Add(BankTable);
+                    pdfDoc.Add(AgreeTable);
+                    pdfDoc.Add(SignatureTable);
+
+                    pdfDoc.Close();
+                    byte[] bytes = memoryStream.ToArray();
+                    memoryStream.Close();
+                    Response.Clear();
+
+                    SaveFile SV = new SaveFile();
+                    SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/Application/"), ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf", bytes);
+
+                    Response.ContentEncoding = System.Text.Encoding.UTF8;
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + ODSE.GeneratedApplicationNumber+"_"+ ADSER.Name + ".pdf");
+                    Response.ContentType = "application/pdf";
+                    Response.Buffer = true;
+                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    Response.BinaryWrite(bytes);
+                    Response.End();
+                    Response.Close();
+                }
+
                 return true;
             }
             catch
