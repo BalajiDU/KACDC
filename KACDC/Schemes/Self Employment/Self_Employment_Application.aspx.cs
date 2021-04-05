@@ -955,6 +955,23 @@ namespace KACDC.Schemes.Self_Employment
                 return false;
             }
         }
+        protected void btnPrintApplication_Click(object sender, EventArgs e)
+        {
+            //This is used to get Project Location.
+            string filePath = Server.MapPath("~/Files_SelfEmployment/Application/")+ ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf";
+            //This is used to get the current response.
+            HttpResponse res = GetHttpResponse();
+            res.Clear();
+            res.AppendHeader("content-disposition", "attachment; filename=" + filePath);
+            res.ContentType = "application/octet-stream";
+            res.WriteFile(filePath);
+            res.Flush();
+            res.End();
+        }
+        public static HttpResponse GetHttpResponse()
+        {
+            return HttpContext.Current.Response;
+        }
         //protected void btnpdfprint_Click()
         //{
         //    Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
@@ -1287,14 +1304,5 @@ namespace KACDC.Schemes.Self_Employment
         }
         
         
-        
-        
-        
-        
-        protected void btnPrintApplication_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

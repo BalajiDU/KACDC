@@ -497,7 +497,9 @@
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
+    <Compile Include="Class\DataProcessing\OnlineApplication\ApplicationSubmitEmail.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\StoreSEApplication.cs" />
+    <Compile Include="Class\DataProcessing\OnlineApplication\SubmitApplicationSMS.cs" />
     <Compile Include="Class\DataProcessing\SMSService\CreateSMSLog.cs" />
     <Compile Include="Class\DataProcessing\SMSService\SendSMS.cs" />
     <Compile Include="Class\Declaration\Aadhaar\Aadhaarlog.cs" />

@@ -26,7 +26,23 @@ namespace KACDC.TestForms
             string AppDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
             DateTime newdate = Convert.ToDateTime(AppDate, System.Globalization.CultureInfo.InvariantCulture); 
             lbl1.Text = newdate.ToString("dd MMMM yyyy hh:mm tt");
-
+            DownloadFile();
+        }
+        public void DownloadFile()
+        {
+            string filePath = Server.MapPath("~/Files_SelfEmployment/App/") + "Test" + ".pdf";
+            //This is used to get the current response.
+            HttpResponse res = GetHttpResponse();
+            res.Clear();
+            res.AppendHeader("content-disposition", "attachment; filename=" + filePath);
+            res.ContentType = "application/octet-stream";
+            res.WriteFile(filePath);
+            res.Flush();
+            res.End();
+        }
+        public static HttpResponse GetHttpResponse()
+        {
+            return HttpContext.Current.Response;
         }
         public string CheckDirExist()
         {
