@@ -496,6 +496,7 @@
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
+    <Compile Include="Class\DataProcessing\OnlineApplication\StoreSEApplication.cs" />
     <Compile Include="Class\DataProcessing\SMSService\CreateSMSLog.cs" />
     <Compile Include="Class\DataProcessing\SMSService\SendSMS.cs" />
     <Compile Include="Class\Declaration\Aadhaar\Aadhaarlog.cs" />
@@ -762,10 +763,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AadhaarLogPhoto\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Class\DataProcessing\OnlineApplication\" />
     <Folder Include="Controllers\" />
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
+    <Folder Include="Files_Arivu\2ND_INSTALMENT\" />
+    <Folder Include="Files_Arivu\3RD_INSTALMENT\" />
+    <Folder Include="Files_Arivu\4TH_INSTALMENT\" />
+    <Folder Include="Files_Arivu\5TH_INSTALMENT\" />
+    <Folder Include="Files_Arivu\6TH_INSTALMENT\" />
+    <Folder Include="Files_Arivu\AdmisionTicket\" />
+    <Folder Include="Files_Arivu\ApplicantAadhaarPhoto\" />
+    <Folder Include="Files_Arivu\Application\" />
+    <Folder Include="Files_Arivu\CollegeHostel\" />
+    <Folder Include="Files_Arivu\FeesStructure\" />
+    <Folder Include="Files_Arivu\PreviousMarksCard\" />
+    <Folder Include="Files_Arivu\StudyCertificate\" />
+    <Folder Include="Files_Arivu\TempCollegeFile\" />
+    <Folder Include="Files_SelfEmployment\AadhaarApplicantPhoto\" />
+    <Folder Include="Files_SelfEmployment\Application\" />
     <Folder Include="LogFiles\LoginLogFile\" />
     <Folder Include="Models\" />
     <Folder Include="Reports\SchemeApplication\Arivu\" />
