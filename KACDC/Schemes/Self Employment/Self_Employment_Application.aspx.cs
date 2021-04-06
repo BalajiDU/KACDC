@@ -45,7 +45,25 @@ namespace KACDC.Schemes.Self_Employment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                using(SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT FinancialYear FROM [dbo].[KACDCInfo]"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = kvdConn;
+                        kvdConn.Open();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            sdr.Read();
+                            ODSE.FinancialYear = sdr["FinancialYear"].ToString();
+                            
+                        }
+                        kvdConn.Close();
+                    }
+                }
+            }
         }
         protected void btnAadhaarGetOTP_Click(object sender, EventArgs e)
         {
@@ -856,9 +874,9 @@ namespace KACDC.Schemes.Self_Employment
         protected void btnPreviewSubmitApplication_Click(object sender, EventArgs e)
         {
             ODSE.ApplicationDateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss tt");
-            if (SaveApplicationDB())
+            if(SaveApplicationDB())
             {
-                if (GenerateApplicantPDF())
+                if(GenerateApplicantPDF())
                 {
                     
 
@@ -936,7 +954,7 @@ namespace KACDC.Schemes.Self_Employment
                     Response.Clear();
 
                     SaveFile SV = new SaveFile();
-                    SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/Application/"), ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf", bytes);
+                    SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/"), ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf", bytes);
 
                     Response.ContentEncoding = System.Text.Encoding.UTF8;
                     Response.AddHeader("Content-Disposition", "attachment; filename=" + ODSE.GeneratedApplicationNumber+"_"+ ADSER.Name + ".pdf");
@@ -955,10 +973,20 @@ namespace KACDC.Schemes.Self_Employment
                 return false;
             }
         }
+        private bool SendSMSEmail()
+        {
+            SubmitApplicationSMS SMS = new SubmitApplicationSMS();
+            ApplicationSubmitEmail EMAIL = new ApplicationSubmitEmail();
+            SMS.ApplicantSMSConfirmation(ODSE.MobileNumber, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
+            EMAIL.ApplicantEmailConfirmation(ODSE.EmailID, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name,
+                File.ReadAllBytes(Server.MapPath("~/Files_SelfEmployment/Application/"+ODSE.FinancialYear+"/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"), 
+                ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
+            return true;
+        }
         protected void btnPrintApplication_Click(object sender, EventArgs e)
         {
             //This is used to get Project Location.
-            string filePath = Server.MapPath("~/Files_SelfEmployment/Application/")+ ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf";
+            string filePath = Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf";
             //This is used to get the current response.
             HttpResponse res = GetHttpResponse();
             res.Clear();

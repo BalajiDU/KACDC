@@ -493,6 +493,8 @@
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
     <Compile Include="Class\DataProcessing\BankData\BankDetails.cs" />
+    <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
+    <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\FileOperations.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
@@ -508,6 +510,7 @@
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalSelfEmploymentcs.cs" />
     <Compile Include="Class\Declaration\BankDetails\DecBankDetails.cs" />
     <Compile Include="Class\Declaration\CollegeData\Applicant_College_Data.cs" />
+    <Compile Include="Class\Declaration\EmailDeclaration\EmailVarDec.cs" />
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
