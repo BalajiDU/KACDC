@@ -878,7 +878,10 @@ namespace KACDC.Schemes.Self_Employment
             {
                 if(GenerateApplicantPDF())
                 {
-                    
+                    if (SendSMSEmail())
+                    {
+
+                    }
 
                 }
             }
@@ -955,7 +958,10 @@ namespace KACDC.Schemes.Self_Employment
 
                     SaveFile SV = new SaveFile();
                     SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/"), ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf", bytes);
-
+                    if (File.Exists(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/")+ ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"))
+                    {
+                        SendSMSEmail();
+                    }
                     Response.ContentEncoding = System.Text.Encoding.UTF8;
                     Response.AddHeader("Content-Disposition", "attachment; filename=" + ODSE.GeneratedApplicationNumber+"_"+ ADSER.Name + ".pdf");
                     Response.ContentType = "application/pdf";
@@ -965,7 +971,6 @@ namespace KACDC.Schemes.Self_Employment
                     Response.End();
                     Response.Close();
                 }
-
                 return true;
             }
             catch
