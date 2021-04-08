@@ -754,7 +754,10 @@ namespace KACDC.Schemes.Self_Employment
             ODSE.LoanDESCRIPTION = txtLoanDescription.Text.Trim();
             ODSE.PersonWithDisabilities = rbApplicantPWDYes.Checked == true ? txtPwdIdNumber.Text.Trim() : "NA";
             divOtherDetailsNew.Visible = false;
+            divOtherDetails.Visible = true;
             divButtonToAgrement.Visible = true;
+            btnOtherDetailsUpdate.Visible = false;
+            btnOtherDetailsView.Visible = true;
         }
         protected void rbApplicantPWD_CheckedChanged(object sender, EventArgs e)
         {
@@ -1313,7 +1316,9 @@ namespace KACDC.Schemes.Self_Employment
         
         protected void btnNextShowRDNumber_Click(object sender, EventArgs e)
         {
-
+            divButtonToOtherDetails.Visible = false;
+            divBankDetails.Visible = false;
+            divButtonBankDetails.Visible = true;
         }
         protected void btnOtherDetailsUpdate_Click(object sender, EventArgs e)
         {
@@ -1321,10 +1326,8 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnOtherDetailsView_Click(object sender, EventArgs e)
         {
-
+            divOtherDetailsNew.Visible = true;
         }
-        
-        
         
         protected void btnOtherDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
         {
@@ -1335,7 +1338,5 @@ namespace KACDC.Schemes.Self_Employment
         {
 
         }
-        
-        
     }
 }
