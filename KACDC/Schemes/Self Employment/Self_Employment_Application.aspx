@@ -1384,7 +1384,7 @@
                     
                 </div>
                  
-                <div class="flex-container" runat="server" visible="false" id="divPreviewApplication">
+                <div  id="divPreviewApplication" class="flex-container" runat="server" visible="false">
                     <div class="NeumorphicDiv" style="width:70%; background-color:#f1f1f1; color:black">
                         <table runat="server" class="auto-style1" style="border: 3px solid" border="0" id="tblPreview">
                             <tr>

@@ -596,6 +596,10 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnOtherDetailsSave_Click(object sender, EventArgs e)
         {
+            this.VerifyOtherDetails();
+        }
+        private bool VerifyOtherDetails()
+        {
             if (txtEmailID.Text.Trim() != "")
             {
                 if (IsValidEmail(txtEmailID.Text.Trim()))
@@ -612,19 +616,20 @@ namespace KACDC.Schemes.Self_Employment
                                     {
                                         if (txtAlternateMobileNumber.Text.Trim().Length == 10)
                                         {
-                                            if(rbApplicantPWDYes.Checked==true || rbApplicantPWDNo.Checked == true)
+                                            if (rbApplicantPWDYes.Checked == true || rbApplicantPWDNo.Checked == true)
                                             {
                                                 if (rbApplicantPWDYes.Checked == true && txtPwdIdNumber.Text.Trim() == "")
                                                 {
                                                     DisplayAlert("enter person with disabilities ID number", this);
                                                     txtPwdIdNumber.Focus();
+                                                    return false;
                                                 }
-                                                else if(txtPwdIdNumber.Text.Trim() != "")
+                                                else if (txtPwdIdNumber.Text.Trim() != "")
                                                 {
                                                     ODSE.PersonWithDisabilities = txtPwdIdNumber.Text.Trim();
                                                 }
 
-                                                
+
 
 
 
@@ -645,49 +650,58 @@ namespace KACDC.Schemes.Self_Employment
                                                                             if (rbDivorcedYes.Checked == true || rbDivorcedNo.Checked == true)
                                                                             {
                                                                                 this.SaveOtherDetails();
+                                                                                return true;
                                                                             }
                                                                             else
                                                                             {
                                                                                 DisplayAlert("select any option are you Divorced", this);
+                                                                                return false;
                                                                             }
                                                                         }
                                                                         else
                                                                         {
                                                                             DisplayAlert("select any option are you Widow", this);
+                                                                            return false;
                                                                         }
                                                                     }
                                                                     else
                                                                     {
                                                                         this.SaveOtherDetails();
+                                                                        return true;
                                                                     }
                                                                 }
                                                                 else
                                                                 {
                                                                     DisplayAlert("select any option in Are you Married?", this);
+                                                                    return false;
                                                                 }
                                                             }
                                                             else
                                                             {
                                                                 this.SaveOtherDetails();
+                                                                return true;
                                                             }
-                                                            
+
                                                         }
                                                         else
                                                         {
                                                             DisplayAlert("enter valid DESCRIPTION OF LOAN", this);
                                                             txtLoanDescription.Focus();
+                                                            return false;
                                                         }
                                                     }
                                                     else
                                                     {
                                                         DisplayAlert("enter DESCRIPTION OF LOAN", this);
                                                         txtLoanDescription.Focus();
+                                                        return false;
                                                     }
                                                 }
                                                 else
                                                 {
                                                     DisplayAlert("select purpose of loan", this);
                                                     drpLoanPurpose.Focus();
+                                                    return false;
                                                 }
 
                                             }
@@ -695,54 +709,63 @@ namespace KACDC.Schemes.Self_Employment
                                             {
                                                 DisplayAlert("select person with disabilities option", this);
                                                 txtAlternateMobileNumber.Focus();
+                                                return false;
                                             }
                                         }
                                         else
                                         {
                                             DisplayAlert("enter valid mobile number", this);
                                             txtAlternateMobileNumber.Focus();
+                                            return false;
                                         }
                                     }
                                     else
                                     {
                                         DisplayAlert("enter valid mobile number", this);
                                         txtAlternateMobileNumber.Focus();
+                                        return false;
                                     }
                                 }
                                 else
                                 {
                                     DisplayAlert("enter mobile number", this);
                                     txtAlternateMobileNumber.Focus();
+                                    return false;
                                 }
                             }
                             else
                             {
                                 DisplayAlert("enter valid mobile number", this);
                                 txtApplicantMobileNumber.Focus();
+                                return false;
                             }
                         }
                         else
                         {
                             DisplayAlert("enter valid mobile number", this);
                             txtApplicantMobileNumber.Focus();
+                            return false;
                         }
                     }
                     else
                     {
                         DisplayAlert("enter mobile number", this);
                         txtApplicantMobileNumber.Focus();
+                        return false;
                     }
                 }
                 else
                 {
                     DisplayAlert("enter valid email id", this);
                     txtEmailID.Focus();
+                    return false;
                 }
             }
             else
             {
-                DisplayAlert("enter email id",this);
+                DisplayAlert("enter email id", this);
                 txtEmailID.Focus();
+                return false;
             }
         }
         private void SaveOtherDetails()
@@ -861,7 +884,35 @@ namespace KACDC.Schemes.Self_Employment
         }
         private void fillApplicationPreview()
         {
-
+            lblName.Text = ADSER.Name;
+            ImgCandPhoto.ImageUrl = "";
+            lblFatherName.Text = NDAR.NCApplicantFatherName;
+            lblGender.Text = NDAR.NCGender;
+            lblDOB.Text = ADSER.DOB;
+            lblRDNum.Text = "VERIFIED";
+            lblWidowed.Text = ODSE.Widow==null ? "NA" : ODSE.Widow;
+            lblDivorced.Text = ODSE.Divorced==null ? "NA" : ODSE.Divorced;
+            lblPurpose.Text = ODSE.PurposeOfLoan;
+            lblLoanDescription.Text = ODSE.LoanDESCRIPTION;
+            lblPhysicallyCha.Text = ODSE.PersonWithDisabilities;
+            lblAnualIncome.Text = NDAR.NCAnnualIncome;
+            lblMobileNum.Text = ODSE.MobileNumber;
+            lblAlternateNum.Text = ODSE.AlternateMobileNumber;
+            lblEmailID.Text = ODSE.EmailID;
+            lblAadhar.Text = "VERIFIED";
+            lblContactAddr.Text = ODSE.ContactFullAddress;
+            lblParmanentAddr.Text = NDAR.NCFullAddress;
+            lblContDistrict.Text = ODSE.ContactDistrictName;
+            lblParDistrict.Text = NDAR.NCDistrictName;
+            lblContTaluk.Text = ODSE.ContactTalukName;
+            lblParTaluk.Text = NDAR.NCTalukName;
+            lblParConstituency.Text = NDAR.NCConstituency;
+            lblAccountHolder.Text = ADSER.Name;
+            lblAccountNum.Text = BD.AccountNumber;
+            lblBank.Text = BD.BANK;
+            lblBranchName.Text = BD.BRANCH;
+            lblIFCSCode.Text = BD.IFSC;
+            lblBankAddr.Text = BD.FULLADDRESS;
         }
         protected void btnPreviewEditOtherDetails_Click1(object sender, EventArgs e)
         {
@@ -870,6 +921,7 @@ namespace KACDC.Schemes.Self_Employment
             divApproveAggrement.Visible = false;
             divPreviewButton.Visible = false;
             btnOtherDetailsSave.Visible = false;
+            btnOtherDetailsOk.Visible = false;
             btnOtherDetailsSaveReturnToPreview.Visible = true;
         }
         protected void btnPreviewEditBankDetails_Click(object sender, EventArgs e)
@@ -1331,16 +1383,25 @@ namespace KACDC.Schemes.Self_Employment
         protected void btnOtherDetailsView_Click(object sender, EventArgs e)
         {
             divOtherDetailsNew.Visible = true;
+            divOtherDetails.Visible = false;
         }
         
         protected void btnOtherDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
         {
+            if (this.VerifyOtherDetails())
+            {
+                this.fillApplicationPreview();
+                divOtherDetailsNew.Visible = false;
+                divOtherDetails.Visible = true;
 
+                divPreviewApplication.Visible = true;
+            }
         }
         
         protected void btnOtherDetailsOk_Click(object sender, EventArgs e)
         {
-
+            divOtherDetailsNew.Visible = false;
+            divOtherDetails.Visible = true;
         }
     }
 }
