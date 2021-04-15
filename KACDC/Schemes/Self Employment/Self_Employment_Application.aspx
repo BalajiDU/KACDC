@@ -1479,13 +1479,13 @@
                             
                             <tr id="trPreviewFemaleOption" runat="server" visible="false">
                                 <td colspan="2" class="auto-style8">Widowed<br />
-                                    ವಿಧವೆ</td>
+                                    ವಿಧವೆಯೇ</td>
                                 <td class="auto-style10">
                                     <asp:Label Visible="false" ID="lblWidowed" runat="server"></asp:Label><br />
 
                                 </td>
                                 <td class="auto-style8">Divorced<br />
-                                    ವಿಚ್ಚೇದನ</td>
+                                    ವಿಚ್ಚೇದಿತರೆ</td>
                                 <td colspan="2" class="auto-style11">
                                     <asp:Label ID="lblDivorced" runat="server"></asp:Label>
                                 </td>

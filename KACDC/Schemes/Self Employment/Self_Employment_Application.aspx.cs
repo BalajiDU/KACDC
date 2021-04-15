@@ -869,6 +869,8 @@ namespace KACDC.Schemes.Self_Employment
             divOtherDetailsNew.Visible = true;
             divApproveAggrement.Visible = false;
             divPreviewButton.Visible = false;
+            btnOtherDetailsSave.Visible = false;
+            btnOtherDetailsSaveReturnToPreview.Visible = true;
         }
         protected void btnPreviewEditBankDetails_Click(object sender, EventArgs e)
         {
@@ -932,10 +934,12 @@ namespace KACDC.Schemes.Self_Employment
                 HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", ODSE.ApplicationDateTime);
                 PdfPTable Table = null;
                 Table = new PdfPTable(4);
-                Table = APPLITAB.SEApplicantMainTable(Table);
+                Table = APPLITAB.SEApplicantMainTable(Table, ODSE.GeneratedApplicationNumber, ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODSE.Widow, ODSE.Divorced, ODSE.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODSE.EmailID, ODSE.MobileNumber, ODSE.AlternateMobileNumber,
+            ADSER.DOB, ODSE.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODSE.ContactFullAddress, ODSE.ContactDistrictName, ODSE.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
+             ODSE.ApplicationDateTime, ODSE.ApplicationDateTime, NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
                 PdfPTable BankTable = null;
                 BankTable = new PdfPTable(4);
-                BankTable = BT.GenerateBankTable(BankTable);
+                BankTable = BT.GenerateBankTable(BankTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);
                 PdfPTable AgreeTable = null;
                 AgreeTable = new PdfPTable(4);
                 AgreeTable = AT.GenerateAgreementTable(AgreeTable, SelfEnglish, SelfKannada, AadhaarEnglish, AadhaarKannada, ShareEnglish, ShareKannada);

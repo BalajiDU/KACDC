@@ -22,7 +22,10 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
 
         StringBuilder TextArea1 { get; set; } = new StringBuilder();
         StringBuilder TextArea2 { get; set; } = new StringBuilder();
-        public PdfPTable SEApplicantMainTable(PdfPTable Table)
+        StringBuilder TextArea3 { get; set; } = new StringBuilder();
+        StringBuilder TextArea4 { get; set; } = new StringBuilder();
+        public PdfPTable SEApplicantMainTable(PdfPTable Table,string ApplicationNumber="", string ApplicantName="", string FatherName="", string Gender="", string Widowed="", string Divorced="", string PhysicallyChallenged="", string AnualIncome="", string RDNumber="", string EmailID="", string MobileNumber="", string AlternateNumber="", string DoB="", string LoanPurpose="", string AadharNum="", string Occupation = "",
+            string ContactAddress="", string ContDistrict="", string ContPincode="", string ParmanentAddress="", string ParDistrict="", string ParConstituency="", string ParPincode="",  string AppliedDate="", string ModifiedDate="", string ParTaluk="", string ContTaluk="", string LoanDescription="", string ApplicantNameNC = "", string Language = "99")
         {
             
             Table = TS.SetSize(Table);
@@ -58,13 +61,13 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
 
             //Row 2
             Table.AddCell(LAN.GenerateCell("Application Number", 12, "ಅರ್ಜಿ ಸಂಖ್ಯೆ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXX XXXXXXXXXXXXXXXXX XXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(ApplicationNumber, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             //Row 3
             Table.AddCell(LAN.GenerateCell("NAME", 12, "ಹೆಸರು", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(ApplicantName, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             // Applicant Photo
             cellWithRowspan.Rowspan = 5;
@@ -73,43 +76,51 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
 
             //Row 4
             Table.AddCell(LAN.GenerateCell("Father / Guardian Name", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(FatherName, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             //Row 5
             Table.AddCell(LAN.GenerateCell("Gender", 12, "ಲಿಂಗ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(Gender, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             //Row 6
             Table.AddCell(LAN.GenerateCell("DOB", 12, "ಜನ್ಮ ದಿನಾಂಕ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(DoB, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             //Row 7
             Table.AddCell(LAN.GenerateCell("Emai ID", 12, "ಇ-ಮೇಲ್ ಐಡಿ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(EmailID, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             //Row 8
 
             Table.AddCell(LAN.GenerateCell("Person With Disablities", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(PhysicallyChallenged, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(LAN.GenerateCell("Anual Income", 12, "ವಾರ್ಷಿಕ ಆದಾಯ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(AnualIncome, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
+            //Row 8.1(Optional)
+            if (Gender.ToUpper() == "FEMALE")
+            {
+                Table.AddCell(LAN.GenerateCell("Widowed", 12, "ವಿಧವೆಯೇ", 20f));
+                Table.AddCell(PCell.PrintCell(Widowed, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+                Table.AddCell(LAN.GenerateCell("Divorced", 12, "ವಿಚ್ಚೇದಿತರೆ", 20f));
+                Table.AddCell(PCell.PrintCell(Divorced, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            }
             //Row 9
 
             Table.AddCell(LAN.GenerateCell("Purpose of Loan", 12, "ಸಾಲದ ಉದ್ದೇಶ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(LoanPurpose, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(LAN.GenerateCell("Description of Loan", 12, "ಸಾಲದ ವಿವರಣೆ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(LoanDescription, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             //Row 10
             Table.AddCell(LAN.GenerateCell("Mobile Number", 12, "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(MobileNumber, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(LAN.GenerateCell("Alternate Mobile Number", 12, "ಪರ್ಯಾಯ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(AlternateNumber, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
 
             //Row 
@@ -118,58 +129,90 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
             Table.AddCell(LAN.GenerateCell("Aadhar", 12, "ಆಧಾರ್", 20f));
             Table.AddCell(PCell.PrintCell("VERIFIED", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
-            //Row 10
-            Table.AddCell(LAN.GenerateCell("Parmanent Address", 12, "ಶಾಶ್ವತ ವಿಳಾಸ", 20f));
-            PdfPCell FullAddresscell;
+            if (Language == "1")
+            {
+                //Row 10
+                Table.AddCell(LAN.GenerateCell("Parmanent Address", 12, "ಶಾಶ್ವತ ವಿಳಾಸ", 20f));
+                PdfPCell FullAddresscell;
 
-            
+                iTextSharp.text.Image FullAddressImage = TTI.ConvertTextToImage(MLT.GenerateMultiLineText(TextArea1, ParmanentAddress, 18), "sans-serif", 10, Color.White, Color.Black);
+                FullAddressImage.ScalePercent(20f);
 
-        iTextSharp.text.Image FullAddressImage = TTI.ConvertTextToImage(MLT.GenerateMultiLineText(TextArea1,"ಅನವಾಲ , ಬಾದಾಮಿ, ಬಾಗಲಕೋಟ", 18), "sans-serif", 10, Color.White, Color.Black);
-            FullAddressImage.ScalePercent(20f);
+                FullAddresscell = new PdfPCell(FullAddressImage);
+                FullAddresscell.VerticalAlignment = VCenter;
+                FullAddresscell.HorizontalAlignment = Left;
+                FullAddresscell.BorderColor = BaseColor.WHITE;
 
+                Table.AddCell(FullAddresscell);
 
-            FullAddresscell = new PdfPCell(FullAddressImage);
-            FullAddresscell.VerticalAlignment = VCenter;
-            FullAddresscell.HorizontalAlignment = Left;
-            FullAddresscell.BorderColor = BaseColor.WHITE;
+                Table.AddCell(LAN.GenerateCell("Contact Address", 12, "ಸಂಪರ್ಕ ವಿಳಾಸ", 20f));
+                PdfPCell ContactAddresscell;
 
-            Table.AddCell(FullAddresscell);
+                //string Caddress = MLT.GenerateMultiLineText("ಮದು ಬಸವರಾಜ ಬಿಜಾಪುರ", 18);
+                iTextSharp.text.Image ContactFullAddressImage = TTI.ConvertTextToImage((MLT.GenerateMultiLineText(TextArea2, ContactAddress, 18)), "sans-serif", 10, Color.White, Color.Black);
+                ContactFullAddressImage.ScalePercent(20f);
 
+                ContactAddresscell = new PdfPCell(ContactFullAddressImage);
+                ContactAddresscell.VerticalAlignment = VCenter;
+                ContactAddresscell.HorizontalAlignment = Left;
+                ContactAddresscell.BorderColor = BaseColor.WHITE;
 
-            Table.AddCell(LAN.GenerateCell("Contact Address", 12, "ಸಂಪರ್ಕ ವಿಳಾಸ", 20f));
-            PdfPCell ContactAddresscell;
-
-            //string Caddress = MLT.GenerateMultiLineText("ಮದು ಬಸವರಾಜ ಬಿಜಾಪುರ", 18);
-            iTextSharp.text.Image ContactFullAddressImage = TTI.ConvertTextToImage((MLT.GenerateMultiLineText(TextArea2,"ಮದು ಬಸವರಾಜ ಬಿಜಾಪುರ", 18)), "sans-serif", 10, Color.White, Color.Black);
-            ContactFullAddressImage.ScalePercent(20f);
-
-            ContactAddresscell = new PdfPCell(ContactFullAddressImage);
-            ContactAddresscell.VerticalAlignment = VCenter;
-            ContactAddresscell.HorizontalAlignment = Left;
-            ContactAddresscell.BorderColor = BaseColor.WHITE;
-
-            Table.AddCell(ContactAddresscell);
+                Table.AddCell(ContactAddresscell);
+            }
+            else
+            {
+                Table.AddCell(LAN.GenerateCell("Parmanent Address", 12, "ಶಾಶ್ವತ ವಿಳಾಸ", 20f));
+                Table.AddCell(PCell.PrintCell(ParmanentAddress, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+                Table.AddCell(LAN.GenerateCell("Contact Address", 12, "ಸಂಪರ್ಕ ವಿಳಾಸ", 20f));
+                Table.AddCell(PCell.PrintCell(ContactAddress, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            }
             //Row 11
             Table.AddCell(LAN.GenerateCell("District", 12, "ಜಿಲ್ಲೆ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(ParDistrict, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(LAN.GenerateCell("District", 12, "ಜಿಲ್ಲೆ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(ContDistrict, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+
 
             //Row 12
-            Table.AddCell(LAN.GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-            Table.AddCell(LAN.GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            if (Language == "1")
+            {
+                Table.AddCell(LAN.GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
+                PdfPCell FullAddresscell;
+                iTextSharp.text.Image FullAddressImage = TTI.ConvertTextToImage(MLT.GenerateMultiLineText(TextArea3, ParTaluk, 18), "sans-serif", 10, Color.White, Color.Black);
+                FullAddressImage.ScalePercent(20f);
+                FullAddresscell = new PdfPCell(FullAddressImage);
+                FullAddresscell.VerticalAlignment = VCenter;
+                FullAddresscell.HorizontalAlignment = Left;
+                FullAddresscell.BorderColor = BaseColor.WHITE;
+                Table.AddCell(FullAddresscell);
 
+
+                Table.AddCell(LAN.GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
+                PdfPCell ContactAddresscell;
+                iTextSharp.text.Image ContactFullAddressImage = TTI.ConvertTextToImage((MLT.GenerateMultiLineText(TextArea4, ContTaluk, 18)), "sans-serif", 10, Color.White, Color.Black);
+                ContactFullAddressImage.ScalePercent(20f);
+                ContactAddresscell = new PdfPCell(ContactFullAddressImage);
+                ContactAddresscell.VerticalAlignment = VCenter;
+                ContactAddresscell.HorizontalAlignment = Left;
+                ContactAddresscell.BorderColor = BaseColor.WHITE;
+                Table.AddCell(ContactAddresscell);
+            }
+            else
+            {
+                Table.AddCell(LAN.GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
+                Table.AddCell(PCell.PrintCell(ParTaluk, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+                Table.AddCell(LAN.GenerateCell("Taluk", 12, "ತಾಲ್ಲೂಕು", 20f));
+                Table.AddCell(PCell.PrintCell(ContTaluk, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            }
             //Row 13
             Table.AddCell(LAN.GenerateCell("Pin code", 12, "ಪಿನ್ ಕೋಡ್", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(ContPincode, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(LAN.GenerateCell("Pin code", 12, "ಪಿನ್ ಕೋಡ್", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(ParPincode, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             //Row 13
             Table.AddCell(LAN.GenerateCell("Constituency", 12, "ಕ್ಷೇತ್ರ", 20f));
-            Table.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell(ParConstituency, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(EmptyCell);
             Table.AddCell(EmptyCell);
 

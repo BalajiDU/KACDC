@@ -39,6 +39,8 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@MobileNumber", MobileNumber);
                         cmd.Parameters.AddWithValue("@AlternateNumber", AlternateNumber);
                         cmd.Parameters.AddWithValue("@DoB", Convert.ToDateTime(DoB));
+                        cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
+                        cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
                         cmd.Parameters.AddWithValue("@LoanPurpose", LoanPurpose);
                         cmd.Parameters.AddWithValue("@AadharNum", AadharNum);
                         cmd.Parameters.AddWithValue("@Occupation", Occupation);
