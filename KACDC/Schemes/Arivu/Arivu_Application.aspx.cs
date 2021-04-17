@@ -41,6 +41,7 @@ namespace KACDC.Schemes.Arivu
         DecBankDetails BD = new DecBankDetails();
         ApplicantPDFTableAR APPLITAB = new ApplicantPDFTableAR();
         BankTable BT = new BankTable();
+        CollegeTable CT = new CollegeTable();
         AgreementTable AT = new AgreementTable();
         SignatureTable ST = new SignatureTable();
         HeadingTable HT = new HeadingTable();
@@ -723,7 +724,7 @@ namespace KACDC.Schemes.Arivu
              ODAR.ApplicationDateTime, ODAR.ApplicationDateTime, NDAR.NCTalukName, ODAR.ContactTalukName, ODAR.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
                 PdfPTable CollegeTable = null;
                 CollegeTable = new PdfPTable(4);
-                CollegeTable = BT.GenerateBankTable(CollegeTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);
+                CollegeTable = CT.GenerateCollegeTable(CollegeTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);
                 PdfPTable BankTable = null;
 
                 BankTable = new PdfPTable(4);
