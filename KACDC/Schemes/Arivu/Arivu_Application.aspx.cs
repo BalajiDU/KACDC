@@ -80,7 +80,8 @@ namespace KACDC.Schemes.Arivu
                     }
                     else
                     {
-                        DisplayAlert(ADSER.SendOTPErrorMessage, this);
+                        AadhaarError AE = new AadhaarError();
+                        DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.SendOTPErrorMessage), this);
                     }
                 }
                 else
@@ -117,22 +118,8 @@ namespace KACDC.Schemes.Arivu
             }
             else
             {
-                if (ADSER.OTPErrorCode == "AUA-OTP-01")
-                {
-                    DisplayAlert("Invalid OTP", this);
-                }
-                else if (ADSER.OTPErrorCode == "AUA-OTP-05")
-                {
-                    DisplayAlert("OTP Expired", this);
-                }
-                else if (ADSER.OTPErrorCode == "AUA-OTP-05")
-                {
-                    DisplayAlert("OTP Expired", this);
-                }
-                else
-                {
-                    DisplayAlert("Unable to Connect, Try again", this);
-                }
+                AadhaarError AE = new AadhaarError();
+                DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.OTPErrorCode), this);
             }
         }
         protected void btnAadhaarkDetailsProceed_Click(object sender, EventArgs e)

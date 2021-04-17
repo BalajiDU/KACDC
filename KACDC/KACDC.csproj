@@ -490,6 +490,7 @@
     <Compile Include="Class\BankDetails_SelfEmployment.cs" />
     <Compile Include="Class\CreateLog\ApplicationLog.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarEnceyption.cs" />
+    <Compile Include="Class\DataProcessing\Aadhaar\AadhaarError.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
     <Compile Include="Class\DataProcessing\BankData\BankDetails.cs" />
