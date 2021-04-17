@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
+namespace KACDC.CreateTextSharpPDF.Schemes.Arivu
 {
-    public class ApplicantPDFTable
+    public class ApplicantPDFTableAR
     {
         PDFCellPrint PCell = new PDFCellPrint();
         PDFHeaderCell HCell = new PDFHeaderCell();
@@ -24,16 +24,16 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
         StringBuilder TextArea2 { get; set; } = new StringBuilder();
         StringBuilder TextArea3 { get; set; } = new StringBuilder();
         StringBuilder TextArea4 { get; set; } = new StringBuilder();
-        public PdfPTable SEApplicantMainTable(PdfPTable Table,string ApplicationNumber="", string ApplicantName="", string FatherName="", string Gender="", string Widowed="", string Divorced="", string PhysicallyChallenged="", string AnualIncome="", string RDNumber="", string EmailID="", string MobileNumber="", string AlternateNumber="", string DoB="", string LoanPurpose="", string AadharNum="", string Occupation = "",
-            string ContactAddress="", string ContDistrict="", string ContPincode="", string ParmanentAddress="", string ParDistrict="", string ParConstituency="", string ParPincode="",  string AppliedDate="", string ModifiedDate="", string ParTaluk="", string ContTaluk="", string LoanDescription="", string ApplicantNameNC = "", string Language = "99")
+        public PdfPTable ApplicantMainTable(PdfPTable Table, string ApplicationNumber = "", string ApplicantName = "", string FatherName = "", string Gender = "", string Widowed = "", string Divorced = "", string PhysicallyChallenged = "", string AnualIncome = "", string RDNumber = "", string EmailID = "", string MobileNumber = "", string AlternateNumber = "", string DoB = "", string LoanPurpose = "", string AadharNum = "", string Occupation = "",
+            string ContactAddress = "", string ContDistrict = "", string ContPincode = "", string ParmanentAddress = "", string ParDistrict = "", string ParConstituency = "", string ParPincode = "", string AppliedDate = "", string ModifiedDate = "", string ParTaluk = "", string ContTaluk = "", string LoanDescription = "", string ApplicantNameNC = "", string Language = "99")
         {
-            
+
             Table = TS.SetSize(Table);
             int Center = PdfPCell.ALIGN_CENTER;
             int VCenter = PdfPCell.ALIGN_MIDDLE;
             int Left = PdfPCell.ALIGN_LEFT;
 
-            
+
 
             PdfPCell EmptyCell = new PdfPCell();
             EmptyCell = PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter);
@@ -216,7 +216,7 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
             Table.AddCell(EmptyCell);
             Table.AddCell(EmptyCell);
 
-           
+
             ////BankTable.AddCell(LAN.GenerateCell("Account Holder Name", 12, "ಖಾತೆದಾರರ ಹೆಸರು", 20f));
             ////BankTable.AddCell(PCell.PrintCell("XXXXXXXXXXXXXXXXX", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             ////BankTable.AddCell(LAN.GenerateCell("A/C Number", 12, "ಖಾತೆ ಸಂಖ್ಯೆ", 20f));

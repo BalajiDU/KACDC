@@ -500,7 +500,8 @@
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\ApplicationSubmitEmail.cs" />
-    <Compile Include="Class\DataProcessing\OnlineApplication\StoreSEApplication.cs" />
+    <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\SubmitARApplication.cs" />
+    <Compile Include="Class\DataProcessing\OnlineApplication\SelfEmployment\StoreSEApplication.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\SubmitApplicationSMS.cs" />
     <Compile Include="Class\DataProcessing\SMSService\CreateSMSLog.cs" />
     <Compile Include="Class\DataProcessing\SMSService\SendSMS.cs" />
@@ -513,6 +514,7 @@
     <Compile Include="Class\Declaration\EmailDeclaration\EmailVarDec.cs" />
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />
+    <Compile Include="Class\Declaration\OnlineApplication\OtherDataArivu.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
@@ -533,6 +535,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CreateTextSharpPDF\Process\CollegeTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\MultiLineText.cs" />
     <Compile Include="CreateTextSharpPDF\Process\AgreeCell.cs" />
     <Compile Include="CreateTextSharpPDF\Process\AgreementTable.cs" />
@@ -545,6 +548,7 @@
     <Compile Include="CreateTextSharpPDF\Process\SetTableSize.cs" />
     <Compile Include="CreateTextSharpPDF\Process\SignatureTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\TextToImage.cs" />
+    <Compile Include="CreateTextSharpPDF\Schemes\Arivu\ApplicantPDFTableAR.cs" />
     <Compile Include="CreateTextSharpPDF\Schemes\SelfEmployment\ApplicantPDFTable.cs" />
     <Compile Include="CW_Form.aspx.cs">
       <DependentUpon>CW_Form.aspx</DependentUpon>

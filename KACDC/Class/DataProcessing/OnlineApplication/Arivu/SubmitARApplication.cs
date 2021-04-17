@@ -6,19 +6,19 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace KACDC.Class.DataProcessing.OnlineApplication
+namespace KACDC.Class.DataProcessing.OnlineApplication.Arivu
 {
-    public class StoreSEApplication
+    public class SubmitARApplication
     {
-        public string StoreSE(string ApplicantName, string FatherName, string Gender, string Widowed, string Divorced, string PhysicallyChallenged, string AnualIncome, string RDNumber, string EmailID, string MobileNumber, string AlternateNumber, string DoB, string LoanPurpose, string AadharNum, string Occupation,
-            string ContactAddress, string ContDistrict, string ContPincode, string ParmanentAddress, string ParDistrict, string ParConstituency, string ParPincode, string AccHolderName, string AccountNumber, string BankName, string Branch, 
-            string IFSCCode, string BankAddress, string AppliedDate, string ModifiedDate, string ParTaluk, string ContTaluk, string LoanDescription, string ApplicantNameNC)
+        public string StoreAR(string ApplicantName, string FatherName, string Gender, string Widowed, string Divorced, string PhysicallyChallenged, string AnualIncome, string RDNumber, string EmailID, string MobileNumber, string AlternateNumber, string DoB, string LoanPurpose, string AadharNum, string Occupation,
+               string ContactAddress, string ContDistrict, string ContPincode, string ParmanentAddress, string ParDistrict, string ParConstituency, string ParPincode, string AccHolderName, string AccountNumber, string BankName, string Branch,
+               string IFSCCode, string BankAddress, string AppliedDate, string ModifiedDate, string ParTaluk, string ContTaluk, string LoanDescription, string ApplicantNameNC)
         {
             try
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("spCreateAadhaarLog", kvdConn))
+                    using (SqlCommand cmd = new SqlCommand("spARLoanApp", kvdConn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         //cmd.Parameters.AddWithValue("@ApplicationNumber", ApplicationNumber);
@@ -80,11 +80,11 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                     }
                 }
             }
-            catch(SqlException e)
+            catch (SqlException e)
             {
                 return e.Message;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.Message;
             }

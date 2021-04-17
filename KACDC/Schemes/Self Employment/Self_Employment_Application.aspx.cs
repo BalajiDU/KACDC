@@ -885,7 +885,7 @@ namespace KACDC.Schemes.Self_Employment
         private void fillApplicationPreview()
         {
             lblName.Text = ADSER.Name;
-            ImgCandPhoto.ImageUrl = "";
+            ImgCandPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
             lblFatherName.Text = NDAR.NCApplicantFatherName;
             lblGender.Text = NDAR.NCGender;
             lblDOB.Text = ADSER.DOB;

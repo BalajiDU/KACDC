@@ -1507,13 +1507,13 @@
                                         <asp:Label ID="Label35" runat="server">Is Applicant with Disabilities?<span style="color:#a30000"> *</span><br />ಅರ್ಜಿದಾರರು ವಿಶೇಷ ಚೇತನರೇ?</asp:Label>
                                     </div>
                                     <div class="Popup-row-label">
-                                        <%--<asp:DropDownList ID="drpApplicantPWD" Class="rowMargin txtcolor text-uppercase NeuoDropdown" AutoPostBack="true" OnSelectedIndexChanged="drpApplicantPWD_SelectedIndexChanged" runat="server">
+                                        <%--<asp:DropDownList ID="drpApplicantPWD" Class="rowMargin txtcolor text-uppercase NeuoDropdown" AutoPostBack="true" OnSelectedIndexChanged="rbApplicantPWD_CheckedChanged" runat="server">
                                         <asp:ListItem Value="0">--SELECT--</asp:ListItem>
                                         <asp:ListItem Value="YES">YES</asp:ListItem>
                                         <asp:ListItem Value="NO">NO</asp:ListItem>
                                     </asp:DropDownList>--%>
-                                        <asp:RadioButton ID="rbApplicantPWDYes" runat="server"  Class="radioButton" GroupName="ApplicantPWD" Text="Yes" AutoPostBack="true" OnCheckedChanged="drpApplicantPWD_SelectedIndexChanged"  />
-                                        <asp:RadioButton ID="rbApplicantPWDNo" runat="server"  Class="radioButton" GroupName="ApplicantPWD" Text="No" AutoPostBack="true" OnCheckedChanged="drpApplicantPWD_SelectedIndexChanged" />
+                                        <asp:RadioButton ID="rbApplicantPWDYes" runat="server"  Class="radioButton" GroupName="ApplicantPWD" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbApplicantPWD_CheckedChanged"  />
+                                        <asp:RadioButton ID="rbApplicantPWDNo" runat="server"  Class="radioButton" GroupName="ApplicantPWD" Text="No" AutoPostBack="true" OnCheckedChanged="rbApplicantPWD_CheckedChanged" />
 
                                     </div>
                                 </div>
@@ -1561,6 +1561,7 @@
                             <div class="">
                                 <p style="text-align:justify"><asp:CheckBox runat="server" CssClass="ChkBoxClass" ID="ChkSelfDeclaration" OnCheckedChanged="ChkDeclarationChange" AutoPostBack="true" /> I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation, (Government of Karnataka Undertaking), to use my Aadhaar number for performing all such validations which may be, required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.  <br />ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಸಭಿವೃಧಿ ನಿಗಮ ಕ್ಕೆ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು ನಾನು ಈ ಮೂಲಕ ನನ್ನ ಒಪ್ಪಿಗೆ ಯನ್ನು ನೀಡುತ್ತೇನೆ, ಅದು ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲ ಮೌಲ್ಯ ಮಾಪನ ಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುತ್ತದೆ. ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆ ಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಥವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೇನೆ</p>
                                 <p style="text-align:justify"><asp:CheckBox runat="server" CssClass="ChkBoxClass" ID="ChkAadharDeclaration"  OnCheckedChanged="ChkDeclarationChange" AutoPostBack="true" /> I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Arivu Education Loan. If any discrepancies are found later, I agree to take legal action against me.<br />ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣಿಕರಿಸುತ್ತೇನೆ. ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿ ಕ್ರಮ ಜರುಗಿಸಲು ನಾನು ಒಪ್ಪಿರುತ್ತೇನೆ.</p>
+                                <p style="text-align:justify"><asp:CheckBox runat="server" CssClass="ChkBoxClass" ID="ChkAgreetoProvideData"  OnCheckedChanged="ChkDeclarationChange" AutoPostBack="true" /> I hereby agree to provide my details to avail any government facilities. If any discrepancies are found later, I agree to take legal action against me.<br />ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣಿಕರಿಸುತ್ತೇನೆ. ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿ ಕ್ರಮ ಜರುಗಿಸಲು ನಾನು ಒಪ್ಪಿರುತ್ತೇನೆ.</p>
                             </div>
                         </div>
                         <%--Preview--%>
