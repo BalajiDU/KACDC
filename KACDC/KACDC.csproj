@@ -511,7 +511,7 @@
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalArivu.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalSelfEmploymentcs.cs" />
     <Compile Include="Class\Declaration\BankDetails\DecBankDetails.cs" />
-    <Compile Include="Class\Declaration\CollegeData\Applicant_College_Data.cs" />
+    <Compile Include="Class\Declaration\CollegeData\ApplicantCollegeData.cs" />
     <Compile Include="Class\Declaration\EmailDeclaration\EmailVarDec.cs" />
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />

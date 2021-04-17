@@ -14,7 +14,7 @@ namespace KACDC.CreateTextSharpPDF.Process
         PDFHeaderCell HCell = new PDFHeaderCell();
         SetTableSize TS = new SetTableSize();
         public PdfPTable GenerateCollegeTable(PdfPTable Table, string CETAdmissionTicketNumber = "", string CETApplicationNumber = "", string CollegeName = "", string CollegeAddress = "", string Course = "", string Year = "", 
-            string PreviousYearMarks = "", string RequiredLoanAmount = "")
+            string PreviousYearMarks = "", string RequiredLoanAmount = "", string CollegeHostel = "")
         {
             Table = TS.SetSize(Table);
 
@@ -52,6 +52,11 @@ namespace KACDC.CreateTextSharpPDF.Process
             Table.AddCell(PCell.PrintCell(PreviousYearMarks, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
             Table.AddCell(LAN.GenerateCell("Required Loan Amount", 12, "ಅಗತ್ಯವಿರುವ ಸಾಲದ ಮೊತ್ತ", 20f));
             Table.AddCell(PCell.PrintCell(RequiredLoanAmount, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+
+            Table.AddCell(LAN.GenerateCell("Are You Staying in College Hostel?", 12, "ಕಾಲೇಜು ವಿದ್ಯಾರ್ಥಿ ನಿಲಯದಲ್ಲಿ ವಾಸವಿದ್ದೀರಾ?", 20f));
+            Table.AddCell(PCell.PrintCell(CollegeHostel, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
+            Table.AddCell(PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             return Table;
         }

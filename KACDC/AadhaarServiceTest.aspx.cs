@@ -50,7 +50,7 @@ namespace KACDC
     public partial class AadhaarServiceTest : System.Web.UI.Page
     {
         AadhaarServiceData ADSE = new AadhaarServiceData();
-        Applicant_College_Data CLGAR = new Applicant_College_Data();
+        ApplicantCollegeData CLGAR = new ApplicantCollegeData();
         //NadaKacheri_SelfEmployment NCSE = new NadaKacheri_SelfEmployment();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -481,7 +481,7 @@ namespace KACDC
 
         protected void txtCollegeCode_TextChanged(object sender, EventArgs e)
         {
-            Applicant_College_Data CLGAR = new Applicant_College_Data();
+            ApplicantCollegeData CLGAR = new ApplicantCollegeData();
             try
             {
                 //CollegeDataServiceReference.GetCollegeDetailsSoapClient client = new CollegeDataServiceReference.GetCollegeDetailsSoapClient();

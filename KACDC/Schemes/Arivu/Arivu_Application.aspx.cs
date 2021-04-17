@@ -7,6 +7,7 @@ using KACDC.Class.DataProcessing.Nadakacheri;
 using KACDC.Class.DataProcessing.OnlineApplication;
 using KACDC.Class.Declaration.Aadhaar;
 using KACDC.Class.Declaration.BankDetails;
+using KACDC.Class.Declaration.CollegeData;
 using KACDC.Class.Declaration.Nadakacheri;
 using KACDC.Class.Declaration.OnlineApplication;
 using KACDC.Class.FileSaving;
@@ -45,6 +46,7 @@ namespace KACDC.Schemes.Arivu
         AgreementTable AT = new AgreementTable();
         SignatureTable ST = new SignatureTable();
         HeadingTable HT = new HeadingTable();
+        ApplicantCollegeData ACD = new ApplicantCollegeData();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -724,7 +726,8 @@ namespace KACDC.Schemes.Arivu
              ODAR.ApplicationDateTime, ODAR.ApplicationDateTime, NDAR.NCTalukName, ODAR.ContactTalukName, ODAR.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
                 PdfPTable CollegeTable = null;
                 CollegeTable = new PdfPTable(4);
-                CollegeTable = CT.GenerateCollegeTable(CollegeTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);
+                CollegeTable = CT.GenerateCollegeTable(CollegeTable, ACD.CETAdmissionTicketNumber, ACD.CETApplicationNumber, ACD.CollegeName , ACD.CollegeAddress , ACD.Course , ACD.Year ,
+             ACD.PreviousYearMarks , ACD.RequiredLoanAmount , ACD.CollegeHostel);
                 PdfPTable BankTable = null;
 
                 BankTable = new PdfPTable(4);
