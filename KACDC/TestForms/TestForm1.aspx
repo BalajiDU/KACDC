@@ -25,6 +25,10 @@
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" Text="verify substring" OnClick="Button1_Click" />
             <asp:Label ID ="Label1" runat="server"></asp:Label>
+        <hr />
+        
+            <asp:Label ID ="Label2" runat="server"></asp:Label>
+
     </form>
 </body>
 </html>

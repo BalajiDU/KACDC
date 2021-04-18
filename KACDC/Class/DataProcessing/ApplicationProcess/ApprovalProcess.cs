@@ -23,7 +23,15 @@ namespace KACDC.Class.DataProcessing
             {
                 builder.Query = "Status=" + Method + "&ApplicationStatus=" + ApplicationStatus + "&ApplicationNumber=" + ApplicationNumber + "&RejectReason=" + Reason;
             }
-            HC.BaseAddress = new Uri("http://localhost:50369/api/");
+            if(HttpContext.Current.Request.Url.Host.ToString()== "localhost")
+            {
+                HC.BaseAddress = new Uri("http://localhost:50369/api/");
+            }
+            else
+            {
+                HC.BaseAddress = new Uri("https://aryavysya.karnataka.gov.in/api/");
+            }
+
             var ConsAPI = HC.GetAsync(builder.Uri);
             ConsAPI.Wait();
             var readData = ConsAPI.Result;

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -20,7 +21,9 @@ namespace KACDC.TestForms
         protected void Page_Load(object sender, EventArgs e)
         {
             MainTestNew();
-
+            HostingEnvironment env;
+            
+            Label2.Text= HttpContext.Current.Request.Url.Host;
 
             //if()
         }
@@ -69,8 +72,14 @@ namespace KACDC.TestForms
             //values.Add(new KeyValuePair<string, string>("type", param.Type.Value));
             //var content = new FormUrlEncodedContent(values);
 
-            HC.BaseAddress=new Uri("http://localhost:50369/api/");
-            //var ConsAPI = HC.GetAsync("CaseWorker");
+            if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
+            {
+                HC.BaseAddress = new Uri("http://localhost:50369/api/");
+            }
+            else
+            {
+                HC.BaseAddress = new Uri("https://aryavysya.karnataka.gov.in/api/");
+            }            //var ConsAPI = HC.GetAsync("CaseWorker");
             var ConsAPI = HC.GetAsync(string.Format("CaseWorker/Status="+method+"&District="+district));
             
             ConsAPI.Wait();
