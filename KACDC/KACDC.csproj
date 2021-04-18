@@ -493,7 +493,7 @@
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarError.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
-    <Compile Include="Class\DataProcessing\ApprovalProcess.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\ApprovalProcess.cs" />
     <Compile Include="Class\DataProcessing\BankData\BankDetails.cs" />
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
