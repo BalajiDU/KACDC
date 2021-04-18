@@ -17,7 +17,14 @@
                                                 <asp:RadioButton ID="rbContactAddressYes" Class="radioButton" runat="server" GroupName="ContactAddress" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbContactAddress_CheckedChanged"  />
                                         <asp:RadioButton ID="rbContactAddressNo" Class="radioButton" runat="server" GroupName="ContactAddress" Text="No" AutoPostBack="true" OnCheckedChanged="rbContactAddress_CheckedChanged" />
             <asp:Label ID ="lbl2" runat="server"></asp:Label>
+        <hr />
+                    <asp:Label ID ="lblStatuscode" runat="server"></asp:Label>
 
+        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+        <hr />
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" Text="verify substring" OnClick="Button1_Click" />
+            <asp:Label ID ="Label1" runat="server"></asp:Label>
     </form>
 </body>
 </html>

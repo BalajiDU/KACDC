@@ -52,6 +52,11 @@ namespace KACDC.Class.Declaration.CollegeData
             set { HttpContext.Current.Session["CollegeHostel"] = value; }
             get { return HttpContext.Current.Session["CollegeHostel"] as string; }
         }
+        public string PdfCETAdmissionTicket
+        {
+            set { HttpContext.Current.Session["PdfCETAdmissionTicket"] = value; }
+            get { return HttpContext.Current.Session["PdfCETAdmissionTicket"] as string; }
+        }
         
 
     }

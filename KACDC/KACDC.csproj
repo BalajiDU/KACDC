@@ -493,6 +493,7 @@
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarError.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
+    <Compile Include="Class\DataProcessing\ApprovalProcess.cs" />
     <Compile Include="Class\DataProcessing\BankData\BankDetails.cs" />
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
@@ -536,6 +537,8 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ApprovalProcess\AppRejController.cs" />
+    <Compile Include="Controllers\CaseWorkerController.cs" />
     <Compile Include="CreateTextSharpPDF\Process\CollegeTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\MultiLineText.cs" />
     <Compile Include="CreateTextSharpPDF\Process\AgreeCell.cs" />
@@ -596,6 +599,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\CaseWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schemes\Arivu\AboutArivu.aspx.cs">
       <DependentUpon>AboutArivu.aspx</DependentUpon>
@@ -777,7 +781,6 @@
   <ItemGroup>
     <Folder Include="AadhaarLogPhoto\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
     <Folder Include="Files_Arivu\2ND_INSTALMENT\" />
     <Folder Include="Files_Arivu\3RD_INSTALMENT\" />
@@ -795,7 +798,6 @@
     <Folder Include="Files_SelfEmployment\AadhaarApplicantPhoto\" />
     <Folder Include="Files_SelfEmployment\Application\" />
     <Folder Include="LogFiles\LoginLogFile\" />
-    <Folder Include="Models\" />
     <Folder Include="Reports\SchemeApplication\Arivu\" />
     <Folder Include="Reports\SchemeApplication\SelfEmployment\" />
   </ItemGroup>

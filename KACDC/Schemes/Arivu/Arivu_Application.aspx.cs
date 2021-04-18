@@ -443,6 +443,184 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnCollegeDetailsSave_Click(object sender, EventArgs e)
         {
+            this.VerifyCollegeDetails();
+        }
+        private void VerifyCollegeDetails()
+        {
+            if (txtCollegeCode.Text.Trim()!="" && txtCollegeCode.Text.Trim()!=null  )
+            {
+                if (txtCollegeCode.Text.Trim().Length > 3)
+                {
+                    if (txtCETAdmTicNum.Text.Trim() != "" && txtCETAdmTicNum.Text.Trim() != null)
+                    {
+                        if (txtCETAdmTicNum.Text.Trim().Length > 3)
+                        {
+                            if (txtCETAppNum.Text.Trim() != "" && txtCETAppNum.Text.Trim() != null)
+                            {
+                                if (txtCETAppNum.Text.Trim().Length > 3)
+                                {
+                                    if (txtCollegeName.Text.Trim() != "" && txtCollegeName.Text.Trim() != null)
+                                    {
+                                        if (txtCollegeName.Text.Trim().Length > 3)
+                                        {
+                                            if (txtClgAddress.Text.Trim() != "" && txtClgAddress.Text.Trim() != null)
+                                            {
+                                                if (txtClgAddress.Text.Trim().Length > 3)
+                                                {
+                                                    if (txtClgAddress.Text.Trim() != "" && txtClgAddress.Text.Trim() != null)
+                                                    {
+                                                        if (txtClgAddress.Text.Trim().Length > 3)
+                                                        {
+                                                            if (txtPreviousMarks.Text.Trim() != "" && txtPreviousMarks.Text.Trim() != null)
+                                                            {
+                                                                if (txtPreviousMarks.Text.Trim().Length > 2)
+                                                                {
+                                                                    if (drpCourse.SelectedValue != "0")
+                                                                    {
+                                                                        if (drpYear.SelectedValue != "0")
+                                                                        {
+                                                                            if (rbCollegeHostelYes.Checked==true || rbCollegeHostelNo.Checked==true)
+                                                                            {
+
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            DisplayAlert("Select Year", this);
+                                                                            drpYear.Focus();
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        DisplayAlert("Select Course", this);
+                                                                        drpCourse.Focus();
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    txtRequierdLoanAmount.Text = "Enter valid Previous Year Marks";
+                                                                    DisplayAlert("Enter valid Previous Year Marks", this);
+                                                                    txtPreviousMarks.Focus();
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                txtRequierdLoanAmount.Text = "Enter Previous Year Marks";
+                                                                DisplayAlert("Enter Previous Year Marks", this);
+                                                                txtPreviousMarks.Focus();
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            txtRequierdLoanAmount.Text = "Enter valid Required Loan Amount";
+                                                            DisplayAlert("Enter valid Required Loan Amount", this);
+                                                            txtClgAddress.Focus();
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        txtRequierdLoanAmount.Text = "Enter Required Loan Amount";
+                                                        DisplayAlert("Enter Required Loan Amount", this);
+                                                        txtClgAddress.Focus();
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    lblCollegeCodeError.Text = "Enter valid College Address";
+                                                    DisplayAlert("Enter valid College Address", this);
+                                                    txtClgAddress.Focus();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                lblCollegeCodeError.Text = "Enter College Address";
+                                                DisplayAlert("Enter College Address", this);
+                                                txtClgAddress.Focus();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            lblCollegeCodeError.Text = "Enter valid College Name";
+                                            DisplayAlert("Enter valid College Name", this);
+                                            txtCollegeName.Focus();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        lblCollegeCodeError.Text = "Enter College Name";
+                                        DisplayAlert("Enter College Name", this);
+                                        txtCollegeName.Focus();
+                                    }
+                                }
+                                else
+                                {
+                                    lblCollegeCodeError.Text = "Enter valid CET Application Number";
+                                    DisplayAlert("Enter valid CET Application Number", this);
+                                    txtCETAppNum.Focus();
+                                }
+                            }
+                            else
+                            {
+                                lblCollegeCodeError.Text = "Enter CET Application Number";
+                                DisplayAlert("Enter CET Application Number", this);
+                                txtCETAppNum.Focus();
+                            }
+                        }
+                        else
+                        {
+                            lblCollegeCodeError.Text = "Enter valid CET Admission Ticket";
+                            DisplayAlert("Enter valid CET Admission Ticket", this);
+                            txtCETAdmTicNum.Focus();
+                        }
+                    }
+                    else
+                    {
+                        lblCollegeCodeError.Text = "Enter CET Admission Ticket";
+                        DisplayAlert("Enter CET Admission Ticket", this);
+                        txtCETAdmTicNum.Focus();
+                    }
+                }
+                else
+                {
+                    lblCollegeCodeError.Text = "Enter valid College Code";
+                    DisplayAlert("Enter valid College Code", this);
+                    txtCollegeCode.Focus();
+                }
+            }
+            else
+            {
+                lblCollegeCodeError.Text = "Enter College Code";
+                DisplayAlert("Enter College Code", this);
+                txtCollegeCode.Focus();
+            }
+        }
+        protected void txtCollegeCode_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCollegeCode.Text.Trim().Length > 3)
+            {
+                using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT CollegeName,CollegeAddress FROM [dbo].[CollegeData] where CollegeCode=@CLGCode"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@CLGCode", txtCollegeCode.Text.Trim());
+                        cmd.Connection = kvdConn;
+                        kvdConn.Open();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            sdr.Read();
+                            txtCollegeName.Text = sdr["CollegeName"].ToString();
+                            txtClgAddress.Text = sdr["CollegeAddress"].ToString();
+
+                        }
+                        kvdConn.Close();
+                    }
+                }
+            }
+            else
+            {
+                lblCollegeCodeError.Text = "Invalid College Code";
+            }
         }
         protected void btnCollegeDetailsOk_Click(object sender, EventArgs e)
         {
@@ -880,9 +1058,7 @@ namespace KACDC.Schemes.Arivu
         protected void btnCollegeDetailsUpdate_Click(object sender, EventArgs e)
         {
         }
-        protected void txtCollegeCode_TextChanged(object sender, EventArgs e)
-        {
-        }
+       
         protected void btnOtherDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
         {
             if (this.VerifyOtherDetails())
