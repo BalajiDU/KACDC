@@ -122,11 +122,18 @@ namespace KACDC.TestForms
             //values.Add(new KeyValuePair<string, string>("id", param.Id.Value));
             //values.Add(new KeyValuePair<string, string>("type", param.Type.Value));
             //var content = new FormUrlEncodedContent(values);
-            UriBuilder builder = new UriBuilder("http://localhost:50369/api/CaseWorker");
+            UriBuilder builder = new UriBuilder();
             //builder.Query = "Status='"+ method + "'&District='"+ district + "'";
             builder.Query = "Status="+ method + "&District="+ district ;
 
-            HC.BaseAddress=new Uri("http://localhost:50369/api/");
+            if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
+            {
+                HC.BaseAddress = new Uri("http://localhost:50369/api/");
+            }
+            else
+            {
+                HC.BaseAddress = new Uri("https://aryavysya.karnataka.gov.in/api/");
+            }
             //var ConsAPI = HC.GetAsync("CaseWorker");
             var ConsAPI = HC.GetAsync(builder.Uri);
             
