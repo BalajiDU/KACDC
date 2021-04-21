@@ -32,7 +32,14 @@ namespace KACDC.TestForms
             IEnumerable<CaseWorker> CW = null;
             HttpClient HC = new HttpClient();
             //HC.BaseAddress = new Uri("http://localhost:50369/api/CaseWorker?District=Bengaluru%20Dakshina&Status=SESELECTCW");
-            HC.BaseAddress = new Uri("http://localhost:50369/api/CaseWorker");
+            if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
+            {
+                HC.BaseAddress = new Uri("http://localhost:50369/api/");
+            }
+            else
+            {
+                HC.BaseAddress = new Uri("https://aryavysya.karnataka.gov.in/api/");
+            }
             var ConsumeAPI = HC.GetAsync("CaseWorker");
             var request = new RestRequest(Method.GET);
             request.AddParameter("application/json",
@@ -174,7 +181,15 @@ namespace KACDC.TestForms
             using (var client = new HttpClient())
             {
                 var postedData = "{ JSON Data for post }";
-                client.BaseAddress = new Uri("http://localhost:50369/api/CaseWorker");
+                //client.BaseAddress = new Uri("http://localhost:50369/api/CaseWorker");
+                if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
+                {
+                    client.BaseAddress = new Uri("http://localhost:50369/api/CaseWorker");
+                }
+                else
+                {
+                    client.BaseAddress = new Uri("https://aryavysya.karnataka.gov.in/api/CaseWorker");
+                }
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 try
@@ -223,6 +238,14 @@ namespace KACDC.TestForms
             HttpClient HC = new HttpClient();
             string district = "Bengaluru Dakshina";
             var client = new RestClient("http://localhost:50369/api/CaseWorker?District=" + district + "&Status=SESELECTCW");
+            if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
+            {
+                client = new RestClient("http://localhost:50369/api/CaseWorker?District=" + district + "&Status=SESELECTCW");
+            }
+            else
+            {
+                client = new RestClient("https://aryavysya.karnataka.gov.in/api/CaseWorker?District=" + district + "&Status=SESELECTCW");
+            }
             //var ConsumeAPI = HC.GetAsync("CaseWorker");
             var request = new RestRequest(Method.GET);
             //request.AddParameter("application/json",
@@ -332,7 +355,15 @@ namespace KACDC.TestForms
         private void builderfun(string Method, string ApplicationStatus, string ApplicationNumber, string Reason)
         {
 
-            UriBuilder builder = new UriBuilder("http://localhost:50369/api/CaseWorker");
+            UriBuilder builder = new UriBuilder();
+            if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
+            {
+                builder = new UriBuilder("http://localhost:50369/api/CaseWorker");
+            }
+            else
+            {
+                builder = new UriBuilder("https://aryavysya.karnataka.gov.in/api/CaseWorker");
+            }
             //builder.Query = "Status=" + method + "&District=" + district;
 
             if (Reason == "")
