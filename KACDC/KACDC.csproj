@@ -489,6 +489,8 @@
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\ApprovalProcess.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessArivu.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessSelfEmployment.cs" />
     <Compile Include="Class\DataProcessing\BankData\BankDetails.cs" />
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
@@ -514,13 +516,14 @@
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataArivu.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
+    <Compile Include="Class\Declaration\Schemes\Arivu.cs" />
+    <Compile Include="Class\Declaration\Schemes\SelfEmployment.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
     <Compile Include="Class\Log\DataLogging.cs" />
     <Compile Include="Class\MessageSending\SendMessage.cs" />
     <Compile Include="Class\NadaKacheri_SelfEmployment.cs" />
     <Compile Include="Class\OtherData_SelfEmployment.cs" />
-    <Compile Include="Class\SelfEmployment.cs" />
     <Compile Include="Connected Services\NadaKacheriServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -535,6 +538,8 @@
     </Compile>
     <Compile Include="Controllers\ApprovalProcess\ApplicationCountController.cs" />
     <Compile Include="Controllers\ApprovalProcess\AppRejController.cs" />
+    <Compile Include="Controllers\ApprovalProcess\GetDataToApprovalProcessSelfEmploymentController.cs" />
+    <Compile Include="Controllers\ApprovalProcess\GetDataToApprovalProcessArivuController.cs" />
     <Compile Include="Controllers\CaseWorkerController.cs" />
     <Compile Include="CreateTextSharpPDF\Process\CollegeTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\MultiLineText.cs" />
@@ -779,7 +784,6 @@
   <ItemGroup>
     <Folder Include="AadhaarLogPhoto\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Class\DataProcessing\ApplicationProcess\CaseWorker\" />
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
     <Folder Include="Files_Arivu\2ND_INSTALMENT\" />
     <Folder Include="Files_Arivu\3RD_INSTALMENT\" />

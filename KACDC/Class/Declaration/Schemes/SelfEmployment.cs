@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace KACDC.Class
+namespace KACDC.Class.Declaration.Schemes
 {
     public class SelfEmployment
     {
@@ -28,6 +28,6 @@ namespace KACDC.Class
         public string BankAddress { get; set; }
         public string BankDetails { get; set; }
         public string Age { get; set; }
-
+        public string FinancialYear { get; set; }
     }
 }
