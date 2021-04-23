@@ -20,7 +20,41 @@
         <hr />
                     <asp:Label ID ="lblStatuscode" runat="server"></asp:Label>
 
-        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <Columns>
+            <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
+                                            <ItemTemplate>
+                                                <%# Eval("ApplicationNumber")%>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("ApplicationNumber") %>' Enabled="false" />
+                                            </EditItemTemplate>
+                                            <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
+                                        </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
+                                            <ItemTemplate>
+                                                <%# Eval("ApplicantName")%>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("ApplicantName") %>' Enabled="false" />
+                                            </EditItemTemplate>
+                                            <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
+                                        </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
+                                            <ItemTemplate>
+                                                <%# Eval("FinancialYear")%>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("FinancialYear") %>' Enabled="false" />
+                                            </EditItemTemplate>
+                                            <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
+                                        </asp:TemplateField>
+
+                </Columns>
+        </asp:GridView>
         <hr />
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" Text="verify substring" OnClick="Button1_Click" />

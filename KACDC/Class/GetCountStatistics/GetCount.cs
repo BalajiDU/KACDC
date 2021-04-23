@@ -1,9 +1,11 @@
-﻿using System;
+﻿using KACDC.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 
 namespace KACDC.Class.GetCountStatistics
@@ -11,6 +13,33 @@ namespace KACDC.Class.GetCountStatistics
     public class GetCount
     {
         public string GetTotalCount(string StotedProcedureName, string MethodName, string ApplicationStatus = "", string District = "", string Zone = "")
+        {
+            IEnumerable<CountValue> CW = null;
+            HttpClient HC = new HttpClient();
+            UriBuilder builder = new UriBuilder();
+
+            if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
+            {
+                builder = new UriBuilder("http://localhost:50369/api/ApplicationCount/");
+            }
+            else
+            {
+                builder = new UriBuilder("https://aryavysya.karnataka.gov.in/api/ApplicationCount/");
+            }
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            if (StotedProcedureName != "") query["StotedProcedureName"] = StotedProcedureName;
+            if (MethodName != "") query["MethodName"] = MethodName;
+            if (ApplicationStatus != "") query["ApplicationStatus"] = ApplicationStatus;
+            if (District != "") query["District"] = District;
+            if (Zone != "") query["Zone"] = Zone;
+           
+            builder.Query = query.ToString();
+
+            var client = new System.Net.WebClient();
+            var jObject_Response = Newtonsoft.Json.Linq.JObject.Parse(client.DownloadString(builder.Uri));
+            return jObject_Response.GetValue("Count").ToString();            
+        }
+        public string GetTotalCountOld(string StotedProcedureName, string MethodName, string ApplicationStatus = "", string District = "", string Zone = "")
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
