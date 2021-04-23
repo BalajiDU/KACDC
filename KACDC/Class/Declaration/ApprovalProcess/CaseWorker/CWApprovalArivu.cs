@@ -32,5 +32,6 @@ namespace KACDC.Class.Declaration.ApprovalProcess.CaseWorker
             set { HttpContext.Current.Session["CWARHoldApplicationCount"] = value; }
             get { return HttpContext.Current.Session["CWARHoldApplicationCount"] as string; }
         }
+        
     }
 }

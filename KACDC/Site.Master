@@ -364,7 +364,7 @@ header ul li:hover ul {
             <section>
                 <header>
                 <a href="Default.aspx" class="brand">
-                    <img src="Image/KACDC.png" /></a>
+                    <img src="Image/KACDC.png" style="width:70px;margin-top:10px;" /></a>
                     <a class="">
                         <div class="toggleMenuButton" onclick="myFunction(this)" aria-label="Main Menu" style="z-index: 1; ">
                             <svg width="75" height="60" viewBox="25 20 80 75">

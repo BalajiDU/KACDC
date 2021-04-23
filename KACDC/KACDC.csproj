@@ -506,6 +506,7 @@
     <Compile Include="Class\Declaration\Aadhaar\AadhaarServiceData.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalArivu.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalSelfEmploymentcs.cs" />
+    <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWProcess.cs" />
     <Compile Include="Class\Declaration\BankDetails\DecBankDetails.cs" />
     <Compile Include="Class\Declaration\CollegeData\ApplicantCollegeData.cs" />
     <Compile Include="Class\Declaration\EmailDeclaration\EmailVarDec.cs" />
@@ -778,6 +779,7 @@
   <ItemGroup>
     <Folder Include="AadhaarLogPhoto\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Class\DataProcessing\ApplicationProcess\CaseWorker\" />
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
     <Folder Include="Files_Arivu\2ND_INSTALMENT\" />
     <Folder Include="Files_Arivu\3RD_INSTALMENT\" />

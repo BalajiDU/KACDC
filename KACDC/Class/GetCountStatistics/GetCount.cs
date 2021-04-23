@@ -12,7 +12,7 @@ namespace KACDC.Class.GetCountStatistics
 {
     public class GetCount
     {
-        public string GetTotalCount(string StotedProcedureName, string MethodName, string ApplicationStatus = "", string District = "", string Zone = "")
+        public string GetTotalCount(string StotedProcedureName, string MethodName, string ApplicationStatus = "", string District = "",string Gender="", string Zone = "")
         {
             IEnumerable<CountValue> CW = null;
             HttpClient HC = new HttpClient();
@@ -32,6 +32,7 @@ namespace KACDC.Class.GetCountStatistics
             if (ApplicationStatus != "") query["ApplicationStatus"] = ApplicationStatus;
             if (District != "") query["District"] = District;
             if (Zone != "") query["Zone"] = Zone;
+            if (Gender != "") query["Gender"] = Gender;
            
             builder.Query = query.ToString();
 

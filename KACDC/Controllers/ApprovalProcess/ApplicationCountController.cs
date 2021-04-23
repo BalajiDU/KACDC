@@ -23,7 +23,7 @@ namespace KACDC.Controllers.ApprovalProcess
         }
 
         [HttpGet]
-        public IHttpActionResult Count(string StotedProcedureName, string MethodName, string ApplicationStatus = "", string District = "", string Zone = "")
+        public IHttpActionResult Count(string StotedProcedureName, string MethodName, string ApplicationStatus = "", string District = "", string Gender = "", string Zone = "")
         {
             
             try
@@ -40,6 +40,7 @@ namespace KACDC.Controllers.ApprovalProcess
                             cmd.Parameters.AddWithValue("@MethodName", MethodName);
                             cmd.Parameters.AddWithValue("@ApplicationStatusType", ApplicationStatus);
                             cmd.Parameters.AddWithValue("@District", District);
+                            cmd.Parameters.AddWithValue("@Gender", Gender);
                             cmd.Parameters.Add("@RetValue", SqlDbType.VarChar, -1);
                             cmd.Parameters["@RetValue"].Direction = ParameterDirection.Output;
                             kvdConn.Open();
