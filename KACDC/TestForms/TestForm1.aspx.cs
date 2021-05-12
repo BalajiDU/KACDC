@@ -1,4 +1,5 @@
-﻿using KACDC.Class.DataProcessing.Nadakacheri;
+﻿using KACDC.Class.DataProcessing.Aadhaar;
+using KACDC.Class.DataProcessing.Nadakacheri;
 using KACDC.Class.GetCountStatistics;
 using KACDC.Models;
 using Newtonsoft.Json.Linq;
@@ -24,9 +25,16 @@ namespace KACDC.TestForms
         {
             MainTestNew();
             HostingEnvironment env;
-            
-            Label2.Text= HttpContext.Current.Request.Url.Host;
-
+            try
+            {
+                //Label2.Text = HttpContext.Current.Request.Url.Host;
+                //Label2.Text = HttpContext.Current.Request.Url.AbsoluteUri;
+                Label2.Text = HttpContext.Current.Request.IsLocal.ToString();
+            }
+            catch (Exception ex)
+            {
+                Label2.Text += "<br />"+ex.Message;
+            }
             //if()
         }
         //public void test5()
@@ -113,105 +121,112 @@ namespace KACDC.TestForms
         //}
         public void MainTestNew()
         {
-            IEnumerable<CaseWorker> CW = null;
-            HttpClient HC = new HttpClient();
-            string district = "Bengaluru Dakshina";
-            string method = "SESELECTCW";
+            try
+            {
+                IEnumerable<CaseWorker> CW = null;
+                HttpClient HC = new HttpClient();
+                string district = "Bengaluru Dakshina";
+                string method = "SESELECTCW";
 
-            //var values = new List<KeyValuePair<string, string>>();
-            //values.Add(new KeyValuePair<string, string>("id", param.Id.Value));
-            //values.Add(new KeyValuePair<string, string>("type", param.Type.Value));
-            //var content = new FormUrlEncodedContent(values);
-            UriBuilder builder = new UriBuilder();
-            //builder.Query = "Status='"+ method + "'&District='"+ district + "'";
-            
+                //var values = new List<KeyValuePair<string, string>>();
+                //values.Add(new KeyValuePair<string, string>("id", param.Id.Value));
+                //values.Add(new KeyValuePair<string, string>("type", param.Type.Value));
+                //var content = new FormUrlEncodedContent(values);
+                UriBuilder builder = new UriBuilder();
+                //builder.Query = "Status='"+ method + "'&District='"+ district + "'";
 
-            if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
-            {
-                builder = new UriBuilder("http://localhost:50369/api/CaseWorker/");
-            }
-            else
-            {
-                builder = new UriBuilder("https://aryavysya.karnataka.gov.in/api/CaseWorker/");
-            }
-            //var ConsAPI = HC.GetAsync("CaseWorker");
-            builder.Query = "Status=" + method + "&District=" + district;
-            var ConsAPI = HC.GetAsync(builder.Uri);
-            
-            ConsAPI.Wait();
-            var readData = ConsAPI.Result;
-            if (readData.IsSuccessStatusCode)
-            {
-                
-                var disprecord = readData.Content.ReadAsAsync<IList<CaseWorker>>();
-                disprecord.Wait();
-                CW = disprecord.Result;
-                lblStatuscode.Text = builder.Uri.ToString() + "<br />OK <br />" + ConsAPI.Result.ToString() + "<br />" + CW;
-                int qwe = CW.Cast<CaseWorker>().Count();
-                if (CW.Cast<CaseWorker>().Count() > 0)
+
+                if (HttpContext.Current.Request.Url.Host.ToString() == "localhost")
                 {
-                    GridView1.DataSource = CW;
-                    GridView1.DataBind();
+                    builder = new UriBuilder("http://localhost:50369/api/CaseWorker/");
                 }
                 else
                 {
-                    ////GridView GridView1 = (GridView)sender;
-                    //GridViewRow NewTotalRow = new GridViewRow(0, 0, DataControlRowType.DataRow, DataControlRowState.Insert);
-                    //NewTotalRow.Font.Bold = true;
-                    //NewTotalRow.BackColor = System.Drawing.Color.Aqua;
-                    //TableCell HeaderCell = new TableCell();
-                    //HeaderCell.Height = 10;
-                    //HeaderCell.HorizontalAlign = HorizontalAlign.Center;
-                    //HeaderCell.ColumnSpan = 4;
-                    //NewTotalRow.Cells.Add(HeaderCell);
-                    //GridView1.Controls[0].Controls.AddAt(1, NewTotalRow);
-                    ////rowIndex++;
-
-                    ////iRow = Convert.ToInt32(GridView1.Rows.Count.ToString());
-                    //DataRow dr;
-                    //DataTable dtable = new DataTable();
-                    ////for (int i = dtable.Rows.Count; i < 10; i++)
-                    //for (int i = GridView1.Rows.Count; i < 1; i++)
-                    //{
-                    //    dr = dtable.NewRow();
-                    //    dtable.Rows.Add(dr);
-                    //}
-                    //dtable.AcceptChanges();
-
-
-
-
-
-
-
-
-                    //int columncount = GridView1.Rows[0].Cells.Count;
-                    //GridView1.Rows[0].Cells.Clear();
-                    //GridView1.Rows[0].Cells.Add(new TableCell());
-                    //GridView1.Rows[0].Cells[0].ColumnSpan = columncount;
-                    //GridView1.Rows[0].Cells[0].Text = "No Records Found";
+                    builder = new UriBuilder("https://aryavysya.karnataka.gov.in/api/CaseWorker/");
                 }
+                //var ConsAPI = HC.GetAsync("CaseWorker");
+                builder.Query = "Status=" + method + "&District=" + district;
+                var ConsAPI = HC.GetAsync(builder.Uri);
+
+                ConsAPI.Wait();
+                var readData = ConsAPI.Result;
+                if (readData.IsSuccessStatusCode)
+                {
+
+                    var disprecord = readData.Content.ReadAsAsync<IList<CaseWorker>>();
+                    disprecord.Wait();
+                    CW = disprecord.Result;
+                    lblStatuscode.Text = builder.Uri.ToString() + "<br />OK <br />" + ConsAPI.Result.ToString() + "<br />" + CW;
+                    int qwe = CW.Cast<CaseWorker>().Count();
+                    if (CW.Cast<CaseWorker>().Count() > 0)
+                    {
+                        GridView1.DataSource = CW;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        ////GridView GridView1 = (GridView)sender;
+                        //GridViewRow NewTotalRow = new GridViewRow(0, 0, DataControlRowType.DataRow, DataControlRowState.Insert);
+                        //NewTotalRow.Font.Bold = true;
+                        //NewTotalRow.BackColor = System.Drawing.Color.Aqua;
+                        //TableCell HeaderCell = new TableCell();
+                        //HeaderCell.Height = 10;
+                        //HeaderCell.HorizontalAlign = HorizontalAlign.Center;
+                        //HeaderCell.ColumnSpan = 4;
+                        //NewTotalRow.Cells.Add(HeaderCell);
+                        //GridView1.Controls[0].Controls.AddAt(1, NewTotalRow);
+                        ////rowIndex++;
+
+                        ////iRow = Convert.ToInt32(GridView1.Rows.Count.ToString());
+                        //DataRow dr;
+                        //DataTable dtable = new DataTable();
+                        ////for (int i = dtable.Rows.Count; i < 10; i++)
+                        //for (int i = GridView1.Rows.Count; i < 1; i++)
+                        //{
+                        //    dr = dtable.NewRow();
+                        //    dtable.Rows.Add(dr);
+                        //}
+                        //dtable.AcceptChanges();
+
+
+
+
+
+
+
+
+                        //int columncount = GridView1.Rows[0].Cells.Count;
+                        //GridView1.Rows[0].Cells.Clear();
+                        //GridView1.Rows[0].Cells.Add(new TableCell());
+                        //GridView1.Rows[0].Cells[0].ColumnSpan = columncount;
+                        //GridView1.Rows[0].Cells[0].Text = "No Records Found";
+                    }
+                }
+                else
+                {
+                    lblStatuscode.Text = "Not OK <br />" + ConsAPI.Result.ToString();
+
+                }
+
+                //IRestResponse response = client.Execute(request);
+                //Console.WriteLine(response.Content);
+                //string responseData = response.Content;
+                //lblStatuscode.Text = response.StatusCode.ToString();
+                //if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                //{
+                //    var jObject = JObject.Parse(response.Content);
+                //    //string token1 = jObject.GetValue("token").ToString();
+                //    lblStatuscode.Text = jObject.GetValue("ApplicantName").ToString();
+
+
+                //    //var dispREcord= response.Content.re
+                //    //Response.Write("___response token is:" + token1);
+                //}
             }
-            else
+            catch (Exception ex)
             {
-                lblStatuscode.Text = "Not OK <br />"+ ConsAPI.Result.ToString();
-
+                Label2.Text += "<br />" + ex.Message;
             }
-
-            //IRestResponse response = client.Execute(request);
-            //Console.WriteLine(response.Content);
-            //string responseData = response.Content;
-            //lblStatuscode.Text = response.StatusCode.ToString();
-            //if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            //{
-            //    var jObject = JObject.Parse(response.Content);
-            //    //string token1 = jObject.GetValue("token").ToString();
-            //    lblStatuscode.Text = jObject.GetValue("ApplicantName").ToString();
-
-
-            //    //var dispREcord= response.Content.re
-            //    //Response.Write("___response token is:" + token1);
-            //}
         }
         public void AddNewRow(object sender, GridViewRowEventArgs e)
         {
@@ -436,7 +451,9 @@ namespace KACDC.TestForms
             Label1.Text = builder.ToString()+"<br />"+ builder.Query.ToString();
 
             GetCount CwGetCount = new GetCount();
+            AadhaarEnceyption AE = new AadhaarEnceyption();
             Label1.Text +="<br />"+ CwGetCount.GetTotalCount("spGetApplicationCount", Reason);
+            Label1.Text += "<br />" + AE.GetAadhaarToken("301007056373");
         }
     }
 }

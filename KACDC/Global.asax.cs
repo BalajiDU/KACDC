@@ -12,6 +12,9 @@ namespace KACDC
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            //AreaRegistration.RegisterAllAreas();
+            //System.Web.Http.GlobalConfiguration.Configure(WebApiConfig.Register);
+            //RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }
