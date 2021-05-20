@@ -15,17 +15,18 @@
         }
 
     </style>
-    <div>
+    <div style="font-weight:bold;font-size:18px;">
         <marquee direction="left" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="80" style="height: 20px;">
-       <asp:Literal ID="Scroll1" runat="server" Text="KACDC1"></asp:Literal>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <asp:Literal ID="Scroll1" runat="server" Text=""></asp:Literal>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <asp:Literal ID="Scroll2" runat="server" Text=""></asp:Literal>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Literal ID="Scroll3" runat="server" Text="KACDC3"></asp:Literal>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Literal ID="Scroll4" runat="server" Text="KACDC4"></asp:Literal>
+        <asp:Literal ID="Scroll3" runat="server" Text=""></asp:Literal>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Literal ID="Scroll4" runat="server" Text=""></asp:Literal>
             <p>
 
             </p>
      </marquee>
     </div>
+
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

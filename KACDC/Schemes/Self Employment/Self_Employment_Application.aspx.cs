@@ -67,7 +67,7 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnAadhaarGetOTP_Click(object sender, EventArgs e)
         {
-            if (txtRDNumber.Text.Trim().Length == 12)
+            if (txtAadhaarNumber.Text.Trim().Length == 12)
             {
                 if (Regex.IsMatch(txtAadhaarNumber.Text.Trim(), @"^\d+$"))
                 {

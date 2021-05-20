@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KACDC.Class.DataProcessing.SMSService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,9 +19,26 @@ namespace KACDC.WebServices
     {
 
         [WebMethod]
-        public string HelloWorld()
+        public string SendMessage(string Message,string MobileNumber,string MessageType,string Key)
         {
-            return "Hello World";
+            if (Key == "KABA94ASBHSU14DBA3U")
+            {
+                if (Message.Length > 1)
+                {
+                    if (MobileNumber.Length == 10)
+                    {
+                        if(System.Text.RegularExpressions.Regex.IsMatch(MobileNumber, @"^\d+$"))
+                        {
+                            SendSMS SM = new SendSMS();
+                            return SM.sendSMS(MobileNumber,Message,2, MessageType);
+                        }
+                        else { return "Invalid Mobile Number"; }
+                    }
+                    else { return "Invalid Mobile Number"; }
+                }
+                else { return "Invalid Message"; }
+            }
+            else { return "Invalid Key"; }
         }
     }
 }

@@ -21,9 +21,13 @@
     box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.5),
                 inset -6px -6px 10px rgba(0, 0, 0, 0.05);
 }
-.container .card .ImgBx img{
-    max-width:120px;
-}
+    .container .card .ImgBx img {
+        max-width: 120px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
 .container .card .ContentBox{
     position:relative;
     margin-top:20px;
@@ -44,12 +48,14 @@
 }
 .container .card .ContentBox a{
     display:inline-block;
-    padding:10px 20px;
+    padding:5px 20px;
     margin-top:5px;
     font-size:15px;
     text-decoration:none;
     color:#32a3b1;
     border-radius:5px;
+    min-width:80%;
+
 box-shadow: -1px -1px 20px rgba(255, 255, 255, 0.1),
                 -1px -1px 40px rgba(0, 0, 0, 0.1);
 }

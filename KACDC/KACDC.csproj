@@ -263,6 +263,7 @@
     <Content Include="Image\KACDC_PDF.png" />
     <Content Include="Image\KACDC_PDF_Old.png" />
     <Content Include="Image\loadingAnim.gif" />
+    <Content Include="Image\loan.png" />
     <Content Include="KACDC_AppInfo.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Schemes\Arivu\AboutArivu.aspx" />
