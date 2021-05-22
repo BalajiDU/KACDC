@@ -34,9 +34,9 @@ namespace KACDC.WebServices
 	  ,CASE WHEN ZMApprove = 'REJECTED' THEN ZMApprove+' : '+ZMRejectReason else ZMApprove END ZMStatus
         ,datediff(year,DoB,getdate()) as Age
 	  from SelfEmpLoan";
-            SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString);
+            
             List<SelfEmployment> SEApplication = new List<SelfEmployment>();
-            using (kvdConn)
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand(SQL, kvdConn);
                 cmd.CommandType = CommandType.Text;

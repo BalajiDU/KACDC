@@ -519,6 +519,9 @@
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
     <Compile Include="Class\Declaration\Schemes\Arivu.cs" />
     <Compile Include="Class\Declaration\Schemes\SelfEmployment.cs" />
+    <Compile Include="Class\Declaration\WebServices\ApprovedDataForTally.cs" />
+    <Compile Include="Class\Declaration\WebServices\ARWebService.cs" />
+    <Compile Include="Class\Declaration\WebServices\SEWebService.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
     <Compile Include="Class\Log\DataLogging.cs" />
