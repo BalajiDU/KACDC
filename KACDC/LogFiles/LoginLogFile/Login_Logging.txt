@@ -53,3 +53,51 @@ WebPage Name :Login.aspx
 User Name:HoMessage
 User Type:MESSAGESERVICE
 IP:::1
+
+-----------------New Login-----------------
+Date : 24-05-2021
+Time : 10:53 AM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 24-05-2021
+Time : 10:53 AM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 24-05-2021
+Time : 11:34 AM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 24-05-2021
+Time : 11:54 AM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 24-05-2021
+Time : 12:59 PM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 24-05-2021
+Time : 12:59 PM
+WebPage Name :Login.aspx
+User Name:Kacdc@AppView
+User Type:DATAVIEW
+IP:::1

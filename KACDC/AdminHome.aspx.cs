@@ -21,7 +21,7 @@ namespace KACDC
         static Byte[] byCM, byMinister, byChairman, byGOK, byKACDC;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["USERTYPE"].ToString() != "ADMIN")
+            if (Session["USERTYPE"].ToString() != "ADMIN" || Session["USERTYPE"] == null)
             {
                 Response.Redirect("~/Login.aspx");
 

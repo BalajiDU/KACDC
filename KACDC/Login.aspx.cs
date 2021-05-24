@@ -22,7 +22,7 @@ namespace KACDC
         static string LoginUserName, UserType, UserPwd,UserActivation, UserDistrict;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["LoginLogout"] = "Login";            
         }
         protected void ValidateUser(object sender, EventArgs e)
         {

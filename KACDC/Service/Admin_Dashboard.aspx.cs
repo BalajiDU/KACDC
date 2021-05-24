@@ -11,7 +11,11 @@ namespace KACDC.Service
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["USERTYPE"] != "DASHBOARD")
+            {
+                Response.Redirect("~/Login.aspx");
+                //UserName = Session["UserName"].ToString();
+            }
         }
     }
 }

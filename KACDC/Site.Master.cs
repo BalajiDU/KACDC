@@ -23,6 +23,10 @@ namespace KACDC
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Session["LoginLogout"] = "Login";
+            }
             try
             {
                 using (kvdConn)
@@ -55,6 +59,20 @@ namespace KACDC
             {
                 Response.Write(ex.Message);
             }
+        }
+        protected void btnLoginLogout_Click(object sender, EventArgs e)
+        {
+            //if (btnLoginLogout.InnerText.ToUpper() == "LOGIN")
+            //{
+            //    Response.Redirect(@"~\Login.aspx");
+            //    btnLoginLogout.InnerText = "Logout";
+            //}
+            //else if(btnLoginLogout.InnerText.ToUpper() == "LOGOUT")
+            //{
+            //    btnLoginLogout.InnerText = "Login";
+            //    Session.Clear();
+            //    Response.Redirect("~/Login.aspx");
+            //}
         }
     }
 }

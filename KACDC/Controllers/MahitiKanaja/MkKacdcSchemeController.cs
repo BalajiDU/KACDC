@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace KACDC.Controllers.MahitiKanaja
 {
-    public class MKArivuController : ApiController
+    public class MkKacdcSchemeController : ApiController
     {
         [HttpGet]
         public IHttpActionResult Arivu(string Scheme,string District="",string Taluk="")

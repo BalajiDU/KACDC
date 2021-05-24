@@ -405,6 +405,7 @@ header ul li:hover ul {
 
                         <li>
                             <a runat="server" href="Login.aspx">Login</a>
+<%--                            <a runat="server" onclick="btnLoginLogout_Click" id="btnLoginLogout">Login</a>--%>
                         </li>
 
                     </ul>

@@ -60,11 +60,11 @@
             }
     </style>
     <style type="text/css">
-        section {
+        .clsSection {
             padding: 20px 0;
         }
 
-            section .section-title {
+            .clsSection .section-title {
                 text-align: center;
                 color: darkblue;
                 margin-bottom: 50px;
@@ -393,7 +393,7 @@
 
         .sidebar {
             position: fixed;
-            width: 250px;
+            width: 220px;
             height: 100%;
             z-index: 100;
             left:0;
@@ -403,34 +403,38 @@
             cursor: pointer;
         }
 
-            .sidebar header {
+            .sidebar .AdmHmHeader {
                 font-size: 22px;
                 color: white;
-                line-height: 70px;
+                line-height: 50px;
                 text-align: center;
                 background: #063146;
                 user-select: none;
+                cursor:default;
             }
 
-            .sidebar ul a {
+            .sidebar .AdmHmUl a {
                 display: block;
                 height: 100%;
                 width: 100%;
-                line-height: 65px;
+                /*line-height: 65px;*/
                 font-size: 20px;
                 color: white;
-                padding-left: 40px;
+                padding-left: 30px;
                 box-sizing: border-box;
                 border-bottom: 1px solid black;
                 border-top: 1px solid rgba(255,255,255,.1);
                 transition: .4s;
+                flex-direction:column;
+                top:auto;
+                bottom:auto;
             }
 
-        ul li:hover a {
+       .AdmHmUl .AdmHmLi:hover a {
             padding-left: 50px;
         }
 
-        .sidebar ul a i {
+        .sidebar .AdmHmUl a i {
             margin-right: 16px;
         }
 
@@ -460,7 +464,7 @@
             transition: all .5s ease;
         }
 
-        section {
+        .clsSection {
             background: url(bg.jpeg) no-repeat;
             background-position: center;
             background-size: cover;
@@ -472,16 +476,21 @@
             display: block;
                 height: 100%;
                 width: 100%;
-                line-height: 65px;
+                line-height: 40px;
                 font-size: 20px;
                 color: white;
-                padding-left: -40px;
+                margin-left: -40px;
                 box-sizing: border-box;
                 border-bottom: 1px solid black;
                 border-top: 1px solid rgba(255,255,255,.1);
                 transition: .4s;
                 background:transparent;
                 color:red;
+        }
+        .AdmHmLi{
+            /*border:2px solid white;*/
+            height:40px;
+            list-style: none;
         }
     </style>
 
@@ -495,19 +504,19 @@
 <%--    <asp:Button ID="btnLogout1" runat="server" Text="Logout" OnClick="btnLogout_Click" />--%>
     <div class="Page">
     <div class="sidebar">
-        <header>KACDC</header>
-        <ul>
-            <li><a class="nav-item nav-link active fas fa-qrcode" id="nav-homePage-tab" data-toggle="tab" href="#nav-homePage" role="tab" aria-controls="nav-homePage" aria-selected="true">Home Page</a></li>
-            <li><a class="nav-item nav-link" id="nav-DM-tab" data-toggle="tab" href="#nav-DM" role="tab" aria-controls="nav-DM" aria-selected="false">District Manager</a></li>
-            <li><a class="nav-item nav-link" id="nav-ZM-tab" data-toggle="tab" href="#nav-ZM" role="tab" aria-controls="nav-ZM" aria-selected="false">Zonal Manager</a></li>
-            <li><a class="nav-item nav-link" id="nav-HO-tab" data-toggle="tab" href="#nav-HO" role="tab" aria-controls="nav-HO" aria-selected="false">Head Office</a></li>
-            <li><a class="nav-item nav-link" id="nav-User-tab" data-toggle="tab" href="#nav-User" role="tab" aria-controls="nav-User" aria-selected="false">Users</a></li>
-            <li><a class="nav-item nav-link" id="nav-Slider-tab" data-toggle="tab" href="#nav-Slider" role="tab" aria-controls="nav-Slider" aria-selected="false">Slider</a></li>
-            <li><a class="nav-item nav-link" id="nav-MPIC-tab" data-toggle="tab" href="#nav-MPIC" role="tab" aria-controls="nav-MPIC" aria-selected="false">MPIC Target</a></li>
-            <li><a> <asp:Button ID="btnLogout" class="LogoutButton" runat="server" Text="Logout" OnClick="btnLogout_Click" /></a> </li>
+        <header class="AdmHmHeader" style="height:50px">KACDC</header>
+        <ul class="AdmHmUl" style="flex-direction:column;top: 10px;float:left">
+            <li class="AdmHmLi"><a class="nav-item nav-link active fas fa-qrcode" id="nav-homePage-tab" data-toggle="tab" href="#nav-homePage" role="tab" aria-controls="nav-homePage" aria-selected="true">Home Page</a></li>
+            <li class="AdmHmLi"><a class="nav-item nav-link" id="nav-DM-tab" data-toggle="tab" href="#nav-DM" role="tab" aria-controls="nav-DM" aria-selected="false">District Manager</a></li>
+            <li class="AdmHmLi"><a class="nav-item nav-link" id="nav-ZM-tab" data-toggle="tab" href="#nav-ZM" role="tab" aria-controls="nav-ZM" aria-selected="false">Zonal Manager</a></li>
+            <li class="AdmHmLi"><a class="nav-item nav-link" id="nav-HO-tab" data-toggle="tab" href="#nav-HO" role="tab" aria-controls="nav-HO" aria-selected="false">Head Office</a></li>
+            <li class="AdmHmLi"><a class="nav-item nav-link" id="nav-User-tab" data-toggle="tab" href="#nav-User" role="tab" aria-controls="nav-User" aria-selected="false">Users</a></li>
+            <li class="AdmHmLi"><a class="nav-item nav-link" id="nav-Slider-tab" data-toggle="tab" href="#nav-Slider" role="tab" aria-controls="nav-Slider" aria-selected="false">Slider</a></li>
+            <li class="AdmHmLi"><a class="nav-item nav-link" id="nav-MPIC-tab" data-toggle="tab" href="#nav-MPIC" role="tab" aria-controls="nav-MPIC" aria-selected="false">MPIC Target</a></li>
+            <li class="AdmHmLi"><a> <asp:Button ID="btnLogout" class="LogoutButton" runat="server" Text="Logout" OnClick="btnLogout_Click" /></a> </li>
         </ul>
     </div>
-    <section id="tabs">    
+    <section id="tabs" class="clsSection">    
         <div class="align-content-center">
             <%--<div class="col-xs-12 ">
                 <nav>
@@ -526,7 +535,7 @@
                     <div class="col-md-12">
                         <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                             <div class="tab-pane fade  active" id="nav-homePage" role="tabpanel" aria-labelledby="nav-homePage-tab">
-                                <table style="width: 100%">
+                                <table style="width: 100%" class="AdmHmTable">
                                    
                                     <tr>
                                         <td style="height: 26px">CM Name</td>

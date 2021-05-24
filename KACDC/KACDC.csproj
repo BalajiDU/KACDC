@@ -546,7 +546,7 @@
     <Compile Include="Controllers\ApprovalProcess\GetDataToApprovalProcessSelfEmploymentController.cs" />
     <Compile Include="Controllers\ApprovalProcess\GetDataToApprovalProcessArivuController.cs" />
     <Compile Include="Controllers\CaseWorkerController.cs" />
-    <Compile Include="Controllers\MahitiKanaja\MKArivuController.cs" />
+    <Compile Include="Controllers\MahitiKanaja\MkKacdcSchemeController.cs" />
     <Compile Include="Controllers\MahitiKanaja\MKSelfEmploymentController.cs" />
     <Compile Include="CreateTextSharpPDF\Process\CollegeTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\MultiLineText.cs" />
