@@ -115,6 +115,7 @@ namespace KACDC.ApprovalPage
             lblZMARBBranch.Text = BD.Branch;
             lblZMARBIFSCCode.Text = BD.IFSCCode;
             lblZMARBBankAddress.Text = BD.BankAddress;
+            ZMARBankDetailsPopup.Show();
         }
         protected void btnZMARDisplayBankDetailsUpdate_Click(object sender, EventArgs e)
         {
@@ -129,7 +130,39 @@ namespace KACDC.ApprovalPage
             txtZMARBDUpdateBranchName.Text = BD.Branch;
             txtZMARBDUpdateIFSCCode.Text = BD.IFSCCode;
             txtZMARBDUpdateBankAddress.Text = BD.BankAddress;
+            ZMARBankDetailsUpdatePopup.Show();
         }
+        protected void btnZMSEDisplayBankDetails_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            lblZMSEBDApplicationNumber.Text = BD.ApplicationNumber;
+            lblZMSEBAccountHolderName.Text = BD.ApplicantName;
+            lblZMSEBAccountNumber.Text = BD.AccountNumber;
+            lblZMSEBBankName.Text = BD.BankName;
+            lblZMSEBBranch.Text = BD.Branch;
+            lblZMSEBIFSCCode.Text = BD.IFSCCode;
+            lblZMSEBBankAddress.Text = BD.BankAddress;
+            ZMSEBankDetailsPopup.Show();
+        }
+        protected void btnZMSEDisplayBankDetailsUpdate_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            lblZMSEBDUpdateApplicationNumber.Text = BD.ApplicationNumber;
+            lblZMSEBDUpdateAccountHolderName.Text = BD.ApplicantName;
+            txtZMSEBDUpdateAccountNumber.Text = BD.AccountNumber;
+            txtZMSEBDUpdateBankName.Text = BD.BankName;
+            txtZMSEBDUpdateBranchName.Text = BD.Branch;
+            txtZMSEBDUpdateIFSCCode.Text = BD.IFSCCode;
+            txtZMSEBDUpdateBankAddress.Text = BD.BankAddress;
+            ZMSEBankDetailsUpdatePopup.Show();
+        }
+        
         protected void drpZoneSESanction_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -235,14 +268,7 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void btnZMSEDisplayBankDetails_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMSEDisplayBankDetailsUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnZMSEApprove_Click(object sender, EventArgs e)
         {
 
