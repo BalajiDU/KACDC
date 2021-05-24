@@ -23,10 +23,10 @@ namespace KACDC.WebServices
     {
 
         [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
-        public List<ApprovedDataForTally> Arivu()
+        public List<WSApprovedDataForTally> Arivu()
         {
-            ApprovedDataForTally AR = new ApprovedDataForTally();
-            List<ApprovedDataForTally> ARApplication = new List<ApprovedDataForTally>();
+            WSApprovedDataForTally AR = new WSApprovedDataForTally();
+            List<WSApprovedDataForTally> ARApplication = new List<WSApprovedDataForTally>();
 
             try
             {
@@ -59,10 +59,10 @@ namespace KACDC.WebServices
             }
         }
         [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
-        public List<ApprovedDataForTally> SelfEmployment()
+        public List<WSApprovedDataForTally> SelfEmployment()
         {
-            ApprovedDataForTally AR = new ApprovedDataForTally();
-            List<ApprovedDataForTally> ARApplication = new List<ApprovedDataForTally>();
+            WSApprovedDataForTally AR = new WSApprovedDataForTally();
+            List<WSApprovedDataForTally> ARApplication = new List<WSApprovedDataForTally>();
             try
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace KACDC.Class.Declaration.WebServices
 {
-    public class SEWebService
+    public class WSSEWebService
     {
         public string ImgPath { get; set; }
         public string ApplicationNumber { get; set; }

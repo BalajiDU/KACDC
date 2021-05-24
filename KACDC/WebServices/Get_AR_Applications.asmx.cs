@@ -21,7 +21,7 @@ namespace KACDC.WebServices
     // [System.Web.Script.Services.ScriptService]
     public class Get_AR_Applications : System.Web.Services.WebService
     {
-        ARWebService AR = new ARWebService();
+        WSARWebService AR = new WSARWebService();
         [WebMethod]
         public void GetArivu()
         {
@@ -29,7 +29,7 @@ namespace KACDC.WebServices
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
-                    List<ARWebService> ARApplication = new List<ARWebService>();
+                    List<WSARWebService> ARApplication = new List<WSARWebService>();
                     using (SqlCommand cmd = new SqlCommand("spGetARApplications", kvdConn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -37,7 +37,7 @@ namespace KACDC.WebServices
                         SqlDataReader rdr = cmd.ExecuteReader();
                         while (rdr.Read())
                         {
-                            ARWebService AR = new ARWebService();
+                            WSARWebService AR = new WSARWebService();
                             AR.ImgPath = rdr["ImgPath"].ToString();
                             AR.ApplicationNumber = rdr["ApplicationNumber"].ToString();
                             AR.ApplicantName = rdr["ApplicantName"].ToString();

@@ -30,7 +30,7 @@ namespace KACDC.WebServices
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
-                    List<SEWebService> SEApplication = new List<SEWebService>();
+                    List<WSSEWebService> SEApplication = new List<WSSEWebService>();
                     using (SqlCommand cmd = new SqlCommand("spGetSEApplications", kvdConn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -38,7 +38,7 @@ namespace KACDC.WebServices
                         SqlDataReader rdr = cmd.ExecuteReader();
                         while (rdr.Read())
                         {
-                            SEWebService SE = new SEWebService();
+                            WSSEWebService SE = new WSSEWebService();
                             SE.ImgPath = rdr["ImgPath"].ToString();
                             SE.ApplicationNumber = rdr["ApplicationNumber"].ToString();
                             SE.ApplicantName = rdr["ApplicantName"].ToString();

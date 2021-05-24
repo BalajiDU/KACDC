@@ -5,7 +5,7 @@ using System.Web;
 
 namespace KACDC.Class.Declaration.WebServices
 {
-    public class ARWebService
+    public class WSARWebService
     {
         public string ImgPath { get; set; }
         public string ApplicationNumber { get; set; }

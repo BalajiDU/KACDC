@@ -519,9 +519,10 @@
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
     <Compile Include="Class\Declaration\Schemes\Arivu.cs" />
     <Compile Include="Class\Declaration\Schemes\SelfEmployment.cs" />
-    <Compile Include="Class\Declaration\WebServices\ApprovedDataForTally.cs" />
-    <Compile Include="Class\Declaration\WebServices\ARWebService.cs" />
-    <Compile Include="Class\Declaration\WebServices\SEWebService.cs" />
+    <Compile Include="Class\Declaration\WebServices\WSApprovedDataForTally.cs" />
+    <Compile Include="Class\Declaration\WebServices\WSARWebService.cs" />
+    <Compile Include="Class\Declaration\WebServices\WSMahitiKhanaja.cs" />
+    <Compile Include="Class\Declaration\WebServices\WSSEWebService.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
     <Compile Include="Class\Log\DataLogging.cs" />
@@ -545,6 +546,8 @@
     <Compile Include="Controllers\ApprovalProcess\GetDataToApprovalProcessSelfEmploymentController.cs" />
     <Compile Include="Controllers\ApprovalProcess\GetDataToApprovalProcessArivuController.cs" />
     <Compile Include="Controllers\CaseWorkerController.cs" />
+    <Compile Include="Controllers\MahitiKanaja\MKArivuController.cs" />
+    <Compile Include="Controllers\MahitiKanaja\MKSelfEmploymentController.cs" />
     <Compile Include="CreateTextSharpPDF\Process\CollegeTable.cs" />
     <Compile Include="CreateTextSharpPDF\Process\MultiLineText.cs" />
     <Compile Include="CreateTextSharpPDF\Process\AgreeCell.cs" />

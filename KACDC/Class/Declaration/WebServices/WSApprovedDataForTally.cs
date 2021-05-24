@@ -5,7 +5,7 @@ using System.Web;
 
 namespace KACDC.Class.Declaration.WebServices
 {
-    public class ApprovedDataForTally
+    public class WSApprovedDataForTally
     {
         public string ApplicationNumber { get; set; }
         public string ApplicantName { get; set; }
