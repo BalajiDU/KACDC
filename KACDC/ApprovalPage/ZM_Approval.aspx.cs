@@ -162,7 +162,36 @@ namespace KACDC.ApprovalPage
             txtZMSEBDUpdateBankAddress.Text = BD.BankAddress;
             ZMSEBankDetailsUpdatePopup.Show();
         }
-        
+        protected void btnZMSEReleaseBankDetailsUpdate_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            lblZMSEBDUpdateReleaseApplicationNumber.Text = BD.ApplicationNumber;
+            lblZMSEBDUpdateReleaseAccountHolderName.Text = BD.ApplicantName;
+            txtZMSEBDUpdateReleaseAccountNumber.Text = BD.AccountNumber;
+            txtZMSEBDUpdateReleaseBankName.Text = BD.BankName;
+            txtZMSEBDUpdateReleaseBranchName.Text = BD.Branch;
+            txtZMSEBDUpdateReleaseIFSCCode.Text = BD.IFSCCode;
+            txtZMSEBDUpdateReleaseBankAddress.Text = BD.BankAddress;
+            ZMSEBankDetailsUpdateReleasePopup.Show();
+        }
+        protected void btnZMARReleaseBankDetailsUpdate_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            lblZMARBDUpdateReleaseApplicationNumber.Text = BD.ApplicationNumber;
+            lblZMARBDUpdateReleaseAccountHolderName.Text = BD.ApplicantName;
+            txtZMARBDUpdateReleaseAccountNumber.Text = BD.AccountNumber;
+            txtZMARBDUpdateReleaseBankName.Text = BD.BankName;
+            txtZMARBDUpdateReleaseBranchName.Text = BD.Branch;
+            txtZMARBDUpdateReleaseIFSCCode.Text = BD.IFSCCode;
+            txtZMARBDUpdateReleaseBankAddress.Text = BD.BankAddress;
+            ZMARBankDetailsUpdateReleasePopup.Show();
+        }
         protected void drpZoneSESanction_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -325,10 +354,7 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void btnZMSEReleaseBankDetailsUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnSEZMReleaseGenerateReport_Click(object sender, EventArgs e)
         {
 
@@ -346,10 +372,7 @@ namespace KACDC.ApprovalPage
 
         }
         
-        protected void btnZMARReleaseBankDetailsUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnARZMReleaseGenerateReport_Click(object sender, EventArgs e)
         {
 
