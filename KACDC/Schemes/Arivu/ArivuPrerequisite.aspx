@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ArivuPrerequisite.aspx.cs" Inherits="KACDC.Schemes.Arivu.ArivuPrerequisite" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ArivuPrerequisite.aspx.cs" Inherits="KACDC.Schemes.Arivu.ArivuPrerequisite" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div>

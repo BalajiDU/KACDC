@@ -18,7 +18,7 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnArivu_Click(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\DownloadAppn.aspx");
+            Response.Redirect(@"~\Schemes\Arivu\Arivu_Application.aspx");
         }
         protected void btnRenewal_Click(object sender, EventArgs e)
         {
