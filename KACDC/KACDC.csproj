@@ -525,6 +525,7 @@
     <Compile Include="Class\Declaration\Schemes\SelfEmployment.cs" />
     <Compile Include="Class\Declaration\WebServices\WSApprovedDataForTally.cs" />
     <Compile Include="Class\Declaration\WebServices\WSARWebService.cs" />
+    <Compile Include="Class\Declaration\WebServices\WSError.cs" />
     <Compile Include="Class\Declaration\WebServices\WSMahitiKhanaja.cs" />
     <Compile Include="Class\Declaration\WebServices\WSSEWebService.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />

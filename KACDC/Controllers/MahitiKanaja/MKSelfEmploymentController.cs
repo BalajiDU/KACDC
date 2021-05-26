@@ -15,7 +15,7 @@ namespace KACDC.Controllers.MahitiKanaja
     {
         public IHttpActionResult GetApplication()
         {
-            WSMahitiKhanaja AR = new WSMahitiKhanaja();
+            
             List<WSMahitiKhanaja> ARApplication = new List<WSMahitiKhanaja>();
             try
             {
@@ -29,7 +29,7 @@ namespace KACDC.Controllers.MahitiKanaja
                         SqlDataReader rdr = cmd.ExecuteReader();
                         while (rdr.Read())
                         {
-
+                            WSMahitiKhanaja AR = new WSMahitiKhanaja();
                             AR.ApplicationNumber = rdr["ApplicationNumber"].ToString();
                             AR.ApplicantName = rdr["ApplicantName"].ToString();
                             AR.LoanNumber = rdr["ApprovedApplicationNum"].ToString();

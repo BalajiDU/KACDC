@@ -87,10 +87,19 @@ namespace KACDC.WebServices
                         }
                     }
                     JavaScriptSerializer js = new JavaScriptSerializer();
+                    js.MaxJsonLength = (Int32.MaxValue);//2147483647
                     Context.Response.Write(js.Serialize(SEApplication));
+                    //Context.Response.Write(new System.Web.Configuration.ScriptingJsonSerializationSection().MaxJsonLength);
+
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                WSError ER = new WSError();
+                ER.ErrorMessage = ex.ToString();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Context.Response.Write(js.Serialize(ER));
+            }
         }
     }
 }

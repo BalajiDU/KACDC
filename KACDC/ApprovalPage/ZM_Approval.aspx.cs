@@ -1,6 +1,8 @@
-﻿using KACDC.Class.DataProcessing.ApplicationProcess;
+﻿using KACDC.Class.DataProcessing;
+using KACDC.Class.DataProcessing.ApplicationProcess;
 using KACDC.Class.DataProcessing.ApplicationProcess.BankDetails;
 using KACDC.Class.Declaration.ApprovalProcess;
+using KACDC.Class.GetCountStatistics;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,6 +21,8 @@ namespace KACDC.ApprovalPage
         GetBankDetails GBD = new GetBankDetails();
         UpdateBankDetails UBD = new UpdateBankDetails();
         SBankDetails BD = new SBankDetails();
+        ApprovalProcess AP = new ApprovalProcess();
+        GetCount GC = new GetCount();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["USERTYPE"] != "ZONALMANAGER")
@@ -192,6 +196,278 @@ namespace KACDC.ApprovalPage
             txtZMARBDUpdateReleaseBankAddress.Text = BD.BankAddress;
             ZMARBankDetailsUpdateReleasePopup.Show();
         }
+        protected void btnZMARApprove_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblZMARConfirmApproveAppNumber.Text = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblZMARConfirmApproveAppName.Text = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            ZMARConfirmApprovePopup.Show();
+        }
+        protected void btnZMARConfirmApproveApplication_Click(object sender, EventArgs e)
+        {
+            AP.ApplicationStatusUpdate(drpArivuSelectYear.SelectedValue,"APPROVED", lblZMARConfirmApproveAppNumber.Text);
+            
+            lblARNotificationHeading.Text = "Approved Application Number of <br />"+ lblZMARConfirmApproveAppName.Text +" <br />";
+            this.FillGridArivu();
+            lblARNotificationContent.Text= GC.GetTotalCount("spGetApplicationCount", "ARAPPROVEDNUMBER");
+            AROtherDetailsPopup.Show();
+        }
+        protected void btnZMSEApprove_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblZMSEConfirmApproveAppNumber.Text = gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblZMSEConfirmApproveAppName.Text = gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            ZMSEConfirmApprovePopup.Show();
+        }
+        protected void btnZMSEConfirmApproveApplication_Click(object sender, EventArgs e)
+        {
+            AP.ApplicationStatusUpdate("SEZMPROCESS", "APPROVED", lblZMSEConfirmApproveAppNumber.Text);
+
+            lblARNotificationHeading.Text = "Approved Application Number of <br />" + lblZMSEConfirmApproveAppName.Text + " <br />";
+            this.FillGridSelfEmployment();
+            lblARNotificationContent.Text = GC.GetTotalCount("spGetApplicationCount", "ARAPPROVEDNUMBER");
+            SEOtherDetailsPopup.Show();
+        }
+        protected void btnZMARHold_Click(object sender, EventArgs e)
+        {
+            if (drpArivuSelectYear.SelectedValue == "1ST_INSTALMENT")
+            {
+                txtZMARConfirmHoldAppReason.Text = "";
+                lblZMARConfirmHoldAppReasonError.Text = "";
+                Button btn = (Button)sender;
+                GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+                int rowindex = gvr.RowIndex;
+                lblZMARConfirmHoldAppNumber.Text = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+                lblZMARConfirmHoldAppName.Text = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+                ZMARConfirmHoldPopup.Show();
+            }
+            else
+            {
+                DisplayAlert("Only 1ST INSTALMENT application can be hold", this);
+            }
+        }
+        protected void btnZMSEHold_Click(object sender, EventArgs e)
+        {
+
+            txtZMSEConfirmHoldAppReason.Text = "";
+            lblZMSEConfirmHoldAppReasonError.Text = "";
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblZMSEConfirmHoldAppNumber.Text = gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblZMSEConfirmHoldAppName.Text = gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            ZMSEConfirmHoldPopup.Show();
+
+        }
+        protected void btnZMARConfirmHoldApplication_Click(object sender, EventArgs e)
+        {
+            lblZMARConfirmHoldAppReasonError.Text = "";
+            if (txtZMARConfirmHoldAppReason.Text.Trim() != "")
+            {
+                if (txtZMARConfirmHoldAppReason.Text.Trim().Length >= 10)
+                {
+                    AP.ApplicationStatusUpdate(drpArivuSelectYear.SelectedValue + "HOLD", "HOLD", lblZMARConfirmHoldAppNumber.Text.Trim(), txtZMARConfirmHoldAppReason.Text.Trim());
+                    this.FillGridArivu();
+                }
+                else
+                {
+                    lblZMARConfirmHoldAppReasonError.Text = "ENTER VALID REASON FOR HOLD (MINIMUM OF 10 CHARACTERS)";
+                    ZMARConfirmHoldPopup.Show();
+                }
+            }
+            else
+            {
+                lblZMARConfirmHoldAppReasonError.Text = "ENTER REASON FOR HOLD";
+                ZMARConfirmHoldPopup.Show();
+            }
+        }
+        protected void btnZMSEConfirmHoldApplication_Click(object sender, EventArgs e)
+        {
+            lblZMSEConfirmHoldAppReasonError.Text = "";
+            if (txtZMSEConfirmHoldAppReason.Text.Trim() != "")
+            {
+                if (txtZMSEConfirmHoldAppReason.Text.Trim().Length >= 10)
+                {
+                    AP.ApplicationStatusUpdate("SEZMPROCESS", "HOLD", lblZMSEConfirmHoldAppNumber.Text.Trim(), txtZMSEConfirmHoldAppReason.Text.Trim());
+                    this.FillGridSelfEmployment();
+                }
+                else
+                {
+                    lblZMSEConfirmHoldAppReasonError.Text = "ENTER VALID REASON FOR HOLD (MINIMUM OF 10 CHARACTERS)";
+                    ZMSEConfirmHoldPopup.Show();
+                }
+            }
+            else
+            {
+                lblZMSEConfirmHoldAppReasonError.Text = "ENTER REASON FOR HOLD";
+                ZMSEConfirmHoldPopup.Show();
+            }
+        }
+        protected void rbZMARConfirmRejectReasonName_CheckedChanged(object sender, EventArgs e)
+        {
+            lblZMARConfirmRejectAppReasonSelectionError.Text = "";
+            lblZMARConfirmRejectAppReasonError.Text = "";
+            if (rbZMARConfirmRejectReasonName.Checked)
+            {
+                txtZMARConfirmRejectAppReason.Text = "Aadhaar and Caste & Income Certificate Name Mismatch";
+                txtZMARConfirmRejectAppReason.Visible = true;
+                ZMARConfirmRejectPopup.Show();
+            }
+            else if (rbZMARConfirmRejectReasonCET.Checked)
+            {
+                txtZMARConfirmRejectAppReason.Text = "Invalid CET Certificate is submitted";
+                txtZMARConfirmRejectAppReason.Visible = true;
+                ZMARConfirmRejectPopup.Show();
+            }
+            else if (rbZMARConfirmRejectReasonOther.Checked)
+            {
+                txtZMARConfirmRejectAppReason.Text = "";
+                txtZMARConfirmRejectAppReason.Visible = true;
+                ZMARConfirmRejectPopup.Show();
+            }
+        }
+        protected void btnZMARReject_Click(object sender, EventArgs e)
+        {
+            rbZMARConfirmRejectReasonName.Checked = false;
+            rbZMARConfirmRejectReasonCET.Checked = false;
+            rbZMARConfirmRejectReasonOther.Checked = false;
+            txtZMARConfirmRejectAppReason.Visible = false;
+            lblZMARConfirmRejectAppReasonError.Text = "";
+            lblZMARConfirmRejectAppReasonSelectionError.Text = "";
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblZMARConfirmRejectAppNumber.Text = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblZMARConfirmRejectAppName.Text = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            ZMARConfirmRejectPopup.Show();
+        }
+        protected void btnZMSEReject_Click(object sender, EventArgs e)
+        {
+            rbZMSEConfirmRejectReasonName.Checked = false;
+            rbZMSEConfirmRejectReasonOther.Checked = false;
+            txtZMSEConfirmRejectAppReason.Visible = false;
+            lblZMSEConfirmRejectAppReasonError.Text = "";
+            lblZMSEConfirmRejectAppReasonSelectionError.Text = "";
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblZMSEConfirmRejectAppNumber.Text = gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblZMSEConfirmRejectAppName.Text = gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            ZMSEConfirmRejectPopup.Show();
+        }
+        protected void btnZMARConfirmRejectApplication_Click(object sender, EventArgs e)
+        {
+            lblZMARConfirmRejectAppReasonSelectionError.Text = "";
+            lblZMARConfirmRejectAppReasonError.Text = "";
+            if (rbZMARConfirmRejectReasonName.Checked || rbZMARConfirmRejectReasonCET.Checked || rbZMARConfirmRejectReasonOther.Checked)
+            {
+                lblZMARConfirmRejectAppReasonSelectionError.Text = "";
+                if (lblZMARConfirmRejectAppReasonSelectionError.Text.Trim().Length > 10)
+                {
+                    lblZMARConfirmRejectAppReasonError.Text = "";
+                    AP.ApplicationStatusUpdate(drpArivuSelectYear.SelectedValue + "REJECTED", "REJECTED", lblZMARConfirmRejectAppNumber.Text.Trim(), txtZMARConfirmRejectAppReason.Text.Trim());
+                    this.FillGridArivu();
+                }
+                else
+                {
+                    lblZMARConfirmRejectAppReasonError.Text = "Enter Valid Reason to reject application(minium 10 characters)";
+                    ZMARConfirmRejectPopup.Show();
+                }
+            }
+            else
+            {
+                lblZMARConfirmRejectAppReasonSelectionError.Text = "Select any reason to REJECT application";
+                ZMARConfirmRejectPopup.Show();
+            }
+        }
+        protected void btnZMSEConfirmRejectApplication_Click(object sender, EventArgs e)
+        {
+            lblZMSEConfirmRejectAppReasonSelectionError.Text = "";
+            lblZMSEConfirmRejectAppReasonError.Text = "";
+            if (rbZMSEConfirmRejectReasonName.Checked ||  rbZMSEConfirmRejectReasonOther.Checked)
+            {
+                lblZMSEConfirmRejectAppReasonSelectionError.Text = "";
+                if (lblZMSEConfirmRejectAppReasonSelectionError.Text.Trim().Length > 10)
+                {
+                    lblZMSEConfirmRejectAppReasonError.Text = "";
+                    AP.ApplicationStatusUpdate("SEZMPROCESS", "REJECTED", lblZMSEConfirmRejectAppNumber.Text.Trim(), txtZMSEConfirmRejectAppReason.Text.Trim());
+                    this.FillGridArivu();
+                }
+                else
+                {
+                    lblZMSEConfirmRejectAppReasonError.Text = "Enter Valid Reason to reject application(minium 10 characters)";
+                    ZMSEConfirmRejectPopup.Show();
+                }
+            }
+            else
+            {
+                lblZMSEConfirmRejectAppReasonSelectionError.Text = "Select any reason to REJECT application";
+                ZMSEConfirmRejectPopup.Show();
+            }
+        }
+        protected void btnZMARReturn_Click(object sender, EventArgs e)
+        {
+            if (drpArivuSelectYear.SelectedValue == "1ST_INSTALMENT")
+            {
+                txtZMARConfirmReturnAppReason.Text = "";
+                lblZMARConfirmReturnAppReasonError.Text = "";
+                Button btn = (Button)sender;
+                GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+                int rowindex = gvr.RowIndex;
+                lblZMARConfirmReturnAppNumber.Text = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+                lblZMARConfirmReturnAppName.Text = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+                ZMARConfirmReturnPopup.Show();
+            }
+            else
+            {
+                DisplayAlert("Only 1ST INSTALMENT application can be return",this);
+            }
+        }
+        protected void btnZMSEReturn_Click(object sender, EventArgs e)
+        {
+            txtZMSEConfirmReturnAppReason.Text = "";
+            lblZMSEConfirmReturnAppReasonError.Text = "";
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblZMSEConfirmReturnAppNumber.Text = gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblZMSEConfirmReturnAppName.Text = gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            ZMSEConfirmReturnPopup.Show();
+        }
+        protected void btnZMARConfirmReturnApplication_Click(object sender, EventArgs e)
+        {
+            lblZMARConfirmReturnAppReasonError.Text = "";
+            if (txtZMARConfirmReturnAppReason.Text.Trim().Length > 10)
+            {
+                AP.ApplicationStatusUpdate("ARDOCPROCESS", "RETURNED", lblZMARConfirmReturnAppNumber.Text.Trim(), txtZMARConfirmReturnAppReason.Text.Trim());
+                this.FillGridArivu();
+            }
+            else
+            {
+                lblZMARConfirmReturnAppReasonError.Text = "Enter valid reason to return application to DM";
+                ZMARConfirmReturnPopup.Show();
+            }
+
+        }
+        protected void btnZMSEConfirmReturnApplication_Click(object sender, EventArgs e)
+        {
+            lblZMSEConfirmReturnAppReasonError.Text = "";
+            if (txtZMSEConfirmReturnAppReason.Text.Trim().Length > 10)
+            {
+                AP.ApplicationStatusUpdate("SEDOCPROCESS", "RETURNED", lblZMSEConfirmReturnAppNumber.Text.Trim(), txtZMSEConfirmReturnAppReason.Text.Trim());
+                this.FillGridArivu();
+            }
+            else
+            {
+                lblZMSEConfirmReturnAppReasonError.Text = "Enter valid reason to return application to DM";
+                ZMSEConfirmReturnPopup.Show();
+            }
+
+        }
         protected void drpZoneSESanction_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -213,22 +489,7 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void btnZMARApprove_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMARHold_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMARReject_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMARReturn_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnARZMGenerateReport_Click(object sender, EventArgs e)
         {
 
@@ -245,22 +506,9 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void btnZMARConfirmRejectApplication_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMARConfirmHoldApplication_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMARConfirmReturnApplication_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMARConfirmApproveApplication_Click(object sender, EventArgs e)
-        {
-
-        }
+        
+        
+        
         protected void btnPnlCollegeDetailsClose_Click(object sender, EventArgs e)
         {
 
@@ -273,10 +521,7 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void rbZMARConfirmRejectReasonName_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void rbZMSEConfirmRejectReasonName_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -298,26 +543,14 @@ namespace KACDC.ApprovalPage
 
         }
         
-        protected void btnZMSEApprove_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMSEHold_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMASEReject_Click(object sender, EventArgs e)
-        {
-
-        }
+        
+        
+        
         protected void btnSEZMGenerateReport_Click(object sender, EventArgs e)
         {
 
         }
-        protected void btnZMASEReturn_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnSEZMSubmit_Click(object sender, EventArgs e)
         {
 
@@ -330,22 +563,10 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void btnZMSEConfirmHoldApplication_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMSEConfirmReturnApplication_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMSEConfirmApproveApplication_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void btnZMSEConfirmRejectApplication_Click(object sender, EventArgs e)
-        {
-
-        }
+        
+        
+        
+        
         protected void btnZMSEBDUpdate_Click(object sender, EventArgs e)
         {
 
