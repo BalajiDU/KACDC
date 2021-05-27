@@ -330,6 +330,23 @@ namespace KACDC.ApprovalPage
                 ZMARConfirmRejectPopup.Show();
             }
         }
+        protected void rbZMSEConfirmRejectReasonName_CheckedChanged(object sender, EventArgs e)
+        {
+            lblZMSEConfirmRejectAppReasonSelectionError.Text = "";
+            lblZMSEConfirmRejectAppReasonError.Text = "";
+            if (rbZMSEConfirmRejectReasonName.Checked)
+            {
+                txtZMSEConfirmRejectAppReason.Text = "Aadhaar and Caste & Income Certificate Name Mismatch";
+                txtZMSEConfirmRejectAppReason.Visible = true;
+                ZMSEConfirmRejectPopup.Show();
+            }
+            else if (rbZMSEConfirmRejectReasonOther.Checked)
+            {
+                txtZMSEConfirmRejectAppReason.Text = "";
+                txtZMSEConfirmRejectAppReason.Visible = true;
+                ZMSEConfirmRejectPopup.Show();
+            }
+        }
         protected void btnZMARReject_Click(object sender, EventArgs e)
         {
             rbZMARConfirmRejectReasonName.Checked = false;
@@ -468,17 +485,38 @@ namespace KACDC.ApprovalPage
             }
 
         }
+        protected void btnZMArivuReleased_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblZMARConfirmReleaseAppNumber.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblZMARConfirmReleaseAppName.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            lblZMARConfirmReleaseLoanNumber.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApprovedApplicationNum"].ToString();
+            ZMARConfirmReleasePopup.Show();
+        }
+        protected void btnZMSEReleased_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblZMSEConfirmReleaseAppNumber.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblZMSEConfirmReleaseAppName.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            lblZMSEConfirmReleaseLoanNumber.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApprovedApplicationNum"].ToString();
+            ZMSEConfirmReleasePopup.Show();
+        }
         protected void drpZoneSESanction_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
         protected void btnCWLogout_Click(object sender, EventArgs e)
         {
-
+            Session.Clear();
+            Response.Redirect("~/Login.aspx");
         }
         protected void btnOldProcess_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/ZM_Form.aspx");
         }
         protected void lnkbtnArivuCEODoc_Click(object sender, EventArgs e)
         {
@@ -517,15 +555,9 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void btnZMArivuReleased_Click(object sender, EventArgs e)
-        {
-
-        }
         
-        protected void rbZMSEConfirmRejectReasonName_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
+        
         protected void btnZMARConfirmReleaseApplication_Click(object sender, EventArgs e)
         {
 
@@ -571,10 +603,7 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void btnZMSEReleased_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         
         protected void btnSEZMReleaseGenerateReport_Click(object sender, EventArgs e)
         {
