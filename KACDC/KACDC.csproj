@@ -496,8 +496,10 @@
     <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessSelfEmployment.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GetDataToProcess.cs" />
     <Compile Include="Class\DataProcessing\BankData\BankDetails.cs" />
+    <Compile Include="Class\DataProcessing\EmailService\VerifyEmailID.cs" />
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
+    <Compile Include="Class\DataProcessing\EncryptionProcess\Encryption.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\FileOperations.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
@@ -506,6 +508,7 @@
     <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\SubmitARApplication.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\SelfEmployment\StoreSEApplication.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\SubmitApplicationSMS.cs" />
+    <Compile Include="Class\DataProcessing\OTPService\OTP.cs" />
     <Compile Include="Class\DataProcessing\SMSService\CreateSMSLog.cs" />
     <Compile Include="Class\DataProcessing\SMSService\SendSMS.cs" />
     <Compile Include="Class\Declaration\Aadhaar\Aadhaarlog.cs" />
@@ -522,6 +525,7 @@
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataArivu.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
     <Compile Include="Class\Declaration\Schemes\Arivu.cs" />
+    <Compile Include="Class\Declaration\OnlineApplication\AVPortal.cs" />
     <Compile Include="Class\Declaration\Schemes\SelfEmployment.cs" />
     <Compile Include="Class\Declaration\WebServices\WSApprovedDataForTally.cs" />
     <Compile Include="Class\Declaration\WebServices\WSARWebService.cs" />

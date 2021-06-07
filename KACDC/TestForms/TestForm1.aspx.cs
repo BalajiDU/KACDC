@@ -15,6 +15,7 @@ using System.Web;
 using System.Web.Hosting;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace KACDC.TestForms
 {
@@ -33,7 +34,7 @@ namespace KACDC.TestForms
             }
             catch (Exception ex)
             {
-                Label2.Text += "<br />"+ex.Message;
+                Label2.Text += "<br />" + ex.Message;
             }
             //if()
         }
@@ -91,7 +92,7 @@ namespace KACDC.TestForms
         //        HC.BaseAddress = new Uri("https://aryavysya.karnataka.gov.in/api/");
         //    }            //var ConsAPI = HC.GetAsync("CaseWorker");
         //    var ConsAPI = HC.GetAsync(string.Format("CaseWorker/Status="+method+"&District="+district));
-            
+
         //    ConsAPI.Wait();
         //    var readData = ConsAPI.Result;
         //    if (readData.IsSuccessStatusCode)
@@ -325,7 +326,7 @@ namespace KACDC.TestForms
             //lbl1.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss:fffffff tt");
             //lbl1.Text = CheckDirExist();
             string AppDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
-            DateTime newdate = Convert.ToDateTime(AppDate, System.Globalization.CultureInfo.InvariantCulture); 
+            DateTime newdate = Convert.ToDateTime(AppDate, System.Globalization.CultureInfo.InvariantCulture);
             lbl1.Text = newdate.ToString("dd MMMM yyyy hh:mm tt");
             DownloadFile();
         }
@@ -364,7 +365,7 @@ namespace KACDC.TestForms
             }
             catch (Exception e)
             {
-                return "Error : "+e.Message;
+                return "Error : " + e.Message;
                 // Fail silently.
             }
         }
@@ -448,12 +449,76 @@ namespace KACDC.TestForms
             if (Reason == "2") query["true"] = "true";
             query["33333333"] = "33333333333";
             builder.Query = query.ToString();
-            Label1.Text = builder.ToString()+"<br />"+ builder.Query.ToString();
+            Label1.Text = builder.ToString() + "<br />" + builder.Query.ToString();
 
             GetCount CwGetCount = new GetCount();
             AadhaarEnceyption AE = new AadhaarEnceyption();
-            Label1.Text +="<br />"+ CwGetCount.GetTotalCount("spGetApplicationCount", Reason);
+            Label1.Text += "<br />" + CwGetCount.GetTotalCount("spGetApplicationCount", Reason);
             Label1.Text += "<br />" + AE.GetAadhaarToken("301007056373");
+        }
+
+        protected void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+        private void ExportExcel(DataSet ds)
+        {
+            int inHeaderLength = 2, inColumn = 0, inRow = 0;
+            System.Reflection.Missing Default = System.Reflection.Missing.Value;
+            //Create Excel File
+            //strPath += @"\Excel" + DateTime.Now.ToString().Replace(':', '-') + ".xlsx";
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook excelWorkBook = excelApp.Workbooks.Add(1);
+
+            foreach (DataTable dtbl in ds.Tables)
+            {
+                //Create Excel WorkSheet
+                Excel.Worksheet excelWorkSheet = excelWorkBook.Sheets.Add(Default, excelWorkBook.Sheets[excelWorkBook.Sheets.Count], 1, Default);
+                excelWorkSheet.Name = dtbl.TableName;//Name worksheet
+
+                //Write Column Name
+                for (int i = 0; i < dtbl.Columns.Count; i++)
+                    excelWorkSheet.Cells[inHeaderLength + 1, i + 1] = dtbl.Columns[i].ColumnName.ToUpper();
+                //Write Rows
+                int ma = dtbl.Rows.Count;
+                int na = dtbl.Columns.Count + 2;
+                for (int m = 0; m < dtbl.Rows.Count; m++)
+                {
+                    for (int n = 0; n < dtbl.Columns.Count; n++)
+                    {
+                        inColumn = n + 1;
+                        inRow = inHeaderLength + 2 + m;
+                        excelWorkSheet.Cells[inRow, inColumn] = dtbl.Rows[m].ItemArray[n].ToString();
+                        if (m % 2 == 0)
+                            excelWorkSheet.get_Range("A" + inRow.ToString(), "E" + inRow.ToString()).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FCE4D6");
+
+                        na = n;
+                    }
+                }
+                //Excel Header
+                Excel.Range cellRang = excelWorkSheet.get_Range("A1", "E2");
+                cellRang.Merge(false);
+                cellRang.Interior.Color = System.Drawing.Color.White;
+                cellRang.Font.Color = System.Drawing.Color.Gray;
+                cellRang.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                cellRang.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                cellRang.Font.Size = 14;
+                excelWorkSheet.Cells[1, 1] = "Sales Report of " + DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
+                //excelWorkSheet.Cells[60, 5] = "=SUM(E4,E59)";
+                //excelWorkSheet.Cells[dtbl.Rows.Count + 2, dtbl.Columns.Count].Formula = a;
+
+                //Style table column names
+                cellRang = excelWorkSheet.get_Range("A3", "E3");
+                cellRang.Font.Bold = true;
+                cellRang.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White);
+                cellRang.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#ED7D31");
+                excelWorkSheet.get_Range("E4").EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                //Formate price column
+                //excelWorkSheet.get_Range("F5").EntireColumn.NumberFormat = "0.00";
+                //Auto fit columns
+                excelWorkSheet.Columns.AutoFit();
+            }
         }
     }
 }

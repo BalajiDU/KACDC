@@ -76,6 +76,15 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
+        /// lblNameError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNameError;
+        
+        /// <summary>
         /// divMovileNumberStatus control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.TextBox txtFatherName;
         
         /// <summary>
+        /// lblFatherNameError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFatherNameError;
+        
+        /// <summary>
         /// div2 control.
         /// </summary>
         /// <remarks>
@@ -121,22 +139,31 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
-        /// rbArivu control.
+        /// rbMale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbArivu;
+        protected global::System.Web.UI.WebControls.RadioButton rbMale;
         
         /// <summary>
-        /// rbSelfEmployment control.
+        /// rbFemale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbSelfEmployment;
+        protected global::System.Web.UI.WebControls.RadioButton rbFemale;
+        
+        /// <summary>
+        /// lblGenderError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGenderError;
         
         /// <summary>
         /// div21 control.
@@ -425,6 +452,15 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOccupationDetails;
+        
+        /// <summary>
+        /// lblOccupationDetails1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOccupationDetails1;
         
         /// <summary>
         /// lblOccupationDetails control.

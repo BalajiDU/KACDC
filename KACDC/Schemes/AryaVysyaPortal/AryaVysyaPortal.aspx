@@ -9,6 +9,9 @@
         <link rel="shortcut icon" type="image/x-icon" href="../../Image/KACDC_PDF.jpg" />
     <link href="../../CustomCSS/ApplicationPage/ApplicationPage.css" rel="stylesheet" />
 
+<%--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" /> --%>
+
+
     <style>
        .NeuoDropdown {
         outline: none;
@@ -98,7 +101,84 @@
                 return false;
             }
             return true;
+         }
+           
+    </script>
+
+    <script type="text/javascript">
+
+function Numeric(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (((charCode >= 48 && charCode <= 57)|| (e.keyCode >= 96 && e.keyCode <= 105)) || charCode == 46)) {
+                return true;
+            else {
+                alert('Please Enter Numeric values.');
+                return false;
+            }
         }
+
+</script>
+
+    <!--Allow Numerical Value-->
+    <script type="text/javascript">
+    function Numeric(evt) {
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        
+        if (charCode > 31 && (((charCode >= 48 && charCode <= 57) || specialKeys.indexOf(charCode) != -1 || (charCode >= 96 && charCode <= 105)) || charCode == 46 || charCode == 8)) {
+            return true;
+        }
+        else {
+                alert('Please Enter Numeric values.');
+                return false;
+            }
+    }
+    
+    </script>
+    <script type="text/javascript">
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        function IsNumeric(e) {
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+            document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+        }
+    </script>
+    <script type="text/javascript">
+        function CheckMobileNumber(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (((charCode >= 48 && charCode <= 57)|| (e.keyCode >= 96 && e.keyCode <= 105)) || charCode == 46)) {
+                $('#txtApplicantMobileNumber').keyup(function () {
+                    var NewAadhar = $(this).val();
+                    if (NewAadhar.length != 0) {
+                        if (NewAadhar.length == 10) {
+                            var divElement = $('#divMobileChkError');
+                            divElement.text(' ')
+                            divElement.css('color', '#7b0000');
+                        }
+                        else {
+                            var divElement = $('#divMobileChkError');
+                            divElement.text('Enter 10 Digit Mobile Number')
+                            divElement.css('color', '#7b0000');
+                        }
+                    }
+                    else {
+                        var divElement = $('#divMobileChkError');
+                        divElement.text('Mobile Number Must be Enter')
+                        divElement.css('color', '#7b0000');
+                    }
+                });
+
+            }
+            else {
+                alert('Please Enter Numeric values.');
+                return false;
+            }
+
+        }
+
     </script>
 </head>
 <body>
@@ -122,7 +202,7 @@
                             </div>
                             <div class="form-row-input">
                                 <asp:TextBox ID="txtName" CssClass="NeoTextBox" runat="server" placeholder="name" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
-                                <div id="divAadhaarChkError" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
+                                <asp:Label id="lblNameError" runat="server" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></asp:Label>
                             </div>
                             <div class="form-row-Botton" id="divMovileNumberStatus" runat="server">
                             </div>
@@ -133,7 +213,7 @@
                             </div>
                             <div class="form-row-input">
                                 <asp:TextBox ID="txtFatherName" CssClass="NeoTextBox" runat="server" placeholder="Father / Guardian Name" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
-                                <div id="divAadhaarChkErrwor" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
+                                <asp:Label id="lblFatherNameError" runat="server" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></asp:Label>
                             </div>
                             <div class="form-row-Botton" id="div2" runat="server">
                             </div>
@@ -143,8 +223,9 @@
                                 <asp:Label ID="Label12" class="" runat="server">Gender<span style="color:red"> *</span><br />ಲಿಂಗ</asp:Label><br />
                             </div>
                             <div class="form-row-input"><%--OnCheckedChanged="LoanType_CheckChanged"--%>
-                                <asp:RadioButton ID="rbArivu" Class="radioButton" runat="server" GroupName="Gender" Text="MALE"  />
-                                    <asp:RadioButton ID="rbSelfEmployment" Class="radioButton" runat="server" GroupName="Gender" Text="FEMALE"  />
+                                <asp:RadioButton ID="rbMale" Class="radioButton" runat="server" GroupName="Gender" Text="MALE"  />
+                                    <asp:RadioButton ID="rbFemale" Class="radioButton" runat="server" GroupName="Gender" Text="FEMALE"  />
+                                <asp:Label id="lblGenderError" runat="server" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></asp:Label>
                             </div>
                             <div class="form-row-Botton" id="div21" runat="server">
                             </div>
@@ -165,7 +246,7 @@
                                 <asp:Label ID="Label11" class="" runat="server">Pincode<span style="color:red"> *</span><br />ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು</asp:Label><br />
                             </div>
                             <div class="form-row-input">
-                                <asp:TextBox ID="txtPincode" CssClass="NeoTextBox" runat="server" placeholder="Pincode" onpaste="return false" AutoCompleteType="Disabled" AutoPostBack="true" OnTextChanged="txtPincode_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="txtPincode" CssClass="NeoTextBox" runat="server" placeholder="Pincode" onpaste="return false" AutoCompleteType="Disabled" MaxLength="6" onkeypress="return Numeric(event)" onkeyup="return Numeric(event)"></asp:TextBox>
                                 <asp:Label ID="lblPincodeError" class="" runat="server" style="color:red"></asp:Label><br />
                             </div>
                             <div class="form-row-Botton" id="div13" runat="server">
@@ -212,8 +293,16 @@
                                 <asp:Label ID="Label6" class="" runat="server">Mobile Number<span style="color:red"> *</span><br />ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</asp:Label><br />
                             </div>
                             <div class="form-row-input">
-                                <asp:TextBox ID="txtMobileNumber" CssClass="NeoTextBox" runat="server" placeholder="Mobile Number" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
-                                <div id="divAadhaarCbhkErrwor" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
+                                <asp:TextBox ID="txtMobileNumber" CssClass="NeoTextBox" runat="server" placeholder="Mobile Number" onpaste="return false" AutoCompleteType="Disabled" MaxLength="10" onkeyup="return Numeric(event)"></asp:TextBox>
+                                <div id="divMobileChkError" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
+
+
+                                Numeric Value: <input type="text" id="text1" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+    <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>
+
+
+
+
                             </div>
                             <div class="form-row-Botton" id="div5" runat="server">
                                 <asp:Button ID="btnVerifyMobileNumber" runat="server" CssClass="NeoButton" Text="VERIFY" OnClick="btnVerifyMobileNumber_Click" />
@@ -225,7 +314,7 @@
                                 <asp:Label ID="Label7" class="" runat="server">Whatsapp Number<span style="color:red"> *</span><br />ವಾಟ್ಸಾಪ್ ಸಂಖ್ಯೆ</asp:Label><br />
                             </div>
                             <div class="form-row-input">
-                                <asp:TextBox ID="txtWhatsAppNumber" CssClass="NeoTextBox" runat="server" placeholder="Whatsapp Number" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
+                                <asp:TextBox ID="txtWhatsAppNumber" CssClass="NeoTextBox" runat="server" placeholder="Whatsapp Number" onpaste="return false" AutoCompleteType="Disabled" MaxLength="10" onkeypress="return Numeric(event)" onkeyup="return Numeric(event)"></asp:TextBox>
                                 <div id="divAadhaarCjhkErrwor" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
                             </div>
                             <div class="form-row-Botton" id="div6" runat="server">
@@ -261,6 +350,7 @@
                         </div>
                         <div class="form-row" id="divOccupationDetails" runat="server" visible="false">
                             <div class="form-row-label">
+                                <asp:Label ID="lblOccupationDetails1" class="" Visible="false" runat="server">Email ID<span style="color:red"> *</span><br />ಇಮೇಲ್ - ಐಡಿ</asp:Label><br />
                                 <asp:Label ID="lblOccupationDetails" class="" runat="server">Email ID<span style="color:red"> *</span><br />ಇಮೇಲ್ - ಐಡಿ</asp:Label><br />
                             </div>
                             <div class="form-row-input">

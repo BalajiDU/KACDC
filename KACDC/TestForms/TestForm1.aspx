@@ -62,7 +62,8 @@
         <hr />
         
             <asp:Label ID ="Label2" runat="server"></asp:Label>
-
+        <hr />
+        <asp:Button ID="btnExportExcel" runat="server" Text="Export Excel" OnClick="btnExportExcel_Click" />
     </form>
 </body>
 </html>

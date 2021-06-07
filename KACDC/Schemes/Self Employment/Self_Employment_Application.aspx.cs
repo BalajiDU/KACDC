@@ -8,6 +8,7 @@ using KACDC.Class.DataProcessing.Nadakacheri;
 using KACDC.Class.DataProcessing.OnlineApplication;
 using KACDC.Class.Declaration.Aadhaar;
 using KACDC.Class.Declaration.BankDetails;
+using KACDC.Class.DataProcessing.EmailService;
 using KACDC.Class.Declaration.Nadakacheri;
 using KACDC.Class.Declaration.OnlineApplication;
 using KACDC.Class.FileSaving;
@@ -42,7 +43,7 @@ namespace KACDC.Schemes.Self_Employment
         AgreementTable AT = new AgreementTable();
         SignatureTable ST = new SignatureTable();
         HeadingTable HT = new HeadingTable();
-
+        VerifyEmailID VEID = new VerifyEmailID();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -608,7 +609,7 @@ namespace KACDC.Schemes.Self_Employment
         {
             if (txtEmailID.Text.Trim() != "")
             {
-                if (IsValidEmail(txtEmailID.Text.Trim()))
+                if (VEID.IsValidEmail(txtEmailID.Text.Trim()))
                 {
                     if (txtApplicantMobileNumber.Text.Trim() != "")
                     {
