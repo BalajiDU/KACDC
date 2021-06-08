@@ -506,6 +506,7 @@
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\ApplicationSubmitEmail.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\SubmitARApplication.cs" />
+    <Compile Include="Class\DataProcessing\OnlineApplication\AryaVysyaPortalStore\AryaVysyaPortalSave.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\SelfEmployment\StoreSEApplication.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\SubmitApplicationSMS.cs" />
     <Compile Include="Class\DataProcessing\OTPService\OTP.cs" />

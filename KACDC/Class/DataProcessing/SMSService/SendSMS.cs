@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Security.Cryptography;using System.Security.Cryptography.X509Certificates;using System.Net;
 using System.Text;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
 
 namespace KACDC.Class.DataProcessing.SMSService
 {
@@ -94,6 +97,7 @@ namespace KACDC.Class.DataProcessing.SMSService
             string SenderId = "";
             string MessageStatus = "";
             string TemplateID = "";
+            string SMSLanguage = "";
 
             string KAVDESAPIkey = "8116a1fe-c69c-49a0-8f9f-0e0b2b2dcac1";
             string KAVDESSenderId = "KAVDES";
@@ -104,6 +108,43 @@ namespace KACDC.Class.DataProcessing.SMSService
             string GKACDCSenderId = "GKACDC";
             string GKACDCUserName = "Mobile_1-GKACDC";
             string GKACDCPassword = "gkacdc@1234";
+
+            //using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("select SMSLanguage,SMSUser from SMSTemplate where KeyVal=@Cetegory", kvdConn))
+            //    {
+            //        cmd.CommandType = CommandType.Text;
+            //        cmd.Parameters.AddWithValue("@Cetegory", Cetegory);
+
+            //        cmd.Connection = kvdConn;
+            //        kvdConn.Open();
+            //        using (SqlDataReader sdr = cmd.ExecuteReader())
+            //        {
+            //            sdr.Read();
+            //            SMSLanguage = sdr["SMSLanguage"].ToString();
+            //            UserName = "Mobile_1-"+sdr["SMSUser"].ToString();
+            //        }
+            //        kvdConn.Close();
+            //    }
+            //}
+            //using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("select  Value,Value1 from KACDCSettings where Cetegory=@UserName", kvdConn))
+            //    {
+            //        cmd.CommandType = CommandType.Text;
+            //        cmd.Parameters.AddWithValue("@UserName", UserName);
+
+            //        cmd.Connection = kvdConn;
+            //        kvdConn.Open();
+            //        using (SqlDataReader sdr = cmd.ExecuteReader())
+            //        {
+            //            sdr.Read();
+            //            GKACDCPassword = sdr["Value"].ToString();
+            //            GKACDCAPIkey = sdr["Value1"].ToString();
+            //        }
+            //        kvdConn.Close();
+            //    }
+            //}
 
             switch (Cetegory)
             {

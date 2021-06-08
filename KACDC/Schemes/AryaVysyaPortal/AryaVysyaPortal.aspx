@@ -126,11 +126,13 @@ function Numeric(evt) {
         specialKeys.push(8); //Backspace
         var charCode = (evt.which) ? evt.which : event.keyCode;
         
-        if (charCode > 31 && (((charCode >= 48 && charCode <= 57) || specialKeys.indexOf(charCode) != -1 || (charCode >= 96 && charCode <= 105)) || charCode == 46 || charCode == 8)) {
+        if (charCode > 31 && (((charCode >= 48 && charCode <= 57) || specialKeys.indexOf(charCode) != -1 || (charCode >= 96 && charCode <= 105)|| charCode == 8) || charCode == 46 || charCode == 8)) {
             return true;
         }
         else {
-                alert('Please Enter Numeric values.');
+            if (charCode == 8||charCode == 9)
+                return true;
+                alert('Please Enter Numeric values.'+charCode);
                 return false;
             }
     }
@@ -142,7 +144,7 @@ function Numeric(evt) {
         function IsNumeric(e) {
             var keyCode = e.which ? e.which : e.keyCode
             var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
-            document.getElementById("error").style.display = ret ? "none" : "inline";
+            document.getElementById("divMobileChkError").style.display = ret ? "none" : "inline";
             return ret;
         }
     </script>
@@ -293,14 +295,17 @@ function Numeric(evt) {
                                 <asp:Label ID="Label6" class="" runat="server">Mobile Number<span style="color:red"> *</span><br />ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</asp:Label><br />
                             </div>
                             <div class="form-row-input">
-                                <asp:TextBox ID="txtMobileNumber" CssClass="NeoTextBox" runat="server" placeholder="Mobile Number" onpaste="return false" AutoCompleteType="Disabled" MaxLength="10" onkeyup="return Numeric(event)"></asp:TextBox>
+                                <asp:TextBox ID="txtMobileNumber" CssClass="NeoTextBox" runat="server" placeholder="Mobile Number" onpaste="return false" AutoCompleteType="Disabled" MaxLength="10" onkeypress="return Numeric(event);"></asp:TextBox>
                                 <div id="divMobileChkError" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
 
 
-                                Numeric Value: <input type="text" id="text1" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+<%--                                Numeric Value: <asp:Textbox type="text" id="text1" runat="server" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" ></asp:Textbox>
     <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>
 
-
+                                
+                                Numeric Value: <asp:Textbox type="text" id="Textbox1" runat="server" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" ></asp:Textbox>
+    <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>
+--%>
 
 
                             </div>
@@ -360,6 +365,9 @@ function Numeric(evt) {
                             <div class="form-row-Botton" id="div10" runat="server">
                             </div>
                         </div>
+                        <div class="form-row" runat="server">
+                                <p style="text-align:justify"><asp:CheckBox runat="server" CssClass="ChkBoxClass" ID="ChkSelfDeclaration"  /> I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Self Employment Loan. If any discrepancies are found later, I agree to take legal action against me.<br />ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣಿಕರಿಸುತ್ತೇನೆ. ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿ ಕ್ರಮ ಜರುಗಿಸಲು ನಾನು ಒಪ್ಪಿರುತ್ತೇನೆ.</p>
+                        </div>
                         <div class="form-row" id="div11" runat="server">
                             <div class="form-row-label">
                             </div>
@@ -369,7 +377,7 @@ function Numeric(evt) {
                             <div class="form-row-Botton" id="div12" runat="server">
                             </div>
                         </div>
-
+                        
                     </div>
                 </div>
 

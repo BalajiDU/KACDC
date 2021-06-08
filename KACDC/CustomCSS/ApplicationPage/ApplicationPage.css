@@ -421,7 +421,7 @@
     /*margin: 2em auto;*/
     border: none;
     padding: 0;
-    color: brown;
+    color: #41bd09;
     width: 12ch;
     background: repeating-linear-gradient(90deg, #46d200 0, #46d200 1ch, transparent 0, transparent 1.5ch) 0 100% / 11.5ch 2px no-repeat;
     font: 5ch droid sans mono, consolas, monospace;
@@ -431,8 +431,8 @@
 
     .OTPTextBox:focus {
         outline: none;
-        color: #d1d200;
-        background: repeating-linear-gradient(90deg, #d1d200 0, #d1d200 1ch, transparent 0, transparent 1.5ch) 0 100% / 11.5ch 3px no-repeat;
+        color: #ef1d00;
+        background: repeating-linear-gradient(90deg, #ef1d00 0, #ef1d00 1ch, transparent 0, transparent 1.5ch) 0 100% / 11.5ch 3px no-repeat;
         font: 5ch droid sans mono, consolas, monospace;
         letter-spacing: 0.5ch;
         font-size: 25px;

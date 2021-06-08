@@ -1,4 +1,6 @@
-﻿using KACDC.Class.DataProcessing.EncryptionProcess;
+﻿using KACDC.Class.DataProcessing.EmailService;
+using KACDC.Class.DataProcessing.EncryptionProcess;
+using KACDC.Class.DataProcessing.OnlineApplication.AryaVysyaPortalStore;
 using KACDC.Class.DataProcessing.OTPService;
 using KACDC.Class.DataProcessing.SMSService;
 using KACDC.Class.Declaration.OnlineApplication;
@@ -44,21 +46,199 @@ namespace KACDC.Schemes.AryaVysyaPortal
                         SM.sendSMS(txtMobileNumber.Text.Trim(), Message, 2, "LGNOTP");
                         AVPMobileNumVerifyPopup.Show();
                     }
+                    else
+                    {
+                        lblNotificationHeading.Text = "Error";
+                        lblNotificationContent.Text = "Enter Valid Mobile Number";
+                        txtMobileNumber.Focus();
+                        OtherDetailsPopup.Show();
+                    }
+                }
+                else
+                {
+                    lblNotificationHeading.Text = "Error";
+                    lblNotificationContent.Text = "Enter Valid Mobile Number";
+                    OtherDetailsPopup.Show();
+                    txtMobileNumber.Focus();
                 }
             }
-            
+            else
+            {
+                lblNotificationHeading.Text = "Error";
+                lblNotificationContent.Text = "Enter Mobile Number";
+                txtMobileNumber.Focus();
+                OtherDetailsPopup.Show();
+            }
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (txtName.Text.Trim() != "")
             {
+                AVP.Name = txtName.Text.Trim();
                 lblNameError.Text = "";
                 if (txtFatherName.Text.Trim() != "")
                 {
+                    AVP.FatherName = txtFatherName.Text.Trim();
                     lblFatherNameError.Text = "";
                     if (rbMale.Checked == true || rbFemale.Checked == true)
                     {
-
+                        AVP.Gender = rbMale.Checked ? "MALE" : "FEMALE";
+                        if (txtAddress.Text.Trim() != "")
+                        {
+                            AVP.Address = txtAddress.Text.Trim();
+                            if (txtPincode.Text.Trim() != "")
+                            {
+                                AVP.Pincode = txtPincode.Text.Trim();
+                                if (drpDistrict.SelectedValue != "0" && drpDistrict.SelectedItem.Text.ToUpper() != "--SELECT--")
+                                {
+                                    AVP.District = drpDistrict.SelectedValue;
+                                    if (drpDistrict.SelectedValue != "0" && drpDistrict.SelectedItem.Text.ToUpper() != "--SELECT--")
+                                    {
+                                        AVP.District = drpDistrict.SelectedItem.Text;
+                                        if (drpTaluk.SelectedValue != "0" && drpTaluk.SelectedItem.Text.ToUpper() != "--SELECT--")
+                                        {
+                                            AVP.Taluk = drpTaluk.SelectedValue;
+                                            if (txt_DOB.Text.Trim() != "" )
+                                            {
+                                                AVP.DOB = txt_DOB.Text.Trim();
+                                                if (txtMobileNumber.Text.Trim() != "" && System.Text.RegularExpressions.Regex.IsMatch(txtMobileNumber.Text.Trim(), @"^\d+$"))
+                                                {
+                                                    if (AVP.IsMobileVerified == "TRUE")
+                                                    {
+                                                        AVP.MobileNumber = txtMobileNumber.Text.Trim();
+                                                        if (txtWhatsAppNumber.Text.Trim() != "" && System.Text.RegularExpressions.Regex.IsMatch(txtWhatsAppNumber.Text.Trim(), @"^\d+$"))
+                                                        {
+                                                            AVP.WhatsappNumber = txtWhatsAppNumber.Text.Trim();
+                                                            if (txtEmailID.Text != "")
+                                                            {
+                                                                VerifyEmailID VEID = new VerifyEmailID();
+                                                                if (VEID.IsValidEmail(txtEmailID.Text.Trim()))
+                                                                {
+                                                                    AVP.EmailID = txtEmailID.Text.Trim();
+                                                                    if (drpOccupation.SelectedValue != "0")
+                                                                    {
+                                                                        AVP.Occupation = drpOccupation.SelectedValue;
+                                                                        if (txtOccupationDetails.Text.Trim() != "")
+                                                                        {
+                                                                            AVP.OccupationDetails = txtOccupationDetails.Text.Trim();
+                                                                            AVP.Declaration = ChkSelfDeclaration.Checked ? "Yes" : "No";
+                                                                            AryaVysyaPortalSave AVPS = new AryaVysyaPortalSave();
+                                                                            string number = AVPS.StoreAV(AVP.Name, AVP.FatherName, AVP.Gender, AVP.Address, AVP.District, AVP.Taluk, AVP.Pincode,
+                                                                                AVP.DOB, AVP.MobileNumber, AVP.WhatsappNumber, AVP.EmailID, AVP.Occupation, AVP.OccupationDetails, AVP.Declaration);
+                                                                            if(number != "")
+                                                                            {
+                                                                                lblNotificationHeading.Text = "Success";
+                                                                                lblNotificationContent.Text = "Your Details Stored Successfully : "+number;
+                                                                                Session.Clear();
+                                                                                OtherDetailsPopup.Show();
+                                                                                //Response.Redirect("~/Login.aspx");
+                                                                                
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            lblNotificationHeading.Text = "Error";
+                                                                            lblNotificationContent.Text = "Enter your Occupation Details";
+                                                                            txtOccupationDetails.Focus();
+                                                                            OtherDetailsPopup.Show();
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        lblNotificationHeading.Text = "Error";
+                                                                        lblNotificationContent.Text = "Select your Occupation";
+                                                                        drpOccupation.Focus();
+                                                                        OtherDetailsPopup.Show();
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    lblNotificationHeading.Text = "Error";
+                                                                    lblNotificationContent.Text = "Enter Valid EmailID";
+                                                                    txtWhatsAppNumber.Focus();
+                                                                    OtherDetailsPopup.Show();
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                lblNotificationHeading.Text = "Error";
+                                                                lblNotificationContent.Text = "Enter your EmailID";
+                                                                txtWhatsAppNumber.Focus();
+                                                                OtherDetailsPopup.Show();
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            lblNotificationHeading.Text = "Error";
+                                                            lblNotificationContent.Text = "Enter your WhatsApp Mobile Number";
+                                                            txtWhatsAppNumber.Focus();
+                                                            OtherDetailsPopup.Show();
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        lblNotificationHeading.Text = "Error";
+                                                        lblNotificationContent.Text = "Verify your Mobile Number";
+                                                        txtMobileNumber.Focus();
+                                                        OtherDetailsPopup.Show();
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    lblNotificationHeading.Text = "Error";
+                                                    lblNotificationContent.Text = "Enter your Mobile Number";
+                                                    txtMobileNumber.Focus();
+                                                    OtherDetailsPopup.Show();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                lblNotificationHeading.Text = "Error";
+                                                lblNotificationContent.Text = "Select Your Date of Birth";
+                                                txt_DOB.Focus();
+                                                OtherDetailsPopup.Show();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            lblNotificationHeading.Text = "Error";
+                                            lblNotificationContent.Text = "Select Taluk";
+                                            drpTaluk.Focus();
+                                            OtherDetailsPopup.Show();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        lblNotificationHeading.Text = "Error";
+                                        lblNotificationContent.Text = "Select District";
+                                        drpDistrict.Focus();
+                                        OtherDetailsPopup.Show();
+                                    }
+                                }
+                                else
+                                {
+                                    lblNotificationHeading.Text = "Error";
+                                    lblNotificationContent.Text = "Select District";
+                                    drpDistrict.Focus();
+                                    OtherDetailsPopup.Show();
+                                }
+                            }
+                            else
+                            {
+                                lblNotificationHeading.Text = "Error";
+                                lblNotificationContent.Text = "Enter Pincode";
+                                txtPincode.Focus();
+                                OtherDetailsPopup.Show();
+                            }
+                        }
+                    
+                        else
+                        {
+                            lblNotificationHeading.Text = "Error";
+                            lblNotificationContent.Text = "Enter Your Address";
+                            txtAddress.Focus();
+                            OtherDetailsPopup.Show();
+                        }
                     }
                     else
                     {
@@ -95,6 +275,8 @@ namespace KACDC.Schemes.AryaVysyaPortal
                     {
                         AVP.EncryptedOTP = "";
                         AVP.IsMobileVerified = "TRUE";
+                        txtMobileNumber.ReadOnly = true;
+                        btnVerifyMobileNumber.Visible = false;
                     }
                     else
                     {
