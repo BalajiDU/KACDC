@@ -27,6 +27,7 @@ namespace KACDC.Schemes.AryaVysyaPortal
             if (!IsPostBack)
             {
                 this.FillDistrict();
+                calDOB.EndDate = DateTime.Now;
             }
         }
         protected void btnVerifyMobileNumber_Click(object sender, EventArgs e)
@@ -38,13 +39,25 @@ namespace KACDC.Schemes.AryaVysyaPortal
                 {
                     if(System.Text.RegularExpressions.Regex.IsMatch(txtMobileNumber.Text.Trim(), @"^\d+$"))
                     {
-                        txtOTP.Text = "";
-                        txtOTP.Focus();
-                        
-                        AVP.EncryptedOTP = Enc.Encrypt(otp.NewOTP());
-                        string Message = Enc.Decrypt(AVP.EncryptedOTP) + " is your OTP to verify, your application number avp. do not share with others. From:KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION";
-                        SM.sendSMS(txtMobileNumber.Text.Trim(), Message, 2, "LGNOTP");
-                        AVPMobileNumVerifyPopup.Show();
+                        AryaVysyaPortalSave AVPS = new AryaVysyaPortalSave();
+                        if (AVPS.CheckMobileNumExist(txtMobileNumber.Text.Trim()))
+                        {
+                            txtOTP.Text = "";
+                            txtOTP.Focus();
+
+                            AVP.EncryptedOTP = Enc.Encrypt(otp.NewOTP());
+                            string Message = Enc.Decrypt(AVP.EncryptedOTP) + " is your OTP to verify, your application number avp. do not share with others. From:KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION";
+                            SM.sendSMS(txtMobileNumber.Text.Trim(), Message, 2, "LGNOTP");
+                            AVPMobileNumVerifyPopup.Show();
+                        }
+                        else 
+                        {
+                            lblNotificationHeading.Text = "Exist";
+                            lblNotificationContent.Text = "Mobile Number already exist <br/ >Change Your Mobile Number";
+                            txtMobileNumber.ReadOnly = false;
+                            btnVerifyMobileNumber.Visible = true;
+                            OtherDetailsPopup.Show();
+                        }
                     }
                     else
                     {
@@ -70,6 +83,7 @@ namespace KACDC.Schemes.AryaVysyaPortal
                 OtherDetailsPopup.Show();
             }
         }
+        
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (txtName.Text.Trim() != "")
@@ -127,12 +141,22 @@ namespace KACDC.Schemes.AryaVysyaPortal
                                                                                 AVP.DOB, AVP.MobileNumber, AVP.WhatsappNumber, AVP.EmailID, AVP.Occupation, AVP.OccupationDetails, AVP.Declaration);
                                                                             if(number != "")
                                                                             {
-                                                                                lblNotificationHeading.Text = "Success";
-                                                                                lblNotificationContent.Text = "Your Details Stored Successfully : "+number;
-                                                                                Session.Clear();
-                                                                                OtherDetailsPopup.Show();
-                                                                                //Response.Redirect("~/Login.aspx");
-                                                                                
+                                                                                if (number != "UNIQUE KEY CONSTRAINT")
+                                                                                {
+                                                                                    lblNotificationHeading.Text = "Success";
+                                                                                    lblNotificationContent.Text = "Your Details Stored Successfully : " + number;
+                                                                                    Session.Clear();
+                                                                                    OtherDetailsPopup.Show();
+                                                                                    //Response.Redirect("~/Login.aspx");
+                                                                                }
+                                                                                else if (number == "UNIQUE KEY CONSTRAINT")
+                                                                                {
+                                                                                    lblNotificationHeading.Text = "Exist";
+                                                                                    lblNotificationContent.Text = "Mobile Number already exist <br/ >Change Your Mobile Number";
+                                                                                    txtMobileNumber.ReadOnly = false;
+                                                                                    btnVerifyMobileNumber.Visible = true;
+                                                                                    OtherDetailsPopup.Show();
+                                                                                }
                                                                             }
                                                                         }
                                                                         else

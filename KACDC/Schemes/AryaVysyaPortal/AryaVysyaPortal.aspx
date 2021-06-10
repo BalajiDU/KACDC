@@ -8,6 +8,7 @@
     <title>ARYA VYSYA PORTAL</title>
         <link rel="shortcut icon" type="image/x-icon" href="../../Image/KACDC_PDF.jpg" />
     <link href="../../CustomCSS/ApplicationPage/ApplicationPage.css" rel="stylesheet" />
+    <link href="../../CustomCSS/Calender.css" rel="stylesheet" />
 
 <%--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" /> --%>
 
@@ -284,7 +285,7 @@ function Numeric(evt) {
                             </div>
                             <div class="form-row-input">
                                 <asp:TextBox ID="txt_DOB" runat="server" ClientIDMode="Static" class="NeoTextBox" placeholder="DD-MM-YYYY"> </asp:TextBox>
-                                <cc1:CalendarExtender ID="calDOB" PopupButtonID="image" runat="server" TargetControlID="txt_DOB" Format="dd-MM-yyyy"></cc1:CalendarExtender>
+                                <cc1:CalendarExtender ID="calDOB" PopupButtonID="image" runat="server" TargetControlID="txt_DOB" Format="dd-MM-yyyy" CssClass= " cal_Theme1"></cc1:CalendarExtender>
                                 <div id="divAadhaarChkzErrwor" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
                             </div>
                             <div class="form-row-Botton" id="div9" runat="server">

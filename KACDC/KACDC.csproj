@@ -237,6 +237,7 @@
     <Content Include="CustomCSS\ApprovalPageCss\ToggleButton.css" />
     <Content Include="CustomCSS\ApprovalPageCss\TopNavBar.css" />
     <Content Include="CustomCSS\ArivuRenewal.css" />
+    <Content Include="CustomCSS\Calender.css" />
     <Content Include="CustomCSS\Dashboard.css" />
     <Content Include="CustomCSS\DownloadApplication.css" />
     <Content Include="CustomCSS\HomePage\Card.css" />

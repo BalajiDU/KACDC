@@ -11,7 +11,7 @@ namespace KACDC.Class.DataProcessing.OnlineApplication.AryaVysyaPortalStore
     public class AryaVysyaPortalSave
     {
         public string StoreAV(string Name, string FatherName, string Gender, string Address,
-            string District, string Taluk, string Pincode, string DoB,string MobileNumber, string WhatssAppNumber, string EmailID, string Occupation,
+            string District, string Taluk, string Pincode, string DoB, string MobileNumber, string WhatssAppNumber, string EmailID, string Occupation,
             string OccupationDetails, string Declaration)
         {
             try
@@ -40,18 +40,37 @@ namespace KACDC.Class.DataProcessing.OnlineApplication.AryaVysyaPortalStore
                         kvdConn.Open();
                         cmd.ExecuteScalar();
                         kvdConn.Close();
-                        string num= cmd.Parameters["@ApplicationNumber"].Value.ToString();
+                        string num = cmd.Parameters["@ApplicationNumber"].Value.ToString();
                         return num;
 
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 string err = ex.Message;
-                return "";
+                return err;
             }
 
+        }
+
+        public bool CheckMobileNumExist(string MobileNumber)
+        {
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("select CAST(COUNT(MobileNumber)AS int) from  AryaVysyaPortal where MobileNumber=@MobileNumber", kvdConn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@MobileNumber", MobileNumber);
+                    kvdConn.Open();
+                    int count = (Int32)cmd.ExecuteScalar();
+                    kvdConn.Close();
+                    if (count==0)
+                        return true;
+                    else
+                        return false;
+                }
+            }
         }
     }
 }
