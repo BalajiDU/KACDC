@@ -10,7 +10,7 @@ namespace KACDC.Class.DataProcessing.ApplicationProcess
 {
     public class GetDataToProcess
     {
-        public DataTable GetData(string Method, string District)
+        public DataTable GetData(string Method, string District,string TableName="")
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
@@ -25,6 +25,8 @@ namespace KACDC.Class.DataProcessing.ApplicationProcess
                     {
                         DataTable dt = new DataTable();
                         sda.Fill(dt);
+                        if (TableName != "")
+                            dt.TableName = TableName;
                         return dt;
                     }
                     //kvdConn.Close();

@@ -1,4 +1,6 @@
 ﻿using KACDC.Class.DataProcessing.Aadhaar;
+using KACDC.Class.DataProcessing.ApplicationProcess;
+using KACDC.Class.DataProcessing.FileProcessing;
 using KACDC.Class.DataProcessing.Nadakacheri;
 using KACDC.Class.GetCountStatistics;
 using KACDC.Models;
@@ -459,8 +461,16 @@ namespace KACDC.TestForms
 
         protected void btnExportExcel_Click(object sender, EventArgs e)
         {
-            
-            
+            FileOperations FO = new FileOperations();
+            GetDataToProcess GDTP = new GetDataToProcess();
+
+            DataTable employees = new DataTable();
+            DataSet ds = new DataSet();
+            ds.Tables.Add((GDTP.GetData("SESELECTCW", "Bengaluru Dakshina","asdf")));
+            ds.Tables.Add(GDTP.GetData("SESELECTCW", "Bengaluru Dakshina"));
+//D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\
+            FO.ExportToExcel(ds, Server.MapPath("~/DownloadFiles/") +"ABC.xlsx","", "Bengaluru Dakshina");
+
         }
         private void ExportExcel(DataSet ds)
         {
