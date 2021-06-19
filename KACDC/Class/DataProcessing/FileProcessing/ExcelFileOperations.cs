@@ -7,7 +7,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace KACDC.Class.DataProcessing.FileProcessing
 {
-    public class FileOperations
+    public class ExcelFileOperations
     {
         public void ExportToExcel(DataSet dataset,string FilePath,string number,string District,string ReportType="")
         {

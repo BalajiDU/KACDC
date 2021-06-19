@@ -501,7 +501,8 @@
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
     <Compile Include="Class\DataProcessing\EncryptionProcess\Encryption.cs" />
-    <Compile Include="Class\DataProcessing\FileProcessing\FileOperations.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\ExcelFileOperations.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\PDFFileOperation.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
@@ -559,21 +560,21 @@
     <Compile Include="Controllers\CaseWorkerController.cs" />
     <Compile Include="Controllers\MahitiKanaja\MkKacdcSchemeController.cs" />
     <Compile Include="Controllers\MahitiKanaja\MKSelfEmploymentController.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\CollegeTable.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\MultiLineText.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\AgreeCell.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\AgreementTable.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\BankTable.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\LOGOImageCell.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\HeadingTable.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\PDFLanCell.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\PDFCellPrint.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\PDFHeaderCell.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\SetTableSize.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\SignatureTable.cs" />
-    <Compile Include="CreateTextSharpPDF\Process\TextToImage.cs" />
-    <Compile Include="CreateTextSharpPDF\Schemes\Arivu\ApplicantPDFTableAR.cs" />
-    <Compile Include="CreateTextSharpPDF\Schemes\SelfEmployment\ApplicantPDFTable.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\CollegeTable.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\MultiLineText.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\AgreeCell.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\AgreementTable.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\BankTable.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\LOGOImageCell.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\HeadingTable.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\PDFLanCell.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\PDFCellPrint.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\PDFHeaderCell.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\SetTableSize.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\SignatureTable.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\TextToImage.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\Schemes\Arivu\ApplicantPDFTableAR.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\Schemes\SelfEmployment\ApplicantPDFTable.cs" />
     <Compile Include="CW_Form.aspx.cs">
       <DependentUpon>CW_Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -802,6 +803,7 @@
   <ItemGroup>
     <Folder Include="AadhaarLogPhoto\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\" />
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
     <Folder Include="Files_Arivu\2ND_INSTALMENT\" />
     <Folder Include="Files_Arivu\3RD_INSTALMENT\" />

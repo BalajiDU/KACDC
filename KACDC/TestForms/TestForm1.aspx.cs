@@ -461,7 +461,7 @@ namespace KACDC.TestForms
 
         protected void btnExportExcel_Click(object sender, EventArgs e)
         {
-            FileOperations FO = new FileOperations();
+            ExcelFileOperations FO = new ExcelFileOperations();
             GetDataToProcess GDTP = new GetDataToProcess();
 
             DataTable employees = new DataTable();
@@ -529,6 +529,10 @@ namespace KACDC.TestForms
                 //Auto fit columns
                 excelWorkSheet.Columns.AutoFit();
             }
+        }
+        private void ExportToPDF(DataSet ds)
+        {
+
         }
     }
 }

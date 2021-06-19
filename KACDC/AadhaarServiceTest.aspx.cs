@@ -675,7 +675,7 @@ namespace KACDC
         protected bool CompleteTask()
         {
             GetGVData FillGV = new GetGVData();
-            FileOperations FileOperations = new FileOperations();
+            ExcelFileOperations FileOperations = new ExcelFileOperations();
             DataSet ds = new DataSet();
             ds.Tables.Add(FillGV.GetDMApprovedForCEO("spPrintExcel", "SEDOCAPPROVED", "Bengaluru Dakshina", "APPROVED"));
             FileOperations.ExportToExcel(ds, Server.MapPath("~/DownloadFiles/" + "Bengaluru Dakshina" + ".xlsx"), "3", "Bengaluru Dakshina");
