@@ -1,8 +1,14 @@
-﻿using KACDC.Class.DataProcessing.Aadhaar;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using KACDC.Class.DataProcessing.Aadhaar;
 using KACDC.Class.DataProcessing.ApplicationProcess;
 using KACDC.Class.DataProcessing.FileProcessing;
+using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.ApplicationProcess;
+using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.PDFModuleProcess.ZMBankPDF;
 using KACDC.Class.DataProcessing.Nadakacheri;
+using KACDC.Class.FileSaving;
 using KACDC.Class.GetCountStatistics;
+using KACDC.CreateTextSharpPDF.Process;
 using KACDC.Models;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -530,9 +536,109 @@ namespace KACDC.TestForms
                 excelWorkSheet.Columns.AutoFit();
             }
         }
+        protected void btnExportPDFZMApproved_Click(object sender, EventArgs e)
+        {
+            ExcelFileOperations FO = new ExcelFileOperations();
+            GetDataToProcess GDTP = new GetDataToProcess();
+
+            DataTable employees = new DataTable();
+            DataSet ds = new DataSet();
+            ds.Tables.Add((GDTP.GetData("SESELECTCW", "Bengaluru Dakshina", "asdf")));
+            //ds.Tables.Add(GDTP.GetData("SESELECTCW", "Bengaluru Dakshina"));
+            //D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\
+            ExportToPDF(ds);
+        }
         private void ExportToPDF(DataSet ds)
         {
+            BankTable BT = new BankTable();
+            PDFFileOperation PDFop = new PDFFileOperation();
 
+            //PdfPTable Table = null;
+            //Table = new PdfPTable(4);
+            Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
+                pdfDoc.Open();
+                //pdfDoc.Add(Table);
+                //PdfPTable BankTable = null;
+                //BankTable = new PdfPTable(4);
+
+                string FinancialYear = "2020";
+                string District = "Bangalore";
+                string Zone = "BLR";
+
+                string FilePath = Server.MapPath("~/ApplicationProcessFiles/" + FinancialYear + "/ZM/") + "SE" + Zone + District + "_" + FinancialYear + DateTime.Now + ".pdf";
+                //BankTable = PDFop.ExportToPDF( ds,  FilePath,  District);
+                //pdfDoc.Add(BankTable);
+
+
+
+
+
+
+
+                int Center = PdfPCell.ALIGN_CENTER;
+                int VCenter = PdfPCell.ALIGN_MIDDLE;
+                int Left = PdfPCell.ALIGN_LEFT;
+                PDFCellPrint PCell = new PDFCellPrint();
+                PdfPCell EmptyCell = new PdfPCell();
+                EmptyCell = PCell.PrintCell("", "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter);
+                PDFParagraph PDFP = new PDFParagraph();
+
+                string BankName = "SBI";
+                string BankBranch = "SBI branch";
+                string city = "Bangalore";
+                string AccountNumber = "1111111";
+                pdfDoc.Add(PDFP.SingleLineParagraph("\n\n\n\n\n\n\n", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, Left, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("Date: "+DateTime.Now.ToString("dd MMMM yyyy"), "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, PdfPCell.ALIGN_RIGHT, VCenter));
+                pdfDoc.Add(PDFP.ToAddressBlock(BankName, BankBranch, city, "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, Left, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("\n", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, Left, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("Sir/Madam,", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, Left, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("\n", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, Left, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("Sub :- Transfer of amount to the beneficiaries", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, PdfPCell.ALIGN_CENTER, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph(" SB Accounts through RTGF/NEFT-reg", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, PdfPCell.ALIGN_CENTER, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("***************", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, PdfPCell.ALIGN_CENTER, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("\n", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, Left, VCenter));
+                pdfDoc.Add(PDFP.MainBlock(BankName, BankBranch, "1", AccountNumber, "Arial", 16, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, Left, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("     Thank You,", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, PdfPCell.ALIGN_LEFT, VCenter));
+                pdfDoc.Add(PDFP.SingleLineParagraph("Your Faithfully     " , "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, PdfPCell.ALIGN_RIGHT, VCenter));
+
+
+
+                pdfDoc.SetPageSize(new Rectangle(1100f, 850f));
+                pdfDoc.SetMargins( 0, 0, 10, 0);
+                pdfDoc.NewPage();
+                
+                ReportTableHeading HT = new ReportTableHeading();
+                PdfPTable HeadingTable = null;
+                HeadingTable = new PdfPTable(4);
+                //pdfDoc.Add(PDFP.SingleLineParagraph("***************", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, PdfPCell.ALIGN_CENTER, VCenter));
+                HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", FinancialYear,District,Zone);
+                pdfDoc.Add(HeadingTable);
+
+
+                pdfDoc.Close();
+                byte[] bytes = memoryStream.ToArray();
+                memoryStream.Close();
+                Response.Clear();
+
+                SaveFile SV = new SaveFile();
+                //Arivu_Kalaburgi_Bidar_2020-21_30-03-2021
+                SV.SavingFileOnServer(Server.MapPath("~/ApplicationProcessFiles/" + FinancialYear + "/ZM/"), "SE" + Zone + District + "_" + FinancialYear + string.Format("{0:dd-MM-yyyy}", DateTime.Now) + ".pdf", bytes);
+                if (File.Exists(FilePath))
+                {
+                    //SendSMSEmail();
+                }
+                Response.ContentEncoding = System.Text.Encoding.UTF8;
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + "ZM" + "_" + "ZM" + ".pdf");
+                Response.ContentType = "application/pdf";
+                Response.Buffer = true;
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.BinaryWrite(bytes);
+                Response.End();
+                Response.Close();
+            }
         }
     }
 }

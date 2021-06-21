@@ -64,6 +64,7 @@
             <asp:Label ID ="Label2" runat="server"></asp:Label>
         <hr />
         <asp:Button ID="btnExportExcel" runat="server" Text="Export Excel" OnClick="btnExportExcel_Click" />
+        <asp:Button ID="btnExportPDFZMApproved" runat="server" Text="Export PDF ZM Approved" OnClick="btnExportPDFZMApproved_Click" />
     </form>
 </body>
 </html>

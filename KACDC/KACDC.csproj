@@ -38,12 +38,12 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
@@ -501,8 +501,10 @@
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
     <Compile Include="Class\DataProcessing\EncryptionProcess\Encryption.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\PDFFileOperation.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\ReportTableHeading.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\PDFParagraph.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\ExcelFileOperations.cs" />
-    <Compile Include="Class\DataProcessing\FileProcessing\PDFFileOperation.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
@@ -802,8 +804,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AadhaarLogPhoto\" />
+    <Folder Include="ApplicationProcessFiles\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\" />
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
     <Folder Include="Files_Arivu\2ND_INSTALMENT\" />
     <Folder Include="Files_Arivu\3RD_INSTALMENT\" />
