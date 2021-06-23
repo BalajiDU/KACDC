@@ -10,11 +10,11 @@ namespace KACDC.Class.DataProcessing.ApplicationProcess
 {
     public class GetDataToProcess
     {
-        public DataTable GetData(string Method, string District,string TableName="")
+        public DataTable GetData(string StoredProcedureName,string Method, string District,string TableName="")
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("spGetDataToApprovalProcess", kvdConn))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedureName, kvdConn))//"spGetDataToApprovalProcess"
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@status", Method); //"SESELECTCW"

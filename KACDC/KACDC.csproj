@@ -501,6 +501,7 @@
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
     <Compile Include="Class\DataProcessing\EncryptionProcess\Encryption.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\ApplicantPDFMerge.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\PDFFileOperation.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\ReportTableHeading.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\PDFParagraph.cs" />

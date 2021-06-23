@@ -64,5 +64,61 @@ namespace KACDC.Class.DataProcessing.FileProcessing.CreatePDF.ApplicationProcess
 
             return Table;
         }
+        public PdfPTable ZMBankTable(DataTable BankDataTable,string TotalFund)
+        {
+            PdfPTable BankTable = new PdfPTable(BankDataTable.Columns.Count);
+            BankTable.WidthPercentage = 95f ;
+            //BankTable.AddCell(new PdfPCell(new Phrase(BankDataTable.TableName.ToUpper())) { Colspan = BankDataTable.Columns.Count });
+            PdfPCell c1 = new PdfPCell(new Phrase(new Chunk(BankDataTable.TableName.ToUpper(), FontFactory.GetFont("sans-serif", 13, iTextSharp.text.Font.BOLD, BaseColor.BLACK)))) { Colspan = BankDataTable.Columns.Count };
+            c1.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            c1.BorderColor = BaseColor.WHITE;
+            BankTable.AddCell(c1);
+            //BankTable.AddCell(PhraseCell((BankDataTable.TableName.ToUpper()), PdfPCell.ALIGN_CENTER, BaseColor.WHITE,14));
+
+            for (int i = 0; i < BankDataTable.Columns.Count; i++)
+            {
+                string cellText = BankDataTable.Columns[i].ColumnName;
+                PdfPCell cell = new PdfPCell();
+                cell.Phrase = new Phrase(cellText, new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 10, 1, new BaseColor(System.Drawing.ColorTranslator.FromHtml("#000000"))));
+                cell.BackgroundColor = new BaseColor(System.Drawing.ColorTranslator.FromHtml("#C8C8C8"));
+                //cell.Phrase = new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, 1, new BaseColor(grdStudent.HeaderStyle.ForeColor)));  
+                //cell.BackgroundColor = new BaseColor(grdStudent.HeaderStyle.BackColor);  
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.PaddingBottom = 5;
+                BankTable.AddCell(cell);
+            }
+
+            //writing table Data  
+            for (int i = 0; i < BankDataTable.Rows.Count; i++)
+            {
+                for (int j = 0; j < BankDataTable.Columns.Count; j++)
+                {
+                    if(j==0)
+                        BankTable.AddCell(PhraseCell(((i + 1).ToString()), PdfPCell.ALIGN_CENTER, BaseColor.BLACK));
+                    //BankTable.AddCell((i+1).ToString());
+                    //BankTable.AddCell(PhraseCell(new Chunk((i + 1).ToString(), PdfPCell.ALIGN_CENTER));
+                    else
+                        BankTable.AddCell(PhraseCell(BankDataTable.Rows[i][j].ToString(), PdfPCell.ALIGN_CENTER, BaseColor.BLACK));
+                }
+            }
+            BankTable.AddCell(new PdfPCell(new Phrase(new Chunk("TOTAL", FontFactory.GetFont("sans-serif", 13, iTextSharp.text.Font.BOLD, BaseColor.BLACK)))) { Colspan = BankDataTable.Columns.Count - 1, HorizontalAlignment= PdfPCell.ALIGN_CENTER });
+            BankTable.AddCell(new PdfPCell(new Phrase(new Chunk(TotalFund, FontFactory.GetFont("sans-serif", 13, iTextSharp.text.Font.BOLD, BaseColor.BLACK)))) { HorizontalAlignment= PdfPCell.ALIGN_CENTER });
+            //BankTable.AddCell(new PdfPCell(new Phrase(TotalFund)) );
+            BankTable.PaddingTop = 10;
+            return BankTable;
+        }
+        private static PdfPCell PhraseCell(string  PhraseText, int align, BaseColor BorderColor, int FontType = iTextSharp.text.Font.NORMAL,float FontSize=12, string FontName= "sans-serif")
+        {
+            Phrase phrase = new Phrase();
+            phrase.Add(new Chunk(PhraseText, FontFactory.GetFont(FontName, FontSize, FontType, BaseColor.BLACK)));
+            PdfPCell cell = new PdfPCell(phrase);
+            cell.BorderColor = BorderColor;
+            cell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.HorizontalAlignment = align;
+            cell.PaddingBottom = 2f;
+            cell.PaddingTop = 0f;
+            
+            return cell;
+        }
     }
 }

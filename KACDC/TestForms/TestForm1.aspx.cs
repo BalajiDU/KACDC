@@ -472,8 +472,8 @@ namespace KACDC.TestForms
 
             DataTable employees = new DataTable();
             DataSet ds = new DataSet();
-            ds.Tables.Add((GDTP.GetData("SESELECTCW", "Bengaluru Dakshina","asdf")));
-            ds.Tables.Add(GDTP.GetData("SESELECTCW", "Bengaluru Dakshina"));
+            ds.Tables.Add((GDTP.GetData("spGetDataToApprovalProcess","SESELECTCW", "Bengaluru Dakshina","asdf")));
+            ds.Tables.Add(GDTP.GetData("spGetDataToApprovalProcess","SESELECTCW", "Bengaluru Dakshina"));
 //D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\
             FO.ExportToExcel(ds, Server.MapPath("~/DownloadFiles/") +"ABC.xlsx","", "Bengaluru Dakshina");
 
@@ -543,8 +543,8 @@ namespace KACDC.TestForms
 
             DataTable employees = new DataTable();
             DataSet ds = new DataSet();
-            ds.Tables.Add((GDTP.GetData("SESELECTCW", "Bengaluru Dakshina", "asdf")));
-            //ds.Tables.Add(GDTP.GetData("SESELECTCW", "Bengaluru Dakshina"));
+            ds.Tables.Add((GDTP.GetData("spGetDataToApprovalProcess","SESELECTCW", "Bengaluru Dakshina", "asdf")));
+            //ds.Tables.Add(GDTP.GetData("spGetDataToApprovalProcess","SESELECTCW", "Bengaluru Dakshina"));
             //D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\
             ExportToPDF(ds);
         }
@@ -552,6 +552,7 @@ namespace KACDC.TestForms
         {
             BankTable BT = new BankTable();
             PDFFileOperation PDFop = new PDFFileOperation();
+            GetDataToProcess GDTP = new GetDataToProcess();
 
             //PdfPTable Table = null;
             //Table = new PdfPTable(4);
@@ -616,6 +617,7 @@ namespace KACDC.TestForms
                 //pdfDoc.Add(PDFP.SingleLineParagraph("***************", "Arial", 14, iTextSharp.text.Font.NORMAL, BaseColor.BLACK, PdfPCell.ALIGN_CENTER, VCenter));
                 HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", FinancialYear,District,Zone);
                 pdfDoc.Add(HeadingTable);
+                pdfDoc.Add(PDFop.ZMBankTable(GDTP.GetData("spPrintExcel", "SEZMAPPROVEDPRINT", "Bengaluru Dakshina", "Approved List"),"3523"));//print 
 
 
                 pdfDoc.Close();

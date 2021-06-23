@@ -1,6 +1,7 @@
 ﻿using KACDC.Class.DataProcessing;
 using KACDC.Class.DataProcessing.ApplicationProcess;
 using KACDC.Class.DataProcessing.ApplicationProcess.BankDetails;
+using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.ApplicationProcess;
 using KACDC.Class.Declaration.ApprovalProcess;
 using KACDC.Class.GetCountStatistics;
 using System;
@@ -72,10 +73,10 @@ namespace KACDC.ApprovalPage
             {
                 if (drpArivuSelectYear.SelectedItem.Text != "--SELECT--")
                 {
-                    gvZMARApproveProcess.DataSource = GDTP.GetData(drpArivuSelectYear.SelectedValue+"_ZM", drpZoneSelDistrict.SelectedValue);
+                    gvZMARApproveProcess.DataSource = GDTP.GetData("spGetDataToApprovalProcess",drpArivuSelectYear.SelectedValue+"_ZM", drpZoneSelDistrict.SelectedValue);
                     gvZMARApproveProcess.DataBind();
 
-                    gvZMARReleaseProcess.DataSource = GDTP.GetData(drpArivuSelectYear.SelectedValue + "_ZMRELEASE", drpZoneSelDistrict.SelectedValue);
+                    gvZMARReleaseProcess.DataSource = GDTP.GetData("spGetDataToApprovalProcess",drpArivuSelectYear.SelectedValue + "_ZMRELEASE", drpZoneSelDistrict.SelectedValue);
                     gvZMARReleaseProcess.DataBind();
                 }
             }
@@ -84,10 +85,10 @@ namespace KACDC.ApprovalPage
         {
             if (drpZoneSelDistrict.SelectedItem.Text != "--SELECT--")
             {
-                gvZMSEApproveProcess.DataSource = GDTP.GetData("SESELECTZM", drpZoneSelDistrict.SelectedValue);
+                gvZMSEApproveProcess.DataSource = GDTP.GetData("spGetDataToApprovalProcess","SESELECTZM", drpZoneSelDistrict.SelectedValue);
                 gvZMSEApproveProcess.DataBind();
 
-                gvZMSEReleaseProcess.DataSource = GDTP.GetData("SESELECTRELEASE", drpZoneSelDistrict.SelectedValue);
+                gvZMSEReleaseProcess.DataSource = GDTP.GetData("spGetDataToApprovalProcess","SESELECTRELEASE", drpZoneSelDistrict.SelectedValue);
                 gvZMSEReleaseProcess.DataBind();
             }
         }
@@ -505,6 +506,14 @@ namespace KACDC.ApprovalPage
             lblZMSEConfirmReleaseLoanNumber.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApprovedApplicationNum"].ToString();
             ZMSEConfirmReleasePopup.Show();
         }
+        protected void btnZMARDisplayCollegeDetails_Click(object sender, EventArgs e)
+        {
+            ApplicantPDFMerge PMerge = new ApplicantPDFMerge();
+            PMerge.PDFMerge();
+        }
+
+
+        //Last
         protected void drpZoneSESanction_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -524,10 +533,7 @@ namespace KACDC.ApprovalPage
 
         }
         
-        protected void btnZMARDisplayCollegeDetails_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         
         protected void btnARZMGenerateReport_Click(object sender, EventArgs e)
         {
