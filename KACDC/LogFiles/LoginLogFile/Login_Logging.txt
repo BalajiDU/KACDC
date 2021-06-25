@@ -205,3 +205,27 @@ WebPage Name :Login.aspx
 User Name:ZMBLR
 User Type:ZONALMANAGER
 IP:::1
+
+-----------------New Login-----------------
+Date : 23-06-2021
+Time : 01:15 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 23-06-2021
+Time : 01:17 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 23-06-2021
+Time : 01:25 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1

@@ -508,10 +508,58 @@ namespace KACDC.ApprovalPage
         }
         protected void btnZMARDisplayCollegeDetails_Click(object sender, EventArgs e)
         {
-            ApplicantPDFMerge PMerge = new ApplicantPDFMerge();
-            PMerge.PDFMerge();
-        }
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
 
+            ApplicantPDFMerge PMerge = new ApplicantPDFMerge();
+            
+            string FileName = gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString() + "_" + gvZMARApproveProcess.DataKeys[rowindex].Values["AadharNum"].ToString() + ".pdf";
+            Server.MapPath("~/Files_Arivu/App/AdmisionTicket/" + FileName);
+            Server.MapPath("~/Files_Arivu/App/CollegeHostel/" + FileName);
+            Server.MapPath("~/Files_Arivu/App/FeesStructure/" + FileName);
+            Server.MapPath("~/Files_Arivu/App/PreviousMarksCard/" + FileName);
+            Server.MapPath("~/Files_Arivu/App/StudyCertificate/" + FileName);
+            string[] ApplicantFiles = {
+                Server.MapPath("~/Files_Arivu/App/AdmisionTicket/" + FileName),
+                Server.MapPath("~/Files_Arivu/App/CollegeHostel/" + FileName),
+                Server.MapPath("~/Files_Arivu/App/FeesStructure/" + FileName),
+                Server.MapPath("~/Files_Arivu/App/PreviousMarksCard/" + FileName),
+                Server.MapPath("~/Files_Arivu/App/StudyCertificate/" + FileName),
+            };
+            PMerge.PDFMerge(ApplicantFiles, FileName, Server.MapPath("~/Files_Arivu/App/TempCollegeFile/"));
+
+
+            
+            Server.MapPath("~/Files_Arivu/App/TempCollegeFile/" + FileName);
+
+
+
+
+
+
+            string destinationFileName = @"Merged.pdf";
+
+            // Merge 1 with (2, 3) and form destination  
+            PDFFile pdfFile = new PDFFile(sourceFileName1);
+            pdfFile.MergeWith(new string[] { sourceFileName2, sourceFileName3 }, destinationFileName);
+
+
+
+
+
+
+
+
+
+
+
+        }
+        protected void btnZMASEReturn_Click(object sender, EventArgs e)
+        {
+
+
+        }
 
         //Last
         protected void drpZoneSESanction_SelectedIndexChanged(object sender, EventArgs e)

@@ -284,7 +284,7 @@ function Numeric(evt) {
                                 <asp:Label ID="Label10" class="" runat="server">DOB<span style="color:red"> *</span><br />ಜನ್ಮ ದಿನಾಂಕ</asp:Label><br />
                             </div>
                             <div class="form-row-input">
-                                <asp:TextBox ID="txt_DOB" runat="server" ClientIDMode="Static" class="NeoTextBox" placeholder="DD-MM-YYYY"> </asp:TextBox>
+                                <asp:TextBox ID="txt_DOB" runat="server" ClientIDMode="Static" class="NeoTextBox" placeholder="DD-MM-YYYY" AutoPostBack="true" OnTextChanged="txt_DOB_TextChanged"> </asp:TextBox>
                                 <cc1:CalendarExtender ID="calDOB" PopupButtonID="image" runat="server" TargetControlID="txt_DOB" Format="dd-MM-yyyy" CssClass= " cal_Theme1"></cc1:CalendarExtender>
                                 <div id="divAadhaarChkzErrwor" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
                             </div>

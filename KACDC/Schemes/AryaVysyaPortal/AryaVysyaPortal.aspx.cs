@@ -372,6 +372,10 @@ namespace KACDC.Schemes.AryaVysyaPortal
                 }
             }
         }
+        protected void txt_DOB_TextChanged(object sender, EventArgs e)
+        {
+            CalculateYourAge(Convert.ToDateTime(txt_DOB.Text.Trim()));
+        }
         private void FillTaluk()
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
@@ -390,6 +394,32 @@ namespace KACDC.Schemes.AryaVysyaPortal
                     kvdConn.Close();
                 }
             }
+        }
+        static string CalculateYourAge(DateTime Dob)
+        {
+            DateTime Now = DateTime.Now;
+            int Years = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
+            DateTime PastYearDate = Dob.AddYears(Years);
+            int Months = 0;
+            for (int i = 1; i <= 12; i++)
+            {
+                if (PastYearDate.AddMonths(i) == Now)
+                {
+                    Months = i;
+                    break;
+                }
+                else if (PastYearDate.AddMonths(i) >= Now)
+                {
+                    Months = i - 1;
+                    break;
+                }
+            }
+            int Days = Now.Subtract(PastYearDate.AddMonths(Months)).Days;
+            int Hours = Now.Subtract(PastYearDate).Hours;
+            int Minutes = Now.Subtract(PastYearDate).Minutes;
+            int Seconds = Now.Subtract(PastYearDate).Seconds;
+            return Years.ToString();
+            //return String.Format("Age: {0} Year(s) {1} Month(s) {2} Day(s) {3} Hour(s) {4} Second(s)", Years, Months, Days, Hours, Seconds);
         }
     }
 }
