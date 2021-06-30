@@ -311,6 +311,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestBa.aspx" />
+    <Content Include="TestForms\AadhaarTest.aspx" />
     <Content Include="TestForms\TestForm1.aspx" />
     <Content Include="WebServices\FetchSelfEmploymentData.asmx" />
     <Content Include="WebServices\GetCollegeDetails.asmx" />
@@ -710,6 +711,13 @@
     </Compile>
     <Compile Include="TestBa.aspx.designer.cs">
       <DependentUpon>TestBa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestForms\AadhaarTest.aspx.cs">
+      <DependentUpon>AadhaarTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestForms\AadhaarTest.aspx.designer.cs">
+      <DependentUpon>AadhaarTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestForms\TestForm1.aspx.cs">
       <DependentUpon>TestForm1.aspx</DependentUpon>

@@ -92,8 +92,8 @@ namespace KACDC.Class.DataProcessing.Aadhaar
             RequestObject request = new RequestObject();
 
             request.setAadhaarNumber(ADSER.AadhaarNumber);
-            request.setVersion("2.5");
-            request.setUdc(ConfigurationSettings.AppSettings["UDCCode"].ToString());
+            request.setVersion("2.5");//ex
+            request.setUdc(ConfigurationSettings.AppSettings["UDCCode"].ToString());//ex
             //request.setUdc("ASBD20171013100000");
             request.setTimeStamp(Util.getTimeStamp());
             request.setResidentConsent(true);

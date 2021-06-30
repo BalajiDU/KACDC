@@ -99,7 +99,7 @@ namespace KACDC.Schemes.Self_Employment
                     else
                     {
                         AadhaarError AE = new AadhaarError();
-                        DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.SendOTPErrorMessage), this);
+                        DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.SendOTPErrorCode), this);
                     }
                 }
                 else

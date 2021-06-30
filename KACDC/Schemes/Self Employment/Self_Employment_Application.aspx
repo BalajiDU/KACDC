@@ -1130,7 +1130,7 @@
                             </div>
                             <div class="form-row-input">
                                 <asp:Button ID="btnNextChangeRDNumber" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeRDNumber_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />
-                                <asp:Button ID="btnNextDisplayBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayBankDetails_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
+                                <asp:Button ID="btnNextDisplayBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayBankDetails_Click" Text="Confirm and Continue" onpaste="return TRUE" AutoCompleteType="Disabled" />
                             </div>
                             <div class="form-row-Botton">
                             </div>
@@ -1156,7 +1156,7 @@
                             </div>
                         </div>
                          <%--Button to Other Details--%>
-                        <div id="divButtonToOtherDetails" runat="server" visible="true" class="form-row">
+                        <div id="divButtonToOtherDetails" runat="server" visible="false" class="form-row">
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">

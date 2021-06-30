@@ -16,7 +16,7 @@ namespace KACDC.Class.DataProcessing.Aadhaar
             else if (OTPErrorCode == "AUA-OTP-05")
                 return "OTP Expired";
             else
-                return "Unable to Connect, Try again";
+                return "Unable to Connect, Try again "+ OTPErrorCode;
         }
     }
 }

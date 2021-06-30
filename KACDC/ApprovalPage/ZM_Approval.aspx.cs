@@ -541,8 +541,8 @@ namespace KACDC.ApprovalPage
             string destinationFileName = @"Merged.pdf";
 
             // Merge 1 with (2, 3) and form destination  
-            PDFFile pdfFile = new PDFFile(sourceFileName1);
-            pdfFile.MergeWith(new string[] { sourceFileName2, sourceFileName3 }, destinationFileName);
+            //PDFFile pdfFile = new PDFFile(sourceFileName1);
+            //pdfFile.MergeWith(new string[] { sourceFileName2, sourceFileName3 }, destinationFileName);
 
 
 

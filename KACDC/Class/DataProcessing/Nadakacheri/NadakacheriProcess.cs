@@ -97,6 +97,7 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
             }
             catch (Exception ex)
             {
+                string msg = ex.Message;
                 if (xElement.Element("Status").Value.ToString() == "0")
                 {
                     //todo
