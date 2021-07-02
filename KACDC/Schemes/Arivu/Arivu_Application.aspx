@@ -1111,7 +1111,7 @@
                             </div>
                         </div>
                         <%--Button to Display RD--%>
-                        <div id="divButtonToRDNum" runat="server" visible="false" class="form-row">
+                        <div id="divButtonToRDNum" runat="server" visible="true" class="form-row">
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
@@ -1422,6 +1422,7 @@
                                     <div class="Popup-row-label">
                                         <asp:Button ID="btnCollegeDetailsSaveReturnToPreview" Visible="false" runat="server" CssClass="NeoButton" Text="Save and Proceed" OnClick="btnCollegeDetailsSaveReturnToPreview_Click" />
                                         <asp:Button ID="btnCollegeDetailsSave" runat="server" Visible="true" CssClass="NeoButton" Text="Save and Proceed" OnClick="btnCollegeDetailsSave_Click" />
+                                        <asp:Button ID="btnCollegeDetailsTemp" runat="server" Visible="true" CssClass="NeoButton" Text="Save and Proceed Temp" OnClick="btnCollegeDetailsSaveTemp_Click" />
                                     </div>
                                     <div class="form-row-label">
                                         <asp:Button ID="btnCollegeDetailsOk" runat="server" Visible="false" CssClass="NeoButton" Text="Proceed" OnClick="btnCollegeDetailsOk_Click" />
@@ -2113,7 +2114,7 @@
                                     <asp:Label ID="lblNCDistrict" runat="server"></asp:Label>
                                 </div>
                             </div>
-                            <div id="divContactAddressOption" visible="false" runat="server" class="form-row">
+                            <div id="divContactAddressOption" visible="true" runat="server" class="form-row">
                                 <div class="Popup-row-label">
                                     <asp:Label ID="Label21" runat="server" >Contact Address same as above<span style="color:#a30000"> *</span></asp:Label>
                                 </div>

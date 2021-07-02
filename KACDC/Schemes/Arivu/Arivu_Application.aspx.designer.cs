@@ -868,6 +868,15 @@ namespace KACDC.Schemes.Arivu {
         protected global::System.Web.UI.WebControls.Button btnCollegeDetailsSave;
         
         /// <summary>
+        /// btnCollegeDetailsTemp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCollegeDetailsTemp;
+        
+        /// <summary>
         /// btnCollegeDetailsOk control.
         /// </summary>
         /// <remarks>

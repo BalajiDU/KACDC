@@ -364,7 +364,7 @@ namespace KACDC.Schemes.Arivu
                                                 txtIFSCCode.ReadOnly = true;
                                                 btnGetBankDetails.Visible = false;
                                                 btnViewBankDetails.Visible = true;
-                                                divButtonToOtherDetails.Visible = true;
+                                                divButtonToCollegeDetails.Visible = true;
                                             }
                                             else
                                             {
@@ -434,13 +434,17 @@ namespace KACDC.Schemes.Arivu
             txtIFSCCode.ReadOnly = false;
             btnGetBankDetails.Visible = true;
             btnViewBankDetails.Visible = false;
-            divButtonToOtherDetails.Visible = false;
+            divButtonToCollegeDetails.Visible = false;
         }
         protected void btnNextDisplayCollegeDetails_Click(object sender, EventArgs e)
         {
+            divCollegeDetails.Visible = false;
+            divCollegeDetailsFill.Visible = true;
+            divButtonToCollegeDetails.Visible = false;
         }
         protected void btnViewCollegeDetails_Click(object sender, EventArgs e)
         {
+            
         }
         protected void btnUploadCETAdmission_Click(object sender, EventArgs e)
         {
@@ -464,6 +468,11 @@ namespace KACDC.Schemes.Arivu
         {
             this.VerifyCollegeDetails();
         }
+        protected void btnCollegeDetailsSaveTemp_Click(object sender, EventArgs e)
+        {
+            divButtonToOtherDetails.Visible = true;
+        }
+
         private void VerifyCollegeDetails()
         {
             if (txtCollegeCode.Text.Trim()!="" && txtCollegeCode.Text.Trim()!=null  )
@@ -1105,7 +1114,7 @@ namespace KACDC.Schemes.Arivu
             txtIFSCCode.ReadOnly = false;
             btnGetBankDetails.Visible = true;
             btnViewBankDetails.Visible = false;
-            divButtonToOtherDetails.Visible = false;
+            divButtonToCollegeDetails.Visible = false;
         }
         protected void drpConst_SelectedIndexChanged(object sender, EventArgs e)
         {
