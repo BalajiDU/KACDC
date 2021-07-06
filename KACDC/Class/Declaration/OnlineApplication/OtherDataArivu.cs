@@ -123,5 +123,10 @@ namespace KACDC.Class.Declaration.OnlineApplication
             set { HttpContext.Current.Session["SMTP_Server"] = value; }
             get { return HttpContext.Current.Session["SMTP_Server"] as string; }
         }
+        public byte[] byteCETAdmission
+        {
+            set { HttpContext.Current.Session["byteCETAdmission"] = value; }
+            get { return HttpContext.Current.Session["byteCETAdmission"] as byte[]; }
+        }
     }
 }

@@ -448,6 +448,66 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnUploadCETAdmission_Click(object sender, EventArgs e)
         {
+            if (FileCETAdmission.HasFile)
+            {
+                string name = FileCETAdmission.FileName + Path.GetExtension(FileCETAdmission.FileName);
+                string fileExtension = Path.GetExtension(FileCETAdmission.FileName);
+
+                if (name.Contains(".exe") && name.Contains(".msi") && name.Contains(".etc") && name.Contains(".dll") && name.Contains(".dat") && fileExtension.ToLower() != ".pdf" )
+                {
+                    DisplayAlert("Only PDF file allowed", this);
+                }
+                else
+                {
+                    int fileSize = FileCETAdmission.PostedFile.ContentLength;
+                    if (fileSize < 51300)
+                    {
+                        DisplayAlert("Minimun size 50KB ", this);
+                    }
+                    else if (fileSize > 512000)
+                    {
+                        DisplayAlert("File size Exceeded.. Maximum size 500KB", this);
+                    }
+
+                    else
+                    {
+                        FileCETAdmission.SaveAs(Server.MapPath("~/ImageUpload/" + FileCETAdmission.FileName));
+                        DisplayAlert("File Uploaded successfully", this);
+                        Stream fs = FileCETAdmission.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        ODAR.byteCETAdmission= br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+            }
+            else
+            {
+                DisplayAlert("File not uploaded", this);
+            }
+
+            string filename = Path.GetFileName(FileCETAdmission.PostedFile.FileName);
+            string contentType = FileCETAdmission.PostedFile.ContentType;
+            using (Stream fs = FileCETAdmission.PostedFile.InputStream)
+            {
+                using (BinaryReader br = new BinaryReader(fs))
+                {
+                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                    string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        string query = "insert into tblFiles values (@Name, @ContentType, @Data)";
+                        using (SqlCommand cmd = new SqlCommand(query))
+                        {
+                            cmd.Connection = con;
+                            cmd.Parameters.AddWithValue("@Name", filename);
+                            cmd.Parameters.AddWithValue("@ContentType", contentType);
+                            cmd.Parameters.AddWithValue("@Data", bytes);
+                            con.Open();
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                        }
+                    }
+                }
+            }
         }
         protected void btnUploadStudyCertificate_Click(object sender, EventArgs e)
         {
@@ -470,6 +530,7 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnCollegeDetailsSaveTemp_Click(object sender, EventArgs e)
         {
+            divCollegeDetailsFill.Visible = false;
             divButtonToOtherDetails.Visible = true;
         }
 
