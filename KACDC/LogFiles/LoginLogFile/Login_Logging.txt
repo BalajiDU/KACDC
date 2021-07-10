@@ -229,3 +229,11 @@ WebPage Name :Login.aspx
 User Name:ZMBLR
 User Type:ZONALMANAGER
 IP:::1
+
+-----------------New Login-----------------
+Date : 09-07-2021
+Time : 01:18 PM
+WebPage Name :Login.aspx
+User Name:HoMessage
+User Type:MESSAGESERVICE
+IP:::1

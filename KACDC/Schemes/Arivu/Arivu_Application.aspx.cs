@@ -483,43 +483,158 @@ namespace KACDC.Schemes.Arivu
             {
                 DisplayAlert("File not uploaded", this);
             }
-
-            string filename = Path.GetFileName(FileCETAdmission.PostedFile.FileName);
-            string contentType = FileCETAdmission.PostedFile.ContentType;
-            using (Stream fs = FileCETAdmission.PostedFile.InputStream)
-            {
-                using (BinaryReader br = new BinaryReader(fs))
-                {
-                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                    string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-                    using (SqlConnection con = new SqlConnection(constr))
-                    {
-                        string query = "insert into tblFiles values (@Name, @ContentType, @Data)";
-                        using (SqlCommand cmd = new SqlCommand(query))
-                        {
-                            cmd.Connection = con;
-                            cmd.Parameters.AddWithValue("@Name", filename);
-                            cmd.Parameters.AddWithValue("@ContentType", contentType);
-                            cmd.Parameters.AddWithValue("@Data", bytes);
-                            con.Open();
-                            cmd.ExecuteNonQuery();
-                            con.Close();
-                        }
-                    }
-                }
-            }
         }
         protected void btnUploadStudyCertificate_Click(object sender, EventArgs e)
         {
+            if (FileStudyCertificate.HasFile)
+            {
+                string name = FileStudyCertificate.FileName + Path.GetExtension(FileStudyCertificate.FileName);
+                string fileExtension = Path.GetExtension(FileStudyCertificate.FileName);
+
+                if (name.Contains(".exe") && name.Contains(".msi") && name.Contains(".etc") && name.Contains(".dll") && name.Contains(".dat") && fileExtension.ToLower() != ".pdf")
+                {
+                    DisplayAlert("Only PDF file allowed", this);
+                }
+                else
+                {
+                    int fileSize = FileStudyCertificate.PostedFile.ContentLength;
+                    if (fileSize < 51300)
+                    {
+                        DisplayAlert("Minimun size 50KB ", this);
+                    }
+                    else if (fileSize > 512000)
+                    {
+                        DisplayAlert("File size Exceeded.. Maximum size 500KB", this);
+                    }
+
+                    else
+                    {
+                        FileStudyCertificate.SaveAs(Server.MapPath("~/ImageUpload/" + FileStudyCertificate.FileName));
+                        DisplayAlert("File Uploaded successfully", this);
+                        Stream fs = FileStudyCertificate.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        ODAR.byteStudyCertificate = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+            }
+            else
+            {
+                DisplayAlert("File not uploaded", this);
+            }
         }
         protected void btnUploadPrevMarksCard_Click(object sender, EventArgs e)
         {
+            if (FilePrevMarksCard.HasFile)
+            {
+                string name = FilePrevMarksCard.FileName + Path.GetExtension(FilePrevMarksCard.FileName);
+                string fileExtension = Path.GetExtension(FilePrevMarksCard.FileName);
+
+                if (name.Contains(".exe") && name.Contains(".msi") && name.Contains(".etc") && name.Contains(".dll") && name.Contains(".dat") && fileExtension.ToLower() != ".pdf")
+                {
+                    DisplayAlert("Only PDF file allowed", this);
+                }
+                else
+                {
+                    int fileSize = FilePrevMarksCard.PostedFile.ContentLength;
+                    if (fileSize < 51300)
+                    {
+                        DisplayAlert("Minimun size 50KB ", this);
+                    }
+                    else if (fileSize > 512000)
+                    {
+                        DisplayAlert("File size Exceeded.. Maximum size 500KB", this);
+                    }
+
+                    else
+                    {
+                        FilePrevMarksCard.SaveAs(Server.MapPath("~/ImageUpload/" + FilePrevMarksCard.FileName));
+                        DisplayAlert("File Uploaded successfully", this);
+                        Stream fs = FilePrevMarksCard.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        ODAR.bytePrevMarksCard = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+            }
+            else
+            {
+                DisplayAlert("File not uploaded", this);
+            }
         }
         protected void btnUploadFeesStructure_Click(object sender, EventArgs e)
         {
+            if (FileFeesStructure.HasFile)
+            {
+                string name = FileFeesStructure.FileName + Path.GetExtension(FileFeesStructure.FileName);
+                string fileExtension = Path.GetExtension(FileFeesStructure.FileName);
+
+                if (name.Contains(".exe") && name.Contains(".msi") && name.Contains(".etc") && name.Contains(".dll") && name.Contains(".dat") && fileExtension.ToLower() != ".pdf")
+                {
+                    DisplayAlert("Only PDF file allowed", this);
+                }
+                else
+                {
+                    int fileSize = FileFeesStructure.PostedFile.ContentLength;
+                    if (fileSize < 51300)
+                    {
+                        DisplayAlert("Minimun size 50KB ", this);
+                    }
+                    else if (fileSize > 512000)
+                    {
+                        DisplayAlert("File size Exceeded.. Maximum size 500KB", this);
+                    }
+
+                    else
+                    {
+                        FileFeesStructure.SaveAs(Server.MapPath("~/ImageUpload/" + FileFeesStructure.FileName));
+                        DisplayAlert("File Uploaded successfully", this);
+                        Stream fs = FileFeesStructure.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        ODAR.byteFeesStructure = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+            }
+            else
+            {
+                DisplayAlert("File not uploaded", this);
+            }
         }
         protected void btnUploadCollegeHostel_Click(object sender, EventArgs e)
         {
+            if (FileCollegeHostel.HasFile)
+            {
+                string name = FileCollegeHostel.FileName + Path.GetExtension(FileCollegeHostel.FileName);
+                string fileExtension = Path.GetExtension(FileCollegeHostel.FileName);
+
+                if (name.Contains(".exe") && name.Contains(".msi") && name.Contains(".etc") && name.Contains(".dll") && name.Contains(".dat") && fileExtension.ToLower() != ".pdf")
+                {
+                    DisplayAlert("Only PDF file allowed", this);
+                }
+                else
+                {
+                    int fileSize = FileCollegeHostel.PostedFile.ContentLength;
+                    if (fileSize < 51300)
+                    {
+                        DisplayAlert("Minimun size 50KB ", this);
+                    }
+                    else if (fileSize > 512000)
+                    {
+                        DisplayAlert("File size Exceeded.. Maximum size 500KB", this);
+                    }
+
+                    else
+                    {
+                        FileCollegeHostel.SaveAs(Server.MapPath("~/ImageUpload/" + FileCollegeHostel.FileName));
+                        DisplayAlert("File Uploaded successfully", this);
+                        Stream fs = FileCollegeHostel.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        ODAR.byteCollegeHostel = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+            }
+            else
+            {
+                DisplayAlert("File not uploaded", this);
+            }
         }
         protected void btnCollegeDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
         {

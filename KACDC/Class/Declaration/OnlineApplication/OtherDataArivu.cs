@@ -128,5 +128,26 @@ namespace KACDC.Class.Declaration.OnlineApplication
             set { HttpContext.Current.Session["byteCETAdmission"] = value; }
             get { return HttpContext.Current.Session["byteCETAdmission"] as byte[]; }
         }
+        public byte[] byteStudyCertificate
+        {
+            set { HttpContext.Current.Session["byteStudyCertificate"] = value; }
+            get { return HttpContext.Current.Session["byteStudyCertificate"] as byte[]; }
+        }
+        public byte[] bytePrevMarksCard
+        {
+            set { HttpContext.Current.Session["bytePrevMarksCard"] = value; }
+            get { return HttpContext.Current.Session["bytePrevMarksCard"] as byte[]; }
+        }
+        public byte[] byteFeesStructure
+        {
+            set { HttpContext.Current.Session["byteFeesStructure"] = value; }
+            get { return HttpContext.Current.Session["byteFeesStructure"] as byte[]; }
+        }
+        public byte[] byteCollegeHostel
+        {
+            set { HttpContext.Current.Session["byteCollegeHostel"] = value; }
+            get { return HttpContext.Current.Session["byteCollegeHostel"] as byte[]; }
+        }
+
     }
 }

@@ -64,7 +64,7 @@ namespace KACDC.Service
                 string status = "";
                 if (txtMessage.Text.Trim() != "")
                 {
-                    status = SSMS.sendSMS(txtMobileNumber.Text.Trim(), txtMessage.Text.Trim(), 1, "UNICODE");
+                    status = SSMS.sendSMS(txtMobileNumber.Text.Trim(), txtMessage.Text.Trim(), 1, "COVIDMSG");
                     if (status.StartsWith("402"))
                     {
                         DisplayAlert("Message Sent", this);

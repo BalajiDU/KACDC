@@ -211,6 +211,13 @@ namespace KACDC.Class.DataProcessing.SMSService
                     APIkey = GKACDCAPIkey;
                     TemplateID = "1107161001578434595";
                     break;
+                case "COVIDMSG":
+                    UserName = GKACDCUserName;
+                    Password = GKACDCPassword;
+                    SenderId = GKACDCSenderId;
+                    APIkey = GKACDCAPIkey;
+                    TemplateID = "1107162556442347820";
+                    break;
                 default:
                     UserName = GKACDCUserName;
                     Password = GKACDCPassword;
