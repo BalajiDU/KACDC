@@ -1565,7 +1565,7 @@
                                 <p style="text-align:justify"><asp:CheckBox runat="server" CssClass="ChkBoxClass" ID="ChkAgreetoProvideData"  OnCheckedChanged="ChkDeclarationChange" AutoPostBack="true" /> I hereby agree to provide my details to avail any government facilities. If any discrepancies are found later, I agree to take legal action against me.<br />ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣಿಕರಿಸುತ್ತೇನೆ. ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿ ಕ್ರಮ ಜರುಗಿಸಲು ನಾನು ಒಪ್ಪಿರುತ್ತೇನೆ.</p>
                             </div>
                         </div>
-                        <%--Preview--%>
+                        <%--Preview--%>`
                         <div id="divPreviewButton" runat="server" visible="false" class="form-row">
                             <div class="form-row-label">
                                 <asp:Label ID="Label57" class="" runat="server"><span style="color:#a30000"><br />Click check-box to agree to the agreement </span></asp:Label>

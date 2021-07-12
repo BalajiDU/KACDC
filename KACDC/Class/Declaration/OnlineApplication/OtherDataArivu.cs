@@ -148,6 +148,21 @@ namespace KACDC.Class.Declaration.OnlineApplication
             set { HttpContext.Current.Session["byteCollegeHostel"] = value; }
             get { return HttpContext.Current.Session["byteCollegeHostel"] as byte[]; }
         }
+        public string SelfDeclaration
+        {
+            set { HttpContext.Current.Session["SelfDeclaration"] = value; }
+            get { return HttpContext.Current.Session["SelfDeclaration"] as string; }
+        }
+        public string AadharDeclaration
+        {
+            set { HttpContext.Current.Session["AadharDeclaration"] = value; }
+            get { return HttpContext.Current.Session["AadharDeclaration"] as string; }
+        }
+        public string ShareData
+        {
+            set { HttpContext.Current.Session["ShareData"] = value; }
+            get { return HttpContext.Current.Session["ShareData"] as string; }
+        }
 
     }
 }

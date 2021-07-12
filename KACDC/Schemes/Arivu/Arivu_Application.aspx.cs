@@ -1278,11 +1278,28 @@ namespace KACDC.Schemes.Arivu
         {
             divButtonToAgrement.Visible = false;
             divApproveAggrement.Visible = true;
-            divPreviewButton.Visible = true;
+            
         }
         protected void ChkDeclarationChange(object sender, EventArgs e)
         {
-
+            if (ChkSelfDeclaration.Checked == true && ChkAadharDeclaration.Checked == true)
+            {
+                divPreviewButton.Visible = true;
+                ODAR.SelfDeclaration = "YES";
+                ODAR.AadharDeclaration = "YES";
+            }
+            else
+            {
+                divPreviewButton.Visible = false;
+            }
+            if (ChkAgreetoProvideData.Checked == true)
+            {
+                ODAR.ShareData = "YES";
+            }
+            else
+            {
+                ODAR.ShareData = "NO";
+            }
         }
         protected void btnBankDetailsBack_Click(object sender, EventArgs e)
         {
