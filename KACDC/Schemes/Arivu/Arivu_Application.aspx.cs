@@ -444,7 +444,10 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnViewCollegeDetails_Click(object sender, EventArgs e)
         {
-            
+            txtCollegeCode.ReadOnly = true;
+            txtCETAdmTicNum.ReadOnly = true;
+            txtCETAppNum.ReadOnly = true;
+            txtCollegeName.ReadOnly = true;
         }
         protected void btnUploadCETAdmission_Click(object sender, EventArgs e)
         {
@@ -636,9 +639,7 @@ namespace KACDC.Schemes.Arivu
                 DisplayAlert("File not uploaded", this);
             }
         }
-        protected void btnCollegeDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
-        {
-        }
+        
         protected void btnCollegeDetailsSave_Click(object sender, EventArgs e)
         {
             this.VerifyCollegeDetails();
@@ -649,7 +650,7 @@ namespace KACDC.Schemes.Arivu
             divButtonToOtherDetails.Visible = true;
         }
 
-        private void VerifyCollegeDetails()
+        private bool VerifyCollegeDetails()
         {
             if (txtCollegeCode.Text.Trim()!="" && txtCollegeCode.Text.Trim()!=null  )
             {
@@ -686,18 +687,22 @@ namespace KACDC.Schemes.Arivu
                                                                             if (rbCollegeHostelYes.Checked==true || rbCollegeHostelNo.Checked==true)
                                                                             {
 
+                                                                                return true;
                                                                             }
+                                                                            return true;
                                                                         }
                                                                         else
                                                                         {
                                                                             DisplayAlert("Select Year", this);
                                                                             drpYear.Focus();
+                                                                            return false;
                                                                         }
                                                                     }
                                                                     else
                                                                     {
                                                                         DisplayAlert("Select Course", this);
                                                                         drpCourse.Focus();
+                                                                        return false;
                                                                     }
                                                                 }
                                                                 else
@@ -705,6 +710,7 @@ namespace KACDC.Schemes.Arivu
                                                                     txtRequierdLoanAmount.Text = "Enter valid Previous Year Marks";
                                                                     DisplayAlert("Enter valid Previous Year Marks", this);
                                                                     txtPreviousMarks.Focus();
+                                                                    return false;
                                                                 }
                                                             }
                                                             else
@@ -712,6 +718,7 @@ namespace KACDC.Schemes.Arivu
                                                                 txtRequierdLoanAmount.Text = "Enter Previous Year Marks";
                                                                 DisplayAlert("Enter Previous Year Marks", this);
                                                                 txtPreviousMarks.Focus();
+                                                                return false;
                                                             }
                                                         }
                                                         else
@@ -719,6 +726,7 @@ namespace KACDC.Schemes.Arivu
                                                             txtRequierdLoanAmount.Text = "Enter valid Required Loan Amount";
                                                             DisplayAlert("Enter valid Required Loan Amount", this);
                                                             txtClgAddress.Focus();
+                                                            return false;
                                                         }
                                                     }
                                                     else
@@ -726,6 +734,7 @@ namespace KACDC.Schemes.Arivu
                                                         txtRequierdLoanAmount.Text = "Enter Required Loan Amount";
                                                         DisplayAlert("Enter Required Loan Amount", this);
                                                         txtClgAddress.Focus();
+                                                        return false;
                                                     }
                                                 }
                                                 else
@@ -733,6 +742,7 @@ namespace KACDC.Schemes.Arivu
                                                     lblCollegeCodeError.Text = "Enter valid College Address";
                                                     DisplayAlert("Enter valid College Address", this);
                                                     txtClgAddress.Focus();
+                                                    return false;
                                                 }
                                             }
                                             else
@@ -740,6 +750,7 @@ namespace KACDC.Schemes.Arivu
                                                 lblCollegeCodeError.Text = "Enter College Address";
                                                 DisplayAlert("Enter College Address", this);
                                                 txtClgAddress.Focus();
+                                                return false;
                                             }
                                         }
                                         else
@@ -747,6 +758,7 @@ namespace KACDC.Schemes.Arivu
                                             lblCollegeCodeError.Text = "Enter valid College Name";
                                             DisplayAlert("Enter valid College Name", this);
                                             txtCollegeName.Focus();
+                                            return false;
                                         }
                                     }
                                     else
@@ -754,6 +766,7 @@ namespace KACDC.Schemes.Arivu
                                         lblCollegeCodeError.Text = "Enter College Name";
                                         DisplayAlert("Enter College Name", this);
                                         txtCollegeName.Focus();
+                                        return false;
                                     }
                                 }
                                 else
@@ -761,6 +774,7 @@ namespace KACDC.Schemes.Arivu
                                     lblCollegeCodeError.Text = "Enter valid CET Application Number";
                                     DisplayAlert("Enter valid CET Application Number", this);
                                     txtCETAppNum.Focus();
+                                    return false;
                                 }
                             }
                             else
@@ -768,6 +782,7 @@ namespace KACDC.Schemes.Arivu
                                 lblCollegeCodeError.Text = "Enter CET Application Number";
                                 DisplayAlert("Enter CET Application Number", this);
                                 txtCETAppNum.Focus();
+                                return false;
                             }
                         }
                         else
@@ -775,6 +790,7 @@ namespace KACDC.Schemes.Arivu
                             lblCollegeCodeError.Text = "Enter valid CET Admission Ticket";
                             DisplayAlert("Enter valid CET Admission Ticket", this);
                             txtCETAdmTicNum.Focus();
+                            return false;
                         }
                     }
                     else
@@ -782,6 +798,7 @@ namespace KACDC.Schemes.Arivu
                         lblCollegeCodeError.Text = "Enter CET Admission Ticket";
                         DisplayAlert("Enter CET Admission Ticket", this);
                         txtCETAdmTicNum.Focus();
+                        return false;
                     }
                 }
                 else
@@ -789,6 +806,7 @@ namespace KACDC.Schemes.Arivu
                     lblCollegeCodeError.Text = "Enter valid College Code";
                     DisplayAlert("Enter valid College Code", this);
                     txtCollegeCode.Focus();
+                    return false;
                 }
             }
             else
@@ -796,6 +814,7 @@ namespace KACDC.Schemes.Arivu
                 lblCollegeCodeError.Text = "Enter College Code";
                 DisplayAlert("Enter College Code", this);
                 txtCollegeCode.Focus();
+                return false;
             }
         }
         protected void txtCollegeCode_TextChanged(object sender, EventArgs e)
@@ -834,9 +853,15 @@ namespace KACDC.Schemes.Arivu
             //divOtherDetails.Visible = true;
             divOtherDetailsNew.Visible = true;
             divButtonToOtherDetails.Visible = false;
+            divCollegeDetails.Visible = true;
+
+            btnCollegeDetailsUpdate.Visible = false;
+            btnViewCollegeDetails.Visible = true;
         }
         protected void btnNextChangeCollegeDetails_Click(object sender, EventArgs e)
         {
+            divButtonToOtherDetails.Visible = false;
+            divCollegeDetailsFill.Visible = true;
         }
         protected void btnOtherDetailsUpdate_Click(object sender, EventArgs e)
         {
@@ -1044,6 +1069,20 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnPreviewEditCollegeDetails_Click(object sender, EventArgs e)
         {
+            divCollegeDetailsFill.Visible = true;
+            btnCollegeDetailsSaveReturnToPreview.Visible = true;
+            btnCollegeDetailsSave.Visible = false;
+            divPreviewApplication.Visible = false;
+        }
+        protected void btnCollegeDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
+        {
+            if (this.VerifyCollegeDetails())
+            {
+                divPreviewApplication.Visible = true;
+                divCollegeDetailsFill.Visible = false;
+                btnCollegeDetailsSaveReturnToPreview.Visible = false;
+                btnCollegeDetailsSave.Visible = true;
+            }
         }
         protected void btnPreviewSubmitApplication_Click(object sender, EventArgs e)
         {
@@ -1054,9 +1093,8 @@ namespace KACDC.Schemes.Arivu
                 {
                     if (SendSMSEmail())
                     {
-
+                        DisplayAlert("Application Submitted, Applicatio number is:<br />" + ODAR.GeneratedApplicationNumber+" Click to download application", this);
                     }
-
                 }
             }
         }
@@ -1258,7 +1296,7 @@ namespace KACDC.Schemes.Arivu
             }
         }
 
-
+        //TODO
         protected void btnCollegeDetailsUpdate_Click(object sender, EventArgs e)
         {
         }
@@ -1278,7 +1316,6 @@ namespace KACDC.Schemes.Arivu
         {
             divButtonToAgrement.Visible = false;
             divApproveAggrement.Visible = true;
-            
         }
         protected void ChkDeclarationChange(object sender, EventArgs e)
         {
