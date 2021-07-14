@@ -164,9 +164,7 @@ namespace KACDC.Schemes.Arivu
             divMobileOTP.Visible = false;
             divRDNumber.Visible = true;
         }
-        protected void btnVerifyOTP_Click(object sender, EventArgs e)
-        {
-        }
+       
         protected void btnVerifyRDNumber_Click(object sender, EventArgs e)
         {
             rbContactAddressNo.Enabled = true;
@@ -448,6 +446,29 @@ namespace KACDC.Schemes.Arivu
             txtCETAdmTicNum.ReadOnly = true;
             txtCETAppNum.ReadOnly = true;
             txtCollegeName.ReadOnly = true;
+            txtClgAddress.ReadOnly = true;
+            txtRequierdLoanAmount.ReadOnly = true;
+            txtPreviousMarks.ReadOnly = true;
+
+            drpCourse.Enabled = false;
+            drpYear.Enabled = false;
+            rbCollegeHostelYes.Enabled = false;
+            rbCollegeHostelNo.Enabled = false;
+            FileCETAdmission.Enabled = false;
+            btnUploadCETAdmission.Enabled = false;
+            FilePrevMarksCard.Enabled = false;
+            btnUploadPrevMarksCard.Enabled = false;
+            FileStudyCertificate.Enabled = false;
+            btnUploadStudyCertificate.Enabled = false;
+            FileFeesStructure.Enabled = false;
+            btnUploadFeesStructure.Enabled = false;
+            FileCollegeHostel.Enabled = false;
+            btnUploadCollegeHostel.Enabled = false;
+
+            btnCollegeDetailsSaveReturnToPreview.Visible = false;
+            btnCollegeDetailsSave.Visible = false;
+            btnCollegeDetailsOk.Visible = true;
+
         }
         protected void btnUploadCETAdmission_Click(object sender, EventArgs e)
         {

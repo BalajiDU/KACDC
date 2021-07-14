@@ -1115,7 +1115,6 @@
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
-                                <asp:Button ID="Button1" runat="server" CssClass="NeoButton" OnClick="btnVerifyOTP_Click" Visible="false"  Text="Verify" onpaste="return false" AutoCompleteType="Disabled" />
                                 <asp:Button ID="btnNextDisplayRDNum" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayRDNum_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
                             </div>
                             <div class="form-row-Botton">
@@ -1190,8 +1189,8 @@
                                 <div id="divOTPChkError11" class="DisplayError" style="font-size:18px; font-weight: bold;color:#7b0000"></div>
                             </div>
                             <div class="form-row-Botton">
-                                <asp:Button ID="btnCollegeDetailsUpdate" runat="server" CssClass="NeoButton" OnClick="btnCollegeDetailsUpdate_Click" Text="Confirm and Continue" />
-                                <asp:Button ID="btnViewCollegeDetails" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnViewCollegeDetails_Click" Text="View" />
+                                <asp:Button ID="btnCollegeDetailsUpdate" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnCollegeDetailsUpdate_Click" Text="Confirm and Continue" />
+                                <asp:Button ID="btnViewCollegeDetails" runat="server" Visible="true" CssClass="NeoButton" OnClick="btnViewCollegeDetails_Click" Text="View" />
                             </div>
                         </div>
                         <%-- Fill College Details--%>
