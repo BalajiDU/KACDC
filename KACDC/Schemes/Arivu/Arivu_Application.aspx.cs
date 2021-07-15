@@ -442,6 +442,7 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnViewCollegeDetails_Click(object sender, EventArgs e)
         {
+            divCollegeDetailsFill.Visible = true;
             txtCollegeCode.ReadOnly = true;
             txtCETAdmTicNum.ReadOnly = true;
             txtCETAppNum.ReadOnly = true;
@@ -868,6 +869,8 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnCollegeDetailsOk_Click(object sender, EventArgs e)
         {
+            divCollegeDetailsFill.Visible = false;
+            divCollegeDetails.Visible = true;
         }
         protected void btnNextDisplayOtherDetails_Click(object sender, EventArgs e)
         {
@@ -891,6 +894,17 @@ namespace KACDC.Schemes.Arivu
         {
             divOtherDetailsNew.Visible = true;
             divOtherDetails.Visible = false;
+
+            txtEmailID.ReadOnly = true;
+            txtApplicantMobileNumber.ReadOnly = true;
+            txtAlternateMobileNumber.ReadOnly = true;
+            txtFatherOccupation.ReadOnly = true;
+            rbApplicantPWDYes.Enabled = true;
+            rbApplicantPWDNo.Enabled = true;
+            txtPwdIdNumber.ReadOnly = true;
+            btnOtherDetailsSaveReturnToPreview.Visible = false;
+            btnOtherDetailsSave.Visible = false;
+            btnOtherDetailsOk.Visible = true;
         }
 
         protected void btnOtherDetailsOk_Click(object sender, EventArgs e)
@@ -920,45 +934,54 @@ namespace KACDC.Schemes.Arivu
                                     {
                                         if (txtAlternateMobileNumber.Text.Trim().Length == 10)
                                         {
-                                            if (rbApplicantPWDYes.Checked == true || rbApplicantPWDNo.Checked == true)
+                                            if (txtAlternateMobileNumber.Text.Trim() != txtAlternateMobileNumber.Text.Trim())
                                             {
-                                                if (rbApplicantPWDYes.Checked == true && txtPwdIdNumber.Text.Trim() == "")
+                                                if (rbApplicantPWDYes.Checked == true || rbApplicantPWDNo.Checked == true)
                                                 {
-                                                    DisplayAlert("enter person with disabilities ID number", this);
-                                                    txtPwdIdNumber.Focus();
+                                                    if (rbApplicantPWDYes.Checked == true && txtPwdIdNumber.Text.Trim() == "")
+                                                    {
+                                                        DisplayAlert("enter person with disabilities ID number", this);
+                                                        txtPwdIdNumber.Focus();
+                                                        return false;
+                                                    }
+                                                    else if (txtPwdIdNumber.Text.Trim() != "")
+                                                    {
+                                                        ODAR.PersonWithDisabilities = txtPwdIdNumber.Text.Trim();
+                                                    }
+                                                    this.SaveOtherDetails();
+                                                    return true;
+                                                }
+                                                else
+                                                {
+                                                    DisplayAlert("select person with disabilities option", this);
+                                                    txtAlternateMobileNumber.Focus();
                                                     return false;
                                                 }
-                                                else if (txtPwdIdNumber.Text.Trim() != "")
-                                                {
-                                                    ODAR.PersonWithDisabilities = txtPwdIdNumber.Text.Trim();
-                                                }
-                                                this.SaveOtherDetails();
-                                                return true;
                                             }
                                             else
                                             {
-                                                DisplayAlert("select person with disabilities option", this);
+                                                DisplayAlert("Mobile number and alternate mobile number must be different", this);
                                                 txtAlternateMobileNumber.Focus();
                                                 return false;
                                             }
                                         }
                                         else
                                         {
-                                            DisplayAlert("enter valid mobile number", this);
+                                            DisplayAlert("enter valid alternate mobile number", this);
                                             txtAlternateMobileNumber.Focus();
                                             return false;
                                         }
                                     }
                                     else
                                     {
-                                        DisplayAlert("enter valid mobile number", this);
+                                        DisplayAlert("enter valid alternate mobile number", this);
                                         txtAlternateMobileNumber.Focus();
                                         return false;
                                     }
                                 }
                                 else
                                 {
-                                    DisplayAlert("enter mobile number", this);
+                                    DisplayAlert("enter alternate mobile number", this);
                                     txtAlternateMobileNumber.Focus();
                                     return false;
                                 }
@@ -1019,6 +1042,7 @@ namespace KACDC.Schemes.Arivu
         {
             divOtherDetailsNew.Visible = true;
             divButtonToAgrement.Visible = false;
+            divOtherDetails.Visible = false;
         }
         protected void btnPreviewApplication_Click(object sender, EventArgs e)
         {
@@ -1317,7 +1341,7 @@ namespace KACDC.Schemes.Arivu
             }
         }
 
-        //TODO
+        //TODO Check
         protected void btnCollegeDetailsUpdate_Click(object sender, EventArgs e)
         {
         }
