@@ -37,5 +37,50 @@ namespace KACDC.Schemes.Arivu
                 }
             }
         }
+        protected void btntest_click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnconfirm_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnGetOTP_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnVerifyOTP_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnResendOTP_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnUploadPrevMarksCard_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnUploadStudyCertificate_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnSubmitRenewalRequest_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnDownloadAcknolegdement_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnTryAgain_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnDownloadFormat_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

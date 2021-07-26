@@ -517,13 +517,13 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// div12 control.
+        /// btntest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div12;
+        protected global::System.Web.UI.WebControls.Button btntest;
         
         /// <summary>
         /// PnlAVPMobileNumVerify control.

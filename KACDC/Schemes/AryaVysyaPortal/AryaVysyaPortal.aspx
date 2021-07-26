@@ -14,6 +14,78 @@
 
 
     <style>
+        .list-inline {
+    list-style: outside none none;
+    margin-left: -5px;
+    padding-left: 0;
+}
+
+.list-inline > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.social {
+  background: url('http://arunendapally.com/themes/CustomTheme/ss.png');
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+
+.facebook {
+  background-position: -0px -0px;
+}
+
+.linkedin {
+  background-position: -0px -42px;
+}
+
+.twitter {
+  background-position: -0px -84px;
+}
+
+.googleplus {
+  background-position: -0px -126px;
+}
+
+
+
+
+
+
+
+
+
+
+.socialsharing {
+	 text-align: center;
+}
+ .socialsharing a {
+	 display: inline-block;
+	 padding: 0.7em;
+	 line-height: 0;
+	 margin-bottom: 2em;
+}
+ .socialsharing path {
+	 fill: black;
+}
+ .socialsharing svg {
+	 width: 24px;
+	 height: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
        .NeuoDropdown {
         outline: none;
         border: none;
@@ -374,8 +446,8 @@ function Numeric(evt) {
                             </div>
                             <div class="form-row-input">
                                 <asp:Button ID="btnSubmit" runat="server" CssClass="SubmitButton" Visible="true" Text="submit" Style="width: 100%" OnClick="btnSubmit_Click" />
+                                <asp:Button ID="btntest" runat="server" CssClass="SubmitButton" Visible="true" Text="test submit" Style="width: 100%" OnClick="btntest_Click" />
                             </div>
-                            <div class="form-row-Botton" id="div12" runat="server">
                             </div>
                         </div>
                         
@@ -439,7 +511,60 @@ function Numeric(evt) {
                             <asp:Button ID="Button1" runat="server" CssClass="CancelButton" Text="Ok" />
                         </div>
                     </div>
+                    <div class="form-row">
 
+                        <div class="Popup-row-Button text-center">
+                            <ul class="list-inline">
+                                <li>
+                                    <a target="_blank" href="https://facebook.com/sharer.php?u=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal" class="social facebook"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal;title=Protect your source code from decompiling or reverse engineering" class="social linkedin"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/intent/tweet?url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal&amp;text=Protect your source code from decompiling or reverse engineering&amp;via=arunendapally" class="social twitter"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://plus.google.com/share?url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal" class="social googleplus"></a>
+                                </li>
+                            </ul>
+
+                            <aside class="socialsharing">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=@enc" target="_blank" rel="noopener noreferrer nofollow">
+        <svg role="img" aria-labelledby="_fb">
+            <title id="_fb">Share on Facebook</title>
+            <path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"></path>
+        </svg>
+    </a>
+   
+    <a href="https://plus.google.com/share?url=@enc" target="_blank" rel="noopener noreferrer nofollow">
+        <svg role="img" aria-labelledby="_gp">
+            <title id="_gp">Share on Google+</title>
+            <path d="M7.635 10.909v2.619h4.335c-.173 1.125-1.31 3.295-4.331 3.295-2.604 0-4.731-2.16-4.731-4.823 0-2.662 2.122-4.822 4.728-4.822 1.485 0 2.479.633 3.045 1.178l2.073-1.994c-1.33-1.245-3.056-1.995-5.115-1.995C3.412 4.365 0 7.785 0 12s3.414 7.635 7.635 7.635c4.41 0 7.332-3.098 7.332-7.461 0-.501-.054-.885-.12-1.265H7.635zm16.365 0h-2.183V8.726h-2.183v2.183h-2.182v2.181h2.184v2.184h2.189V13.09H24"></path>
+        </svg>
+    </a>
+    <a href="mailto:?subject=@Model.Replace(" ", "%20")&amp;body=@enc" target="_blank" rel="noopener noreferrer nofollow">
+        <svg role="img" aria-labelledby="_em">
+            <title id="_em">Email</title>
+            <path d="M24 7.387v10.478c0 .23-.08.424-.238.576-.158.154-.352.23-.58.23h-8.547v-6.959l1.6 1.229c.102.085.229.126.379.126.148 0 .277-.041.389-.127L24 7.387zm-9.365-2.021h8.547c.211 0 .393.063.543.192.15.128.234.3.248.51l-7.369 5.876-1.969-1.549V5.366zM13.404.864v22.271L0 20.819V3.244L13.406.864h-.002zm-4.049 11.18c-.02-1.133-.313-2.072-.879-2.814-.555-.74-1.275-1.131-2.131-1.164-.824.033-1.529.423-2.1 1.164-.57.742-.855 1.682-.87 2.814.015 1.117.315 2.047.885 2.791.571.74 1.274 1.133 2.101 1.176.855-.035 1.574-.424 2.145-1.17.57-.748.87-1.68.885-2.797h-.036zm-3.12-2.482c.431.02.794.256 1.083.717.285.461.435 1.045.435 1.752 0 .721-.149 1.307-.435 1.771-.301.464-.66.704-1.096.704s-.795-.226-1.095-.69-.435-1.05-.435-1.754c0-.705.135-1.291.435-1.74.284-.45.646-.69 1.081-.721l.027-.039z"></path>
+        </svg>
+    </a>
+                                <a href="mailto:?subject=@Model.Replace(" ", "%20")&amp;body=@enc" target="_blank" rel="noopener noreferrer nofollow">
+        <svg role="img" aria-labelledby="_em">
+            <title id="_em">Email</title>
+<path d=" M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z" fill-rule="evenodd"></path>        </svg>
+    </a>
+</aside>
+<a href="mailto:?subject=@Model.Replace(" ", "%20")&amp;body=@enc" target="_blank" rel="noopener noreferrer nofollow">
+        <svg role="img" aria-labelledby="_em">
+            <title id="_em">Email</title>
+            <path d="M24 7.387v10.478c0 .23-.08.424-.238.576-.158.154-.352.23-.58.23h-8.547v-6.959l1.6 1.229c.102.085.229.126.379.126.148 0 .277-.041.389-.127L24 7.387zm-9.365-2.021h8.547c.211 0 .393.063.543.192.15.128.234.3.248.51l-7.369 5.876-1.969-1.549V5.366zM13.404.864v22.271L0 20.819V3.244L13.406.864h-.002zm-4.049 11.18c-.02-1.133-.313-2.072-.879-2.814-.555-.74-1.275-1.131-2.131-1.164-.824.033-1.529.423-2.1 1.164-.57.742-.855 1.682-.87 2.814.015 1.117.315 2.047.885 2.791.571.74 1.274 1.133 2.101 1.176.855-.035 1.574-.424 2.145-1.17.57-.748.87-1.68.885-2.797h-.036zm-3.12-2.482c.431.02.794.256 1.083.717.285.461.435 1.045.435 1.752 0 .721-.149 1.307-.435 1.771-.301.464-.66.704-1.096.704s-.795-.226-1.095-.69-.435-1.05-.435-1.754c0-.705.135-1.291.435-1.74.284-.45.646-.69 1.081-.721l.027-.039z"></path>
+        </svg>
+    </a>
+                            
+
+                        </div>
+                    </div>
                 </asp:Panel>
 
                 <asp:LinkButton ID="lnkOtherDetails" runat="server"></asp:LinkButton>

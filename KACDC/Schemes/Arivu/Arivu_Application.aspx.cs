@@ -899,8 +899,8 @@ namespace KACDC.Schemes.Arivu
             txtApplicantMobileNumber.ReadOnly = true;
             txtAlternateMobileNumber.ReadOnly = true;
             txtFatherOccupation.ReadOnly = true;
-            rbApplicantPWDYes.Enabled = true;
-            rbApplicantPWDNo.Enabled = true;
+            rbApplicantPWDYes.Enabled = false;
+            rbApplicantPWDNo.Enabled = false;
             txtPwdIdNumber.ReadOnly = true;
             btnOtherDetailsSaveReturnToPreview.Visible = false;
             btnOtherDetailsSave.Visible = false;
@@ -911,6 +911,7 @@ namespace KACDC.Schemes.Arivu
         {
             divOtherDetailsNew.Visible = false;
             divOtherDetails.Visible = true;
+            divButtonToAgrement.Visible = true;
         }
         protected void btnOtherDetailsSave_Click(object sender, EventArgs e)
         {
@@ -934,27 +935,45 @@ namespace KACDC.Schemes.Arivu
                                     {
                                         if (txtAlternateMobileNumber.Text.Trim().Length == 10)
                                         {
-                                            if (txtAlternateMobileNumber.Text.Trim() != txtAlternateMobileNumber.Text.Trim())
+                                            if (txtApplicantMobileNumber.Text.Trim() != txtAlternateMobileNumber.Text.Trim())
                                             {
-                                                if (rbApplicantPWDYes.Checked == true || rbApplicantPWDNo.Checked == true)
+                                                if (txtFatherOccupation.Text.Trim() != "")
                                                 {
-                                                    if (rbApplicantPWDYes.Checked == true && txtPwdIdNumber.Text.Trim() == "")
+                                                    if (txtFatherOccupation.Text.Trim().Length > 8)
                                                     {
-                                                        DisplayAlert("enter person with disabilities ID number", this);
-                                                        txtPwdIdNumber.Focus();
+                                                        if (rbApplicantPWDYes.Checked == true || rbApplicantPWDNo.Checked == true)
+                                                        {
+                                                            if (rbApplicantPWDYes.Checked == true && txtPwdIdNumber.Text.Trim() == "")
+                                                            {
+                                                                DisplayAlert("enter person with disabilities ID number", this);
+                                                                txtPwdIdNumber.Focus();
+                                                                return false;
+                                                            }
+                                                            else if (txtPwdIdNumber.Text.Trim() != "")
+                                                            {
+                                                                ODAR.PersonWithDisabilities = txtPwdIdNumber.Text.Trim();
+                                                            }
+                                                            this.SaveOtherDetails();
+                                                            return true;
+                                                        }
+                                                        else
+                                                        {
+                                                            DisplayAlert("select person with disabilities option", this);
+                                                            txtAlternateMobileNumber.Focus();
+                                                            return false;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        DisplayAlert("enter valid Father / Guardian Occupation", this);
+                                                        txtFatherOccupation.Focus();
                                                         return false;
                                                     }
-                                                    else if (txtPwdIdNumber.Text.Trim() != "")
-                                                    {
-                                                        ODAR.PersonWithDisabilities = txtPwdIdNumber.Text.Trim();
-                                                    }
-                                                    this.SaveOtherDetails();
-                                                    return true;
                                                 }
                                                 else
                                                 {
-                                                    DisplayAlert("select person with disabilities option", this);
-                                                    txtAlternateMobileNumber.Focus();
+                                                    DisplayAlert("enter Father / Guardian Occupation", this);
+                                                    txtFatherOccupation.Focus();
                                                     return false;
                                                 }
                                             }
@@ -1028,7 +1047,7 @@ namespace KACDC.Schemes.Arivu
             ODAR.AlternateMobileNumber = txtAlternateMobileNumber.Text.Trim();
             ODAR.PersonWithDisabilities = rbApplicantPWDYes.Checked == true ? txtPwdIdNumber.Text.Trim() : "NA";
             divOtherDetailsNew.Visible = false;
-            divOtherDetails.Visible = true;
+            
             divButtonToAgrement.Visible = true;
             btnOtherDetailsUpdate.Visible = false;
             btnOtherDetailsView.Visible = true;
@@ -1040,6 +1059,17 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnNextChangeOtherDetails_Click(object sender, EventArgs e)
         {
+            txtEmailID.ReadOnly = false;
+            txtApplicantMobileNumber.ReadOnly = false;
+            txtAlternateMobileNumber.ReadOnly = false;
+            txtFatherOccupation.ReadOnly = false;
+            rbApplicantPWDYes.Enabled = true;
+            rbApplicantPWDNo.Enabled = true;
+            txtPwdIdNumber.ReadOnly = false;
+            btnOtherDetailsSaveReturnToPreview.Visible = false;
+            btnOtherDetailsSave.Visible = true;
+            btnOtherDetailsOk.Visible = false;
+
             divOtherDetailsNew.Visible = true;
             divButtonToAgrement.Visible = false;
             divOtherDetails.Visible = false;
@@ -1050,8 +1080,12 @@ namespace KACDC.Schemes.Arivu
             {
                 if (ChkSelfDeclaration.Checked == true)
                 {
-                    if (ChkAgreetoProvideData.Checked == true)
+                    if (true)
                     {
+                        if(ChkAgreetoProvideData.Checked != true)
+                        {
+                            ConfirmPreviewPopup.Show();
+                        }
                         this.fillApplicationPreview();
                         divPreviewApplication.Visible = true;
                     }
@@ -1101,6 +1135,18 @@ namespace KACDC.Schemes.Arivu
             lblBranchName.Text = BD.BRANCH;
             lblIFCSCode.Text = BD.IFSC;
             lblBankAddr.Text = BD.FULLADDRESS;
+        }
+        protected void btnProvideDetailsYes_Click(object sender, EventArgs e)
+        {
+            ChkAgreetoProvideData.Checked = true;
+            this.fillApplicationPreview();
+            divPreviewApplication.Visible = true;
+        }
+        protected void btnProvideDetailsNo_Click(object sender, EventArgs e)
+        {
+            ChkAgreetoProvideData.Checked = false;
+            this.fillApplicationPreview();
+            divPreviewApplication.Visible = true;
         }
         protected void btnPreviewEditOtherDetails_Click1(object sender, EventArgs e)
         {
@@ -1359,8 +1405,11 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnNextDisplayAgrement_Click(object sender, EventArgs e)
         {
+            divOtherDetails.Visible = true;
             divButtonToAgrement.Visible = false;
             divApproveAggrement.Visible = true;
+            divOtherDetailsNew.Visible = false;
+            divCollegeDetailsFill.Visible = false;
         }
         protected void ChkDeclarationChange(object sender, EventArgs e)
         {

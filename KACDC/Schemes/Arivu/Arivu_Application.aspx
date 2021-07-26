@@ -2231,6 +2231,37 @@
                     BackgroundCssClass="modalBackground">
                 </cc1:ModalPopupExtender>
 
+                 <%--Confirm Preview Display--%>
+                <asp:Panel ID="PnlConfirmPreview" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; width: 50%; height: 25%; padding: 5px">
+
+                    <div class="flex-container">
+                        <div class="form-row" style="justify-content: center">
+                            <div class="Popup-row-label-Heading">
+                                <asp:Label ID="lbldfgsdfg" runat="server" Text="Please Wait . . ."></asp:Label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="Popup-row-label">
+                                <asp:Label ID="Label70" runat="server" Text="Are you sure, you don't want to provide your details to avail any other government facility"></asp:Label>
+                            </div>
+                            <div class="Popup-row-label">
+                                <asp:Label ID="Label71" runat="server" Text="ನಿಮಗೆ ಖಚಿತವಾಗಿದೆಯೇ, ಸರ್ಕಾರದ ಯಾವುದೇ ಸೌಲಭ್ಯವನ್ನು ಪಡೆಯಲು ನಿಮ್ಮ ವಿವರಗಳನ್ನು ಒದಗಿಸಲು ನೀವು ಬಯಸುವುದಿಲ್ಲ"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-row-Botton">
+                                <asp:Button ID="btnProvideDetailsYes" runat="server" CssClass="NeoButton" Text="Back" OnClick="btnProvideDetailsYes_Click" />
+                                <asp:Button ID="btnProvideDetailsNo" runat="server" CssClass="NeoButton" Text="Proceed" OnClick="btnProvideDetailsNo_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
+
+                 <asp:LinkButton ID="lnkConfirmPreview" runat="server"></asp:LinkButton>
+                <cc1:ModalPopupExtender ID="ConfirmPreviewPopup" runat="server" TargetControlID="lnkConfirmPreview" PopupControlID="PnlConfirmPreview"
+                    BackgroundCssClass="modalBackground">
+                </cc1:ModalPopupExtender>
+
                  <%--Aadhaar Details--%>
                 <asp:Panel ID="PnlAadhaarDetails" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; width:50%;height:80%; padding: 5px">
                    <div class="flex-container">

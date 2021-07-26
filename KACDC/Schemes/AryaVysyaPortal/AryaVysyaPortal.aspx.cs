@@ -46,7 +46,7 @@ namespace KACDC.Schemes.AryaVysyaPortal
                             txtOTP.Focus();
 
                             AVP.EncryptedOTP = Enc.Encrypt(otp.NewOTP());
-                            string Message = Enc.Decrypt(AVP.EncryptedOTP) + " is your OTP to verify, your application number avp. do not share with others. From:KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION";
+                            string Message = Enc.Decrypt(AVP.EncryptedOTP) + " is your OTP to verify your mobile number for Arya Vysya Portal. do not share with others. From: KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION LTD";
                             SM.sendSMS(txtMobileNumber.Text.Trim(), Message, 2, "LGNOTP");
                             AVPMobileNumVerifyPopup.Show();
                         }
@@ -375,6 +375,11 @@ namespace KACDC.Schemes.AryaVysyaPortal
         protected void txt_DOB_TextChanged(object sender, EventArgs e)
         {
             CalculateYourAge(Convert.ToDateTime(txt_DOB.Text.Trim()));
+            //DisplayAlert(CalculateYourAge(Convert.ToDateTime(txt_DOB.Text.Trim())), this);
+            if (Int32.Parse(CalculateYourAge(Convert.ToDateTime(txt_DOB.Text.Trim()))) < 13)
+            {
+                DisplayAlert("Your age is "+CalculateYourAge(Convert.ToDateTime(txt_DOB.Text.Trim()))+ "Only avove 13 age is eligible to fill form", this);
+            }
         }
         private void FillTaluk()
         {
@@ -420,6 +425,19 @@ namespace KACDC.Schemes.AryaVysyaPortal
             int Seconds = Now.Subtract(PastYearDate).Seconds;
             return Years.ToString();
             //return String.Format("Age: {0} Year(s) {1} Month(s) {2} Day(s) {3} Hour(s) {4} Second(s)", Years, Months, Days, Hours, Seconds);
+        }
+        public static void DisplayAlert(string message, Control owner)
+        {
+            Page page = (owner as Page) ?? owner.Page;
+            if (page == null) return;
+
+            //page.ClientScript.RegisterStartupScript(owner.GetType(),"ShowMessage", string.Format("<script type='text/javascript'>alert('{0}')</script>",
+            //    message));
+            ScriptManager.RegisterClientScriptBlock(owner, owner.GetType(), "alertMessage", "alert('" + message.ToUpper() + "')", true);
+        }
+        protected void btntest_Click(object sender, EventArgs e)
+        {
+            OtherDetailsPopup.Show();
         }
     }
 }

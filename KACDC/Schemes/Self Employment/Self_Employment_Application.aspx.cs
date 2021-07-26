@@ -858,7 +858,24 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void ChkDeclarationChange(object sender, EventArgs e)
         {
-            
+            if (ChkSelfDeclaration.Checked == true && ChkAadharDeclaration.Checked == true)
+            {
+                divPreviewButton.Visible = true;
+                ODSE.SelfDeclaration = "YES";
+                ODSE.AadharDeclaration = "YES";
+            }
+            else
+            {
+                divPreviewButton.Visible = false;
+            }
+            if (ChkAgreetoProvideData.Checked == true)
+            {
+                ODSE.ShareData = "YES";
+            }
+            else
+            {
+                ODSE.ShareData = "NO";
+            }
         }
         protected void btnPreviewApplication_Click(object sender, EventArgs e)
         {

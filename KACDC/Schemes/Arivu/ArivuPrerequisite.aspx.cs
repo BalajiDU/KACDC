@@ -22,7 +22,7 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnRenewal_Click(object sender, EventArgs e)
         {
-            
+            Response.Redirect(@"~\Schemes\Arivu\Arivu_Renewal.aspx");
         }
         private void CheckEnableApplication()
         {
