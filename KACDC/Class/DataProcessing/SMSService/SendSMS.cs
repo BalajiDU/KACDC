@@ -157,6 +157,13 @@ namespace KACDC.Class.DataProcessing.SMSService
                     APIkey = KAVDESAPIkey;
                     TemplateID = "1107161001617332958";
                     break;
+                case "MOBVER":
+                    UserName = KAVDESUserName;
+                    Password = KAVDESPassword;
+                    SenderId = KAVDESSenderId;
+                    APIkey = KAVDESAPIkey;
+                    TemplateID = "1107162556447130963";
+                    break;
                 case "APPCAL":
                     UserName = KAVDESUserName;
                     Password = KAVDESPassword;

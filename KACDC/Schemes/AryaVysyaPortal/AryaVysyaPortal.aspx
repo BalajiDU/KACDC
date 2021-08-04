@@ -11,7 +11,8 @@
     <link href="../../CustomCSS/Calender.css" rel="stylesheet" />
 
 <%--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" /> --%>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width">
 
     <style>
         .list-inline {
@@ -22,6 +23,7 @@
 
 .list-inline > li {
     display: inline-block;
+    padding-left: 5px;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -129,6 +131,7 @@
         <script type="text/javascript">
         function CheckOTP(evt) {
 
+
             var charCode = (evt.which) ? evt.which : event.keyCode
             if (charCode > 31 && (((charCode >= 48 && charCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) || charCode == 46)) {
                 $('#txtOTP').keyup(function () {
@@ -180,10 +183,10 @@
 
     <script type="text/javascript">
 
-function Numeric(evt) {
+function Numeric2(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
             if (charCode > 31 && (((charCode >= 48 && charCode <= 57)|| (e.keyCode >= 96 && e.keyCode <= 105)) || charCode == 46)) {
-                return true;
+                return true;}
             else {
                 alert('Please Enter Numeric values.');
                 return false;
@@ -195,6 +198,22 @@ function Numeric(evt) {
     <!--Allow Numerical Value-->
     <script type="text/javascript">
     function Numeric(evt) {
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        
+        if (charCode > 31 && (((charCode >= 48 && charCode <= 57) || specialKeys.indexOf(charCode) != -1 || (charCode >= 96 && charCode <= 105)|| charCode == 8) || charCode == 46 || charCode == 8)) {
+            return true;
+        }
+        else {
+            if (charCode == 8||charCode == 9)
+                return true;
+                alert('Please Enter Numeric values.'+charCode);
+                return false;
+            }
+        }
+
+          function OTPNumeric(evt) {
         var specialKeys = new Array();
         specialKeys.push(8); //Backspace
         var charCode = (evt.which) ? evt.which : event.keyCode;
@@ -318,7 +337,7 @@ function Numeric(evt) {
                         </div>
                         <div class="form-row">
                             <div class="form-row-label">
-                                <asp:Label ID="Label11" class="" runat="server">Pincode<span style="color:red"> *</span><br />ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು</asp:Label><br />
+                                <asp:Label ID="Label11" class="" runat="server">Pincode<span style="color:red"> *</span><br />ಅಂಚೆ ಸಂಖ್ಯೆ</asp:Label><br />
                             </div>
                             <div class="form-row-input">
                                 <asp:TextBox ID="txtPincode" CssClass="NeoTextBox" runat="server" placeholder="Pincode" onpaste="return false" AutoCompleteType="Disabled" MaxLength="6" onkeypress="return Numeric(event)" onkeyup="return Numeric(event)"></asp:TextBox>
@@ -475,7 +494,7 @@ function Numeric(evt) {
                                     <asp:Label ID="Label79" runat="server" Text="OTP"></asp:Label>
                                 </div>
                                 <div class="otp-input">
-                                    <asp:TextBox ID="txtOTP" CssClass="OTPTextBox" runat="server" TextMode="number" MaxLength="8" onChange="javascript:Count(this);" onkeyup="javascript:Count(this);" onkeypress="javascript:Count(this);"></asp:TextBox>
+                                    <asp:TextBox ID="txtOTP"  runat="server" CssClass="OTPTextBox" TextMode="number" MaxLength="8" onChange="javascript:Count(this);" onkeyup="javascript:Count(this);" onkeypress="javascript:Count(this);"></asp:TextBox>
                                     <asp:Label runat="server" ID="lblOTPError" Style="color: red; font-size: 13px"></asp:Label>
                                 </div>
                             </div>
@@ -512,7 +531,6 @@ function Numeric(evt) {
                         </div>
                     </div>
                     <div class="form-row">
-
                         <div class="Popup-row-Button text-center">
                             <ul class="list-inline">
                                 <li>

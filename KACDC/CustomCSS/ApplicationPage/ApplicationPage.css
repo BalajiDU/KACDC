@@ -85,6 +85,7 @@
     max-height: 85%;
     color: whitesmoke;
     backdrop-filter: blur(20px);
+    /*-webkit-backdrop-filter: blur(20px);*/
     border: 10px solid #0000001c;
 }
 
@@ -446,7 +447,8 @@ input::-webkit-inner-spin-button {
 
 /* Firefox */
 input[type=number] {
-    -moz-appearance: textfield;
+    /*-moz-appearance: textfield;*/
+    -webkit-appearance: textfield;
 }
 
 

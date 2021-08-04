@@ -98,6 +98,7 @@ namespace KACDC.Schemes.Arivu
                     ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
                     if (ADAR.SendOTP(txtAadhaarNumber.Text.Trim()))
                     {
+                        DisplayAlert("otp sent to registered mobile number", this);
                         divMobileOTP.Visible = true;
                     }
                     else

@@ -32,6 +32,7 @@ namespace KACDC.Schemes.AryaVysyaPortal
         }
         protected void btnVerifyMobileNumber_Click(object sender, EventArgs e)
         {
+            
             lblOTPError.Text = "";
             if (txtMobileNumber.Text != "")
             {
@@ -47,7 +48,7 @@ namespace KACDC.Schemes.AryaVysyaPortal
 
                             AVP.EncryptedOTP = Enc.Encrypt(otp.NewOTP());
                             string Message = Enc.Decrypt(AVP.EncryptedOTP) + " is your OTP to verify your mobile number for Arya Vysya Portal. do not share with others. From: KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION LTD";
-                            SM.sendSMS(txtMobileNumber.Text.Trim(), Message, 2, "LGNOTP");
+                            SM.sendSMS(txtMobileNumber.Text.Trim(), Message, 2, "MOBVER");
                             AVPMobileNumVerifyPopup.Show();
                         }
                         else 
@@ -290,12 +291,16 @@ namespace KACDC.Schemes.AryaVysyaPortal
         }
         protected void btnAVPVerifyOTP_Click(object sender, EventArgs e)
         {
+            string OTPString = txtOTP.Text.Trim();
+            if (OTPString.Contains(','))
+                OTPString=OTPString.Remove(0,1);
             lblOTPError.Text = "";
-            if (txtOTP.Text.Trim().Length == 8)
+            int len = txtOTP.Text.Trim().Length;
+            if (OTPString.Trim().Length == 8)
             {
-                if (System.Text.RegularExpressions.Regex.IsMatch(txtOTP.Text.Trim(), @"^\d+$"))
+                if (System.Text.RegularExpressions.Regex.IsMatch(OTPString.Trim(), @"^\d+$"))
                 {
-                    if (txtOTP.Text.Trim() == Enc.Decrypt(AVP.EncryptedOTP))
+                    if (OTPString.Trim() == Enc.Decrypt(AVP.EncryptedOTP))
                     {
                         AVP.EncryptedOTP = "";
                         AVP.IsMobileVerified = "TRUE";

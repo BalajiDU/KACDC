@@ -5,6 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Test Form</title>
+    <script type="text/javascript">
+            
+        </script>
+  
 </head>
 <body>
     <form id="form1" runat="server">
@@ -65,6 +69,21 @@
         <hr />
         <asp:Button ID="btnExportExcel" runat="server" Text="Export Excel" OnClick="btnExportExcel_Click" />
         <asp:Button ID="btnExportPDFZMApproved" runat="server" Text="Export PDF ZM Approved" OnClick="btnExportPDFZMApproved_Click" />
+  <hr />
+   
+    <hr />
+
+       <div>
+                  
+
+
+                   <asp:TextBox ID="txtAppdfgNum" runat="server" MaxLengt="1" pattern="[0-9]{1}" />
+           <asp:RegularExpressionValidator runat="server" ControlToValidate="txtAppdfgNum" ValidationExpression="[0-9]{1}" ErrorMessage="wrong" ></asp:RegularExpressionValidator>
+
+       </div>
     </form>
+  
+    
+
 </body>
 </html>
