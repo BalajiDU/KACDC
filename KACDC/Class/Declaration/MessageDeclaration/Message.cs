@@ -77,6 +77,11 @@ namespace KACDC.Class.Declaration.MessageDeclaration
             set { HttpContext.Current.Session["SenderAPIkey"] = value; }
             get { return HttpContext.Current.Session["SenderAPIkey"] as string; }
         }
+        public string MessageType
+        {
+            set { HttpContext.Current.Session["MessageType"] = value; }
+            get { return HttpContext.Current.Session["MessageType"] as string; }
+        }
 
     }
 }

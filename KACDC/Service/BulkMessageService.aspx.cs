@@ -24,7 +24,7 @@ namespace KACDC.Service
         {
             if (!IsPostBack)
             {
-                
+                MSGDEC.TemplateID = "";
             }
         }
         protected void btnSendSingleMessage_Click(object sender, EventArgs e)
@@ -117,9 +117,10 @@ namespace KACDC.Service
         {
             if (rbKannada.Checked == true)
             {
-                rbSingle.Enabled = false;
-                rbBulk.Enabled = false;
+                rbSingle.Enabled = true;
+                rbBulk.Enabled = true;
                 MSGDEC.SelectedLacguage = "Kannada";
+                MSGDEC.MessageType = "";
                 DropDownBinding();
             }
             else if (rbEnglish.Checked == true)
@@ -130,11 +131,22 @@ namespace KACDC.Service
                 DropDownBinding();
             }
         }
+        protected void true_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSingle.Checked == true)
+            {
+                MSGDEC.MessageType = "Single";
+            }
+            else if (rbBulk.Checked == true)
+            {
+                MSGDEC.MessageType = "Bulk";
+            }
+        }
         private void DropDownBinding()
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("select TemplateName from SMSTemplate where SMSLanguage=@SMSLanguage"))
+                using (SqlCommand cmd = new SqlCommand("select TemplateName,TemplateID from SMSTemplate where SMSLanguage=@SMSLanguage"))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@SMSLanguage", MSGDEC.SelectedLacguage);
@@ -185,22 +197,88 @@ namespace KACDC.Service
         }
         protected void btnSendMessage_Click(object sender, EventArgs e)
         {
-            if (txtMobileNumber.Text.Trim() != "")
+            int numberlen = (txtMobileNumber.Text.Trim().Length) % 11;
+            if (rbEnglish.Checked == true || rbKannada.Checked == true)
             {
-                string status = "";
-                if (txtMessage.Text.Trim() != "")
+                if (rbSingle.Checked == true || rbBulk.Checked == true)
                 {
-                    status = SSMS.sendSMS(txtMobileNumber.Text.Trim(), txtMessage.Text.Trim(), 2, "BULK");
-                    if (status.StartsWith("402"))
+                    if (MSGDEC.TemplateID != "")
                     {
-                        DisplayAlert("Message Sent", this);
+                        if (txtMobileNumber.Text.Trim() != "")
+                        {
+                            if (txtMessage.Text.Trim() != "")
+                            {
+                                if (MSGDEC.MessageType == "Single" && txtMobileNumber.Text.Trim().Length == 10)
+                                {
+                                    DisplayAlert(
+                SSMS.BulkMessaging(MSGDEC.SenderUserName, MSGDEC.SenderPassword, MSGDEC.SMSUser, txtMobileNumber.Text.Trim(), txtMessage.Text.Trim(), MSGDEC.SenderAPIkey, MSGDEC.TemplateID, MSGDEC.SMSLanguage, MSGDEC.MessageType, MSGDEC.Category)
+                , this);
+                                }
+                                else if (MSGDEC.MessageType == "Bulk" && (txtMobileNumber.Text.Trim().Length) % 11 == 10)
+                                {
+                                    DisplayAlert(
+                SSMS.BulkMessaging(MSGDEC.SenderUserName, MSGDEC.SenderPassword, MSGDEC.SMSUser, txtMobileNumber.Text.Trim(), txtMessage.Text.Trim(), MSGDEC.SenderAPIkey, MSGDEC.TemplateID, MSGDEC.SMSLanguage, MSGDEC.MessageType, MSGDEC.Category)
+                , this);
+                                }
+                                else
+                                {
+                                    DisplayAlert("enter valid mobile number", this);
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("enter message", this);
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("enter mobile number", this);
+                        }
                     }
                     else
                     {
-                        DisplayAlert(status, this);
+                        DisplayAlert("Please Select Message Category", this);
                     }
                 }
+                else
+                {
+                    DisplayAlert("Please Select message type", this);
+                }
             }
+            else
+            {
+                DisplayAlert("Please Select language", this);
+            }
+            if (txtMobileNumber.Text.Trim() != "")
+            {
+                if (MSGDEC.MessageType == "Single" && txtMobileNumber.Text.Trim().Length == 10)
+                {
+
+                }
+                else if (MSGDEC.MessageType == "Bulk" && (txtMobileNumber.Text.Trim().Length) % 11 == 10)
+                {
+
+                }
+                //string status = "";
+                //if (txtMessage.Text.Trim() != "")
+                //{
+                //    status = SSMS.sendSMS(txtMobileNumber.Text.Trim(), txtMessage.Text.Trim(), 2, "BULK");
+                //    if (status.StartsWith("402"))
+                //    {
+                //        DisplayAlert("Message Sent", this);
+                //    }
+                //    else
+                //    {
+                //        DisplayAlert(status, this);
+                //    }
+                //}
+            }
+            //sendSingleSMS(String username, String password, String senderid, string mobileNo, String message, String secureKey, String templateid)
+            //sendBulkSMS(String username, String password, String senderid, string mobileNos, String message, String secureKey, String templateid)
+            //sendUnicodeSMS(String username, String password, String senderid, String mobileNos, String Unicodemessage, String secureKey, String templateid)
+
+
+
         }
         public static void DisplayAlert(string message, Control owner)
         {

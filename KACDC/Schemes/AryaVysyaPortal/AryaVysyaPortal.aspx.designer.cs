@@ -517,15 +517,6 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// btntest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btntest;
-        
-        /// <summary>
         /// PnlAVPMobileNumVerify control.
         /// </summary>
         /// <remarks>
@@ -634,13 +625,13 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::AjaxControlToolkit.ModalPopupExtender AVPMobileNumVerifyPopup;
         
         /// <summary>
-        /// PnlOtherDetails control.
+        /// PnlNotifyOtherDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlOtherDetails;
+        protected global::System.Web.UI.WebControls.Panel PnlNotifyOtherDetails;
         
         /// <summary>
         /// lblNotificationHeading control.
@@ -661,6 +652,69 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.Label lblNotificationContent;
         
         /// <summary>
+        /// btnReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReset;
+        
+        /// <summary>
+        /// divSocialShare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSocialShare;
+        
+        /// <summary>
+        /// lnkNotifyOtherDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkNotifyOtherDetails;
+        
+        /// <summary>
+        /// NotifyOtherDetailsPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender NotifyOtherDetailsPopup;
+        
+        /// <summary>
+        /// PnlSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlSuccess;
+        
+        /// <summary>
+        /// lblSuccessHead control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccessHead;
+        
+        /// <summary>
+        /// lblSuccessMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccessMessage;
+        
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -670,21 +724,30 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// lnkOtherDetails control.
+        /// divsuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkOtherDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divsuccess;
         
         /// <summary>
-        /// OtherDetailsPopup control.
+        /// lnkSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender OtherDetailsPopup;
+        protected global::System.Web.UI.WebControls.LinkButton lnkSuccess;
+        
+        /// <summary>
+        /// SuccessPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender SuccessPopup;
     }
 }

@@ -465,7 +465,6 @@ function Numeric2(evt) {
                             </div>
                             <div class="form-row-input">
                                 <asp:Button ID="btnSubmit" runat="server" CssClass="SubmitButton" Visible="true" Text="submit" Style="width: 100%" OnClick="btnSubmit_Click" />
-                                <asp:Button ID="btntest" runat="server" CssClass="SubmitButton" Visible="true" Text="test submit" Style="width: 100%" OnClick="btntest_Click" />
                             </div>
                             </div>
                         </div>
@@ -513,7 +512,7 @@ function Numeric2(evt) {
                     TargetControlID="lnkAVPMobileNumVerify" BackgroundCssClass="modalBackground">
                 </cc1:ModalPopupExtender>
 
-                <asp:Panel ID="PnlOtherDetails" runat="server" CssClass="modalPopup" Style="display: none; padding: 5px; min-width:25%">
+                <asp:Panel ID="PnlNotifyOtherDetails" runat="server" CssClass="modalPopup" Style="display: none; padding: 5px; min-width:25%">
                     <div class="form-row" style="justify-content: center">
                         <div class="Popup-row-label-Heading">
                             <asp:Label ID="lblNotificationHeading" runat="server" Text=""></asp:Label>
@@ -527,66 +526,105 @@ function Numeric2(evt) {
                     <div class="form-row">
 
                         <div class="Popup-row-Button text-center">
-                            <asp:Button ID="Button1" runat="server" CssClass="CancelButton" Text="Ok" />
+                            <asp:Button ID="btnReset" runat="server" CssClass="CancelButton" Text="Ok"  />
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row" runat="server" visible="false" id="divSocialShare">
                         <div class="Popup-row-Button text-center">
                             <ul class="list-inline">
                                 <li>
                                     <a target="_blank" href="https://facebook.com/sharer.php?u=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal" class="social facebook"></a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal;title=Protect your source code from decompiling or reverse engineering" class="social linkedin"></a>
+                                    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal;title=Arya Vysya Portal" class="social linkedin"></a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="https://twitter.com/intent/tweet?url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal&amp;text=Protect your source code from decompiling or reverse engineering&amp;via=arunendapally" class="social twitter"></a>
+                                    <a target="_blank" href="https://twitter.com/intent/tweet?url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal&amp;text=Arya Vysya Portal" class="social twitter"></a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="https://plus.google.com/share?url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal" class="social googleplus"></a>
-                                </li>
+                                    <a href="whatsapp://send?text=Arya Vysya Portal "
+                                        data-action="share/whatsapp/share"
+                                        target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 1219.547 1225.016">
+                                            <path fill="#E0E0E0" d="M1041.858 178.02C927.206 63.289 774.753.07 612.325 0 277.617 0 5.232 272.298 5.098 606.991c-.039 106.986 27.915 211.42 81.048 303.476L0 1225.016l321.898-84.406c88.689 48.368 188.547 73.855 290.166 73.896h.258.003c334.654 0 607.08-272.346 607.222-607.023.056-162.208-63.052-314.724-177.689-429.463zm-429.533 933.963h-.197c-90.578-.048-179.402-24.366-256.878-70.339l-18.438-10.93-191.021 50.083 51-186.176-12.013-19.087c-50.525-80.336-77.198-173.175-77.16-268.504.111-278.186 226.507-504.503 504.898-504.503 134.812.056 261.519 52.604 356.814 147.965 95.289 95.36 147.728 222.128 147.688 356.948-.118 278.195-226.522 504.543-504.693 504.543z" />
+                                            <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="609.77" y1="1190.114" x2="609.77" y2="21.084">
+                                                <stop offset="0" stop-color="#20b038" />
+                                                <stop offset="1" stop-color="#60d66a" />
+                                            </linearGradient><path fill="url(#a)" d="M27.875 1190.114l82.211-300.18c-50.719-87.852-77.391-187.523-77.359-289.602.133-319.398 260.078-579.25 579.469-579.25 155.016.07 300.508 60.398 409.898 169.891 109.414 109.492 169.633 255.031 169.57 409.812-.133 319.406-260.094 579.281-579.445 579.281-.023 0 .016 0 0 0h-.258c-96.977-.031-192.266-24.375-276.898-70.5l-307.188 80.548z" /><image overflow="visible" opacity=".08" width="682" height="639" xlink:href="FCC0802E2AF8A915.png" transform="translate(270.984 291.372)" /><path fill-rule="evenodd" clip-rule="evenodd" fill="#FFF" d="M462.273 349.294c-11.234-24.977-23.062-25.477-33.75-25.914-8.742-.375-18.75-.352-28.742-.352-10 0-26.25 3.758-39.992 18.766-13.75 15.008-52.5 51.289-52.5 125.078 0 73.797 53.75 145.102 61.242 155.117 7.5 10 103.758 166.266 256.203 226.383 126.695 49.961 152.477 40.023 179.977 37.523s88.734-36.273 101.234-71.297c12.5-35.016 12.5-65.031 8.75-71.305-3.75-6.25-13.75-10-28.75-17.5s-88.734-43.789-102.484-48.789-23.75-7.5-33.75 7.516c-10 15-38.727 48.773-47.477 58.773-8.75 10.023-17.5 11.273-32.5 3.773-15-7.523-63.305-23.344-120.609-74.438-44.586-39.75-74.688-88.844-83.438-103.859-8.75-15-.938-23.125 6.586-30.602 6.734-6.719 15-17.508 22.5-26.266 7.484-8.758 9.984-15.008 14.984-25.008 5-10.016 2.5-18.773-1.25-26.273s-32.898-81.67-46.234-111.326z" /><path fill="#FFF" d="M1036.898 176.091C923.562 62.677 772.859.185 612.297.114 281.43.114 12.172 269.286 12.039 600.137 12 705.896 39.633 809.13 92.156 900.13L7 1211.067l318.203-83.438c87.672 47.812 186.383 73.008 286.836 73.047h.255.003c330.812 0 600.109-269.219 600.25-600.055.055-160.343-62.328-311.108-175.649-424.53zm-424.601 923.242h-.195c-89.539-.047-177.344-24.086-253.93-69.531l-18.227-10.805-188.828 49.508 50.414-184.039-11.875-18.867c-49.945-79.414-76.312-171.188-76.273-265.422.109-274.992 223.906-498.711 499.102-498.711 133.266.055 258.516 52 352.719 146.266 94.195 94.266 146.031 219.578 145.992 352.852-.118 274.999-223.923 498.749-498.899 498.749z" /></svg>
+                                    </a></li>
+                             
+                              
                             </ul>
 
-                            <aside class="socialsharing">
-    <a href="https://www.facebook.com/sharer/sharer.php?u=@enc" target="_blank" rel="noopener noreferrer nofollow">
-        <svg role="img" aria-labelledby="_fb">
-            <title id="_fb">Share on Facebook</title>
-            <path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"></path>
-        </svg>
-    </a>
-   
-    <a href="https://plus.google.com/share?url=@enc" target="_blank" rel="noopener noreferrer nofollow">
-        <svg role="img" aria-labelledby="_gp">
-            <title id="_gp">Share on Google+</title>
-            <path d="M7.635 10.909v2.619h4.335c-.173 1.125-1.31 3.295-4.331 3.295-2.604 0-4.731-2.16-4.731-4.823 0-2.662 2.122-4.822 4.728-4.822 1.485 0 2.479.633 3.045 1.178l2.073-1.994c-1.33-1.245-3.056-1.995-5.115-1.995C3.412 4.365 0 7.785 0 12s3.414 7.635 7.635 7.635c4.41 0 7.332-3.098 7.332-7.461 0-.501-.054-.885-.12-1.265H7.635zm16.365 0h-2.183V8.726h-2.183v2.183h-2.182v2.181h2.184v2.184h2.189V13.09H24"></path>
-        </svg>
-    </a>
-    <a href="mailto:?subject=@Model.Replace(" ", "%20")&amp;body=@enc" target="_blank" rel="noopener noreferrer nofollow">
-        <svg role="img" aria-labelledby="_em">
-            <title id="_em">Email</title>
-            <path d="M24 7.387v10.478c0 .23-.08.424-.238.576-.158.154-.352.23-.58.23h-8.547v-6.959l1.6 1.229c.102.085.229.126.379.126.148 0 .277-.041.389-.127L24 7.387zm-9.365-2.021h8.547c.211 0 .393.063.543.192.15.128.234.3.248.51l-7.369 5.876-1.969-1.549V5.366zM13.404.864v22.271L0 20.819V3.244L13.406.864h-.002zm-4.049 11.18c-.02-1.133-.313-2.072-.879-2.814-.555-.74-1.275-1.131-2.131-1.164-.824.033-1.529.423-2.1 1.164-.57.742-.855 1.682-.87 2.814.015 1.117.315 2.047.885 2.791.571.74 1.274 1.133 2.101 1.176.855-.035 1.574-.424 2.145-1.17.57-.748.87-1.68.885-2.797h-.036zm-3.12-2.482c.431.02.794.256 1.083.717.285.461.435 1.045.435 1.752 0 .721-.149 1.307-.435 1.771-.301.464-.66.704-1.096.704s-.795-.226-1.095-.69-.435-1.05-.435-1.754c0-.705.135-1.291.435-1.74.284-.45.646-.69 1.081-.721l.027-.039z"></path>
-        </svg>
-    </a>
-                                <a href="mailto:?subject=@Model.Replace(" ", "%20")&amp;body=@enc" target="_blank" rel="noopener noreferrer nofollow">
-        <svg role="img" aria-labelledby="_em">
-            <title id="_em">Email</title>
-<path d=" M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z" fill-rule="evenodd"></path>        </svg>
-    </a>
-</aside>
-<a href="mailto:?subject=@Model.Replace(" ", "%20")&amp;body=@enc" target="_blank" rel="noopener noreferrer nofollow">
-        <svg role="img" aria-labelledby="_em">
-            <title id="_em">Email</title>
-            <path d="M24 7.387v10.478c0 .23-.08.424-.238.576-.158.154-.352.23-.58.23h-8.547v-6.959l1.6 1.229c.102.085.229.126.379.126.148 0 .277-.041.389-.127L24 7.387zm-9.365-2.021h8.547c.211 0 .393.063.543.192.15.128.234.3.248.51l-7.369 5.876-1.969-1.549V5.366zM13.404.864v22.271L0 20.819V3.244L13.406.864h-.002zm-4.049 11.18c-.02-1.133-.313-2.072-.879-2.814-.555-.74-1.275-1.131-2.131-1.164-.824.033-1.529.423-2.1 1.164-.57.742-.855 1.682-.87 2.814.015 1.117.315 2.047.885 2.791.571.74 1.274 1.133 2.101 1.176.855-.035 1.574-.424 2.145-1.17.57-.748.87-1.68.885-2.797h-.036zm-3.12-2.482c.431.02.794.256 1.083.717.285.461.435 1.045.435 1.752 0 .721-.149 1.307-.435 1.771-.301.464-.66.704-1.096.704s-.795-.226-1.095-.69-.435-1.05-.435-1.754c0-.705.135-1.291.435-1.74.284-.45.646-.69 1.081-.721l.027-.039z"></path>
-        </svg>
-    </a>
+                        
                             
 
                         </div>
                     </div>
                 </asp:Panel>
 
-                <asp:LinkButton ID="lnkOtherDetails" runat="server"></asp:LinkButton>
-                <cc1:ModalPopupExtender ID="OtherDetailsPopup" runat="server" TargetControlID="lnkOtherDetails" PopupControlID="PnlOtherDetails"
+                <asp:LinkButton ID="lnkNotifyOtherDetails" runat="server"></asp:LinkButton>
+                <cc1:ModalPopupExtender ID="NotifyOtherDetailsPopup" runat="server" TargetControlID="lnkNotifyOtherDetails" PopupControlID="PnlNotifyOtherDetails"
+                    BackgroundCssClass="modalBackground">
+                </cc1:ModalPopupExtender>
+
+
+
+                <asp:Panel ID="PnlSuccess" runat="server" CssClass="modalPopup" Style="display: none; padding: 5px; min-width:25%">
+                    <div class="Popup-flex-container">
+                    <div class="form-row" style="justify-content: center">
+                        <div class="Popup-row-label-Heading">
+                            <asp:Label ID="lblSuccessHead" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="Popup-row-label">
+                            <asp:Label ID="lblSuccessMessage" runat="server"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="Popup-row-Button text-center">
+                            <asp:Button ID="Button1" runat="server" CssClass="CancelButton" Text="Ok"  />
+                        </div>
+                    </div>
+                    <div class="form-row" runat="server" visible="false" id="divsuccess">
+                        <div class="Popup-row-Button text-center">
+                            <ul class="list-inline">
+                                <li>
+                                    <a target="_blank" href="https://facebook.com/sharer.php?u=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal" class="social facebook"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal;title=Arya Vysya Portal" class="social linkedin"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/intent/tweet?url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal&amp;text=Arya Vysya Portal" class="social twitter"></a>
+                                </li>
+                                <li>
+                                    <a href="whatsapp://send?text=Arya Vysya Portal "
+                                        data-action="share/whatsapp/share"
+                                        target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 1219.547 1225.016">
+                                            <path fill="#E0E0E0" d="M1041.858 178.02C927.206 63.289 774.753.07 612.325 0 277.617 0 5.232 272.298 5.098 606.991c-.039 106.986 27.915 211.42 81.048 303.476L0 1225.016l321.898-84.406c88.689 48.368 188.547 73.855 290.166 73.896h.258.003c334.654 0 607.08-272.346 607.222-607.023.056-162.208-63.052-314.724-177.689-429.463zm-429.533 933.963h-.197c-90.578-.048-179.402-24.366-256.878-70.339l-18.438-10.93-191.021 50.083 51-186.176-12.013-19.087c-50.525-80.336-77.198-173.175-77.16-268.504.111-278.186 226.507-504.503 504.898-504.503 134.812.056 261.519 52.604 356.814 147.965 95.289 95.36 147.728 222.128 147.688 356.948-.118 278.195-226.522 504.543-504.693 504.543z" />
+                                            <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="609.77" y1="1190.114" x2="609.77" y2="21.084">
+                                                <stop offset="0" stop-color="#20b038" />
+                                                <stop offset="1" stop-color="#60d66a" />
+                                            </linearGradient><path fill="url(#a)" d="M27.875 1190.114l82.211-300.18c-50.719-87.852-77.391-187.523-77.359-289.602.133-319.398 260.078-579.25 579.469-579.25 155.016.07 300.508 60.398 409.898 169.891 109.414 109.492 169.633 255.031 169.57 409.812-.133 319.406-260.094 579.281-579.445 579.281-.023 0 .016 0 0 0h-.258c-96.977-.031-192.266-24.375-276.898-70.5l-307.188 80.548z" /><image overflow="visible" opacity=".08" width="682" height="639" xlink:href="FCC0802E2AF8A915.png" transform="translate(270.984 291.372)" /><path fill-rule="evenodd" clip-rule="evenodd" fill="#FFF" d="M462.273 349.294c-11.234-24.977-23.062-25.477-33.75-25.914-8.742-.375-18.75-.352-28.742-.352-10 0-26.25 3.758-39.992 18.766-13.75 15.008-52.5 51.289-52.5 125.078 0 73.797 53.75 145.102 61.242 155.117 7.5 10 103.758 166.266 256.203 226.383 126.695 49.961 152.477 40.023 179.977 37.523s88.734-36.273 101.234-71.297c12.5-35.016 12.5-65.031 8.75-71.305-3.75-6.25-13.75-10-28.75-17.5s-88.734-43.789-102.484-48.789-23.75-7.5-33.75 7.516c-10 15-38.727 48.773-47.477 58.773-8.75 10.023-17.5 11.273-32.5 3.773-15-7.523-63.305-23.344-120.609-74.438-44.586-39.75-74.688-88.844-83.438-103.859-8.75-15-.938-23.125 6.586-30.602 6.734-6.719 15-17.508 22.5-26.266 7.484-8.758 9.984-15.008 14.984-25.008 5-10.016 2.5-18.773-1.25-26.273s-32.898-81.67-46.234-111.326z" /><path fill="#FFF" d="M1036.898 176.091C923.562 62.677 772.859.185 612.297.114 281.43.114 12.172 269.286 12.039 600.137 12 705.896 39.633 809.13 92.156 900.13L7 1211.067l318.203-83.438c87.672 47.812 186.383 73.008 286.836 73.047h.255.003c330.812 0 600.109-269.219 600.25-600.055.055-160.343-62.328-311.108-175.649-424.53zm-424.601 923.242h-.195c-89.539-.047-177.344-24.086-253.93-69.531l-18.227-10.805-188.828 49.508 50.414-184.039-11.875-18.867c-49.945-79.414-76.312-171.188-76.273-265.422.109-274.992 223.906-498.711 499.102-498.711 133.266.055 258.516 52 352.719 146.266 94.195 94.266 146.031 219.578 145.992 352.852-.118 274.999-223.923 498.749-498.899 498.749z" /></svg>
+                                    </a></li>
+                             
+                              
+                            </ul>
+
+                        
+                            
+
+                        </div>
+                    </div>
+                        </div>
+                </asp:Panel>
+
+                <asp:LinkButton ID="lnkSuccess" runat="server"></asp:LinkButton>
+                <cc1:ModalPopupExtender ID="SuccessPopup" runat="server" TargetControlID="lnkSuccess" PopupControlID="PnlSuccess"
                     BackgroundCssClass="modalBackground">
                 </cc1:ModalPopupExtender>
 

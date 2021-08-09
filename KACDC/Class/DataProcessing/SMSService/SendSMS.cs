@@ -286,7 +286,35 @@ namespace KACDC.Class.DataProcessing.SMSService
             }
         }
 
+        public string BulkMessaging(string username, string password, string senderid, string MobileNumber, string Message, string secureKey, string templateid, string Language, string MessageType,string Cetegory)
+        {
+            string MessageStatus = "";
+            if (Language == "Kannada")
+            {
+                MessageStatus = sendUnicodeSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
+            }
+            else
+            {
+                if (MessageType == "Single")
+                {
+                    MessageStatus = sendSingleSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
+                }
+                else
+                {
+                    MessageStatus = sendBulkSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
+                }
+            }
 
+            LOG.CreateLog(Cetegory, MobileNumber, MessageStatus, Message);
+            if (MessageStatus.StartsWith("402"))
+            {
+                return "Message Sent";
+            }
+            else
+            {
+                return MessageStatus;
+            }
+        }
 
 
 
