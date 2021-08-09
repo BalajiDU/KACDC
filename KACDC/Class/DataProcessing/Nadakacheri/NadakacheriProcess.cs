@@ -98,8 +98,10 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
             catch (Exception ex)
             {
                 string msg = ex.Message;
+                NKSER.NCError = msg;
                 if (xElement.Element("Status").Value.ToString() == "0")
                 {
+                    
                     //todo
                     //lblEligibility.Text = xElement.Element("StatusMsg").Value.ToString();
                     //lblEligibility.Style.Add("color", "RED");

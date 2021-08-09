@@ -1070,7 +1070,7 @@
                                 <asp:Label ID="Label5" class="" runat="server" Text="Self employment loan application"></asp:Label>
                             </div>
                         </div>
-                        <%--Mobile Number--%>
+                        <%--Aadhaar Number--%>
                         <div class="form-row">
                             <div class="form-row-label">
                                 <asp:Label ID="Label26" class="" runat="server">Aadhaar Number<span style="color:red"> *</span><br />ಆಧಾರ್ ಸಂಖ್ಯೆ</asp:Label><br />

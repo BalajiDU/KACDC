@@ -100,7 +100,7 @@
 
         .auto-style1 {
             width: 58%;
-            font-size: xx-large;
+            
             text-align: center;
             color: #000066;
             font-family:'Times New Roman', Times, serif;
@@ -129,6 +129,7 @@
             letter-spacing: 1.5px;
             text-align: center;
             align-items: center;
+            font-size:2em;
         }
 
         .ImageNeumorphic {
@@ -140,6 +141,8 @@
             text-align: center;
             align-items: center;
             justify-content:center;
+
+            border-radius:25px;
         }
 
         .HeaderText {
@@ -193,7 +196,7 @@
         .NeumorphicNavbarDiv{
 
 	border-radius: 2px;
-		background: #eeecec;
+		background: rgba(240, 240, 240, 0.00);
 		box-shadow:    1px 1px 5px #797878, 
 						-10px -10px 10px #ffffff;
   justify-content: center;
@@ -212,6 +215,11 @@
         .line{
             stroke: rgb(30, 141, 0);
             stroke-width: 8;
+        }
+        @media (max-width: 1000px) {
+            .HeaderNeumorphic {
+                font-size: 1.5em
+            }
         }
         @media (max-width: 768px) {
             .toggleMenuButton{
@@ -289,6 +297,7 @@ header ul li:hover ul {
                background:rgba(0,0,0,.5);
 
            }
+           
         }
     </style> 
 </head>
@@ -325,7 +334,7 @@ header ul li:hover ul {
                     <td rowspan="2" class="auto-style1">
 
                         <div class="HeaderNeumorphic">
-                            <b><span class="HeaderText">KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION</span></b></div>
+                            <b><span class="HeaderText">KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION LTD</span></b></div>
 
 
                     </td>
@@ -392,6 +401,8 @@ header ul li:hover ul {
                             <ul>
                                 <li><a runat="server" href="Schemes/Arivu/ArivuPrerequisite.aspx">Arivu</a></li>
                                 <li><a runat="server"  href="Schemes/Self%20Employment/SelfEmploymentPrerequisite.aspx">Self Employement</a></li>
+                                <li><a runat="server"  href="Schemes/AryaVysyaPortal/AryaVysyaPortal.aspx">Arya Vysya Portal</a></li>
+                                
                             </ul>
                         </li>
                         <li><a runat="server" href="Schemes/Self%20Employment/SEApplicationDownload.aspx">Download Application</a>

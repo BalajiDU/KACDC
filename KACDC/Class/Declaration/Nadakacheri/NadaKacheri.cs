@@ -218,6 +218,10 @@ namespace KACDC.Class.Declaration.Nadakacheri
             set { HttpContext.Current.Session["DisplayDocumentsSubmitted"] = value; }
             get { return HttpContext.Current.Session["DisplayDocumentsSubmitted"] as string; }
         }
-       
+        public string NCError
+        {
+            set { HttpContext.Current.Session["NCError"] = value; }
+            get { return HttpContext.Current.Session["NCError"] as string; }
+        }
     }
 }

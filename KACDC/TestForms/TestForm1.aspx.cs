@@ -2,13 +2,20 @@
 using iTextSharp.text.pdf;
 using KACDC.Class.DataProcessing.Aadhaar;
 using KACDC.Class.DataProcessing.ApplicationProcess;
+using KACDC.Class.DataProcessing.BankData;
+using KACDC.Class.DataProcessing.EmailService;
 using KACDC.Class.DataProcessing.FileProcessing;
 using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.ApplicationProcess;
 using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.PDFModuleProcess.ZMBankPDF;
 using KACDC.Class.DataProcessing.Nadakacheri;
+using KACDC.Class.Declaration.Aadhaar;
+using KACDC.Class.Declaration.BankDetails;
+using KACDC.Class.Declaration.Nadakacheri;
+using KACDC.Class.Declaration.OnlineApplication;
 using KACDC.Class.FileSaving;
 using KACDC.Class.GetCountStatistics;
 using KACDC.CreateTextSharpPDF.Process;
+using KACDC.CreateTextSharpPDF.Schemes.SelfEmployment;
 using KACDC.Models;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -19,6 +26,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.UI;
@@ -30,6 +38,19 @@ namespace KACDC.TestForms
     public partial class TestForm1 : System.Web.UI.Page
     {
         NadakacheriProcess NKAR = new NadakacheriProcess();
+        AadhaarService ADAR = new AadhaarService();
+        AadhaarServiceData ADSER = new AadhaarServiceData();
+        NadaKacheri NDAR = new NadaKacheri();
+        OtherDataSelfEmployment ODSE = new OtherDataSelfEmployment();
+        NadaKacheri NKSER = new NadaKacheri();
+        BankDetails GETBD = new BankDetails();
+        DecBankDetails BD = new DecBankDetails();
+        ApplicantPDFTable APPLITAB = new ApplicantPDFTable();
+        BankTable BT = new BankTable();
+        AgreementTable AT = new AgreementTable();
+        SignatureTable ST = new SignatureTable();
+        HeadingTable HT = new HeadingTable();
+        VerifyEmailID VEID = new VerifyEmailID();
         protected void Page_Load(object sender, EventArgs e)
         {
             MainTestNew();
@@ -641,6 +662,164 @@ namespace KACDC.TestForms
                 Response.End();
                 Response.Close();
             }
+        }
+
+        protected void btnVerifyRDNumber_Click(object sender, EventArgs e)
+        {
+            
+            if (txtRDNumber.Text.Trim().Length == 15)
+            {
+                if (txtRDNumber.Text.Trim().ToUpper().Substring(0, 2) == "RD")
+                {
+                    if (Regex.IsMatch(txtRDNumber.Text.Trim().Substring(2, 13), @"^\d+$"))
+                    {
+                        string IsRDExist = NKAR.CheckRDNumberExist(txtRDNumber.Text.Trim());
+                        if (IsRDExist == "NA")
+                        {
+                            if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
+                            {
+                                if (Int32.Parse(NKSER.NCStatusCode) == 1)
+                                {
+                                    if (Int32.Parse(NKSER.NCFacilityCode) == 42)
+                                    {
+                                        if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
+                                        {
+                                            if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                            {
+                                                if (NDAR.NCGender == "MALE")
+                                                {
+                                                    ODSE.Widow = "NA";
+                                                    ODSE.Divorced = "NA";
+                                                }
+                                                else
+                                                {
+                                                }
+                                                lbl2.Text = NKSER.NCError;
+                                                NKAR.UpdateDistrict();
+                                                lblNCGSCNumber.Text = NKSER.NCGSCNumber;
+                                                lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                                //NKSER.NCDateOfIssue;
+                                                lblNCApplicantName.Text = NKSER.NCApplicantName;
+                                                lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
+                                                lblNCDistrict.Text = NKSER.NCDistrictName;
+                                                lblNCTaluk.Text = NKSER.NCTalukName;
+                                                lblNCFullAddress.Text = NKSER.NCFullAddress;
+
+                                                //CasteCertificatePopup.Show();
+                                            }
+                                            else
+                                            {
+                                                DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            DisplayAlert("Income must be less then 1,00,000", this);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("Only Arya vysya Community is eligible", this);
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("Invalid RD Number", this);
+                                }
+
+                            }
+                            else
+                            {
+                                DisplayAlert("Invalid RD Number", this);
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("You have already avail the loan in " + IsRDExist + " financial year", this);
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Invalid RD Number", this);
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Invalid RD Number", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Invalid RD Number", this);
+            }
+        }
+
+        protected void btnAadhaarGetOTP_Click(object sender, EventArgs e)
+        {
+            if (txtAadhaarNumber.Text.Trim().Length == 12)
+            {
+                if (Regex.IsMatch(txtAadhaarNumber.Text.Trim(), @"^\d+$"))
+                {
+                    ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
+                    if (ADAR.SendOTP(txtAadhaarNumber.Text.Trim()))
+                    {
+                        DisplayAlert("otp sent to registered mobile number", this);
+                        divMobileOTP.Visible = true;
+                    }
+                    else
+                    {
+                        AadhaarError AE = new AadhaarError();
+                        DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.SendOTPErrorCode), this);
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Invalid Aadhaar Number", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Invalid Aadhaar Number", this);
+            }
+        }
+        protected void btnVerifyAadhaarOTP_Click(object sender, EventArgs e)
+        {
+            ADSER.AadhaarApplicantOTP = txtOTP.Text.Trim();
+            string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (ipaddress == "" || ipaddress == null)
+            { ipaddress = Request.ServerVariables["REMOTE_ADDR"]; }
+            string errorLogFilename = "ErrorLog_" + DateTime.Now.ToString("dd-MM-yyyy") + ".txt";
+
+            if (ADAR.VerifyAadhaarOTP(ipaddress, Path.GetFileName(Request.Path), Server.MapPath("~/LogFiles/AadhaarErrorLog/" + errorLogFilename)))
+            {
+                lblAadhaarPopupDOB.Text = ADSER.DOB;
+                lblAadhaarPopupGender.Text = ADSER.Gender;
+                lblAadhaarPopupName.Text = ADSER.Name;
+
+                lblAadhaarPopupState.Text = ADSER.State;
+
+                ImgAadhaarPopupPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
+                lblAadhaarPopupPincode.Text = ADSER.Pincode;
+
+                lblAadhaarPopupDistrict.Text = ADSER.District;
+                //AadhaarPopup.Show();
+            }
+            else
+            {
+                lblAadhaarPopupName.Text = ADSER.OTPErrorMessage;
+                lblAadhaarPopupState.Text = ADSER.OTPErrorCode;
+                AadhaarError AE = new AadhaarError();
+                DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.OTPErrorCode), this);
+            }
+        }
+        public static void DisplayAlert(string message, Control owner)
+        {
+            Page page = (owner as Page) ?? owner.Page;
+            if (page == null) return;
+
+            //page.ClientScript.RegisterStartupScript(owner.GetType(),"ShowMessage", string.Format("<script type='text/javascript'>alert('{0}')</script>",
+            //    message));
+            ScriptManager.RegisterClientScriptBlock(owner, owner.GetType(), "alertMessage", "alert('" + message.ToUpper() + "')", true);
         }
     }
 }

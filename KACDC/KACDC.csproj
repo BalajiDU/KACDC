@@ -508,6 +508,7 @@
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\PDFParagraph.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\ExcelFileOperations.cs" />
     <Compile Include="Class\DataProcessing\GetDataToFillGridView\GetGVData.cs" />
+    <Compile Include="Class\DataProcessing\MasterPage\MasterSettings.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\ApplicationSubmitEmail.cs" />
@@ -527,6 +528,7 @@
     <Compile Include="Class\Declaration\BankDetails\DecBankDetails.cs" />
     <Compile Include="Class\Declaration\CollegeData\ApplicantCollegeData.cs" />
     <Compile Include="Class\Declaration\EmailDeclaration\EmailVarDec.cs" />
+    <Compile Include="Class\Declaration\MasterPageData\MasterPageData.cs" />
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataArivu.cs" />
