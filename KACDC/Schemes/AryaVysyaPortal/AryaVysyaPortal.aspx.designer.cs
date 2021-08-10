@@ -625,13 +625,31 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::AjaxControlToolkit.ModalPopupExtender AVPMobileNumVerifyPopup;
         
         /// <summary>
-        /// PnlNotifyOtherDetails control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlNotifyOtherDetails;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
+        /// lblNotificationHeadingNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNotificationHeadingNew;
+        
+        /// <summary>
+        /// lblNotificationContentNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNotificationContentNew;
         
         /// <summary>
         /// lblNotificationHeading control.
@@ -661,13 +679,49 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// divSocialShare control.
+        /// LinkButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSocialShare;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
+        /// NotifyOtherDestailsPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender NotifyOtherDestailsPopup;
+        
+        /// <summary>
+        /// PnlNotifyOtherDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlNotifyOtherDetails;
+        
+        /// <summary>
+        /// lblNotificationHeading1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNotificationHeading1;
+        
+        /// <summary>
+        /// lblNotificationContent1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNotificationContent1;
         
         /// <summary>
         /// lnkNotifyOtherDetails control.
@@ -679,13 +733,13 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.LinkButton lnkNotifyOtherDetails;
         
         /// <summary>
-        /// NotifyOtherDetailsPopup control.
+        /// NotifyOtherDetailsPopup1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender NotifyOtherDetailsPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender NotifyOtherDetailsPopup1;
         
         /// <summary>
         /// PnlSuccess control.

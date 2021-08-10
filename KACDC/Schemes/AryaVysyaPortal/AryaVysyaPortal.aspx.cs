@@ -24,8 +24,8 @@ namespace KACDC.Schemes.AryaVysyaPortal
         OTP otp = new OTP();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblNotificationHeading.Text = "";
-            lblNotificationContent.Text = "";
+            //lblNotificationHeading.Text = "";
+            //lblNotificationContent.Text = "";
             if (!IsPostBack)
             {
                 this.FillDistrict();
@@ -55,35 +55,39 @@ namespace KACDC.Schemes.AryaVysyaPortal
                         }
                         else 
                         {
-                            lblNotificationHeading.Text = "Exist";
-                            lblNotificationContent.Text = "Mobile Number already exist <br/ >Change Your Mobile Number";
+                            //lblNotificationHeading.Text = "Exist";
+                            //lblNotificationContent.Text = "/*Mobile Number already exist, Change Mobile Number*/";
                             txtMobileNumber.ReadOnly = false;
                             btnVerifyMobileNumber.Visible = true;
-                            NotifyOtherDetailsPopup.Show();
+                            DisplayAlert("Mobile Number already exist, Change Mobile Number", this);
+                            //NotifyOtherDetailsPopup.Show();
                         }
                     }
                     else
                     {
-                        lblNotificationHeading.Text = "Error";
-                        lblNotificationContent.Text = "Enter Valid Mobile Number";
-                        //txtMobileNumber.Focus();
-                        NotifyOtherDetailsPopup.Show();
+                        //lblNotificationHeading.Text = "Error";
+                        //lblNotificationContent.Text = "";
+                        txtMobileNumber.Focus();
+                        DisplayAlert("Enter Valid Mobile Number", this);
+                        //NotifyOtherDetailsPopup.Show();
                     }
                 }
                 else
                 {
                     lblNotificationHeading.Text = "Error";
-                    lblNotificationContent.Text = "Enter Valid Mobile Number";
+                    lblNotificationContent.Text = "";
                     //NotifyOtherDetailsPopup.Show();
+                    DisplayAlert("Enter Valid Mobile Number", this);
                     txtMobileNumber.Focus();
                 }
             }
             else
             {
                 lblNotificationHeading.Text = "Error";
-                lblNotificationContent.Text = "Enter Mobile Number";
-                //txtMobileNumber.Focus();
-                NotifyOtherDetailsPopup.Show();
+                lblNotificationContent.Text = "";
+                txtMobileNumber.Focus();
+                DisplayAlert("Enter Mobile Number", this);
+                //NotifyOtherDetailsPopup.Show();
             }
         }
         
@@ -147,151 +151,168 @@ namespace KACDC.Schemes.AryaVysyaPortal
                                                                                 if (number != "UNIQUE KEY CONSTRAINT")
                                                                                 {
                                                                                     lblSuccessHead.Text = "Success";
-                                                                                    lblSuccessMessage.Text = "Your Details Stored Successfully";
+                                                                                    lblSuccessMessage.Text = "";
                                                                                     divsuccess.Visible = true;
                                                                                     Session.Clear();
-                                                                                    SuccessPopup.Show();
+                                                                                    //SuccessPopup.Show();
+                                                                                    DisplayAlert("Your Details Stored Successfully", this);
                                                                                     //Response.Redirect("~/Login.aspx");
                                                                                 }
                                                                                 else if (number == "UNIQUE KEY CONSTRAINT")
                                                                                 {
                                                                                     lblNotificationHeading.Text = "Exist";
-                                                                                    lblNotificationContent.Text = "Mobile Number already exist <br/ >Change Your Mobile Number";
+                                                                                    lblNotificationContent.Text = "";
                                                                                     txtMobileNumber.ReadOnly = false;
                                                                                     btnVerifyMobileNumber.Visible = true;
-                                                                                    NotifyOtherDetailsPopup.Show();
+                                                                                    //NotifyOtherDetailsPopup.Show();
+                                                                                    DisplayAlert("Mobile Number already exist, Change Mobile Number", this);
                                                                                 }
                                                                             }
                                                                         }
                                                                         else
                                                                         {
                                                                             lblNotificationHeading.Text = "Error";
-                                                                            lblNotificationContent.Text = "Enter your Occupation Details";
-                                                                            //txtOccupationDetails.Focus();
-                                                                            NotifyOtherDetailsPopup.Show();
+                                                                            lblNotificationContent.Text = "";
+                                                                            txtOccupationDetails.Focus();
+                                                                            //NotifyOtherDetailsPopup.Show();
+                                                                            DisplayAlert("Enter your Occupation Details", this);
                                                                         }
                                                                     }
                                                                     else
                                                                     {
                                                                         lblNotificationHeading.Text = "Error";
-                                                                        lblNotificationContent.Text = "Select your Occupation";
-                                                                        //drpOccupation.Focus();
-                                                                        NotifyOtherDetailsPopup.Show();
+                                                                        lblNotificationContent.Text = "";
+                                                                        drpOccupation.Focus();
+                                                                        DisplayAlert("Select your Occupation", this);
+                                                                        //NotifyOtherDetailsPopup.Show();
                                                                     }
                                                                 }
                                                                 else
                                                                 {
                                                                     lblNotificationHeading.Text = "Error";
-                                                                    lblNotificationContent.Text = "Enter Valid EmailID";
-                                                                    //txtWhatsAppNumber.Focus();
-                                                                    NotifyOtherDetailsPopup.Show();
+                                                                    lblNotificationContent.Text = "";
+                                                                    txtWhatsAppNumber.Focus();
+                                                                    DisplayAlert("Enter Valid EmailID", this);
+                                                                    //NotifyOtherDetailsPopup.Show();
                                                                 }
                                                             }
                                                             else
                                                             {
                                                                 lblNotificationHeading.Text = "Error";
-                                                                lblNotificationContent.Text = "Enter your EmailID";
-                                                                //txtWhatsAppNumber.Focus();
-                                                                NotifyOtherDetailsPopup.Show();
+                                                                lblNotificationContent.Text = "";
+                                                                txtWhatsAppNumber.Focus();
+                                                                DisplayAlert("Enter your EmailID", this); 
+                                                                //NotifyOtherDetailsPopup.Show();
                                                             }
                                                         }
                                                         else
                                                         {
                                                             lblNotificationHeading.Text = "Error";
-                                                            lblNotificationContent.Text = "Enter your WhatsApp Mobile Number";
-                                                            //txtWhatsAppNumber.Focus();
-                                                            NotifyOtherDetailsPopup.Show();
+                                                            lblNotificationContent.Text = "";
+                                                            txtWhatsAppNumber.Focus();
+                                                            //NotifyOtherDetailsPopup.Show();
+                                                            DisplayAlert("Enter your WhatsApp Mobile Number", this);
                                                         }
                                                     }
                                                     else
                                                     {
                                                         lblNotificationHeading.Text = "Error";
-                                                        lblNotificationContent.Text = "Verify your Mobile Number";
-                                                        //txtMobileNumber.Focus();
-                                                        NotifyOtherDetailsPopup.Show();
+                                                        lblNotificationContent.Text = "";
+                                                        txtMobileNumber.Focus();
+                                                        //NotifyOtherDetailsPopup.Show();
+                                                        DisplayAlert("Verify your Mobile Number", this);
                                                     }
                                                 }
                                                 else
                                                 {
                                                     lblNotificationHeading.Text = "Error";
-                                                    lblNotificationContent.Text = "Enter your Mobile Number";
-                                                    //txtMobileNumber.Focus();
-                                                    NotifyOtherDetailsPopup.Show();
+                                                    lblNotificationContent.Text = "";
+                                                    txtMobileNumber.Focus();
+                                                    //NotifyOtherDetailsPopup.Show();
+                                                    DisplayAlert("Enter your Mobile Number", this);
                                                 }
                                             }
                                             else
                                             {
                                                 lblNotificationHeading.Text = "Error";
-                                                lblNotificationContent.Text = "Select Your Date of Birth";
-                                                //txt_DOB.Focus();
-                                                NotifyOtherDetailsPopup.Show();
+                                                lblNotificationContent.Text = "";
+                                                txt_DOB.Focus();
+                                                //NotifyOtherDetailsPopup.Show();
+                                                DisplayAlert("Select Your Date of Birth", this);
                                             }
                                         }
                                         else
                                         {
                                             lblNotificationHeading.Text = "Error";
-                                            lblNotificationContent.Text = "Select Taluk";
-                                            //drpTaluk.Focus();
-                                            NotifyOtherDetailsPopup.Show();
+                                            lblNotificationContent.Text = "";
+                                            drpTaluk.Focus();
+                                            //NotifyOtherDetailsPopup.Show();
+                                            DisplayAlert("Select Taluk", this);
+
                                         }
                                     }
                                     else
                                     {
                                         lblNotificationHeading.Text = "Error";
-                                        lblNotificationContent.Text = "Select District";
-                                        //drpDistrict.Focus();
-                                        NotifyOtherDetailsPopup.Show();
+                                        lblNotificationContent.Text = "";
+                                        drpDistrict.Focus();
+                                        //NotifyOtherDetailsPopup.Show();
+                                        DisplayAlert("Select District", this);
                                     }
                                 }
                                 else
                                 {
                                     lblNotificationHeading.Text = "Error";
-                                    lblNotificationContent.Text = "Select District";
-                                    //drpDistrict.Focus();
-                                    NotifyOtherDetailsPopup.Show();
+                                    lblNotificationContent.Text = "";
+                                    drpDistrict.Focus();
+                                    //NotifyOtherDetailsPopup.Show();
+                                    DisplayAlert("Select District", this);
                                 }
                             }
                             else
                             {
                                 lblNotificationHeading.Text = "Error";
-                                lblNotificationContent.Text = "Enter Pincode";
-                                //txtPincode.Focus();
-                                NotifyOtherDetailsPopup.Show();
+                                lblNotificationContent.Text = "";
+                                txtPincode.Focus();
+                                //NotifyOtherDetailsPopup.Show();
+                                DisplayAlert("Enter Pincode", this);
                             }
                         }
                     
                         else
                         {
                             lblNotificationHeading.Text = "Error";
-                            lblNotificationContent.Text = "Enter Your Address";
-                            //txtAddress.Focus();
-                            NotifyOtherDetailsPopup.Show();
+                            lblNotificationContent.Text = "";
+                            txtAddress.Focus();
+                            //NotifyOtherDetailsPopup.Show();
+                            DisplayAlert("Enter Your Address", this);
                         }
                     }
                     else
                     {
                         lblNotificationHeading.Text = "Error";
-                        lblNotificationContent.Text = "Select Your Gender";
-                        //txtFatherName.Focus();
-                        NotifyOtherDetailsPopup.Show();
+                        lblNotificationContent.Text = "";
+                        txtFatherName.Focus();
+                        //NotifyOtherDetailsPopup.Show();
+                        DisplayAlert("Select Your Gender", this);
                     }
                 }
                 else
                 {
                     lblNotificationHeading.Text = "Error";
                     lblNotificationContent.Text = "Enter Valid Father Name";
-                    //txtFatherName.Focus();
-                    //                    NotifyOtherDetailsPopup.Show();
+                    txtFatherName.Focus();
+                    //NotifyOtherDetailsPopup.Show();
                     DisplayAlert("Enter Valid Father Name", this);
                 }
             }
             else
             {
-                lblNotificationHeading.Text = "Error";
-                lblNotificationContent.Text = "Enter Valid Name";
-                //txtName.Focus();
-                NotifyOtherDetailsPopup.Show();
-                //DisplayAlert("Enter Valid Name", this);
+                lblNotificationHeadingNew.Text = "Error";
+                lblNotificationContentNew.Text = "Enter Valid Name";
+                txtName.Focus();
+                //NotifyOtherDetailsPopup.Show();
+                DisplayAlert("Enter Valid Name", this);
             }
         }
         protected void btnAVPVerifyOTP_Click(object sender, EventArgs e)

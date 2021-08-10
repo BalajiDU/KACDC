@@ -273,6 +273,7 @@
     <Content Include="Schemes\Arivu\Arivu_Renewal.aspx" />
     <Content Include="Schemes\AryaVysyaPortal\AryaVysyaPortal.aspx" />
     <Content Include="Schemes\Self Employment\AboutSelfEmployment.aspx" />
+    <Content Include="Schemes\Self Employment\SEApplicationDownload.aspx" />
     <Content Include="Schemes\Self Employment\SelfEmploymentPrerequisite.aspx" />
     <Content Include="Schemes\Self Employment\Self_Employment_Application.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -670,6 +671,13 @@
     </Compile>
     <Compile Include="Schemes\Self Employment\AboutSelfEmployment.aspx.designer.cs">
       <DependentUpon>AboutSelfEmployment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\Self Employment\SEApplicationDownload.aspx.cs">
+      <DependentUpon>SEApplicationDownload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\Self Employment\SEApplicationDownload.aspx.designer.cs">
+      <DependentUpon>SEApplicationDownload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Schemes\Self Employment\SelfEmploymentPrerequisite.aspx.cs">
       <DependentUpon>SelfEmploymentPrerequisite.aspx</DependentUpon>

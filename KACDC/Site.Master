@@ -141,7 +141,10 @@
             text-align: center;
             align-items: center;
             justify-content:center;
-
+            max-width: 80px;
+            max-height: 80px;
+            min-width: 80px;
+            min-height: 80px;
             border-radius:25px;
         }
 
@@ -216,15 +219,21 @@
             stroke: rgb(30, 141, 0);
             stroke-width: 8;
         }
-        @media (max-width: 1000px) {
+        @media (max-width: 1025px) {
             .HeaderNeumorphic {
                 font-size: 1.5em
+            }
+            .NeoNameLabel{
+                font-size: 1em
             }
         }
         @media (max-width: 768px) {
             .toggleMenuButton{
             display:block;
         }
+            .HeaderNeumorphic {
+                font-size: 1.2em
+            }
             header {
                 padding: 0 0;
                 background: rgba(255,255,255,.5);
@@ -322,8 +331,8 @@ header ul li:hover ul {
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <div class="NeumorphicNavbarDiv" style="margin-top:2px">
-            <table width="100%" style="align-content: center; align-items: center; " >
+        <div class="NeumorphicNavbarDiv" style="margin-top:2px;">
+            <table width="100%" style="align-content: center; align-items: center;min-height: 20vh;max-height: 20vh; "  >
                 <tr>
                     <td rowspan="2" class="GOK" style="align-content: center;">
                         <asp:Image ID="ImgGOK" runat="server" Height="130px" Width="130px" CssClass="ImageNeumorphic" /></td>
