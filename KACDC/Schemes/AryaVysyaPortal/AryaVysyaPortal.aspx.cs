@@ -35,12 +35,12 @@ namespace KACDC.Schemes.AryaVysyaPortal
         protected void btnVerifyMobileNumber_Click(object sender, EventArgs e)
         {
             
-            lblOTPError.Text = "";
+            //lblOTPError.Text = "";
             if (txtMobileNumber.Text != "")
             {
-                if(txtMobileNumber.Text.Trim().Length == 10)
+                if (txtMobileNumber.Text.Trim().Length == 10)
                 {
-                    if(System.Text.RegularExpressions.Regex.IsMatch(txtMobileNumber.Text.Trim(), @"^\d+$"))
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtMobileNumber.Text.Trim(), @"^\d+$"))
                     {
                         AryaVysyaPortalSave AVPS = new AryaVysyaPortalSave();
                         if (AVPS.CheckMobileNumExist(txtMobileNumber.Text.Trim()))
@@ -104,86 +104,112 @@ namespace KACDC.Schemes.AryaVysyaPortal
                     if (rbMale.Checked == true || rbFemale.Checked == true)
                     {
                         AVP.Gender = rbMale.Checked ? "MALE" : "FEMALE";
-                        if (txtAddress.Text.Trim() != "")
+                        if (rbPhysicallyChallengedYes.Checked == true || rbPhysicallyChallengedNo.Checked == true)
                         {
-                            AVP.Address = txtAddress.Text.Trim();
-                            if (txtPincode.Text.Trim() != "")
+                            AVP.PhysicallyChallenged = rbPhysicallyChallengedYes.Checked ? "YES" : "NO";
+                            if (txtAddress.Text.Trim() != "")
                             {
-                                AVP.Pincode = txtPincode.Text.Trim();
-                                if (drpDistrict.SelectedValue != "0" && drpDistrict.SelectedItem.Text.ToUpper() != "--SELECT--")
+                                AVP.Address = txtAddress.Text.Trim();
+
+                                if (txtPincode.Text.Trim() != "")
                                 {
-                                    AVP.District = drpDistrict.SelectedValue;
+                                    AVP.Pincode = txtPincode.Text.Trim();
                                     if (drpDistrict.SelectedValue != "0" && drpDistrict.SelectedItem.Text.ToUpper() != "--SELECT--")
                                     {
-                                        AVP.District = drpDistrict.SelectedItem.Text;
-                                        if (drpTaluk.SelectedValue != "0" && drpTaluk.SelectedItem.Text.ToUpper() != "--SELECT--")
+                                        AVP.District = drpDistrict.SelectedValue;
+                                        if (drpDistrict.SelectedValue != "0" && drpDistrict.SelectedItem.Text.ToUpper() != "--SELECT--")
                                         {
-                                            AVP.Taluk = drpTaluk.SelectedValue;
-                                            if (txt_DOB.Text.Trim() != "" )
+                                            AVP.District = drpDistrict.SelectedItem.Text;
+                                            if (drpTaluk.SelectedValue != "0" && drpTaluk.SelectedItem.Text.ToUpper() != "--SELECT--")
                                             {
-                                                AVP.DOB = txt_DOB.Text.Trim();
-                                                if (txtMobileNumber.Text.Trim() != "" && System.Text.RegularExpressions.Regex.IsMatch(txtMobileNumber.Text.Trim(), @"^\d+$"))
+                                                AVP.Taluk = drpTaluk.SelectedValue;
+                                                if (txt_DOB.Text.Trim() != "")
                                                 {
-                                                    if (AVP.IsMobileVerified == "TRUE")
+                                                    AVP.DOB = txt_DOB.Text.Trim();
+                                                    if (txtMobileNumber.Text.Trim() != "" && System.Text.RegularExpressions.Regex.IsMatch(txtMobileNumber.Text.Trim(), @"^\d+$"))
                                                     {
-                                                        AVP.MobileNumber = txtMobileNumber.Text.Trim();
-                                                        if (txtWhatsAppNumber.Text.Trim() != "" && System.Text.RegularExpressions.Regex.IsMatch(txtWhatsAppNumber.Text.Trim(), @"^\d+$"))
+                                                        if (AVP.IsMobileVerified == "TRUE")
                                                         {
-                                                            AVP.WhatsappNumber = txtWhatsAppNumber.Text.Trim();
-                                                            if (txtEmailID.Text != "")
+                                                            AVP.MobileNumber = txtMobileNumber.Text.Trim();
+                                                            if (txtWhatsAppNumber.Text.Trim() != "" && System.Text.RegularExpressions.Regex.IsMatch(txtWhatsAppNumber.Text.Trim(), @"^\d+$"))
                                                             {
-                                                                VerifyEmailID VEID = new VerifyEmailID();
-                                                                if (VEID.IsValidEmail(txtEmailID.Text.Trim()))
+                                                                AVP.WhatsappNumber = txtWhatsAppNumber.Text.Trim();
+                                                                if (txtEmailID.Text != "")
                                                                 {
-                                                                    AVP.EmailID = txtEmailID.Text.Trim();
-                                                                    if (drpOccupation.SelectedValue != "0")
+                                                                    VerifyEmailID VEID = new VerifyEmailID();
+                                                                    if (VEID.IsValidEmail(txtEmailID.Text.Trim()))
                                                                     {
-                                                                        AVP.Occupation = drpOccupation.SelectedValue;
-                                                                        if (txtOccupationDetails.Text.Trim() != "")
+                                                                        AVP.EmailID = txtEmailID.Text.Trim();
+                                                                        if (txtEducationQualification.Text.Trim() != "")
                                                                         {
-                                                                            AVP.OccupationDetails = txtOccupationDetails.Text.Trim();
-                                                                            AVP.Declaration = ChkSelfDeclaration.Checked ? "Yes" : "No";
-                                                                            AryaVysyaPortalSave AVPS = new AryaVysyaPortalSave();
-                                                                            string number = AVPS.StoreAV(AVP.Name, AVP.FatherName, AVP.Gender, AVP.Address, AVP.District, AVP.Taluk, AVP.Pincode,
-                                                                                AVP.DOB, AVP.MobileNumber, AVP.WhatsappNumber, AVP.EmailID, AVP.Occupation, AVP.OccupationDetails, AVP.Declaration);
-                                                                            if(number != "")
+                                                                            AVP.EducationQualification = txtEducationQualification.Text.Trim();
+                                                                            if (drpOccupation.SelectedValue != "0")
                                                                             {
-                                                                                if (number != "UNIQUE KEY CONSTRAINT")
+                                                                                AVP.Occupation = drpOccupation.SelectedValue;
+                                                                                if (txtOccupationDetails.Text.Trim() != "")
                                                                                 {
-                                                                                    lblSuccessHead.Text = "Success";
-                                                                                    lblSuccessMessage.Text = "";
-                                                                                    divsuccess.Visible = true;
-                                                                                    Session.Clear();
-                                                                                    //SuccessPopup.Show();
-                                                                                    DisplayAlert("Your Details Stored Successfully", this);
-                                                                                    //Response.Redirect("~/Login.aspx");
+                                                                                    AVP.OccupationDetails = txtOccupationDetails.Text.Trim();
+                                                                                    AVP.Declaration = ChkSelfDeclaration.Checked ? "Yes" : "No";
+                                                                                    AryaVysyaPortalSave AVPS = new AryaVysyaPortalSave();
+                                                                                    string number = AVPS.StoreAV(AVP.Name, AVP.FatherName, AVP.Gender, AVP.Address, AVP.District, AVP.Taluk, AVP.Pincode,
+                                                                                        AVP.DOB, AVP.MobileNumber, AVP.WhatsappNumber, AVP.EmailID, AVP.Occupation, AVP.OccupationDetails, AVP.Declaration, AVP.PhysicallyChallenged, AVP.EducationQualification);
+                                                                                    if (number != "")
+                                                                                    {
+                                                                                        if (number != "UNIQUE KEY CONSTRAINT")
+                                                                                        {
+                                                                                            lblSuccessHead.Text = "Success";
+                                                                                            lblSuccessMessage.Text = "";
+                                                                                            divsuccess.Visible = true;
+                                                                                            
+                                                                                            //SuccessPopup.Show();
+                                                                                            DisplayAlert("Dear "+ AVP.Name + ", Your Details Stored Successfully, Kindly Share with your arya vysya friends and family", this);
+                                                                                            Session.Clear();
+                                                                                            //Response.Redirect("~/Login.aspx");
+                                                                                        }
+                                                                                        else if (number == "UNIQUE KEY CONSTRAINT")
+                                                                                        {
+                                                                                            lblNotificationHeading.Text = "Exist";
+                                                                                            lblNotificationContent.Text = "";
+                                                                                            txtMobileNumber.ReadOnly = false;
+                                                                                            btnVerifyMobileNumber.Visible = true;
+                                                                                            //NotifyOtherDetailsPopup.Show();
+                                                                                            DisplayAlert("Mobile Number already exist, Change Mobile Number", this);
+                                                                                        }
+                                                                                    }
                                                                                 }
-                                                                                else if (number == "UNIQUE KEY CONSTRAINT")
+                                                                                else
                                                                                 {
-                                                                                    lblNotificationHeading.Text = "Exist";
+                                                                                    lblNotificationHeading.Text = "Error";
                                                                                     lblNotificationContent.Text = "";
-                                                                                    txtMobileNumber.ReadOnly = false;
-                                                                                    btnVerifyMobileNumber.Visible = true;
+                                                                                    txtOccupationDetails.Focus();
                                                                                     //NotifyOtherDetailsPopup.Show();
-                                                                                    DisplayAlert("Mobile Number already exist, Change Mobile Number", this);
+                                                                                    DisplayAlert("Enter your Occupation Details", this);
                                                                                 }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                lblNotificationHeading.Text = "Error";
+                                                                                lblNotificationContent.Text = "";
+                                                                                drpOccupation.Focus();
+                                                                                DisplayAlert("Select your Occupation", this);
+                                                                                //NotifyOtherDetailsPopup.Show();
                                                                             }
                                                                         }
                                                                         else
                                                                         {
                                                                             lblNotificationHeading.Text = "Error";
                                                                             lblNotificationContent.Text = "";
-                                                                            txtOccupationDetails.Focus();
+                                                                            txtEducationQualification.Focus();
+                                                                            DisplayAlert("Enter your Education Qualification", this);
                                                                             //NotifyOtherDetailsPopup.Show();
-                                                                            DisplayAlert("Enter your Occupation Details", this);
                                                                         }
                                                                     }
                                                                     else
                                                                     {
                                                                         lblNotificationHeading.Text = "Error";
                                                                         lblNotificationContent.Text = "";
-                                                                        drpOccupation.Focus();
-                                                                        DisplayAlert("Select your Occupation", this);
+                                                                        txtWhatsAppNumber.Focus();
+                                                                        DisplayAlert("Enter Valid EmailID", this);
                                                                         //NotifyOtherDetailsPopup.Show();
                                                                     }
                                                                 }
@@ -192,7 +218,7 @@ namespace KACDC.Schemes.AryaVysyaPortal
                                                                     lblNotificationHeading.Text = "Error";
                                                                     lblNotificationContent.Text = "";
                                                                     txtWhatsAppNumber.Focus();
-                                                                    DisplayAlert("Enter Valid EmailID", this);
+                                                                    DisplayAlert("Enter your EmailID", this);
                                                                     //NotifyOtherDetailsPopup.Show();
                                                                 }
                                                             }
@@ -201,17 +227,17 @@ namespace KACDC.Schemes.AryaVysyaPortal
                                                                 lblNotificationHeading.Text = "Error";
                                                                 lblNotificationContent.Text = "";
                                                                 txtWhatsAppNumber.Focus();
-                                                                DisplayAlert("Enter your EmailID", this); 
                                                                 //NotifyOtherDetailsPopup.Show();
+                                                                DisplayAlert("Enter your WhatsApp Mobile Number", this);
                                                             }
                                                         }
                                                         else
                                                         {
                                                             lblNotificationHeading.Text = "Error";
                                                             lblNotificationContent.Text = "";
-                                                            txtWhatsAppNumber.Focus();
+                                                            txtMobileNumber.Focus();
                                                             //NotifyOtherDetailsPopup.Show();
-                                                            DisplayAlert("Enter your WhatsApp Mobile Number", this);
+                                                            DisplayAlert("Verify your Mobile Number", this);
                                                         }
                                                     }
                                                     else
@@ -220,35 +246,35 @@ namespace KACDC.Schemes.AryaVysyaPortal
                                                         lblNotificationContent.Text = "";
                                                         txtMobileNumber.Focus();
                                                         //NotifyOtherDetailsPopup.Show();
-                                                        DisplayAlert("Verify your Mobile Number", this);
+                                                        DisplayAlert("Enter your Mobile Number", this);
                                                     }
                                                 }
                                                 else
                                                 {
                                                     lblNotificationHeading.Text = "Error";
                                                     lblNotificationContent.Text = "";
-                                                    txtMobileNumber.Focus();
+                                                    txt_DOB.Focus();
                                                     //NotifyOtherDetailsPopup.Show();
-                                                    DisplayAlert("Enter your Mobile Number", this);
+                                                    DisplayAlert("Select Your Date of Birth", this);
                                                 }
                                             }
                                             else
                                             {
                                                 lblNotificationHeading.Text = "Error";
                                                 lblNotificationContent.Text = "";
-                                                txt_DOB.Focus();
+                                                drpTaluk.Focus();
                                                 //NotifyOtherDetailsPopup.Show();
-                                                DisplayAlert("Select Your Date of Birth", this);
+                                                DisplayAlert("Select Taluk", this);
+
                                             }
                                         }
                                         else
                                         {
                                             lblNotificationHeading.Text = "Error";
                                             lblNotificationContent.Text = "";
-                                            drpTaluk.Focus();
+                                            drpDistrict.Focus();
                                             //NotifyOtherDetailsPopup.Show();
-                                            DisplayAlert("Select Taluk", this);
-
+                                            DisplayAlert("Select District", this);
                                         }
                                     }
                                     else
@@ -264,35 +290,34 @@ namespace KACDC.Schemes.AryaVysyaPortal
                                 {
                                     lblNotificationHeading.Text = "Error";
                                     lblNotificationContent.Text = "";
-                                    drpDistrict.Focus();
+                                    txtPincode.Focus();
                                     //NotifyOtherDetailsPopup.Show();
-                                    DisplayAlert("Select District", this);
+                                    DisplayAlert("Enter Pincode", this);
                                 }
                             }
                             else
                             {
                                 lblNotificationHeading.Text = "Error";
                                 lblNotificationContent.Text = "";
-                                txtPincode.Focus();
+                                txtAddress.Focus();
                                 //NotifyOtherDetailsPopup.Show();
-                                DisplayAlert("Enter Pincode", this);
+                                DisplayAlert("Enter Your Address", this);
                             }
                         }
-                    
                         else
                         {
                             lblNotificationHeading.Text = "Error";
                             lblNotificationContent.Text = "";
-                            txtAddress.Focus();
+                            rbPhysicallyChallengedYes.Focus();
                             //NotifyOtherDetailsPopup.Show();
-                            DisplayAlert("Enter Your Address", this);
+                            DisplayAlert("Select Person With Disabilitie", this);
                         }
                     }
                     else
                     {
                         lblNotificationHeading.Text = "Error";
                         lblNotificationContent.Text = "";
-                        txtFatherName.Focus();
+                        rbMale.Focus();
                         //NotifyOtherDetailsPopup.Show();
                         DisplayAlert("Select Your Gender", this);
                     }
@@ -367,8 +392,9 @@ namespace KACDC.Schemes.AryaVysyaPortal
             txtOccupationDetails.Text = "";
             if (drpOccupation.SelectedValue == "student")
             {
-                lblOccupationDetails.Text = "Edication Qualification";
-                divOccupationDetails.Visible = true;
+                lblOccupationDetails.Text = "Education Qualification";
+                txtOccupationDetails.Text = "STUDENT";
+                //divOccupationDetails.Visible = true;
             }
             else if (drpOccupation.SelectedValue == "business")
             {
@@ -377,8 +403,15 @@ namespace KACDC.Schemes.AryaVysyaPortal
             }
             else if (drpOccupation.SelectedValue == "employee")
             {
-                lblOccupationDetails.Text = "Employer Name";
+                lblOccupationDetails.Text = "Company/Department Name";
                 divOccupationDetails.Visible = true;
+            }
+            else if (drpOccupation.SelectedValue == "homemaker")
+            {
+                lblOccupationDetails.Text = "Company/Department Name";
+                txtOccupationDetails.Text = "Home Maker";
+
+                //divOccupationDetails.Visible = true;
             }
             else
             {
@@ -409,7 +442,7 @@ namespace KACDC.Schemes.AryaVysyaPortal
             //DisplayAlert(CalculateYourAge(Convert.ToDateTime(txt_DOB.Text.Trim())), this);
             if (Int32.Parse(CalculateYourAge(Convert.ToDateTime(txt_DOB.Text.Trim()))) < 13)
             {
-                DisplayAlert("Your age is "+CalculateYourAge(Convert.ToDateTime(txt_DOB.Text.Trim()))+ "Only avove 13 age is eligible to fill form", this);
+                DisplayAlert("You are not eligible as you are below 13 years", this);
             }
         }
         private void FillTaluk()

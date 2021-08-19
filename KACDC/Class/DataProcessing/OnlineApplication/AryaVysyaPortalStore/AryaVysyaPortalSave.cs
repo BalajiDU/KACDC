@@ -12,7 +12,7 @@ namespace KACDC.Class.DataProcessing.OnlineApplication.AryaVysyaPortalStore
     {
         public string StoreAV(string Name, string FatherName, string Gender, string Address,
             string District, string Taluk, string Pincode, string DoB, string MobileNumber, string WhatssAppNumber, string EmailID, string Occupation,
-            string OccupationDetails, string Declaration)
+            string OccupationDetails, string Declaration,string PhysicallyChallenged,string EducationQualification)
         {
             try
             {
@@ -35,6 +35,8 @@ namespace KACDC.Class.DataProcessing.OnlineApplication.AryaVysyaPortalStore
                         cmd.Parameters.AddWithValue("@Occupation", Occupation);
                         cmd.Parameters.AddWithValue("@OccupationDetails", OccupationDetails);
                         cmd.Parameters.AddWithValue("@Declaration", Declaration);
+                        cmd.Parameters.AddWithValue("@PhysicallyChallenged", PhysicallyChallenged);
+                        cmd.Parameters.AddWithValue("@EducationQualification", EducationQualification);
                         cmd.Parameters.Add("@ApplicationNumber", SqlDbType.NVarChar, 20);
                         cmd.Parameters["@ApplicationNumber"].Direction = ParameterDirection.Output;
                         kvdConn.Open();

@@ -49,6 +49,15 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSEApplicationMail;
         
         /// <summary>
+        /// ImgGOK control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgGOK;
+        
+        /// <summary>
         /// Label5 control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label5;
+        
+        /// <summary>
+        /// Image1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
         /// Label26 control.
@@ -173,6 +191,51 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div21;
+        
+        /// <summary>
+        /// Label112 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label112;
+        
+        /// <summary>
+        /// rbPhysicallyChallengedYes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbPhysicallyChallengedYes;
+        
+        /// <summary>
+        /// rbPhysicallyChallengedNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbPhysicallyChallengedNo;
+        
+        /// <summary>
+        /// lblPHError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPHError;
+        
+        /// <summary>
+        /// div22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div22;
         
         /// <summary>
         /// Label1 control.
@@ -346,6 +409,15 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         protected global::System.Web.UI.WebControls.TextBox txtMobileNumber;
         
         /// <summary>
+        /// lblMobileChkError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMobileChkError;
+        
+        /// <summary>
         /// div5 control.
         /// </summary>
         /// <remarks>
@@ -416,6 +488,33 @@ namespace KACDC.Schemes.AryaVysyaPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div7;
+        
+        /// <summary>
+        /// Labeld8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labeld8;
+        
+        /// <summary>
+        /// txtEducationQualification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEducationQualification;
+        
+        /// <summary>
+        /// dis7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dis7;
         
         /// <summary>
         /// Label9 control.

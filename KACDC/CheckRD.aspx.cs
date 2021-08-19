@@ -34,11 +34,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using KACDC.Class.DataProcessing.Nadakacheri;
 
 namespace KACDC
 {
     public partial class CheckRD : System.Web.UI.Page
     {
+        NadakacheriProcess NKAR = new NadakacheriProcess();
         NadaKacheri_SelfEmployment NCSE = new NadaKacheri_SelfEmployment();
         BankDetails_SelfEmployment BD = new BankDetails_SelfEmployment();
         OtherData_SelfEmployment ODSE = new OtherData_SelfEmployment();
@@ -127,6 +129,7 @@ namespace KACDC
 
         private void GetCasteAndIncomeCertificate(string RDNumber)
         {
+            NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim());
             XElement xElement=null;
             try
             {

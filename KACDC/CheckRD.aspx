@@ -520,7 +520,7 @@ box-shadow:  10px 10px 25px #b0b0b0,
                             <asp:Label ID="Label10" class="" runat="server">RD Number(Form - G)<span style="color:red"> *</span><br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ(ನಮೂನೆ - ಜಿ)</asp:Label>
                         </div>
                         <div class="form-row-input">
-                            <asp:TextBox ID="txtRDNumber" CssClass="NeoTextBox" runat="server" Style="text-transform: uppercase" MaxLength="15" onkeypress="CheckRDNumber()"></asp:TextBox>
+                            <asp:TextBox ID="txtRDNumber" CssClass="NeoTextBox" runat="server" Style="text-transform: uppercase" MaxLength="15" ></asp:TextBox> <%--onkeypress="CheckRDNumber()"--%>
                             <div id="divRDNumChkError" runat="server" class="DisplayError"></div>
                        </div>
                         <div class="form-row-Botton">

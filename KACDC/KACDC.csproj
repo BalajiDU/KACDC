@@ -229,6 +229,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="CustomCSS\ApplicationPage\Test.css" />
     <Content Include="CustomCSS\ApplicationPage\ApplicationPage.css" />
     <Content Include="CustomCSS\ApprovalPageCss\FormStyles.css" />
     <Content Include="CustomCSS\ApprovalPageCss\LogoNameAnimation.css" />
@@ -265,6 +266,7 @@
     <Content Include="Image\KACDC_PDF_Old.png" />
     <Content Include="Image\loadingAnim.gif" />
     <Content Include="Image\loan.png" />
+    <Content Include="Image\MobileAppImage.png" />
     <Content Include="KACDC_AppInfo.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Schemes\Arivu\AboutArivu.aspx" />
@@ -298,6 +300,7 @@
     <Content Include="libman.json" />
     <Content Include="Service\Admin_Dashboard.aspx" />
     <Content Include="Service\BulkMessageService.aspx" />
+    <Content Include="Service\AppLaunchSMS.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -706,6 +709,13 @@
     </Compile>
     <Compile Include="Service\BulkMessageService.aspx.designer.cs">
       <DependentUpon>BulkMessageService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AppLaunchSMS.aspx.cs">
+      <DependentUpon>AppLaunchSMS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Service\AppLaunchSMS.aspx.designer.cs">
+      <DependentUpon>AppLaunchSMS.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

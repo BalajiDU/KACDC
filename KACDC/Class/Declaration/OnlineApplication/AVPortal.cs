@@ -87,6 +87,16 @@ namespace KACDC.Class.Declaration.OnlineApplication
             set { HttpContext.Current.Session["Declaration"] = value; }
             get { return HttpContext.Current.Session["Declaration"] as string; }
         }
+        public string EducationQualification
+        {
+            set { HttpContext.Current.Session["EducationQualification"] = value; }
+            get { return HttpContext.Current.Session["EducationQualification"] as string; }
+        }
+        public string PhysicallyChallenged
+        {
+            set { HttpContext.Current.Session["PhysicallyChallenged"] = value; }
+            get { return HttpContext.Current.Session["PhysicallyChallenged"] as string; }
+        }
 
     }
 }

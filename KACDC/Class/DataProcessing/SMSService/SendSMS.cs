@@ -294,20 +294,27 @@ namespace KACDC.Class.DataProcessing.SMSService
                 MessageStatus = sendUnicodeSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
             }
             else
-            {
-                if (MessageType == "Single")
+            {if (MessageType == "FGTPWD")
                 {
-                    MessageStatus = sendSingleSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
+                    MessageStatus = sendOTPMSG(username, password, senderid, MobileNumber, Message, secureKey, templateid);
                 }
                 else
                 {
-                    MessageStatus = sendBulkSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
+                    if (MessageType == "Single")
+                    {
+                        MessageStatus = sendSingleSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
+                    }
+                    else
+                    {
+                        MessageStatus = sendBulkSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
+                    }
                 }
             }
 
             LOG.CreateLog(Cetegory, MobileNumber, MessageStatus, Message);
             if (MessageStatus.StartsWith("402"))
             {
+                //return MessageStatus; 
                 return "Message Sent";
             }
             else

@@ -23,10 +23,92 @@ body {
 /* Float four columns side by side */
 .column {
   float: left;
-  width: 32%;
+  width: 25%;
   padding: 0 10px;
 }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+.Popupcard {
+  padding: 16px;
+  text-align: center;
+}
+.Popupcolumn {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
 
+    /*background-color: white;*/
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px #cac9c9, -1px -1px 2px #ffffff;
+    /*margin: 20px;
+            margin-top: 30px;*/
+    font-size: 20px;
+    align-items: center;
+    letter-spacing: 1.5px;
+    overflow: auto;
+    font-family: sans-serif;
+    color: black;
+    /*max-Width: 50%;*/
+    /*Height: 720px;*/
+    max-height: 85%;
+    color: whitesmoke;
+    backdrop-filter: blur(10px);
+    /*-webkit-backdrop-filter: blur(20px);*/
+    border: 10px solid #0000005c;
+}
+.Popupcolumn1 {
+  float: left;
+  width: 49%;
+  padding: 0 10px;
+
+    /*background-color: white;*/
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px #cac9c9, -1px -1px 2px #ffffff;
+    /*margin: 20px;
+            margin-top: 30px;*/
+    font-size: 20px;
+    align-items: center;
+    letter-spacing: 1.5px;
+    overflow: auto;
+    font-family: sans-serif;
+    color: black;
+    /*max-Width: 50%;*/
+    /*Height: 720px;*/
+    max-height: 85%;
+    color: whitesmoke;
+    backdrop-filter: blur(10px);
+    /*-webkit-backdrop-filter: blur(20px);*/
+    border: 10px solid #0000005c;
+}
+
+.Popupcolumn2 {
+  float: left;
+  width: 99%;
+  padding: 0 10px;
+
+    /*background-color: white;*/
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px #cac9c9, -1px -1px 2px #ffffff;
+    /*margin: 20px;
+            margin-top: 30px;*/
+    font-size: 20px;
+    align-items: center;
+    letter-spacing: 1.5px;
+    overflow: auto;
+    font-family: sans-serif;
+    color: black;
+    /*max-Width: 50%;*/
+    /*Height: 720px;*/
+    max-height: 85%;
+    color: whitesmoke;
+    backdrop-filter: blur(10px);
+    /*-webkit-backdrop-filter: blur(20px);*/
+    border: 10px solid #0000005c;
+}
 /* Remove extra left and right margins, due to padding */
 .row {margin: 0 -5px;
       margin-top:20px
@@ -49,12 +131,7 @@ body {
 }
 
 /* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-}
+
 </style>
 </head>
 <body>
@@ -81,7 +158,7 @@ body {
             <asp:Button ID="btnMessageLogout" runat="server" Text="Logout" CssClass="logoutButton" OnClick="btnMessageLogout_Click" Style="margin-right: 2%; width: 25%; position: absolute; right: 0;" />
         </div>
         <div class="flex-container ContantMain" id="divSEApplicationMail" runat="server">
-            <div class="NeumorphicDiv" style="background-color: rgba(216, 216, 216, 0.19); border-radius: 25px;">
+            <div class="NeumorphicDiv" style="background-color: rgba(216, 216, 216, 0.19); border-radius: 25px; width:80%">
                 <div class="navFormHeading">
                     <asp:Label runat="server">WELCOME</asp:Label>
                 </div>
@@ -120,8 +197,19 @@ body {
                                 <div class="card">
                                     <h3>Message Type</h3>
                                     <p>
-                                        <asp:RadioButton ID="rbSingle" Class="radioButton" runat="server" GroupName="Type" Text="Single" AutoPostBack="true" OnCheckedChanged="true_CheckedChanged" />
-                                        <asp:RadioButton ID="rbBulk" Class="radioButton" runat="server" GroupName="Type" Text="Bulk" AutoPostBack="true" OnCheckedChanged="true_CheckedChanged" />
+                                        <asp:RadioButton ID="rbSingle" Class="radioButton" runat="server" GroupName="Type" Text="Single" AutoPostBack="true" OnCheckedChanged="Type_CheckedChanged" />
+                                        <asp:RadioButton ID="rbBulk" Class="radioButton" runat="server" GroupName="Type" Text="Bulk" AutoPostBack="true" OnCheckedChanged="Type_CheckedChanged" />
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="column">
+                                <div class="card">
+                                    <h3>Target Recipient</h3>
+                                    <p>
+                                        <asp:RadioButton ID="rbBeneficiary" Class="radioButton" runat="server" GroupName="RecipientType" Text="Beneficiary" AutoPostBack="true" OnCheckedChanged="Recipient_CheckedChanged" />
+                                        <asp:RadioButton ID="rbCustom" Class="radioButton" runat="server" GroupName="RecipientType" Text="Custom" AutoPostBack="true" OnCheckedChanged="Recipient_CheckedChanged" />
+                                        <asp:RadioButton ID="rbApplicants" Class="radioButton" runat="server" GroupName="RecipientType" Text="Applicants" AutoPostBack="true" OnCheckedChanged="Recipient_CheckedChanged" />
                                     </p>
                                 </div>
                             </div>
@@ -130,7 +218,7 @@ body {
                                 <div class="card">
                                     <h3>Message Category</h3>
                                     <p>
-                                        <asp:DropDownList ID="drpCategory" Class="" runat="server" AutoPostBack="true" Style="width: 90%; height: 25px; background-color: #f1f1f1; border-radius: 5px; text-transform: uppercase" OnSelectedIndexChanged="drpContDistrict_SelectedIndexChanged">
+                                        <asp:DropDownList ID="drpCategory" Class="" runat="server" AutoPostBack="true" Style="width: 90%; height: 25px; background-color: #f1f1f1; border-radius: 5px; text-transform: uppercase" OnSelectedIndexChanged="drpCategory_SelectedIndexChanged">
                                             <%--NeuoDropdown--%>
                                         </asp:DropDownList>
                                     </p>
@@ -147,6 +235,8 @@ body {
                                 <div class="card">
                                     <%--<h3>Mobile Number</h3>--%>
                                     <p>
+                                        <asp:RadioButton ID="rbDisable" Class="radioButton" runat="server" Checked="true" GroupName="MobEnable" Text="Disable" AutoPostBack="true" OnCheckedChanged="MobEnable_CheckedChanged" />
+                                         <asp:RadioButton ID="rbEnable" Class="radioButton" runat="server" GroupName="MobEnable" Text="Enable" AutoPostBack="true" OnCheckedChanged="MobEnable_CheckedChanged" />
                                         <asp:TextBox ID="txtMobileNumber" runat="server" TextMode="MultiLine" CssClass="PopupTextBox" Width="100%" Height="100px" placeholder="Mobile Number" Style="display: inline-block; margin: 0 auto; border: 5px solid; border-color: rgba(216, 216, 216, 0.70)"></asp:TextBox><br />
 
                                     </p>
@@ -180,8 +270,100 @@ body {
                         </div>
                     </div>
                 </div>
+                        <div class="row">
+                            <div class="column" style="width: 40%; float:right;margin-top:-20px">
+                                <div class="">
+                                    <%-- <h3>Message Type</h3>--%>
+
+                                    <asp:Button ID="btnRegisterMessageTemplate" runat="server" Text="Register Template" OnClick="btnRegisterMessageTemplate_Click" class="DownloadButton" Style="background: rgba(216, 216, 216, 0.70); color: rgb(30, 117, 0); height: 40px; font-size: 25px; border-radius: 10px" />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <asp:Panel ID="PnlRegTemp" runat="server" CssClass="modalPopup" Width="75%" Style="display: none">
+                            <div class="Popup-flex-container">
+                                <div class="">
+                                    <div class="row">
+                                        <div class="Popupcolumn1">
+                                            <div class="Popupcard">
+                                                <h3>Language</h3>
+                                                <p>
+                                                    <asp:RadioButton ID="rbRegKannada" Class="radioButton" runat="server" GroupName="RegLanguage" Text="Kannada"  OnCheckedChanged="Language_CheckedChanged"  />
+                                                    <asp:RadioButton ID="rbRegEnglish" Class="radioButton" runat="server" GroupName="RegLanguage" Text="English" OnCheckedChanged="Language_CheckedChanged"  />
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="Popupcolumn1">
+                                            <div class="Popupcard">
+                                                <h3>User</h3>
+                                                <p>
+                                                    <asp:RadioButton ID="rbRegKAVDES" Class="radioButton" runat="server" GroupName="RegUser" Text="KAVDES"  />
+                                                    <asp:RadioButton ID="rbRegGKACDC" Class="radioButton" runat="server" GroupName="RegUser" Text="GKACDC"  />
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="Popupcolumn">
+                                            <div class="Popupcard">
+                                                <h3>Template ID</h3>
+                                                <p>
+                                                    <asp:TextBox ID="txtRegTemplateID" runat="server" TextMode="singleline" CssClass="PopupTextBox" Width="100%" placeholder="Template ID" Style="display: inline-block; margin: 0 auto; border: 5px solid; border-color: rgba(216, 216, 216, 0.70)"></asp:TextBox><br />
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="Popupcolumn">
+                                            <div class="Popupcard">
+                                                <h3>Template Name</h3>
+                                                <p>
+                                                    <asp:TextBox ID="txtRegTemplateName" runat="server" TextMode="singleline" CssClass="PopupTextBox" Width="100%" placeholder="Template Name" Style="display: inline-block; margin: 0 auto; border: 5px solid; border-color: rgba(216, 216, 216, 0.70)"></asp:TextBox><br />
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="Popupcolumn">
+                                            <div class="Popupcard">
+                                                <h3>Category</h3>
+                                                <p>
+                                                    <asp:TextBox ID="txtRegCategory" runat="server" TextMode="singleline" CssClass="PopupTextBox" Width="100%" placeholder="Category" Style="display: inline-block; margin: 0 auto; border: 5px solid; border-color: rgba(216, 216, 216, 0.70)"></asp:TextBox><br />
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="Popupcolumn2">
+                                            <div class="Popupcard" style="padding: 8px">
+                                                <p>
+                                                    <asp:TextBox ID="txtRegMessage" runat="server" TextMode="MultiLine" CssClass="PopupTextBox" Width="100%" Height="100px" placeholder="Message" Style="display: inline-block; margin: 0 auto; border: 5px solid; border-color: rgba(216, 216, 216, 0.70)"></asp:TextBox><br />
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="Popup-row-Button text-center">
+                                            <asp:Button ID="btnRegtemplate" runat="server" CssClass="DownloadButton" Text="Submit" OnClick="btnRegtemplate_Click" />
+                                            <asp:Button ID="btnRegClear" runat="server" CssClass="ActionButton" Text="Clear" OnClick="btnRegClear_Click" />
+                                            <asp:Button ID="Button12" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </asp:Panel>
+
+                <asp:LinkButton ID="lnkRegTemp" runat="server"></asp:LinkButton>
+                <cc1:ModalPopupExtender ID="RegTempPopup" runat="server" PopupControlID="PnlRegTemp"
+                    TargetControlID="lnkRegTemp" BackgroundCssClass="modalBackground">
+                </cc1:ModalPopupExtender>
  </ContentTemplate>
                 </asp:UpdatePanel>
+
                 <asp:UpdateProgress AssociatedUpdatePanelID="UpdatePanelMsgService" runat="server" DisplayAfter="0">
             <ProgressTemplate>
                 <div style="position: fixed; text-align: center; height: 100%; width: 100%; top: 0; right: 0; left: 0; z-index: 9999999; background-color: #000000; opacity: 0.7;">
