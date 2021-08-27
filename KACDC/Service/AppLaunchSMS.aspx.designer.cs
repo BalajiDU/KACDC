@@ -58,6 +58,24 @@ namespace KACDC.Service {
         protected global::System.Web.UI.WebControls.Image Imadge2;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// UpdatePanelAVPortal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelAVPortal;
+        
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>

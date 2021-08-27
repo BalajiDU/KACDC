@@ -73,7 +73,6 @@
                                 </div>
                                 <div class="form-row-Botton">
                                     <asp:Button ID="btnVerifyOTP" runat="server" CssClass="Button" Text="Verify Passcode" OnClick="btnVerifyOTP_Click"  UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" /><br />
-                                    <asp:Button ID="btnResendOTP" runat="server" CssClass="Button" Visible="false" Text="Resend OTP" OnClick="btnResendOTP_Click"  UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
                                 </div>
                             </div>
 
@@ -142,7 +141,7 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <asp:Button ID="btnSubmitRenewalRequest" runat="server" CssClass="SubmitButton" Text="Submit Application" OnClick="btnSubmitRenewalRequest_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
+                                    <asp:Button ID="btnSubmitRenewalRequest" runat="server" CssClass="SubmitButton" Text="Submit Application" OnClick="btnSubmitRenewalRequest_Click" UseSubmitBehavior="false"  /><%--OnClientClick="this.disabled='true'; this.value='Please wait...';"--%>
                                 </div>
                             </div>
 

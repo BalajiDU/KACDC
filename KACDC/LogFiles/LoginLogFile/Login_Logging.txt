@@ -485,3 +485,43 @@ WebPage Name :Login.aspx
 User Name:CheckRD
 User Type:CHECKRD
 IP:::1
+
+-----------------New Login-----------------
+Date : 22-08-2021
+Time : 10:30 AM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 22-08-2021
+Time : 10:38 AM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 22-08-2021
+Time : 10:46 AM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 22-08-2021
+Time : 10:54 AM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 22-08-2021
+Time : 11:00 AM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1

@@ -172,7 +172,7 @@ namespace KACDC.ApprovalPage
             Button btn = (Button)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             int rowindex = gvr.RowIndex;
-            GBD.GetApplicantBankDetails(gvZMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            GBD.GetApplicantBankDetails(gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
             lblZMSEBDUpdateReleaseApplicationNumber.Text = BD.ApplicationNumber;
             lblZMSEBDUpdateReleaseAccountHolderName.Text = BD.ApplicantName;
             txtZMSEBDUpdateReleaseAccountNumber.Text = BD.AccountNumber;
@@ -315,19 +315,19 @@ namespace KACDC.ApprovalPage
             if (rbZMARConfirmRejectReasonName.Checked)
             {
                 txtZMARConfirmRejectAppReason.Text = "Aadhaar and Caste & Income Certificate Name Mismatch";
-                txtZMARConfirmRejectAppReason.Visible = true;
+                divZMARRejectReason.Visible = true;
                 ZMARConfirmRejectPopup.Show();
             }
             else if (rbZMARConfirmRejectReasonCET.Checked)
             {
                 txtZMARConfirmRejectAppReason.Text = "Invalid CET Certificate is submitted";
-                txtZMARConfirmRejectAppReason.Visible = true;
+                divZMARRejectReason.Visible = true;
                 ZMARConfirmRejectPopup.Show();
             }
             else if (rbZMARConfirmRejectReasonOther.Checked)
             {
                 txtZMARConfirmRejectAppReason.Text = "";
-                txtZMARConfirmRejectAppReason.Visible = true;
+                divZMARRejectReason.Visible = true;
                 ZMARConfirmRejectPopup.Show();
             }
         }
@@ -338,13 +338,13 @@ namespace KACDC.ApprovalPage
             if (rbZMSEConfirmRejectReasonName.Checked)
             {
                 txtZMSEConfirmRejectAppReason.Text = "Aadhaar and Caste & Income Certificate Name Mismatch";
-                txtZMSEConfirmRejectAppReason.Visible = true;
+                divZMSERejectReason.Visible = true;
                 ZMSEConfirmRejectPopup.Show();
             }
             else if (rbZMSEConfirmRejectReasonOther.Checked)
             {
                 txtZMSEConfirmRejectAppReason.Text = "";
-                txtZMSEConfirmRejectAppReason.Visible = true;
+                divZMSERejectReason.Visible = true;
                 ZMSEConfirmRejectPopup.Show();
             }
         }
@@ -409,7 +409,7 @@ namespace KACDC.ApprovalPage
             if (rbZMSEConfirmRejectReasonName.Checked ||  rbZMSEConfirmRejectReasonOther.Checked)
             {
                 lblZMSEConfirmRejectAppReasonSelectionError.Text = "";
-                if (lblZMSEConfirmRejectAppReasonSelectionError.Text.Trim().Length > 10)
+                if (txtZMSEConfirmRejectAppReason.Text.Trim().Length > 10)
                 {
                     lblZMSEConfirmRejectAppReasonError.Text = "";
                     AP.ApplicationStatusUpdate("SEZMPROCESS", "REJECTED", lblZMSEConfirmRejectAppNumber.Text.Trim(), txtZMSEConfirmRejectAppReason.Text.Trim());
@@ -477,7 +477,7 @@ namespace KACDC.ApprovalPage
             if (txtZMSEConfirmReturnAppReason.Text.Trim().Length > 10)
             {
                 AP.ApplicationStatusUpdate("SEDOCPROCESS", "RETURNED", lblZMSEConfirmReturnAppNumber.Text.Trim(), txtZMSEConfirmReturnAppReason.Text.Trim());
-                this.FillGridArivu();
+                this.FillGridSelfEmployment();
             }
             else
             {
@@ -498,13 +498,30 @@ namespace KACDC.ApprovalPage
         }
         protected void btnZMSEReleased_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
-            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-            int rowindex = gvr.RowIndex;
-            lblZMSEConfirmReleaseAppNumber.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
-            lblZMSEConfirmReleaseAppName.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
-            lblZMSEConfirmReleaseLoanNumber.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApprovedApplicationNum"].ToString();
-            ZMSEConfirmReleasePopup.Show();
+            if (txtZMSEReleaseChequeNumber.Text.Trim() != "")
+            {
+                if (txtZMSEReleaseChequeDate.Text.Trim() != "")
+                {
+                    Button btn = (Button)sender;
+                    GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+                    int rowindex = gvr.RowIndex;
+                    lblZMSEConfirmReleaseAppNumber.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+                    lblZMSEConfirmReleaseAppName.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+                    lblZMSEConfirmReleaseLoanNumber.Text = gvZMSEReleaseProcess.DataKeys[rowindex].Values["ApprovedApplicationNum"].ToString();
+                    lblZMSEConfirmReleaseChequeNumber.Text = txtZMSEReleaseChequeNumber.Text.Trim();
+                    lblZMSEConfirmReleaseChequeDate.Text = txtZMSEReleaseChequeDate.Text.Trim();
+                    ZMSEConfirmReleasePopup.Show();
+                }
+                else
+                {
+                    DisplayAlert("Select Cheque Date", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Enter Cheque number", this);
+            }
+            
         }
         protected void btnZMARDisplayCollegeDetails_Click(object sender, EventArgs e)
         {
@@ -544,23 +561,31 @@ namespace KACDC.ApprovalPage
             //PDFFile pdfFile = new PDFFile(sourceFileName1);
             //pdfFile.MergeWith(new string[] { sourceFileName2, sourceFileName3 }, destinationFileName);
 
-
-
-
-
-
-
-
-
-
-
+            
         }
-        protected void btnZMASEReturn_Click(object sender, EventArgs e)
+        protected void btnZMSEConfirmReleaseApplication_Click(object sender, EventArgs e)
         {
-
-
+            if (txtZMSEReleaseChequeNumber.Text.Trim() != "")
+            {
+                if (txtZMSEReleaseChequeDate.Text.Trim() != "")
+                {
+                    if (lblZMSEConfirmReleaseAppNumber.Text != "")
+                    {
+                        AP.ApplicationStatusUpdate("SESERELEASE", "APPROVED", lblZMSEConfirmReleaseAppNumber.Text.Trim());
+                        AP.ApplicationStatusUpdate("SECHEQUENUMDATE", txtZMSEReleaseChequeNumber.Text.Trim(), lblZMSEConfirmReleaseAppNumber.Text.Trim(), txtZMSEReleaseChequeDate.Text.Trim());
+                        this.FillGridSelfEmployment();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Select Cheque Date", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Enter Cheque number", this);
+            }
         }
-
         //Last
         protected void drpZoneSESanction_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -664,10 +689,7 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        protected void btnZMSEConfirmReleaseApplication_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnZMSEBDUpdateRelease_Click(object sender, EventArgs e)
         {
 

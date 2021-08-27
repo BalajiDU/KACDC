@@ -301,6 +301,7 @@
     <Content Include="Service\Admin_Dashboard.aspx" />
     <Content Include="Service\BulkMessageService.aspx" />
     <Content Include="Service\AppLaunchSMS.aspx" />
+    <Content Include="Service\global.css" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -506,8 +507,10 @@
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
     <Compile Include="Class\DataProcessing\EncryptionProcess\Encryption.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\AddPDFWaterMark.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\ApplicantPDFMerge.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\PDFFileOperation.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ArivuRenewalAcknoledgement\GenerateRenewalAcknolegdement.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\ReportTableHeading.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\PDFParagraph.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\ExcelFileOperations.cs" />
@@ -516,6 +519,7 @@
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\ApplicationSubmitEmail.cs" />
+    <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\ArRenewalProcess.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\SubmitARApplication.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\AryaVysyaPortalStore\AryaVysyaPortalSave.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\SelfEmployment\StoreSEApplication.cs" />
@@ -535,6 +539,7 @@
     <Compile Include="Class\Declaration\MasterPageData\MasterPageData.cs" />
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />
+    <Compile Include="Class\Declaration\OnlineApplication\ArRenewalDec.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataArivu.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />
     <Compile Include="Class\Declaration\Schemes\Arivu.cs" />
@@ -836,7 +841,7 @@
     <Folder Include="ApplicationProcessFiles\" />
     <Folder Include="App_Data\" />
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
-    <Folder Include="Files_Arivu\2ND_INSTALMENT\" />
+    <Folder Include="Files_Arivu\2ND_INSTALMENT\PreviousMarksCard\" />
     <Folder Include="Files_Arivu\3RD_INSTALMENT\" />
     <Folder Include="Files_Arivu\4TH_INSTALMENT\" />
     <Folder Include="Files_Arivu\5TH_INSTALMENT\" />
