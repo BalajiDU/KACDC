@@ -43,7 +43,7 @@ namespace KACDC.TestForms
         NadaKacheri NDAR = new NadaKacheri();
         OtherDataSelfEmployment ODSE = new OtherDataSelfEmployment();
         NadaKacheri NKSER = new NadaKacheri();
-        BankDetails GETBD = new BankDetails();
+        GetBankDetailsIFSC GETBD = new GetBankDetailsIFSC();
         DecBankDetails BD = new DecBankDetails();
         ApplicantPDFTable APPLITAB = new ApplicantPDFTable();
         BankTable BT = new BankTable();

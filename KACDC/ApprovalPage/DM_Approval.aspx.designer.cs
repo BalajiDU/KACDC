@@ -3865,6 +3865,24 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label lblARRenewalBDUpdateAccountHolderName;
         
         /// <summary>
+        /// Label206 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label206;
+        
+        /// <summary>
+        /// txtARRenewalBDUpdateIFSCCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtARRenewalBDUpdateIFSCCode;
+        
+        /// <summary>
         /// Label203 control.
         /// </summary>
         /// <remarks>
@@ -3917,24 +3935,6 @@ namespace KACDC.ApprovalPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtARRenewalBDUpdateBranchName;
-        
-        /// <summary>
-        /// Label206 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label206;
-        
-        /// <summary>
-        /// txtARRenewalBDUpdateIFSCCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtARRenewalBDUpdateIFSCCode;
         
         /// <summary>
         /// Label207 control.

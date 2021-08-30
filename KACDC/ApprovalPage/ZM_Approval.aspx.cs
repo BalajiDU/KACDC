@@ -112,7 +112,7 @@ namespace KACDC.ApprovalPage
             Button btn = (Button)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             int rowindex = gvr.RowIndex;
-            GBD.GetApplicantBankDetails(gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            GBD.GetApplicantBankDetails(gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "AR");
             lblZMARBDApplicationNumber.Text = BD.ApplicationNumber;
             lblZMARBAccountHolderName.Text = BD.ApplicantName;
             lblZMARBAccountNumber.Text = BD.AccountNumber;

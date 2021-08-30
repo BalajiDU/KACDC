@@ -36,7 +36,7 @@ namespace KACDC.Schemes.Self_Employment
         NadakacheriProcess NKAR = new NadakacheriProcess();
         OtherDataSelfEmployment ODSE = new OtherDataSelfEmployment();
         NadaKacheri NKSER = new NadaKacheri();
-        BankDetails GETBD = new BankDetails();
+        GetBankDetailsIFSC GETBD = new GetBankDetailsIFSC();
         DecBankDetails BD = new DecBankDetails();
         ApplicantPDFTable APPLITAB = new ApplicantPDFTable();
         BankTable BT = new BankTable();

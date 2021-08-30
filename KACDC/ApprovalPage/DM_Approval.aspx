@@ -2169,6 +2169,14 @@
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="Popup-row-label">
+                                                                    <asp:Label ID="Label206" runat="server">IFSC Code</asp:Label>
+                                                                </div>
+                                                                <div class="Popup-row-input">
+                                                                    <asp:TextBox ID="txtARRenewalBDUpdateIFSCCode" CssClass="PopupTextBoxSingleLine" runat="server" OnTextChanged="txtARRenewalBDUpdateIFSCCode_TextChanged"></asp:TextBox>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="Popup-row-label">
                                                                     <asp:Label ID="Label203" runat="server">Account Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
@@ -2191,15 +2199,6 @@
                                                                     <asp:TextBox ID="txtARRenewalBDUpdateBranchName" CssClass="PopupTextBoxSingleLine" runat="server"></asp:TextBox>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-row">
-                                                                <div class="Popup-row-label">
-                                                                    <asp:Label ID="Label206" runat="server">IFSC Code</asp:Label>
-                                                                </div>
-                                                                <div class="Popup-row-input">
-                                                                    <asp:TextBox ID="txtARRenewalBDUpdateIFSCCode" CssClass="PopupTextBoxSingleLine" runat="server"></asp:TextBox>
-                                                                </div>
-                                                            </div>
-
                                                             <div class="form-row">
                                                                 <div class="Popup-row-label">
                                                                     <asp:Label ID="Label207" runat="server">Address</asp:Label>
@@ -2245,7 +2244,7 @@
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
                                                                 <div class="Popup-row-label-Heading">
-                                                                    <asp:Label ID="Label209" class="" runat="server" Text="Confirm Eligible"></asp:Label>
+                                                                    <asp:Label ID="Label209" class="" runat="server" Text="Confirm Renewal Approve"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">

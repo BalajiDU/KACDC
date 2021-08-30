@@ -133,12 +133,21 @@ namespace KACDC.Schemes.Arivu
                     if (ARP.CheckApplicatDetails(txtApplicationNumber.Text.Trim(), "GETAPPLICANTLOGINCODE") == txtOTP.Text.Trim())
                     {
                         CheckInstallment();
-                        if (ARRD.Installment!="NA")
+                        if (ARRD.Installment != "REQUESTED")
                         {
-                            divUploadFiles.Visible = true;
-                            divVerifyOTP.Visible = false;
-                            txtApplicationNumber.ReadOnly = true;
-                            btnGetOTP.Visible = false;
+                            if (ARRD.Installment != "NA")
+                            {
+                                divUploadFiles.Visible = true;
+                                divVerifyOTP.Visible = false;
+                                txtApplicationNumber.ReadOnly = true;
+                                btnGetOTP.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            lblOTPError.Text = "We have already received request";
+                            DisplayAlert("We have already received request", this);
+                            txtOTP.Focus();
                         }
                     }
                     else
@@ -262,29 +271,67 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnSubmitRenewalRequest_Click(object sender, EventArgs e)
         {
-            //if (bool.Parse((ARRD.StudyCertificate)))
-            //{
-            //    if (bool.Parse((ARRD.PrevMarksCard)))
-            //    {
-            //        if (ARRD.byteStudyCertificate!=null)
-            //        {
-            //            if (ARRD.bytePrevMarksCard != null)
-            //            {
-            //                if (ARP.UpdateRenewalRequest(ARRD.ApplicationNumber,"YES")!="NA")
-            //                {
-            //                    GenerateAcknoledgement();
-            //                    SF.SavingFileOnServer("~/Files_Arivu/" + ARRD.Installment + "/StudyCertificate/", ARRD.FILENAME + ".pdf", ARRD.byteStudyCertificate);
-            //                    SF.SavingFileOnServer("~/Files_Arivu/" + ARRD.Installment + "/PreviousMarksCard/", ARRD.FILENAME + ".pdf", ARRD.bytePrevMarksCard);
-            //                }
-            //                else
-            //                {
-            //                    DisplayAlert("try again later",this);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            GenerateAcknoledgement();
+            try
+            {
+                if (rbCollegeHostelNo.Checked || rbCollegeHostelYes.Checked)
+                {
+                    if (bool.Parse((ARRD.StudyCertificate)))
+                    {
+                        if (bool.Parse((ARRD.PrevMarksCard)))
+                        {
+                            if (ARRD.byteStudyCertificate != null)
+                            {
+                                if (ARRD.bytePrevMarksCard != null)
+                                {
+                                    if (ARP.UpdateRenewalRequest(ARRD.ApplicationNumber, "REQUESTED", ARRD.Installment) != "NA")
+                                    {
+                                        GenerateAcknoledgement();
+                                        SF.SavingFileOnServer("~/Files_Arivu/" + ARRD.Installment + "/StudyCertificate/", ARRD.FILENAME + ".pdf", ARRD.byteStudyCertificate);
+                                        SF.SavingFileOnServer("~/Files_Arivu/" + ARRD.Installment + "/PreviousMarksCard/", ARRD.FILENAME + ".pdf", ARRD.bytePrevMarksCard);
+                                        btnSubmitRenewalRequest.Visible = false;
+                                        btnDownloadAcknolegdement.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("try again later", this);
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("Upload study certificate", this);
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("Upload study certificate", this);
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("Upload study certificate", this);
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Upload study certificate", this);
+                    }
+                }
+                else
+                {
+                    DisplayAlert("are you staying in college hostel", this);
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                btnSubmitRenewalRequest.Visible = false;
+                divDownloadAcknolegdement.Visible = true;
+                divUploadFiles.Visible = false;
+            }
+    
         }
         private void GenerateAcknoledgement()
         {
@@ -319,41 +366,7 @@ namespace KACDC.Schemes.Arivu
 
                 pdfDoc.Close();
                 byte[] bytes = memoryStream.ToArray();
-
-
-
-                //var img = iTextSharp.text.Image.GetInstance(Server.MapPath("~/Image/KACDC_PDF.png"));
-                //img.SetAbsolutePosition(100, 200);
-                //PdfContentByte waterMark;
-
-                //PdfReader reader = new PdfReader(bytes);
-                //using (PdfStamper stamper = new PdfStamper(reader, memoryStream))
-                //{
-                //    int pages = reader.NumberOfPages;
-                //    for (int i = 1; i <= pages; i++)
-                //    {
-                //        //waterMark = stamper.GetUnderContent(i);
-                //        //waterMark.AddImage(img);
-                //        PdfContentByte under = stamper.GetUnderContent(i);
-                //        Rectangle pagesize = reader.GetPageSize(i);
-                //        float x = (pagesize.Left + pagesize.Right) / 2;
-                //        float y = (pagesize.Bottom + pagesize.Top) / 2;
-                //        PdfGState gs = new PdfGState();
-                //        gs.FillOpacity = 0.3f;
-                //        under.SaveState();
-                //        under.SetGState(gs);
-                //        under.SetRGBColorFill(200, 200, 0);
-                //        waterMark = stamper.GetUnderContent(i);
-                //        waterMark.AddImage(img);
-                //        under.RestoreState();
-                //    }
-                //}
-
-
-                //bytes = memoryStream.ToArray();
-
-
-
+                
                 memoryStream.Close();
                 Response.Clear();
 
@@ -363,13 +376,7 @@ namespace KACDC.Schemes.Arivu
                 AddPDFWaterMark WM = new AddPDFWaterMark();
                 WM.PdfStampInExistingFile(Server.MapPath("~/Files_Arivu/" + ARRD.Installment + "/RenewalRequestCopy/") + ARRD.FILENAME + ".pdf", Server.MapPath("~/Image/KACDC_PDF.png"));
 
-                if (File.Exists(Server.MapPath("~/Files_Arivu/" + ARRD.Installment + "/RenewalRequestCopy/") + ARRD.FILENAME + ".pdf"))
-                {
-                    if (ARRD.GETEMAILID != "")
-                    {
-                        SendSMSEmail();
-                    }
-                }
+                
                 Response.ContentEncoding = System.Text.Encoding.UTF8;
                 Response.AddHeader("Content-Disposition", "attachment; filename=" + ARRD.FILENAME + ".pdf");
                 Response.ContentType = "application/pdf";
@@ -392,7 +399,25 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnDownloadAcknolegdement_Click(object sender, EventArgs e)
         {
+            try
+            {
+                GenerateAcknoledgement();
+                if (File.Exists(Server.MapPath("~/Files_Arivu/" + ARRD.Installment + "/RenewalRequestCopy/") + ARRD.FILENAME + ".pdf"))
+                {
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("Content-Disposition", "attachment; " + ARRD.FILENAME + ".pdf");
+                    Response.TransmitFile(Server.MapPath("~/Files_Arivu/" + ARRD.Installment + "/RenewalRequestCopy/" + ARRD.FILENAME + ".pdf"));
+                    Response.End();
+                }
+            }
+            catch (FileNotFoundException FileEx)
+            {
 
+            }
+            finally
+            {
+                Session.Clear();
+            }
         }
         protected void btnTryAgain_Click(object sender, EventArgs e)
         {

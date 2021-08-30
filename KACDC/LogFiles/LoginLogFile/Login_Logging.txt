@@ -525,3 +525,67 @@ WebPage Name :Login.aspx
 User Name:ZMBLR
 User Type:ZONALMANAGER
 IP:::1
+
+-----------------New Login-----------------
+Date : 27-08-2021
+Time : 05:00 PM
+WebPage Name :Login.aspx
+User Name:DMMYS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 27-08-2021
+Time : 05:01 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 27-08-2021
+Time : 05:08 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 27-08-2021
+Time : 05:09 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 27-08-2021
+Time : 05:10 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 27-08-2021
+Time : 05:10 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 27-08-2021
+Time : 05:18 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 27-08-2021
+Time : 05:18 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1

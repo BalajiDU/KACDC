@@ -38,7 +38,7 @@ namespace KACDC.Schemes.Arivu
         NadakacheriProcess NKAR = new NadakacheriProcess();
         OtherDataArivu ODAR = new OtherDataArivu();
         NadaKacheri NKSER = new NadaKacheri();
-        BankDetails GETBD = new BankDetails();
+        GetBankDetailsIFSC GETBD = new GetBankDetailsIFSC();
         DecBankDetails BD = new DecBankDetails();
         ApplicantPDFTableAR APPLITAB = new ApplicantPDFTableAR();
         BankTable BT = new BankTable();

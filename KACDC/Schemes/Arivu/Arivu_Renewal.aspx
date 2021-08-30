@@ -34,6 +34,7 @@
                 <asp:PostBackTrigger ControlID="btntest" />
                 <asp:PostBackTrigger ControlID="btnDownloadAcknolegdement" />
                 <asp:PostBackTrigger ControlID="btnDownloadFormat" />
+                <%--<asp:PostBackTrigger ControlID="btnSubmitRenewalRequest" />--%>
             </Triggers>
             <ContentTemplate>
                 <asp:Button runat="server" Text="test" Visible="false" ID="btntest" OnClick="btntest_click" />

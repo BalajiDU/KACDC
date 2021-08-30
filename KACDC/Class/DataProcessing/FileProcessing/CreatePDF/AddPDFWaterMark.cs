@@ -26,7 +26,7 @@ namespace KACDC.Class.DataProcessing.FileProcessing.CreatePDF
                     for (int i = 1; i <= pages; i++)
                     {
                         PdfContentByte under = stamper.GetUnderContent(i);
-                        Rectangle pagesize = reader.GetPageSize(i);
+                        iTextSharp.text.Rectangle pagesize = reader.GetPageSize(i);
                         float x = (pagesize.Left + pagesize.Right) / 2;
                         float y = (pagesize.Bottom + pagesize.Top) / 2;
                         PdfGState gs = new PdfGState();

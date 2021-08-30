@@ -475,6 +475,7 @@
     <Compile Include="ApprovalPage\DM_Approval.aspx.designer.cs">
       <DependentUpon>DM_Approval.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ApprovalPage\UpdateBankDetailsToDB.cs" />
     <Compile Include="ApprovalPage\ZM_Approval.aspx.cs">
       <DependentUpon>ZM_Approval.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -501,8 +502,9 @@
     <Compile Include="Class\DataProcessing\ApplicationProcess\BankDetails\UpdateBankDetails.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessArivu.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessSelfEmployment.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\DMGetApplicantDetails.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GetDataToProcess.cs" />
-    <Compile Include="Class\DataProcessing\BankData\BankDetails.cs" />
+    <Compile Include="Class\DataProcessing\BankData\GetBankDetailsIFSC.cs" />
     <Compile Include="Class\DataProcessing\EmailService\VerifyEmailID.cs" />
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />
     <Compile Include="Class\DataProcessing\EmailService\SetupEmailServer.cs" />
@@ -529,6 +531,8 @@
     <Compile Include="Class\DataProcessing\SMSService\SendSMS.cs" />
     <Compile Include="Class\Declaration\Aadhaar\Aadhaarlog.cs" />
     <Compile Include="Class\Declaration\Aadhaar\AadhaarServiceData.cs" />
+    <Compile Include="Class\Declaration\ApprovalProcess\ArivuRenewal\RenewalApplicantDetails.cs" />
+    <Compile Include="Class\Declaration\ApprovalProcess\DistrictManager\DistrictManagerProcess.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\StoreBankDetails\SBankDetails.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalArivu.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalSelfEmploymentcs.cs" />

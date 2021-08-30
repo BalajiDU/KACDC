@@ -638,8 +638,8 @@ function Numeric2(evt) {
                                 <li>
                                     <a target="_blank" href="https://twitter.com/intent/tweet?url=https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal&amp;text=Arya Vysya Portal" class="social twitter"></a>
                                 </li>
-                                <li>
-                                    <a href="whatsapp://send?text=Arya Vysya Portal "
+                                <li><%-- %0D in new line char in url line--%>
+                                    <a href="whatsapp://send?text=Arya Vysya Portal %0D https://aryavysya.karnataka.gov.in/Schemes/AryaVysyaPortal/AryaVysyaPortal "
                                         data-action="share/whatsapp/share"
                                         target="_blank">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 1219.547 1225.016">

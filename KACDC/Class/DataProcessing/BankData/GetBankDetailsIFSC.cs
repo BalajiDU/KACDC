@@ -8,7 +8,7 @@ using System.Web;
 
 namespace KACDC.Class.DataProcessing.BankData
 {
-    public class BankDetails
+    public class GetBankDetailsIFSC
     {
         DecBankDetails BD = new DecBankDetails();
         public bool GetBankDetails(string IFSC)

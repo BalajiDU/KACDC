@@ -35,14 +35,14 @@ namespace KACDC.Class.DataProcessing.OnlineApplication.Arivu
                 }
             }
         }
-        public string UpdateRenewalRequest(string ApplicationNumber, string ApplicationStatus = "", string District = "", string Zone = "")
+        public string UpdateRenewalRequest(string ApplicationNumber, string ApplicationStatus , string status)
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("spArivuRenewalProcess", kvdConn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@status", Zone);
+                    cmd.Parameters.AddWithValue("@status", status);
                     cmd.Parameters.AddWithValue("@ApplicationNumber", ApplicationNumber);
                     cmd.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
                     cmd.Parameters.Add("@RetValue", SqlDbType.VarChar, -1);
