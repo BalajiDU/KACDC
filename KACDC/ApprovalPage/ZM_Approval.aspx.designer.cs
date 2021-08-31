@@ -1507,6 +1507,33 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.UpdatePanel UpdatePanelZMARRTGSRelease;
         
         /// <summary>
+        /// txtZMARReleaseChequeNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtZMARReleaseChequeNumber;
+        
+        /// <summary>
+        /// txtZMARReleaseChequeDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtZMARReleaseChequeDate;
+        
+        /// <summary>
+        /// calZMARReleaseChequeDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender calZMARReleaseChequeDate;
+        
+        /// <summary>
         /// gvZMARReleaseProcess control.
         /// </summary>
         /// <remarks>
@@ -1658,6 +1685,42 @@ namespace KACDC.ApprovalPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblZMARConfirmReleaseLoanNumber;
+        
+        /// <summary>
+        /// Label110 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label110;
+        
+        /// <summary>
+        /// lblZMARConfirmReleaseChequeNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblZMARConfirmReleaseChequeNumber;
+        
+        /// <summary>
+        /// Label112 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label112;
+        
+        /// <summary>
+        /// lblZMARConfirmReleaseChequeDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblZMARConfirmReleaseChequeDate;
         
         /// <summary>
         /// btnZMARConfirmReleaseApplication control.

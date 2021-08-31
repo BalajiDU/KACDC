@@ -503,6 +503,7 @@
     <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessArivu.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessSelfEmployment.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\DMGetApplicantDetails.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\GetApprovedApplicationNumber.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GetDataToProcess.cs" />
     <Compile Include="Class\DataProcessing\BankData\GetBankDetailsIFSC.cs" />
     <Compile Include="Class\DataProcessing\EmailService\VerifyEmailID.cs" />

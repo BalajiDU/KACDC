@@ -24,6 +24,7 @@ namespace KACDC.ApprovalPage
         SBankDetails BD = new SBankDetails();
         ApprovalProcess AP = new ApprovalProcess();
         GetCount GC = new GetCount();
+        GetApprovedApplicationNumber GAAN = new GetApprovedApplicationNumber();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["USERTYPE"] != "ZONALMANAGER")
@@ -100,6 +101,7 @@ namespace KACDC.ApprovalPage
         {
             if (drpZoneSelDistrict.SelectedItem.Text != "--SELECT--")
             {
+
                 this.FillGrid();
             }
             else
@@ -212,7 +214,7 @@ namespace KACDC.ApprovalPage
             
             lblARNotificationHeading.Text = "Approved Application Number of <br />"+ lblZMARConfirmApproveAppName.Text +" <br />";
             this.FillGridArivu();
-            lblARNotificationContent.Text= GC.GetTotalCount("spGetApplicationCount", "ARAPPROVEDNUMBER");
+            lblARNotificationContent.Text= GAAN.GetLoanNumber(lblZMARConfirmApproveAppNumber.Text, "ArivuEduLoan");
             AROtherDetailsPopup.Show();
         }
         protected void btnZMSEApprove_Click(object sender, EventArgs e)
@@ -230,7 +232,7 @@ namespace KACDC.ApprovalPage
 
             lblARNotificationHeading.Text = "Approved Application Number of <br />" + lblZMSEConfirmApproveAppName.Text + " <br />";
             this.FillGridSelfEmployment();
-            lblARNotificationContent.Text = GC.GetTotalCount("spGetApplicationCount", "ARAPPROVEDNUMBER");
+            lblARNotificationContent.Text = GAAN.GetLoanNumber(lblZMSEConfirmApproveAppNumber.Text, "SelfEmpLoan");
             SEOtherDetailsPopup.Show();
         }
         protected void btnZMARHold_Click(object sender, EventArgs e)
@@ -488,13 +490,31 @@ namespace KACDC.ApprovalPage
         }
         protected void btnZMArivuReleased_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
-            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-            int rowindex = gvr.RowIndex;
-            lblZMARConfirmReleaseAppNumber.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
-            lblZMARConfirmReleaseAppName.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
-            lblZMARConfirmReleaseLoanNumber.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApprovedApplicationNum"].ToString();
-            ZMARConfirmReleasePopup.Show();
+            if (txtZMARReleaseChequeNumber.Text.Trim() != "")
+            {
+                if (txtZMARReleaseChequeDate.Text.Trim() != "")
+                {
+                    Button btn = (Button)sender;
+                    GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+                    int rowindex = gvr.RowIndex;
+                    lblZMARConfirmReleaseAppNumber.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+                    lblZMARConfirmReleaseAppName.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+                    lblZMARConfirmReleaseLoanNumber.Text = gvZMARReleaseProcess.DataKeys[rowindex].Values["ApprovedApplicationNum"].ToString();
+                    lblZMARConfirmReleaseChequeNumber.Text = txtZMARReleaseChequeNumber.Text.Trim();
+                    lblZMARConfirmReleaseChequeDate.Text = txtZMARReleaseChequeDate.Text.Trim();
+                    ZMARConfirmReleasePopup.Show();
+                    ZMSEConfirmReleasePopup.Show();
+                }
+                else
+                {
+                    DisplayAlert("Select Cheque Date", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Enter Cheque number", this);
+            }
+
         }
         protected void btnZMSEReleased_Click(object sender, EventArgs e)
         {
@@ -606,8 +626,6 @@ namespace KACDC.ApprovalPage
 
         }
         
-        
-        
         protected void btnARZMGenerateReport_Click(object sender, EventArgs e)
         {
 
@@ -625,8 +643,6 @@ namespace KACDC.ApprovalPage
 
         }
         
-        
-        
         protected void btnPnlCollegeDetailsClose_Click(object sender, EventArgs e)
         {
 
@@ -635,12 +651,34 @@ namespace KACDC.ApprovalPage
         {
 
         }
-        
-        
-        
+
+
+
         protected void btnZMARConfirmReleaseApplication_Click(object sender, EventArgs e)
         {
+            if (txtZMARReleaseChequeNumber.Text.Trim() != "")
+            {
+                if (txtZMARReleaseChequeDate.Text.Trim() != "")
+                {
+                    if (lblZMARConfirmReleaseAppNumber.Text != "")
+                    {
+                        AP.ApplicationStatusUpdate(drpArivuSelectYear.SelectedValue+"RELEASED", "RELEASED", lblZMARConfirmReleaseAppNumber.Text);
+                        AP.ApplicationStatusUpdate(drpArivuSelectYear.SelectedValue+"CHEQUENUMDATE", txtZMARReleaseChequeNumber.Text.Trim(), lblZMARConfirmReleaseAppNumber.Text.Trim(), txtZMARReleaseChequeDate.Text.Trim());
 
+                        this.FillGridArivu();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Select Cheque Date", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Enter Cheque number", this);
+            }
+
+            
         }
         protected void btnZMARBDUpdateRelease_Click(object sender, EventArgs e)
         {

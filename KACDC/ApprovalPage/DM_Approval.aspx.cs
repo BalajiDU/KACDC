@@ -84,7 +84,8 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDMLogout_Click(object sender, EventArgs e)
         {
-
+            Session.Clear();
+            Response.Redirect("~/Login.aspx");
         }
         protected void btnOldProcess_Click(object sender, EventArgs e)
         {
@@ -92,7 +93,18 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDMARDisplayBankDetails_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvDMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "AR");
+            lblDMARBDApplicationNumber.Text = BD.ApplicationNumber;
+            lblDMARBDAccountHolderName.Text = BD.ApplicantName;
+            lblDMARBDAccountNumber.Text = BD.AccountNumber;
+            lblDMARBDBankName.Text = BD.BankName;
+            lblDMARBDBranchName.Text = BD.Branch;
+            lblDMARBDIFSCCode.Text = BD.IFSCCode;
+            lblDMARBDBankAddress.Text = BD.BankAddress;
+            DMARBankDetailsPopup.Show();
         }
         protected void btnDMARDisplayCollegeDetails_Click(object sender, EventArgs e)
         {
@@ -136,7 +148,18 @@ namespace KACDC.ApprovalPage
         }
         protected void btnCEOARDisplayBankDetails_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvCEOARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "AR");
+            lblCEOARBDApplicationNumber.Text = BD.ApplicationNumber;
+            lblCEOARBDAccountHolderName.Text = BD.ApplicantName;
+            lblCEOARBDAccountNumber.Text = BD.AccountNumber;
+            lblCEOARBDBankName.Text = BD.BankName;
+            lblCEOARBDBranchName.Text = BD.Branch;
+            lblCEOARBDIFSCCode.Text = BD.IFSCCode;
+            lblCEOARBDBankAddress.Text = BD.BankAddress;
+            CEOARBankDetailsPopup.Show();
         }
         protected void btnCEOARDisplayCollegeDetails_Click(object sender, EventArgs e)
         {
@@ -192,7 +215,18 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDOCARDisplayBankDetails_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvDOCARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "AR");
+            lblDOCARBDApplicationNumber.Text = BD.ApplicationNumber;
+            lblDOCARBDAccountHolderName.Text = BD.ApplicantName;
+            lblDOCARBDAccountNumber.Text = BD.AccountNumber;
+            lblDOCARBDBankName.Text = BD.BankName;
+            lblDOCARBDBranchName.Text = BD.Branch;
+            lblDOCARBDIFSCCode.Text = BD.IFSCCode;
+            lblDOCARBDBankAddress.Text = BD.BankAddress;
+            DOCARBankDetailsPopup.Show();
         }
         protected void btnDOCARDisplayBankDetailsUpdate_Click(object sender, EventArgs e)
         {
@@ -297,14 +331,18 @@ namespace KACDC.ApprovalPage
             Button btn = (Button)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             int rowindex = gvr.RowIndex;
-            ARP.UpdateRenewalRequest(gvARRenewalProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "HOLD", DMP.Instalment);
+            lblARRenewalConfirmHoldAppNumber.Text = gvARRenewalProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblARRenewalConfirmHoldAppName.Text = gvARRenewalProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            ARRenewalConfirmHoldPopup.Show();
         }
         protected void btnARRenewalReject_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             int rowindex = gvr.RowIndex;
-            ARP.UpdateRenewalRequest(gvARRenewalProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "REJECT", DMP.Instalment);
+            lblARRenewalConfirmRejectAppNumber.Text = gvARRenewalProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblARRenewalConfirmRejectAppName.Text = gvARRenewalProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            ARRenewalConfirmRejectPopup.Show();
         }
         protected void btnARRenewalSubmitToZM_Click(object sender, EventArgs e)
         {
@@ -329,7 +367,7 @@ namespace KACDC.ApprovalPage
                                     {
                                         UBD.UpdateBankDetailsToDB(lblARRenewalBDUpdateApplicationNumber.Text, txtARRenewalBDUpdateAccountNumber.Text.Trim(), txtARRenewalBDUpdateBankName.Text.Trim(), txtARRenewalBDUpdateIFSCCode.Text.Trim(), txtARRenewalBDUpdateBranchName.Text.Trim(),
                   txtARRenewalBDUpdateBankAddress.Text.Trim(), drpARRenewalBankModifyReason.SelectedValue, lblARRenewalBDUpdateAccountHolderName.Text, "Arivu");
-
+                                        this.FillGridArivu();
                                     }
                                     else
                                     {
@@ -403,23 +441,33 @@ namespace KACDC.ApprovalPage
         }
         protected void btnARRenewalConfirmApproveApplication_Click(object sender, EventArgs e)
         {
-            ARP.UpdateRenewalRequest(lblARRenewalConfirmApproveAppNumber.Text, "YES", DMP.Instalment);
-
-
-
-
+            ARP.UpdateRenewalRequest(lblARRenewalConfirmApproveAppNumber.Text, "APPROVED", DMP.Instalment);
+            this.FillGridArivu();
         }
         protected void btnARRenewalConfirmHoldApplication_Click(object sender, EventArgs e)
         {
-
+            ARP.UpdateRenewalRequest(lblARRenewalConfirmApproveAppNumber.Text, "HOLD", DMP.Instalment);
+            this.FillGridArivu();
         }
         protected void btnARRenewalConfirmRejectApplication_Click(object sender, EventArgs e)
         {
-
+            ARP.UpdateRenewalRequest(lblARRenewalConfirmApproveAppNumber.Text, "REJECT", DMP.Instalment);
+            this.FillGridArivu();
         }
         protected void btnDMSEDisplayBankDetails_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvDMSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            lblDMSEBDApplicationNumber.Text = BD.ApplicationNumber;
+            lblDMSEBDAccountHolderName.Text = BD.ApplicantName;
+            lblDMSEBDAccountNumber.Text = BD.AccountNumber;
+            lblDMSEBDBankName.Text = BD.BankName;
+            lblDMSEBDBranchName.Text = BD.Branch;
+            lblDMSEBDIFSCCode.Text = BD.IFSCCode;
+            lblDMSEBDBankAddress.Text = BD.BankAddress;
+            DMSEBankDetailsPopup.Show();
         }
         protected void btnDMARGetApplicationStatus_Click(object sender, EventArgs e)
         {
@@ -459,7 +507,18 @@ namespace KACDC.ApprovalPage
         }
         protected void btnCEOSEDisplayBankDetails_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            lblCEOSEBDApplicationNumber.Text = BD.ApplicationNumber;
+            lblCEOSEBDAccountHolderName.Text = BD.ApplicantName;
+            lblCEOSEBDAccountNumber.Text = BD.AccountNumber;
+            lblCEOSEBDBankName.Text = BD.BankName;
+            lblCEOSEBDBranchName.Text = BD.Branch;
+            lblCEOSEBDIFSCCode.Text = BD.IFSCCode;
+            lblCEOSEBDBankAddress.Text = BD.BankAddress;
+            CEOSEBankDetailsPopup.Show();
         }
         protected void btnCEOSEApprove_Click(object sender, EventArgs e)
         {
@@ -515,7 +574,18 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDOCSEDisplayBankDetails_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GBD.GetApplicantBankDetails(gvDOCSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            lblDOCSEBDApplicationNumber.Text = BD.ApplicationNumber;
+            lblDOCSEBDAccountHolderName.Text = BD.ApplicantName;
+            lblDOCSEBDAccountNumber.Text = BD.AccountNumber;
+            lblDOCSEBDBankName.Text = BD.BankName;
+            lblDOCSEBDBranchName.Text = BD.Branch;
+            lblDOCSEBDIFSCCode.Text = BD.IFSCCode;
+            lblDOCSEBDBankAddress.Text = BD.BankAddress;
+            DOCSEBankDetailsPopup.Show();
         }
         protected void btnDOCSEDisplayBankDetailsUpdate_Click(object sender, EventArgs e)
         {
@@ -616,6 +686,7 @@ namespace KACDC.ApprovalPage
                 DMP.Instalment = drpARRenewalInstalment.SelectedValue;
                 gvARRenewalProcess.DataSource = GDTP.GetData("spGetDataToApprovalProcess", DMP.Instalment, Session["District"].ToString());
                 gvARRenewalProcess.DataBind();
+                divRenewalGridview.Visible = true;
             } 
         }
 

@@ -589,3 +589,115 @@ WebPage Name :Login.aspx
 User Name:DMBLRS
 User Type:DISTRICTMANAGER
 IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 12:58 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 01:37 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 01:38 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 01:38 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 01:51 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 01:52 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 02:26 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 02:26 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 03:09 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 04:22 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 04:32 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 04:36 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 04:42 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 31-08-2021
+Time : 04:51 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1

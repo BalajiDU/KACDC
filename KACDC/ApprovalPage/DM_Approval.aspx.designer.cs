@@ -841,13 +841,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label38;
         
         /// <summary>
-        /// lblDMARBAccountHolderName control.
+        /// lblDMARBDAccountHolderName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDMARBAccountHolderName;
+        protected global::System.Web.UI.WebControls.Label lblDMARBDAccountHolderName;
         
         /// <summary>
         /// Label16 control.
@@ -859,13 +859,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label16;
         
         /// <summary>
-        /// lblDMARBAccountNumber control.
+        /// lblDMARBDAccountNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDMARBAccountNumber;
+        protected global::System.Web.UI.WebControls.Label lblDMARBDAccountNumber;
         
         /// <summary>
         /// Label17 control.
@@ -877,13 +877,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label17;
         
         /// <summary>
-        /// lblDMARBBankName control.
+        /// lblDMARBDBankName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDMARBBankName;
+        protected global::System.Web.UI.WebControls.Label lblDMARBDBankName;
         
         /// <summary>
         /// Label13 control.
@@ -895,13 +895,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label13;
         
         /// <summary>
-        /// lblDMARBBranch control.
+        /// lblDMARBDBranchName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDMARBBranch;
+        protected global::System.Web.UI.WebControls.Label lblDMARBDBranchName;
         
         /// <summary>
         /// Label18 control.
@@ -913,13 +913,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label18;
         
         /// <summary>
-        /// lblDMARBIFSCCode control.
+        /// lblDMARBDIFSCCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDMARBIFSCCode;
+        protected global::System.Web.UI.WebControls.Label lblDMARBDIFSCCode;
         
         /// <summary>
         /// Label14 control.
@@ -931,13 +931,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label14;
         
         /// <summary>
-        /// lblDMARBBankAddress control.
+        /// lblDMARBDBankAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDMARBBankAddress;
+        protected global::System.Web.UI.WebControls.Label lblDMARBDBankAddress;
         
         /// <summary>
         /// btnBankDetailsBack control.
@@ -958,13 +958,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.LinkButton lnkBankDetailsFake;
         
         /// <summary>
-        /// BankDetailsPopup control.
+        /// DMARBankDetailsPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender BankDetailsPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender DMARBankDetailsPopup;
         
         /// <summary>
         /// PnlDMARConfirmReject control.
@@ -1696,13 +1696,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label62;
         
         /// <summary>
-        /// lblCEOARBAccountHolderName control.
+        /// lblCEOARBDAccountHolderName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCEOARBAccountHolderName;
+        protected global::System.Web.UI.WebControls.Label lblCEOARBDAccountHolderName;
         
         /// <summary>
         /// Label64 control.
@@ -1714,13 +1714,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label64;
         
         /// <summary>
-        /// lblCEOARBAccountNumber control.
+        /// lblCEOARBDAccountNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCEOARBAccountNumber;
+        protected global::System.Web.UI.WebControls.Label lblCEOARBDAccountNumber;
         
         /// <summary>
         /// Label66 control.
@@ -1732,13 +1732,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label66;
         
         /// <summary>
-        /// lblCEOARBBankName control.
+        /// lblCEOARBDBankName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCEOARBBankName;
+        protected global::System.Web.UI.WebControls.Label lblCEOARBDBankName;
         
         /// <summary>
         /// Label68 control.
@@ -1750,13 +1750,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label68;
         
         /// <summary>
-        /// lblCEOARBBranch control.
+        /// lblCEOARBDBranchName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCEOARBBranch;
+        protected global::System.Web.UI.WebControls.Label lblCEOARBDBranchName;
         
         /// <summary>
         /// Label70 control.
@@ -1768,13 +1768,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label70;
         
         /// <summary>
-        /// lblCEOARBIFSCCode control.
+        /// lblCEOARBDIFSCCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCEOARBIFSCCode;
+        protected global::System.Web.UI.WebControls.Label lblCEOARBDIFSCCode;
         
         /// <summary>
         /// Label71 control.
@@ -1786,13 +1786,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label71;
         
         /// <summary>
-        /// lblCEOARBBankAddress control.
+        /// lblCEOARBDBankAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCEOARBBankAddress;
+        protected global::System.Web.UI.WebControls.Label lblCEOARBDBankAddress;
         
         /// <summary>
         /// Button9 control.
@@ -2740,13 +2740,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label113;
         
         /// <summary>
-        /// lblDOCARBAccountHolderName control.
+        /// lblDOCARBDAccountHolderName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDOCARBAccountHolderName;
+        protected global::System.Web.UI.WebControls.Label lblDOCARBDAccountHolderName;
         
         /// <summary>
         /// Label114 control.
@@ -2758,13 +2758,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label114;
         
         /// <summary>
-        /// lblDOCARBAccountNumber control.
+        /// lblDOCARBDAccountNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDOCARBAccountNumber;
+        protected global::System.Web.UI.WebControls.Label lblDOCARBDAccountNumber;
         
         /// <summary>
         /// Label115 control.
@@ -2776,13 +2776,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label115;
         
         /// <summary>
-        /// lblDOCARBBankName control.
+        /// lblDOCARBDBankName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDOCARBBankName;
+        protected global::System.Web.UI.WebControls.Label lblDOCARBDBankName;
         
         /// <summary>
         /// Label116 control.
@@ -2794,13 +2794,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label116;
         
         /// <summary>
-        /// lblDOCARBBranch control.
+        /// lblDOCARBDBranchName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDOCARBBranch;
+        protected global::System.Web.UI.WebControls.Label lblDOCARBDBranchName;
         
         /// <summary>
         /// Label117 control.
@@ -2812,13 +2812,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label117;
         
         /// <summary>
-        /// lblDOCARBIFSCCode control.
+        /// lblDOCARBDIFSCCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDOCARBIFSCCode;
+        protected global::System.Web.UI.WebControls.Label lblDOCARBDIFSCCode;
         
         /// <summary>
         /// Label118 control.
@@ -2830,13 +2830,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label118;
         
         /// <summary>
-        /// lblDOCARBBankAddress control.
+        /// lblDOCARBDBankAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDOCARBBankAddress;
+        protected global::System.Web.UI.WebControls.Label lblDOCARBDBankAddress;
         
         /// <summary>
         /// Button19 control.

@@ -919,7 +919,18 @@
                                                 <div class="navFormHeading">
                                                     <asp:Label runat="server">Arivu Application RTGS Release </asp:Label>
                                                 </div>
-
+                                                <div class="form-row">
+                                                    <div class="Popup-row-input"></div>
+                                                    <div class="Popup-row-label">
+                                                        <asp:Label runat="server" Text="Cheque Number :  "></asp:Label>
+                                                        <asp:TextBox ID="txtZMARReleaseChequeNumber" runat="server" CssClass="text-info" placeholder="Cheque Number" TextMode="number"></asp:TextBox>
+                                                    </div>
+                                                    <div class="Popup-row-input">
+                                                        <asp:TextBox ID="txtZMARReleaseChequeDate" runat="server" ClientIDMode="Static" class="NeuoDropdown" placeholder="DD-MM-YYYY (Cheque Date)" style="width:450px"> </asp:TextBox>
+                                                        <cc1:CalendarExtender ID="calZMARReleaseChequeDate" PopupButtonID="image" runat="server" TargetControlID="txtZMARReleaseChequeDate" Format="dd-MM-yyyy"></cc1:CalendarExtender>
+                                                        <div class="Popup-row-input"></div>
+                                                    </div>
+                                                </div>
                                                <div class="divGridview">
                                                     <div class="text-center">
                                                         <asp:GridView ID="gvZMARReleaseProcess" runat="server" class="GridView" AutoGenerateColumns="False" DataKeyNames="ApplicationNumber,ApplicantName,ApprovedApplicationNum" Style="align-content: center; ">
@@ -1028,7 +1039,22 @@
                                                                     <asp:Label ID="lblZMARConfirmReleaseLoanNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
-
+                                                            <div class="form-row">
+                                                                <div class="Popup-row-label">
+                                                                    <asp:Label ID="Label110" runat="server" Text="Applicant Name"></asp:Label>
+                                                                </div>
+                                                                <div class="Popup-row-input">
+                                                                    <asp:Label ID="lblZMARConfirmReleaseChequeNumber" runat="server"></asp:Label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="Popup-row-label">
+                                                                    <asp:Label ID="Label112" runat="server" Text="Loan Number"></asp:Label>
+                                                                </div>
+                                                                <div class="Popup-row-input">
+                                                                    <asp:Label ID="lblZMARConfirmReleaseChequeDate" runat="server"></asp:Label>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
                                                                     <asp:Button ID="btnZMARConfirmReleaseApplication" runat="server" CssClass="ActionButton" Text="Released" OnClick="btnZMARConfirmReleaseApplication_Click" />

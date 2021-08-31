@@ -619,7 +619,7 @@
                                                                     <asp:Label ID="Label38" runat="server">Account Holder Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDMARBAccountHolderName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDMARBDAccountHolderName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -627,7 +627,7 @@
                                                                     <asp:Label ID="Label16" runat="server">Account Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDMARBAccountNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDMARBDAccountNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -635,7 +635,7 @@
                                                                     <asp:Label ID="Label17" runat="server">Bank Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDMARBBankName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDMARBDBankName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -643,7 +643,7 @@
                                                                     <asp:Label ID="Label13" runat="server">Branch Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDMARBBranch" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDMARBDBranchName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -651,7 +651,7 @@
                                                                     <asp:Label ID="Label18" runat="server">IFSC Code</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDMARBIFSCCode" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDMARBDIFSCCode" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -660,7 +660,7 @@
                                                                     <asp:Label ID="Label14" runat="server">Address</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDMARBBankAddress" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDMARBDBankAddress" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -675,7 +675,7 @@
                                                 </asp:Panel>
 
                                                 <asp:LinkButton ID="lnkBankDetailsFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="BankDetailsPopup" runat="server" TargetControlID="lnkBankDetailsFake" PopupControlID="PnlBankDetails"
+                                                <cc1:ModalPopupExtender ID="DMARBankDetailsPopup" runat="server" TargetControlID="lnkBankDetailsFake" PopupControlID="PnlBankDetails"
                                                     BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
@@ -1050,7 +1050,7 @@
                                                                     <asp:Label ID="Label62" runat="server">Account Holder Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCEOARBAccountHolderName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCEOARBDAccountHolderName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1058,7 +1058,7 @@
                                                                     <asp:Label ID="Label64" runat="server">Account Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCEOARBAccountNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCEOARBDAccountNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1066,7 +1066,7 @@
                                                                     <asp:Label ID="Label66" runat="server">Bank Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCEOARBBankName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCEOARBDBankName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1074,7 +1074,7 @@
                                                                     <asp:Label ID="Label68" runat="server">Branch Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCEOARBBranch" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCEOARBDBranchName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1082,7 +1082,7 @@
                                                                     <asp:Label ID="Label70" runat="server">IFSC Code</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCEOARBIFSCCode" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCEOARBDIFSCCode" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -1091,7 +1091,7 @@
                                                                     <asp:Label ID="Label71" runat="server">Address</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCEOARBBankAddress" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCEOARBDBankAddress" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -1565,7 +1565,7 @@
                                                                     <asp:Label ID="Label113" runat="server">Account Holder Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDOCARBAccountHolderName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDOCARBDAccountHolderName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1573,7 +1573,7 @@
                                                                     <asp:Label ID="Label114" runat="server">Account Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDOCARBAccountNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDOCARBDAccountNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1581,7 +1581,7 @@
                                                                     <asp:Label ID="Label115" runat="server">Bank Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDOCARBBankName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDOCARBDBankName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1589,7 +1589,7 @@
                                                                     <asp:Label ID="Label116" runat="server">Branch Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDOCARBBranch" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDOCARBDBranchName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1597,7 +1597,7 @@
                                                                     <asp:Label ID="Label117" runat="server">IFSC Code</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDOCARBIFSCCode" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDOCARBDIFSCCode" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -1606,7 +1606,7 @@
                                                                     <asp:Label ID="Label118" runat="server">Address</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblDOCARBBankAddress" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblDOCARBDBankAddress" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -2002,7 +2002,7 @@
                                                                
                                                                 <asp:TemplateField HeaderStyle-CssClass="text-center text-center font-weight-bold" HeaderText="Loan Amount" ItemStyle-Width="220">
                                                                     <ItemTemplate>
-                                                                        <%# Eval("LOANAMOUNT")%>
+                                                                        <%# Eval("LOANAMOUNTREL")%>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle CssClass="text-center text-center font-weight-bold" />
                                                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="160px" Font-Bold="true" ForeColor="Red" />
