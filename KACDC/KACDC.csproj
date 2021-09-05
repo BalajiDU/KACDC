@@ -302,6 +302,7 @@
     <Content Include="Service\BulkMessageService.aspx" />
     <Content Include="Service\AppLaunchSMS.aspx" />
     <Content Include="Service\global.css" />
+    <Content Include="Service\UserTracker.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -727,6 +728,13 @@
     <Compile Include="Service\AppLaunchSMS.aspx.designer.cs">
       <DependentUpon>AppLaunchSMS.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Service\UserTracker.aspx.cs">
+      <DependentUpon>UserTracker.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Service\UserTracker.aspx.designer.cs">
+      <DependentUpon>UserTracker.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -861,6 +869,7 @@
     <Folder Include="Files_Arivu\TempCollegeFile\" />
     <Folder Include="Files_SelfEmployment\AadhaarApplicantPhoto\" />
     <Folder Include="Files_SelfEmployment\Application\" />
+    <Folder Include="LogFiles\AadhaarErrorLog\" />
     <Folder Include="LogFiles\LoginLogFile\" />
     <Folder Include="Reports\SchemeApplication\Arivu\" />
     <Folder Include="Reports\SchemeApplication\SelfEmployment\" />

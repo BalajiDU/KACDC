@@ -1282,13 +1282,15 @@ namespace KACDC
                                     string Password = Encrypt(txtUsrCrePassword.Text.Trim());
                                     string UserType = txtUsrCreUserType.Text;
                                     string Active = txtUsrCreActive.Text;
+                                    string Name = txtName.Text;
 
                                     txtUsrCreDistrict.SelectedIndex = 0;
                                     txtUsrCreUserName.Text = "";
                                     txtUsrCrePassword.Text = "";
                                     txtUsrCreUserType.Text = "";
                                     txtUsrCreActive.Text = "";
-                                    string query = "INSERT INTO [UserLogin] VALUES(@District,@UserName,@Password,@UserType,@Active)";
+                                    txtName.Text = "";
+                                    string query = "INSERT INTO [UserLogin] VALUES(@District,@UserName,@Password,@UserType,@Active,@Name)";
                                     using (kvdConn)
                                     {
                                         using (SqlCommand cmd = new SqlCommand(query))
@@ -1298,6 +1300,7 @@ namespace KACDC
                                             cmd.Parameters.AddWithValue("@Password", Password);
                                             cmd.Parameters.AddWithValue("@UserType", UserType);
                                             cmd.Parameters.AddWithValue("@Active", Active);
+                                            cmd.Parameters.AddWithValue("@Name", Name);
                                             cmd.Connection = kvdConn;
                                             kvdConn.Open();
                                             cmd.ExecuteNonQuery();

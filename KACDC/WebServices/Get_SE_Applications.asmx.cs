@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
+using System.Web.Script.Services;
 using System.Web.Services;
 
 
@@ -22,15 +23,15 @@ namespace KACDC.WebServices
     // [System.Web.Script.Services.ScriptService]
     public class Get_SE_Applications : System.Web.Services.WebService
     {
-        
-        [WebMethod]
-        public void GetSelfEmployment()
+
+        [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
+        public List<WSSEWebService> GetSelfEmployment()
         {
+            List<WSSEWebService> SEApplication = new List<WSSEWebService>();
             try
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
-                    List<WSSEWebService> SEApplication = new List<WSSEWebService>();
                     using (SqlCommand cmd = new SqlCommand("spGetSEApplications", kvdConn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -83,22 +84,21 @@ namespace KACDC.WebServices
                             SE.BankUpdate = rdr["BankUpdate"].ToString();
                             SE.AadhaarNumber = "";
                             SE.Zone = rdr["ZoneName"].ToString();
+                            SE.Taluk = rdr["ParTaluk"].ToString();
                             SEApplication.Add(SE);
                         }
                     }
-                    JavaScriptSerializer js = new JavaScriptSerializer();
-                    js.MaxJsonLength = (Int32.MaxValue);//2147483647
-                    Context.Response.Write(js.Serialize(SEApplication));
+                    return SEApplication;
                     //Context.Response.Write(new System.Web.Configuration.ScriptingJsonSerializationSection().MaxJsonLength);
 
                 }
             }
             catch (Exception ex)
             {
-                WSError ER = new WSError();
-                ER.ErrorMessage = ex.ToString();
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                Context.Response.Write(js.Serialize(ER));
+                WSSEWebService SE = new WSSEWebService();
+                SE.Error = ex.ToString();
+                SEApplication.Add(SE);
+                return SEApplication;
             }
         }
     }

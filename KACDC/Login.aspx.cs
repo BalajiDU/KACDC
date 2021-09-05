@@ -19,7 +19,7 @@ namespace KACDC
     {
         SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString);
         int userId = 0;
-        static string LoginUserName, UserType, UserPwd,UserActivation, UserDistrict;
+        static string LoginUserName, UserType, UserPwd,UserActivation, UserDistrict, Name;
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["LoginLogout"] = "Login";            
@@ -129,7 +129,14 @@ namespace KACDC
                             Session["Designation"] = UserType;
                             Response.Redirect(@"~\Service\Admin_Dashboard.aspx");
                         }
-
+                        else if (UserType == "TRACKER")
+                        {
+                            Session["USERTYPE"] = "TRACKER";
+                            Session["District"] = UserDistrict;
+                            Session["Designation"] = UserType;
+                            Session["Name"] = Name;
+                            Response.Redirect(@"~\Service\UserTracker.aspx");
+                        }
 
                         break;
                     case 2:
@@ -177,7 +184,8 @@ namespace KACDC
                 cmd.Parameters["@Active"].Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("@District", SqlDbType.VarChar, -1);
                 cmd.Parameters["@District"].Direction = ParameterDirection.Output;
-
+                cmd.Parameters.Add("@Name", SqlDbType.VarChar, -1);
+                cmd.Parameters["@Name"].Direction = ParameterDirection.Output;
                 cmd.Connection = kvdConn;
                 kvdConn.Open();
                 userId = Convert.ToInt32(cmd.ExecuteScalar());
@@ -189,6 +197,8 @@ namespace KACDC
                 UserActivation= cmd.Parameters["@Active"].Value.ToString();
 
                 UserDistrict = cmd.Parameters["@District"].Value.ToString();
+
+                Name = cmd.Parameters["@Name"].Value.ToString();
             }
         }
 

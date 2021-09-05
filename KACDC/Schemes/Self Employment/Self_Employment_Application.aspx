@@ -1078,7 +1078,7 @@
                             </div>
                             <%-- TODO onpaste="return false" AutoCompleteType="Disabled" --%>
                             <div class="form-row-input">
-                                <asp:TextBox ID="txtAadhaarNumber" CssClass="NeoTextBox" runat="server" placeholder="Aadhaar Number" TextMode="Number" MaxLength="12" onkeypress="return CheckAadhaarNumber(event)" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
+                                <asp:TextBox ID="txtAadhaarNumber" CssClass="NeoTextBox" runat="server" placeholder="Aadhaar Number" TextMode="Number" MaxLength="12"  onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox><%--onkeypress="return CheckAadhaarNumber(event)"--%>
                                 <div id="divAadhaarChkError" class="DisplayError"  style="font-size:18px; font-weight: bold;color:#7b0000"></div>
                             </div>
                             <div class="form-row-Botton" id="divMovileNumberStatus" runat="server">
@@ -1099,7 +1099,7 @@
                             </div>
                         </div>
                         <%--Button to Display RD--%>
-                        <div id="divButtonToRDNum" runat="server" visible="true" class="form-row">
+                        <div id="divButtonToRDNum" runat="server" visible="false" class="form-row">
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
@@ -1110,7 +1110,7 @@
                             </div>
                         </div>
                         <%--RD Number--%>
-                        <div id="divRDNumber" runat="server" visible="true" class="form-row">
+                        <div id="divRDNumber" runat="server" visible="false" class="form-row">
                             <div class="form-row-label">
                                 <asp:Label ID="Label10" class="" runat="server">RD Number(Form - G)<span style="color:red"> *</span><br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ(ನಮೂನೆ - ಜಿ)</asp:Label>
                             </div>

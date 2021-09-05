@@ -23,7 +23,7 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.CommandType = CommandType.StoredProcedure;
                         //cmd.Parameters.AddWithValue("@ApplicationNumber", ApplicationNumber);
 
-                        SqlParameter ApplicationNumberOUT = new SqlParameter("@ApplicationNumber", SqlDbType.NVarChar);
+                        SqlParameter ApplicationNumberOUT = new SqlParameter("@ApplicationNumber", SqlDbType.NVarChar,-1);
                         ApplicationNumberOUT.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(ApplicationNumberOUT);
 
@@ -39,11 +39,10 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@MobileNumber", MobileNumber);
                         cmd.Parameters.AddWithValue("@AlternateNumber", AlternateNumber);
                         cmd.Parameters.AddWithValue("@DoB", Convert.ToDateTime(DoB));
-                        cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
-                        cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
+                        
                         cmd.Parameters.AddWithValue("@LoanPurpose", LoanPurpose);
                         cmd.Parameters.AddWithValue("@AadharNum", AadharNum);
-                        cmd.Parameters.AddWithValue("@Occupation", Occupation);
+                        //cmd.Parameters.AddWithValue("@Occupation", Occupation);
                         cmd.Parameters.AddWithValue("@ContactAddress", ContactAddress);
                         cmd.Parameters.AddWithValue("@ContDistrict", ContDistrict);
                         cmd.Parameters.AddWithValue("@ContPincode", ContPincode);
@@ -59,18 +58,20 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@BankAddress", BankAddress);
                         cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
                         cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
-                        cmd.Parameters.AddWithValue("@ModifiedDate", ParTaluk);
-                        cmd.Parameters.AddWithValue("@ModifiedDate", ContTaluk);
-                        cmd.Parameters.AddWithValue("@ImgCandidate", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgSignature", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgAadharFront", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgAadharBack", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@DocBankPassbook", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@DocCasteIncome", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@DocPhyCha", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ParTaluk", ParTaluk);
+                        cmd.Parameters.AddWithValue("@ContTaluk", ContTaluk);
+                        //cmd.Parameters.AddWithValue("@ContTaluk", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@ImgSignature", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@ImgAadharFront", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@ImgAadharBack", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@DocBankPassbook", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@DocCasteIncome", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@DocPhyCha", DBNull.Value);
                         cmd.Parameters.AddWithValue("@LoanDescription", LoanDescription);
                         cmd.Parameters.AddWithValue("@ApplicantNameNC", ApplicantNameNC);
 
+                        cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
+                        cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
 
                         kvdConn.Open();
                         cmd.ExecuteNonQuery();
@@ -82,11 +83,11 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
             }
             catch(SqlException e)
             {
-                return e.Message;
+                return "SQL Exception" + e.Message;
             }
             catch(Exception e)
             {
-                return e.Message;
+                return "Exception" + e.Message;
             }
         }
     }

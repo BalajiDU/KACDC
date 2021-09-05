@@ -39,8 +39,8 @@ namespace KACDC.Class.DataProcessing.OnlineApplication.Arivu
                         cmd.Parameters.AddWithValue("@MobileNumber", MobileNumber);
                         cmd.Parameters.AddWithValue("@AlternateNumber", AlternateNumber);
                         cmd.Parameters.AddWithValue("@DoB", Convert.ToDateTime(DoB));
-                        cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
-                        cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
+                        //cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
+                        //cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
                         cmd.Parameters.AddWithValue("@LoanPurpose", LoanPurpose);
                         cmd.Parameters.AddWithValue("@AadharNum", AadharNum);
                         cmd.Parameters.AddWithValue("@Occupation", Occupation);
@@ -59,15 +59,15 @@ namespace KACDC.Class.DataProcessing.OnlineApplication.Arivu
                         cmd.Parameters.AddWithValue("@BankAddress", BankAddress);
                         cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
                         cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
-                        cmd.Parameters.AddWithValue("@ModifiedDate", ParTaluk);
-                        cmd.Parameters.AddWithValue("@ModifiedDate", ContTaluk);
-                        cmd.Parameters.AddWithValue("@ImgCandidate", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgSignature", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgAadharFront", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgAadharBack", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@DocBankPassbook", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@DocCasteIncome", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@DocPhyCha", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ParTaluk", ParTaluk);
+                        cmd.Parameters.AddWithValue("@ContTaluk", ContTaluk);
+                        //cmd.Parameters.AddWithValue("@ImgCandidate", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@ImgSignature", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@ImgAadharFront", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@ImgAadharBack", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@DocBankPassbook", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@DocCasteIncome", DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@DocPhyCha", DBNull.Value);
                         cmd.Parameters.AddWithValue("@LoanDescription", LoanDescription);
                         cmd.Parameters.AddWithValue("@ApplicantNameNC", ApplicantNameNC);
 

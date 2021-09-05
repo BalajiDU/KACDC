@@ -3359,7 +3359,7 @@
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="Label192" runat="server"> Select Reason<span style="color:red"> *</span></asp:Label>
+                                                                    <asp:Label ID="Label192" runat="server">Select Reason<span style="color:red"> *</span></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input" style="flex-direction: column">
                                                                     <asp:RadioButton ID="rbCEOSEConfirmRejectReasonNotSelected" runat="server" Class="radioButton" GroupName="CEOSEConfirmRejectReason" Text="Not Selected" AutoPostBack="true" OnCheckedChanged="rbCEOSEConfirmRejectReasonNotSelected_CheckedChanged" /><br />

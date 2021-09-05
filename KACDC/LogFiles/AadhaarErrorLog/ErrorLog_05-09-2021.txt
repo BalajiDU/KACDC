@@ -1,0 +1,6 @@
+-------------------Error Log Start-----------as on 06:22 PM
+WebPage Name :AadhaarServiceTest.aspx
+Code:
+Message:Unable to connect to the remote server
+IP:::1
+-------------------End----------------------------

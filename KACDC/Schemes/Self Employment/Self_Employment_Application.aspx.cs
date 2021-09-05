@@ -96,6 +96,7 @@ namespace KACDC.Schemes.Self_Employment
                     {
                         DisplayAlert("otp sent to registered mobile number", this);
                         divMobileOTP.Visible = true;
+                        txtOTP.Focus();
                     }
                     else
                     {
@@ -293,13 +294,15 @@ namespace KACDC.Schemes.Self_Employment
             if (rbContactAddressYes.Checked == true)
             {
                 divContactAddress.Visible = false;
-                this.DropDownBinding();
+                
                 btnNadakachriOK.Visible = false;
                 btnSaveContactAddress.Visible = true;
+                ODSE.ContactPinCode = NKSER.NCApplicantCAddressPin;
                 CasteCertificatePopup.Show();
             }
             else if (rbContactAddressNo.Checked == true)
             {
+                this.DropDownBinding();
                 divContactAddress.Visible = true;
                 btnSaveContactAddress.Visible = true;
                 btnNadakachriOK.Visible = false;
@@ -932,6 +935,8 @@ namespace KACDC.Schemes.Self_Employment
             lblContTaluk.Text = ODSE.ContactTalukName;
             lblParTaluk.Text = NDAR.NCTalukName;
             lblParConstituency.Text = NDAR.NCConstituency;
+            lblParPincode.Text = NDAR.NCApplicantCAddressPin;
+            lblContPincode.Text = ODSE.ContactPinCode;
             lblAccountHolder.Text = ADSER.Name;
             lblAccountNum.Text = BD.AccountNumber;
             lblBank.Text = BD.BANK;
@@ -967,6 +972,10 @@ namespace KACDC.Schemes.Self_Employment
 
                 }
             }
+            else
+            {
+                DisplayAlert(ODSE.GeneratedApplicationNumber, this);
+            }
         }
         private bool SaveApplicationDB()
         {
@@ -977,19 +986,27 @@ namespace KACDC.Schemes.Self_Employment
             ODSE.GeneratedApplicationNumber = SaveSE.StoreSE(ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODSE.Widow, ODSE.Divorced, ODSE.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODSE.EmailID, ODSE.MobileNumber, ODSE.AlternateMobileNumber,
             ADSER.DOB, ODSE.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODSE.ContactFullAddress, ODSE.ContactDistrictName, ODSE.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
             ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS, ODSE.ApplicationDateTime, ODSE.ApplicationDateTime, NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName);
+
+
+            string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (ipaddress == "" || ipaddress == null)
+                ipaddress = Request.ServerVariables["REMOTE_ADDR"];
+            ApplicationLog LOG = new ApplicationLog();
+            LOG.OnlineApplicationLog(ipaddress, Path.GetFileName(Request.Path), "SaveSE", ODSE.GeneratedApplicationNumber, "Success", ODSE.ApplicationDateTime);
+
+            //TODO delete 2 lines
+            HttpContext.Current.Response.Write(ODSE.GeneratedApplicationNumber);
+            Response.Write(ODSE.GeneratedApplicationNumber);
+
             if (ODSE.GeneratedApplicationNumber != "NA") 
             {
-                string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-                if (ipaddress == "" || ipaddress == null)
-                    ipaddress = Request.ServerVariables["REMOTE_ADDR"];
-                ApplicationLog LOG = new ApplicationLog();
-                LOG.OnlineApplicationLog(ipaddress, Path.GetFileName(Request.Path), "SaveSE", ODSE.GeneratedApplicationNumber, "Success", ODSE.ApplicationDateTime);
                 return true;
             }
             else
             {
                 return false;
             }
+
             
         }
         private bool GenerateApplicantPDF()

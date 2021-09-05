@@ -13,8 +13,10 @@ namespace KACDC.Class.DataProcessing.Aadhaar
                 return "Invalid OTP";
             else if (OTPErrorCode == "AUA-OTP-05")
                 return "OTP Expired";
+            else if (OTPErrorCode == "111")
+                return "Aadhaar is not linked to mobile number";
             else if (OTPErrorCode == "AUA-OTP-05")
-                return "OTP Expired";
+                return "Invalid OTP";
             else
                 return "Unable to Connect, Try again "+ OTPErrorCode;
         }

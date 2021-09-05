@@ -12,7 +12,7 @@
 
         .btn-hover {
             border-radius: 3%;
-            width: 100%;
+            width: 80%;
             font-size: 16px;
             font-weight: 600;
             color: #fff;
@@ -516,8 +516,8 @@
             <li class="AdmHmLi"><a> <asp:Button ID="btnLogout" class="LogoutButton" runat="server" Text="Logout" OnClick="btnLogout_Click" /></a> </li>
         </ul>
     </div>
-    <section id="tabs" class="clsSection">    
-        <div class="align-content-center">
+    <section id="tabs" class="clsSection" style="width:85%;float:right">    
+        <div class="align-content-center" style="width:100%">
             <%--<div class="col-xs-12 ">
                 <nav>
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -765,7 +765,7 @@
                                             <asp:GridView ID="gvDMENn" runat="server" AutoGenerateColumns="false" OnRowDataBound="DMENOnRowDataBound"
                                                 DataKeyNames="SlNo" OnRowEditing="DMENOnRowEditing" OnRowCancelingEdit="DMENOnRowCancelingEdit"
                                                 PageSize="10" AllowPaging="true" OnPageIndexChanging="DMENOnPaging" OnRowUpdating="DMENOnRowUpdating"
-                                                OnRowDeleting="DMENOnRowDeleting" EmptyDataText="No records has been added." Width="100%">
+                                                OnRowDeleting="DMENOnRowDeleting" EmptyDataText="No records has been added." Width="80%">
                                                 <Columns>
 
                                                     <asp:TemplateField HeaderText="Sl No" ItemStyle-Width="5%">
@@ -1246,35 +1246,35 @@
                                                 OnRowDeleting="UsrCreOnRowDeleting" EmptyDataText="No records has been added." Width="100%">
                                                 <Columns>
 
-                                                    <asp:TemplateField HeaderText="Sl No" ItemStyle-Width="5%">
+                                                    <asp:TemplateField HeaderText="Sl No" ItemStyle-Width="8px">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblUsrCreSlNo" runat="server" Text='<%# Eval("SlNo")%>' />
                                                         </ItemTemplate>
 
                                                     </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="District" ItemStyle-Width="18%">
+                                                    <asp:TemplateField HeaderText="District" ItemStyle-Width="15px">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblUsrCreDistrict" runat="server" Text='<%# Eval("District")%>' />
                                                         </ItemTemplate>
 
                                                     </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="User Name" ItemStyle-Width="15%">
+                                                    <asp:TemplateField HeaderText="User Name" ItemStyle-Width="10px">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblUsrCreUserName" runat="server" Text='<%# Eval("[UserName]")%>'></asp:Label>
                                                         </ItemTemplate>
 
                                                     </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="User Type" ItemStyle-Width="15%">
+                                                    <asp:TemplateField HeaderText="User Type" ItemStyle-Width="10px">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblUsrCreUserType" runat="server" Text='<%# Eval("[UserType]")%>'></asp:Label>
                                                         </ItemTemplate>
 
                                                     </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Active" ItemStyle-Width="30%">
+                                                    <asp:TemplateField HeaderText="Active" ItemStyle-Width="15px">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblUsrCreActive" runat="server" Text='<%# Eval("[Active]")%>'></asp:Label>
                                                         </ItemTemplate>
@@ -1290,7 +1290,7 @@
 
 
                                                     <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true"
-                                                        ItemStyle-Width="15%" />
+                                                        ItemStyle-Width="15px" />
                                                 </Columns>
                                             </asp:GridView>
                                             <asp:GridView ID="gvUsers" runat="server" style="padding: 10px;" AutoGenerateColumns="false" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" OnRowDataBound="OnRowDataBound" RowStyle-BackColor="#A1DCF2">
@@ -1298,27 +1298,30 @@
                                                     <asp:BoundField DataField="Username" HeaderText="Username" />
                                                     <asp:BoundField DataField="Password" HeaderText="Encrypted Password" />
                                                 </Columns>
-                                            </asp:GridView>
-                                            <table border="1" cellpadding="0" cellspacing="0"style="padding: 10px; border-collapse: collapse">
+                                            </asp:GridView> <br />
+                                            <table border="0" cellpadding="0" cellspacing="0" style="padding: 10px; border-collapse: collapse">
                                                 <tr>
-                                                    <td style="width: 10%">
-                                                        <br />
-                                                    </td>
-                                                    <td style="width: 15%">District:<br />
+
+                                                    <td style="width: 15%">
                                                         <%--                                <asp:TextBox ID="txtUsrCreDistrict" Style="width: 98%" runat="server" Width="140" />--%>
                                                         <asp:DropDownList ID="txtUsrCreDistrict" Class="rowMargin txtcolor text-uppercase form-control" AutoPostBack="true" runat="server" ClientIDMode="Static">
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td style="width: 15%">User Name:<br />
-                                                        <asp:TextBox ID="txtUsrCreUserName" Style="width: 98%" Class="rowMargin txtcolor text-uppercase form-control" runat="server" Width="140" />
+                                                    <td style="width: 15%">
+                                                        
+                                                        <asp:TextBox ID="txtName" Style="width: 98%" placeholder="Name" Class="rowMargin txtcolor text-uppercase form-control" runat="server" Width="140" />
+
                                                     </td>
-                                                    <td style="width: 15%">Password:<br />
-                                                        <asp:TextBox ID="txtUsrCrePassword" Style="width: 98%" Class="rowMargin txtcolor text-uppercase form-control" runat="server" Width="140" />
+                                                    <td style="width: 15%">
+                                                        <asp:TextBox ID="txtUsrCreUserName" Style="width: 98%" placeholder="User Name" Class="rowMargin txtcolor text-uppercase form-control" runat="server" Width="140" />
+                                                    </td>
+                                                    <td style="width: 15%">
+                                                        <asp:TextBox ID="txtUsrCrePassword" Style="width: 98%" placeholder="Password" Class="rowMargin txtcolor text-uppercase form-control" runat="server" Width="140" />
                                                     </td>
 
-                                                    <td style="width: 15%">User Type:<br />
+                                                    <td style="width: 15%">
                                                         <asp:DropDownList ID="txtUsrCreUserType" Class="rowMargin txtcolor text-uppercase form-control" runat="server" ClientIDMode="Static">
-                                                            <asp:ListItem>--SELECT--</asp:ListItem>
+                                                            <asp:ListItem Value="0">--USER TYPE--</asp:ListItem>
                                                             <asp:ListItem Value="ADMIN">ADMIN</asp:ListItem>
                                                             <asp:ListItem Value="DISTRICTMANAGER">DISTRICT MANAGER</asp:ListItem>
                                                             <asp:ListItem Value="CASEWORKER">CASE WORKER</asp:ListItem>
@@ -1329,13 +1332,14 @@
                                                             <asp:ListItem Value="CHECKRD">CHECK RD</asp:ListItem>
                                                             <asp:ListItem Value="MESSAGESERVICE">MESSAGE SERVICE</asp:ListItem>
                                                             <asp:ListItem Value="DASHBOARD">DASHBOARD</asp:ListItem>
+                                                            <asp:ListItem Value="TRACKER">TRACKER</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
 
-                                                    <td style="width: 30%">Active:<br />
+                                                    <td style="width: 10%">
                                                         <%--                                <asp:TextBox ID="txtUsrCreActive" Style="width: 98%" TextMode="MultiLine" runat="server" Width="140" />--%>
                                                         <asp:DropDownList ID="txtUsrCreActive" Class="rowMargin txtcolor text-uppercase form-control" runat="server" ClientIDMode="Static">
-                                                            <asp:ListItem>--SELECT--</asp:ListItem>
+                                                            <asp:ListItem Value="0">--STATUS--</asp:ListItem>
                                                             <asp:ListItem Value="TRUE">TRUE</asp:ListItem>
                                                             <asp:ListItem Value="FALSE">FALSE</asp:ListItem>
                                                         </asp:DropDownList>
@@ -1345,23 +1349,23 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                   
+
                                                     <td colspan="6">
                                                         <asp:Label ID="lblAddUserError" runat="server"></asp:Label>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="width: 10%">&nbsp;</td>
+                                                    <td style="width: 10%">Change Password</td>
                                                     <td colspan="2">
                                                         <asp:DropDownList ID="drpUser" Class="rowMargin txtcolor  form-control" AutoPostBack="true" runat="server" ClientIDMode="Static">
                                                         </asp:DropDownList></td>
                                                     <td colspan="2">
-                                                        <asp:TextBox ID="txtNewPassword" Class="rowMargin txtcolor form-control" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtNewPassword" placeholder="New Password" Class="rowMargin txtcolor form-control" runat="server"></asp:TextBox>
                                                     </td>
-                                                    <td style="width: 30%">&nbsp;</td>
                                                     <td style="width: 15%">
                                                         <asp:Button ID="btnUpdatePwd" runat="server" Class="btn btn-hover btncolor" OnClick="btnUpdatePwd_Click" Text="Update Password" />
                                                     </td>
+                                                    <td style="width: 30%">&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 10%">&nbsp;</td>

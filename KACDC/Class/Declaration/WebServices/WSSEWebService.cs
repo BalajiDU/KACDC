@@ -51,6 +51,7 @@ namespace KACDC.Class.Declaration.WebServices
         public string BankUpdate { get; set; }
         public string AadhaarNumber { get; set; }
         public string Zone { get; set; }
+        public string Error { get; set; }
         public string Taluk { get; set; }
 
     }

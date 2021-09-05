@@ -216,6 +216,7 @@ namespace KACDC.Schemes.Arivu
 
                     else
                     {
+                        lblFilePrevMarksCard.Text = name;
                         FilePrevMarksCard.SaveAs(Server.MapPath("~/ImageUpload/" + FilePrevMarksCard.FileName));
                         DisplayAlert("File Uploaded successfully", this);
                         Stream fs = FilePrevMarksCard.PostedFile.InputStream;
@@ -255,6 +256,7 @@ namespace KACDC.Schemes.Arivu
 
                     else
                     {
+                        lblFileStudyCertificate.Text = name;
                         FileStudyCertificate.SaveAs(Server.MapPath("~/ImageUpload/" + FileStudyCertificate.FileName));
                         DisplayAlert("File Uploaded successfully", this);
                         Stream fs = FileStudyCertificate.PostedFile.InputStream;
@@ -285,7 +287,7 @@ namespace KACDC.Schemes.Arivu
                                 {
                                     if (ARP.UpdateRenewalRequest(ARRD.ApplicationNumber, "REQUESTED", ARRD.Installment) != "NA")
                                     {
-                                        GenerateAcknoledgement();
+                                        //GenerateAcknoledgement();
                                         SF.SavingFileOnServer("~/Files_Arivu/" + ARRD.Installment + "/StudyCertificate/", ARRD.FILENAME + ".pdf", ARRD.byteStudyCertificate);
                                         SF.SavingFileOnServer("~/Files_Arivu/" + ARRD.Installment + "/PreviousMarksCard/", ARRD.FILENAME + ".pdf", ARRD.bytePrevMarksCard);
                                         btnSubmitRenewalRequest.Visible = false;
@@ -321,9 +323,9 @@ namespace KACDC.Schemes.Arivu
                     DisplayAlert("are you staying in college hostel", this);
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                DisplayAlert(ex.ToString(), this);
             }
             finally
             {

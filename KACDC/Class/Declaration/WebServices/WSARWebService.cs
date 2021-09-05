@@ -63,5 +63,13 @@ namespace KACDC.Class.Declaration.WebServices
         public string Zone { get; set; }
         public string Taluk { get; set; }
 
+        public string Instalment1 { get; set; }
+        public string Instalment2 { get; set; }
+        public string Instalment3 { get; set; }
+        public string Instalment4 { get; set; }
+        public string Instalment5 { get; set; }
+        public string Instalment6 { get; set; }
+        public string Error { get; set; }
+
     }
 }

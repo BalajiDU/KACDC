@@ -13,5 +13,6 @@ namespace KACDC.Class.Declaration.WebServices
         public string LoanName { get; set; }
         public string LoanAmount { get; set; }
         public string ACCOUNTNUMBER { get; set; }
+        public string Error { get; set; }
     }
 }

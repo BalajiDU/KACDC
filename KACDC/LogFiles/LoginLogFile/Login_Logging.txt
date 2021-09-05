@@ -701,3 +701,139 @@ WebPage Name :Login.aspx
 User Name:ZMBLR
 User Type:ZONALMANAGER
 IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 01:03 PM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 01:31 PM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 02:04 PM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 02:56 PM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 03:01 PM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 03:03 PM
+WebPage Name :Login.aspx
+User Name:Kacdc@Adm
+User Type:ADMIN
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 03:04 PM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 03:05 PM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 03:06 PM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 03:35 PM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 03:50 PM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 01-09-2021
+Time : 04:17 PM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 02-09-2021
+Time : 10:42 AM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 02-09-2021
+Time : 10:45 AM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 02-09-2021
+Time : 10:49 AM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 02-09-2021
+Time : 10:51 AM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 02-09-2021
+Time : 10:58 AM
+WebPage Name :Login.aspx
+User Name:T_Balaji
+User Type:TRACKER
+IP:::1

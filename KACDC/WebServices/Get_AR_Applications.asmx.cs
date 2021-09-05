@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
+using System.Web.Script.Services;
 using System.Web.Services;
 
 namespace KACDC.WebServices
@@ -21,15 +22,14 @@ namespace KACDC.WebServices
     // [System.Web.Script.Services.ScriptService]
     public class Get_AR_Applications : System.Web.Services.WebService
     {
-        WSARWebService AR = new WSARWebService();
-        [WebMethod]
-        public void GetArivu()
+        [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
+        public List<WSARWebService> GetArivu()
         {
+            List<WSARWebService> ARApplication = new List<WSARWebService>();
             try
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
-                    List<WSARWebService> ARApplication = new List<WSARWebService>();
                     using (SqlCommand cmd = new SqlCommand("spGetARApplications", kvdConn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -78,7 +78,8 @@ namespace KACDC.WebServices
                             AR.BankUpdate = rdr["BankUpdate"].ToString();
                             AR.AadhaarNumber = "";
                             AR.Zone = rdr["ZoneName"].ToString();
-                            
+                            AR.Taluk = rdr["ParTaluk"].ToString();
+
                             AR.CETApplicationNum = rdr["CETApplicationNum"].ToString();
                             AR.CETAdmissionTicateNum = rdr["CETAdmissionTicateNum"].ToString();
                             AR.CollegeName = rdr["CollegeName"].ToString();
@@ -92,20 +93,25 @@ namespace KACDC.WebServices
                             AR.Year4Loan = rdr["Year4Loan"].ToString();
                             AR.Year5Loan = rdr["Year5Loan"].ToString();
                             AR.Year6Loan = rdr["Year6Loan"].ToString();
+
+                            AR.Instalment1 = rdr["Instalment1"].ToString();
+                            AR.Instalment2 = rdr["Instalment2"].ToString();
+                            AR.Instalment3 = rdr["Instalment3"].ToString();
+                            AR.Instalment4 = rdr["Instalment4"].ToString();
+                            AR.Instalment5 = rdr["Instalment5"].ToString();
+                            AR.Instalment6 = rdr["Instalment6"].ToString();
                             ARApplication.Add(AR);
                         }
                     }
-                    JavaScriptSerializer js = new JavaScriptSerializer();
-                    js.MaxJsonLength = (Int32.MaxValue);//2147483647
-                    Context.Response.Write(js.Serialize(ARApplication));
+                    return ARApplication;
                 }
             }
             catch (Exception ex)
             {
-                WSError ER = new WSError();
-                ER.ErrorMessage = ex.ToString();
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                Context.Response.Write(js.Serialize(ER));
+                WSARWebService AR = new WSARWebService();
+                AR.Error = ex.ToString();
+                ARApplication.Add(AR);
+                return ARApplication;
             }
         }
     }

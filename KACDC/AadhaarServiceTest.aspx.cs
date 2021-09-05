@@ -62,6 +62,8 @@ namespace KACDC
 
         protected void btnAadhaarGetOTP_Click(object sender, EventArgs e)
         {
+            HttpContext.Current.Response.Write(txtAadhaar.Text.Trim());
+            Response.Write(txtAadhaar.Text.Trim());
             string abc = ConfigurationSettings.AppSettings["naeUser"].ToString();
             //DisplayAlert(abc,this);
             //AadhaarSendOTP();

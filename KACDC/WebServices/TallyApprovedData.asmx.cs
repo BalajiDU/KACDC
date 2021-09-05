@@ -25,7 +25,7 @@ namespace KACDC.WebServices
         [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
         public List<WSApprovedDataForTally> Arivu()
         {
-            WSApprovedDataForTally AR = new WSApprovedDataForTally();
+            
             List<WSApprovedDataForTally> ARApplication = new List<WSApprovedDataForTally>();
 
             try
@@ -40,7 +40,7 @@ namespace KACDC.WebServices
                         SqlDataReader rdr = cmd.ExecuteReader();
                         while (rdr.Read())
                         {
-                            
+                            WSApprovedDataForTally AR = new WSApprovedDataForTally();
                             AR.ApplicationNumber = rdr["ApplicationNumber"].ToString();
                             AR.ApplicantName = rdr["ApplicantName"].ToString();
                             AR.DistrictCD = rdr["DistrictCD"].ToString();
@@ -54,14 +54,18 @@ namespace KACDC.WebServices
                     return ARApplication;
                 }
             }
-            catch {
+            catch (Exception ex)
+            {
+                WSApprovedDataForTally AR = new WSApprovedDataForTally();
+                AR.Error = ex.ToString();
+                ARApplication.Add(AR);
                 return ARApplication;
             }
         }
         [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Xml)]
         public List<WSApprovedDataForTally> SelfEmployment()
         {
-            WSApprovedDataForTally AR = new WSApprovedDataForTally();
+           
             List<WSApprovedDataForTally> ARApplication = new List<WSApprovedDataForTally>();
             try
             {
@@ -75,7 +79,7 @@ namespace KACDC.WebServices
                         SqlDataReader rdr = cmd.ExecuteReader();
                         while (rdr.Read())
                         {
-
+                            WSApprovedDataForTally AR = new WSApprovedDataForTally();
                             AR.ApplicationNumber = rdr["ApplicationNumber"].ToString();
                             AR.ApplicantName = rdr["ApplicantName"].ToString();
                             AR.DistrictCD = rdr["DistrictCD"].ToString();
@@ -89,8 +93,11 @@ namespace KACDC.WebServices
                     return ARApplication;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                WSApprovedDataForTally AR = new WSApprovedDataForTally();
+                AR.Error = ex.ToString();
+                ARApplication.Add(AR);
                 return ARApplication;
             }
         }

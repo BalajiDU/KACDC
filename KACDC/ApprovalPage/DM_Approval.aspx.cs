@@ -234,15 +234,30 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDOCARApprove_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblDOCARConfirmApproveAppNumber.Text = gvDOCARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblDOCARConfirmApproveAppName.Text = gvDOCARApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            DOCARConfirmApprovePopup.Show();
         }
         protected void btnDOCARHold_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblDOCARConfirmHoldAppNumber.Text = gvDOCARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblDOCARConfirmHoldAppName.Text = gvDOCARApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            DOCARConfirmHoldPopup.Show();
         }
         protected void btnDOCARReject_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblDOCARConfirmRejectAppNumber.Text = gvDOCARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblDOCARConfirmRejectAppName.Text = gvDOCARApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            DOCARConfirmRejectPopup.Show();
         }
         protected void btnDMARSubmitToZM_Click(object sender, EventArgs e)
         {
@@ -250,15 +265,54 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDOCARConfirmRejectApplication_Click(object sender, EventArgs e)
         {
+            lblDOCARConfirmRejectAppReasonError.Text = "";
+            if (txtDOCARConfirmRejectAppReason.Text.Trim() == "")
+            {
+                if (txtDOCARConfirmRejectAppReason.Text.Trim().Length>=10)
+                {
+                    AP.ApplicationStatusUpdate("ARDOCPROCESS", "REJECT", lblDOCARConfirmRejectAppNumber.Text, txtDOCARConfirmRejectAppReason.Text.Trim());
+                    this.FillGridArivu();
+                }
+                else
+                {
+                    lblDOCARConfirmRejectAppReasonError.Text = "Describe the reason";
+                    DOCARConfirmRejectPopup.Show();
+                }
+            }
+            else
+            {
+                lblDOCARConfirmRejectAppReasonError.Text = "Enter the reason";
+                DOCARConfirmRejectPopup.Show();
+            }
 
         }
         protected void btnDOCARConfirmHoldApplication_Click(object sender, EventArgs e)
         {
-
+            lblDOCARConfirmHoldAppReasonError.Text = "";
+            if (txtDOCARConfirmHoldAppReason.Text.Trim() == "")
+            {
+                if (txtDOCARConfirmHoldAppReason.Text.Trim().Length >= 10)
+                {
+                    AP.ApplicationStatusUpdate("ARDOCPROCESS", "HOLD", lblDOCARConfirmHoldAppNumber.Text, txtDOCARConfirmHoldAppReason.Text.Trim());
+                    this.FillGridArivu();
+                }
+                else
+                {
+                    lblDOCARConfirmHoldAppReasonError.Text = "Describe the reason";
+                    DOCARConfirmHoldPopup.Show();
+                }
+            }
+            else
+            {
+                lblDOCARConfirmHoldAppReasonError.Text = "Enter the reason";
+                DOCARConfirmHoldPopup.Show();
+            }
+            
         }
         protected void btnDOCARConfirmApproveApplication_Click(object sender, EventArgs e)
         {
-
+            AP.ApplicationStatusUpdate("ARDOCPROCESS", "APPROVED", lblDOCARConfirmApproveAppNumber.Text);
+            this.FillGridArivu();
         }
         protected void btnPnlCollegeDetailsClose_Click(object sender, EventArgs e)
         {
@@ -522,19 +576,39 @@ namespace KACDC.ApprovalPage
         }
         protected void btnCEOSEApprove_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblCEOSEConfirmApproveAppNumber.Text = gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblCEOSEConfirmApproveAppName.Text = gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            CEOSEConfirmApprovePopup.Show();
         }
         protected void btnCEOSEWaiting_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblCEOSEConfirmWaitingAppNumber.Text = gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblCEOSEConfirmWaitingAppName.Text = gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            CEOSEConfirmWaitingPopup.Show();
         }
         protected void btnCEOSEHold_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblCEOSEConfirmHoldAppNumber.Text = gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblCEOSEConfirmHoldAppName.Text = gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            CEOSEConfirmHoldPopup.Show();
         }
         protected void btnCEOSEReject_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblCEOSEConfirmRejectAppNumber.Text = gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblCEOSEConfirmRejectAppName.Text = gvCEOSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            CEOSEConfirmRejectPopup.Show();
         }
         protected void btnDMSECEOGenerateReport_Click(object sender, EventArgs e)
         {
@@ -558,19 +632,59 @@ namespace KACDC.ApprovalPage
         }
         protected void btnCEOSEConfirmHoldApplication_Click(object sender, EventArgs e)
         {
-
+            lblCEOSEConfirmHoldAppReasonError.Text = "";
+            if (txtCEOSEConfirmHoldAppReason.Text.Trim() == "")
+            {
+                if (txtCEOSEConfirmHoldAppReason.Text.Trim().Length<=10)
+                {
+                    AP.ApplicationStatusUpdate("SECEOPROCESS", "HOLD", lblDOCSEConfirmHoldAppNumber.Text);
+                    this.FillGridSelfEmployment();
+                }
+                else
+                {
+                    lblCEOSEConfirmHoldAppReasonError.Text = "Describe the Reason for HOLD";
+                    CEOSEConfirmHoldPopup.Show();
+                }
+            }
+            else
+            {
+                lblCEOSEConfirmHoldAppReasonError.Text = "Enter the Reason for HOLD";
+                CEOSEConfirmHoldPopup.Show();
+            }
+            
         }
         protected void btnCEOSEConfirmApproveApplication_Click(object sender, EventArgs e)
         {
-
+            AP.ApplicationStatusUpdate("SECEOPROCESS", "APPROVED", lblDOCSEConfirmApproveAppNumber.Text);
+            this.FillGridSelfEmployment();
         }
         protected void btnCEOSEConfirmWaitingApplication_Click(object sender, EventArgs e)
         {
-
+            AP.ApplicationStatusUpdate("SECEOPROCESS", "WAITING", lblCEOSEConfirmWaitingAppNumber.Text);
+            this.FillGridSelfEmployment();
         }
         protected void btnCEOSEConfirmRejectApplication_Click(object sender, EventArgs e)
         {
-
+            lblCEOSEConfirmRejectAppReasonSelectionError.Text = "";
+            if (rbCEOSEConfirmRejectReasonNotSelected.Checked == true || rbCEOSEConfirmRejectReasonOther.Checked == true)
+            {
+                if (txtCEOSEConfirmRejectAppReason.Text.Trim().Length >= 10)
+                {
+                    AP.ApplicationStatusUpdate("SECEOPROCESS", "REJECTED", lblCEOSEConfirmRejectAppNumber.Text);
+                    this.FillGridSelfEmployment();
+                }
+                else
+                {
+                    lblCEOSEConfirmRejectAppReasonSelectionError.Text = "Describe the Reason";
+                    CEOSEConfirmRejectPopup.Show();
+                }
+            }
+            else
+            {
+                lblCEOSEConfirmRejectAppReasonSelectionError.Text = "Select Reason";
+                CEOSEConfirmRejectPopup.Show();
+            }
+            
         }
         protected void btnDOCSEDisplayBankDetails_Click(object sender, EventArgs e)
         {
@@ -593,15 +707,30 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDOCSEApprove_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblDOCSEConfirmApproveAppNumber.Text = gvDOCSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString() ;
+            lblDOCSEConfirmApproveAppName.Text = gvDOCSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            DOCSEConfirmApprovePopup.Show();
         }
         protected void btnDOCSEHold_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblDOCSEConfirmHoldAppNumber.Text = gvDOCSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblDOCSEConfirmHoldAppName.Text = gvDOCSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            DOCSEConfirmHoldPopup.Show();
         }
         protected void btnDOCSEReject_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            lblDOCSEConfirmRejectAppNumber.Text = gvDOCSEApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString();
+            lblDOCSEConfirmRejectAppName.Text = gvDOCSEApproveProcess.DataKeys[rowindex].Values["ApplicantName"].ToString();
+            DOCSEConfirmRejectPopup.Show();
         }
         protected void btnDMSESubmitToZM_Click(object sender, EventArgs e)
         {
@@ -609,14 +738,53 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDOCSEConfirmHoldApplication_Click(object sender, EventArgs e)
         {
-
+            lblDOCSEConfirmHoldAppReasonError.Text = "";
+            if (txtDOCSEConfirmHoldAppReason.Text.Trim()=="")
+            {
+                if (txtDOCSEConfirmHoldAppReason.Text.Trim().Length>=10)
+                {
+                    AP.ApplicationStatusUpdate("SEDOCPROCESS", "HOLD", lblDOCSEConfirmHoldAppNumber.Text, txtDOCSEConfirmHoldAppReason.Text.Trim());
+                    this.FillGridSelfEmployment();
+                }
+                else
+                {
+                    lblDOCSEConfirmHoldAppReasonError.Text = "Enter reason for hold";
+                    DOCSEConfirmHoldPopup.Show();
+                }
+            }
+            else
+            {
+                lblDOCSEConfirmHoldAppReasonError.Text = "Enter reason for hold";
+                DOCSEConfirmHoldPopup.Show();
+            }
+            
         }
         protected void btnDOCSEConfirmApproveApplication_Click(object sender, EventArgs e)
         {
-
+            AP.ApplicationStatusUpdate("SEDOCPROCESS", "APPROVED", lblDOCSEConfirmApproveAppNumber.Text);
+            this.FillGridSelfEmployment();
         }
         protected void btnDOCSEConfirmRejectApplication_Click(object sender, EventArgs e)
         {
+            lblDOCSEConfirmRejectAppReasonSelectionError.Text = "";
+            if (rbDOCSEConfirmRejectReasonNotInterested.Checked || rbDOCSEConfirmRejectReasonFamilyMember.Checked || rbDOCSEConfirmRejectReasonVoluntarilyrejected.Checked || rbDOCSEConfirmRejectReasonDeath.Checked || rbDOCSEConfirmRejectReasonOther.Checked)
+            {
+                if (txtDOCSEConfirmRejectAppReason.Text.Trim().Length >= 10)
+                {
+                    AP.ApplicationStatusUpdate("SEDOCPROCESS", "REJECT", lblDOCSEConfirmRejectAppNumber.Text, txtDOCSEConfirmRejectAppReason.Text.Trim());
+                    this.FillGridSelfEmployment();
+                }
+                else
+                {
+                    lblDOCSEConfirmRejectAppReasonSelectionError.Text = "Describe the reason";
+                    DOCSEConfirmRejectPopup.Show();
+                }
+            }
+            else
+            {
+                lblDOCSEConfirmRejectAppReasonSelectionError.Text = "Select reason";
+                DOCSEConfirmRejectPopup.Show();
+            }
 
         }
         protected void btnDOCSEBDUpdate_Click(object sender, EventArgs e)
@@ -657,11 +825,46 @@ namespace KACDC.ApprovalPage
         }
         protected void rbCEOSEConfirmRejectReasonNotSelected_CheckedChanged(object sender, EventArgs e)
         {
-
+            lblCEOSEConfirmRejectAppReasonSelectionError.Text = "";
+            if (rbCEOSEConfirmRejectReasonNotSelected.Checked)
+            {
+                txtCEOSEConfirmRejectAppReason.Text = "Applicant is not selected in CEO Committee";
+                CEOSEConfirmRejectPopup.Show();
+            }else if (rbCEOSEConfirmRejectReasonOther.Checked)
+            {
+                txtCEOSEConfirmRejectAppReason.Text = "";
+                CEOSEConfirmRejectPopup.Show();
+            }
         }
         protected void rbDOCSEConfirmReject_CheckedChanged(object sender, EventArgs e)
         {
-
+            lblDOCSEConfirmRejectAppReasonSelectionError.Text = "";
+            if (rbDOCSEConfirmRejectReasonNotInterested.Checked)
+            {
+                txtDOCSEConfirmRejectAppReason.Text = "Applicant is Not Interested";
+                DOCSEConfirmRejectPopup.Show();
+            }
+            else if (rbDOCSEConfirmRejectReasonFamilyMember.Checked)
+            {
+                txtDOCSEConfirmRejectAppReason.Text = "Applicant Family member already availed the loan";
+                DOCSEConfirmRejectPopup.Show();
+            }
+            else if (rbDOCSEConfirmRejectReasonVoluntarilyrejected.Checked)
+            {
+                txtDOCSEConfirmRejectAppReason.Text = "Applicant Voluntarily rejected the loan";
+                DOCSEConfirmRejectPopup.Show();
+            }
+            else if (rbDOCSEConfirmRejectReasonDeath.Checked)
+            {
+                txtDOCSEConfirmRejectAppReason.Text = "Applicant is died";
+                DOCSEConfirmRejectPopup.Show();
+            }
+            else if (rbDOCSEConfirmRejectReasonOther.Checked)
+            {
+                txtDOCSEConfirmRejectAppReason.Text = "";
+                DOCSEConfirmRejectPopup.Show();
+            }
+            
         }
         protected void rbDMARConfirmRejectReasonName_CheckedChanged(object sender, EventArgs e)
         {
