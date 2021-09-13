@@ -1178,7 +1178,7 @@ namespace KACDC.Schemes.Arivu
         }
         protected void btnPreviewSubmitApplication_Click(object sender, EventArgs e)
         {
-            ODAR.ApplicationDateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss tt");
+            ODAR.ApplicationDateTime = DateTime.Now.ToString();
             if (SaveApplicationDB())
             {
                 if (GenerateApplicantPDF())
@@ -1205,7 +1205,7 @@ namespace KACDC.Schemes.Arivu
                 if (ipaddress == "" || ipaddress == null)
                     ipaddress = Request.ServerVariables["REMOTE_ADDR"];
                 ApplicationLog LOG = new ApplicationLog();
-                LOG.OnlineApplicationLog(ipaddress, Path.GetFileName(Request.Path), "SaveAR", ODAR.GeneratedApplicationNumber, "Success", ODAR.ApplicationDateTime);
+                LOG.OnlineApplicationLog(ipaddress, Path.GetFileName(Request.Path), "SaveAR", ODAR.GeneratedApplicationNumber, "Success", (Convert.ToDateTime(ODAR.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"));
                 return true;
             }
             else
@@ -1230,12 +1230,12 @@ namespace KACDC.Schemes.Arivu
 
                 PdfPTable HeadingTable = null;
                 HeadingTable = new PdfPTable(4);
-                HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", ODAR.ApplicationDateTime);
+                HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", (Convert.ToDateTime(ODAR.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"));
                 PdfPTable Table = null;
                 Table = new PdfPTable(4);
                 Table = APPLITAB.ApplicantMainTable(Table, ODAR.GeneratedApplicationNumber, ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODAR.Widow, ODAR.Divorced, ODAR.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODAR.EmailID, ODAR.MobileNumber, ODAR.AlternateMobileNumber,
             ADSER.DOB, ODAR.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODAR.ContactFullAddress, ODAR.ContactDistrictName, ODAR.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
-             ODAR.ApplicationDateTime, ODAR.ApplicationDateTime, NDAR.NCTalukName, ODAR.ContactTalukName, ODAR.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
+             (Convert.ToDateTime(ODAR.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(ODAR.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), NDAR.NCTalukName, ODAR.ContactTalukName, ODAR.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
                 PdfPTable CollegeTable = null;
                 CollegeTable = new PdfPTable(4);
                 CollegeTable = CT.GenerateCollegeTable(CollegeTable, ACD.CETAdmissionTicketNumber, ACD.CETApplicationNumber, ACD.CollegeName , ACD.CollegeAddress , ACD.Course , ACD.Year ,

@@ -46,6 +46,11 @@ namespace KACDC.Schemes.Self_Employment
         VerifyEmailID VEID = new VerifyEmailID();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //ODSE.ApplicationDateTime=( DateTime.Now.ToString());
+            ////Response.Write( DateTime.Now.ToString());
+            //Response.Write( (DateTime.Now).ToString("MM/dd/yyyy hh:mm:sss tt") + "<br />");
+            //Response.Write((Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"));
+
             if (!IsPostBack)
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
@@ -960,15 +965,19 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnPreviewSubmitApplication_Click(object sender, EventArgs e)
         {
-            ODSE.ApplicationDateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss tt");
+            //ODSE.ApplicationDateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss");
+            ODSE.ApplicationDateTime = DateTime.Now.ToString();
             if(SaveApplicationDB())
             {
-                if(GenerateApplicantPDF())
+                btnPreviewEditOtherDetails.Visible = false;
+                //btnPreviewSubmitApplication.Visible = false;
+                divSubmitandEdit.Visible = false;
+                if (GenerateApplicantPDF())
                 {
-                    if (SendSMSEmail())
-                    {
+                    //if (SendSMSEmail())
+                    //{
 
-                    }
+                    //}
 
                 }
             }
@@ -992,13 +1001,13 @@ namespace KACDC.Schemes.Self_Employment
             if (ipaddress == "" || ipaddress == null)
                 ipaddress = Request.ServerVariables["REMOTE_ADDR"];
             ApplicationLog LOG = new ApplicationLog();
-            LOG.OnlineApplicationLog(ipaddress, Path.GetFileName(Request.Path), "SaveSE", ODSE.GeneratedApplicationNumber, "Success", ODSE.ApplicationDateTime);
+            LOG.OnlineApplicationLog(ipaddress, Path.GetFileName(Request.Path), "SaveSE", ODSE.GeneratedApplicationNumber, "Success", (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"));
 
             //TODO delete 2 lines
             HttpContext.Current.Response.Write(ODSE.GeneratedApplicationNumber);
             Response.Write(ODSE.GeneratedApplicationNumber);
 
-            if (ODSE.GeneratedApplicationNumber != "NA") 
+            if (ODSE.GeneratedApplicationNumber.Contains("KACDCSE")) 
             {
                 return true;
             }
@@ -1006,9 +1015,8 @@ namespace KACDC.Schemes.Self_Employment
             {
                 return false;
             }
-
-            
         }
+
         private bool GenerateApplicantPDF()
         {
             string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
@@ -1025,12 +1033,12 @@ namespace KACDC.Schemes.Self_Employment
 
                 PdfPTable HeadingTable = null;
                 HeadingTable = new PdfPTable(4);
-                HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", ODSE.ApplicationDateTime);
+                HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"));
                 PdfPTable Table = null;
                 Table = new PdfPTable(4);
                 Table = APPLITAB.SEApplicantMainTable(Table, ODSE.GeneratedApplicationNumber, ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODSE.Widow, ODSE.Divorced, ODSE.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODSE.EmailID, ODSE.MobileNumber, ODSE.AlternateMobileNumber,
             ADSER.DOB, ODSE.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODSE.ContactFullAddress, ODSE.ContactDistrictName, ODSE.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
-             ODSE.ApplicationDateTime, ODSE.ApplicationDateTime, NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
+             (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
                 PdfPTable BankTable = null;
                 BankTable = new PdfPTable(4);
                 BankTable = BT.GenerateBankTable(BankTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);

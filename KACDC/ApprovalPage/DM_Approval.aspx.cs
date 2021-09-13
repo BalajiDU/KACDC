@@ -203,11 +203,13 @@ namespace KACDC.ApprovalPage
         }
         protected void btnCEOARConfirmApproveApplication_Click(object sender, EventArgs e)
         {
-
+            AP.ApplicationStatusUpdate("ARCEOPROCESS", "APPROVED", lblCEOARConfirmApproveAppNumber.Text);
+            this.FillGridArivu();
         }
         protected void btnCEOARConfirmWaitingApplication_Click(object sender, EventArgs e)
         {
-
+            AP.ApplicationStatusUpdate("ARCEOPROCESS", "WAITING", lblCEOARConfirmWaitingAppNumber.Text);
+            this.FillGridArivu();
         }
         protected void btnCEOPnlCollegeDetailsClose_Click(object sender, EventArgs e)
         {
@@ -545,15 +547,17 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDMSEConfirmHoldApplication_Click(object sender, EventArgs e)
         {
-
+            
         }
         protected void btnDMSEConfirmApproveApplication_Click(object sender, EventArgs e)
         {
-
+            AP.ApplicationStatusUpdate("SEDMPROCESS", "APPROVED", lblDMSEConfirmApproveAppNumber.Text);
+            this.FillGridArivu();
         }
         protected void btnDMSEConfirmRejectApplication_Click(object sender, EventArgs e)
         {
-
+            AP.ApplicationStatusUpdate("SEDMPROCESS", "REJECT", lblDMSEConfirmRejectAppNumber.Text);
+            this.FillGridArivu();
         }
         protected void btnSEUploadCeoDoc_Click(object sender, EventArgs e)
         {
@@ -655,7 +659,7 @@ namespace KACDC.ApprovalPage
         }
         protected void btnCEOSEConfirmApproveApplication_Click(object sender, EventArgs e)
         {
-            AP.ApplicationStatusUpdate("SECEOPROCESS", "APPROVED", lblDOCSEConfirmApproveAppNumber.Text);
+            AP.ApplicationStatusUpdate("SECEOPROCESS", "APPROVED", lblCEOSEConfirmApproveAppNumber.Text);
             this.FillGridSelfEmployment();
         }
         protected void btnCEOSEConfirmWaitingApplication_Click(object sender, EventArgs e)

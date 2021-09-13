@@ -1706,11 +1706,13 @@
 
                 <asp:Panel ID="PnlOtherDetailsa" CssClass="modalPopup PopupPanel" runat="server" Visible="false">
                     <div class="flex-container">
-                         <div class="form-row">
-                    <div class="Popup-row-label">
-                                                    <asp:TextBox ID="txtDOB" runat="server" CssClass="NeoTextBox" AutoPostBack="true"></asp:TextBox>
-                        </div></div></div>
-                    </asp:Panel>
+                        <div class="form-row">
+                            <div class="Popup-row-label">
+                                <asp:TextBox ID="txtDOB" runat="server" CssClass="NeoTextBox" AutoPostBack="true"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
 
              <%--Pop-Up--%>
                 <%--Bank Details--%>

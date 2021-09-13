@@ -81,6 +81,7 @@ namespace KACDC.WebServices
                             SE.BankDetails = "";
                             SE.LoanPurpose = rdr["LoanPurpose"].ToString();
                             SE.ApplicationAppliedDate = rdr["ApplicationAppliedDate"].ToString();
+                            SE.ApprovedDate = rdr["ApprovedDate"].ToString();
                             SE.BankUpdate = rdr["BankUpdate"].ToString();
                             SE.AadhaarNumber = "";
                             SE.Zone = rdr["ZoneName"].ToString();

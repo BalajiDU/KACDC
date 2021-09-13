@@ -53,6 +53,7 @@ namespace KACDC.Class.Declaration.WebServices
         public string Zone { get; set; }
         public string Error { get; set; }
         public string Taluk { get; set; }
+        public string ApprovedDate { get; set; }
 
     }
 }

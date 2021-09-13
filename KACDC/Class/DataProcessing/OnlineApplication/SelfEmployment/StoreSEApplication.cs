@@ -60,6 +60,7 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
                         cmd.Parameters.AddWithValue("@ParTaluk", ParTaluk);
                         cmd.Parameters.AddWithValue("@ContTaluk", ContTaluk);
+                        cmd.Parameters.AddWithValue("@ImgCandidate", DBNull.Value);
                         //cmd.Parameters.AddWithValue("@ContTaluk", DBNull.Value);
                         //cmd.Parameters.AddWithValue("@ImgSignature", DBNull.Value);
                         //cmd.Parameters.AddWithValue("@ImgAadharFront", DBNull.Value);
@@ -83,6 +84,9 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
             }
             catch(SqlException e)
             {
+                if (e.Message.Contains("UNIQUE KEY CONSTRAINT"))
+                    return "Application already exist"; 
+                else
                 return "SQL Exception" + e.Message;
             }
             catch(Exception e)

@@ -649,7 +649,61 @@ namespace KACDC.ApprovalPage
         }
         protected void btnZMARBDUpdate_Click(object sender, EventArgs e)
         {
-
+            if (lblZMARBDUpdateApplicationNumber.Text != "")
+            {
+                if (txtZMARBDUpdateAccountNumber.Text.Trim() != "")
+                {
+                    if (txtZMARBDUpdateBankName.Text.Trim() != "")
+                    {
+                        if (txtZMARBDUpdateBranchName.Text.Trim() != "")
+                        {
+                            if (txtZMARBDUpdateIFSCCode.Text.Trim() != "")
+                            {
+                                if (txtZMARBDUpdateBankAddress.Text.Trim() != "")
+                                {
+                                    if (drpZMARBankModifyReason.SelectedValue != "0")
+                                    {
+                                        UBD.UpdateBankDetailsToDB(lblZMARBDUpdateApplicationNumber.Text, txtZMARBDUpdateAccountNumber.Text.Trim(), txtZMARBDUpdateBankName.Text.Trim(), txtZMARBDUpdateIFSCCode.Text.Trim(), txtZMARBDUpdateBranchName.Text.Trim(), txtZMARBDUpdateBankAddress.Text.Trim()
+                                            , drpZMARBankModifyReason.SelectedValue, lblZMARBDUpdateAccountHolderName.Text, "Arivu");
+                                        this.FillGridArivu();
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("sELECT REASON", this);
+                                        ZMARBankDetailsUpdatePopup.Show();
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("Enter bank address", this);
+                                    ZMARBankDetailsUpdatePopup.Show();
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("Enter IFSC Code", this);
+                                ZMARBankDetailsUpdatePopup.Show();
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("Enter Branch Name", this);
+                            ZMARBankDetailsUpdatePopup.Show();
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Enter Bank Name", this);
+                        ZMARBankDetailsUpdatePopup.Show();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Enter Application Number", this);
+                    ZMARBankDetailsUpdatePopup.Show();
+                }
+            }
+           // UBD.UpdateBankDetailsToDB();
         }
 
 
@@ -719,7 +773,61 @@ namespace KACDC.ApprovalPage
         
         protected void btnZMSEBDUpdate_Click(object sender, EventArgs e)
         {
-
+            if (lblZMSEBDUpdateApplicationNumber.Text != "")
+            {
+                if (txtZMSEBDUpdateAccountNumber.Text.Trim()!="")
+                {
+                    if (txtZMSEBDUpdateBankName.Text.Trim() != "")
+                    {
+                        if (txtZMSEBDUpdateBranchName.Text.Trim() != "")
+                        {
+                            if (txtZMSEBDUpdateIFSCCode.Text.Trim() != "")
+                            {
+                                if (txtZMSEBDUpdateBankAddress.Text.Trim() != "")
+                                {
+                                    if (drpZMSEBankModifyReason.SelectedValue != "0")
+                                    {
+                                        UBD.UpdateBankDetailsToDB(lblZMSEBDUpdateApplicationNumber.Text, txtZMSEBDUpdateAccountNumber.Text.Trim(), txtZMSEBDUpdateBankName.Text.Trim(), txtZMSEBDUpdateIFSCCode.Text.Trim(), txtZMSEBDUpdateBranchName.Text.Trim(), txtZMSEBDUpdateBankAddress.Text.Trim()
+                                            , drpZMSEBankModifyReason.SelectedValue, lblZMSEBDUpdateAccountHolderName.Text, "SE");
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("sELECT REASON", this);
+                                        ZMSEBankDetailsUpdatePopup.Show();
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("Enter bank address", this);
+                                    ZMSEBankDetailsUpdatePopup.Show();
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("Enter IFSC Code", this);
+                                ZMSEBankDetailsUpdatePopup.Show();
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("Enter Branch Name", this);
+                            ZMSEBankDetailsUpdatePopup.Show();
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Enter Bank Name", this);
+                        ZMSEBankDetailsUpdatePopup.Show();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Enter Application Number", this);
+                    ZMSEBankDetailsUpdatePopup.Show();
+                }
+            }
+            //UBD.UpdateBankDetailsToDB();
+            this.FillGridSelfEmployment();
         }
         
         

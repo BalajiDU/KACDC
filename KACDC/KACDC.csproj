@@ -322,10 +322,12 @@
     <Content Include="WebServices\FetchSelfEmploymentData.asmx" />
     <Content Include="WebServices\GetCollegeDetails.asmx" />
     <Content Include="WebServices\Get_AR_Applications.asmx" />
+    <Content Include="WebServices\Get_Payments.asmx" />
     <Content Include="WebServices\Get_SE_Applications.asmx" />
     <Content Include="WebServices\KACDCMahitiKanaja.asmx" />
     <Content Include="WebServices\KACDC_Send_Message.asmx" />
     <Content Include="WebServices\NadaKacheri_GetData.asmx" />
+    <Content Include="WebServices\RcoveryStats.asmx" />
     <Content Include="WebServices\SelfEmploymentData.asmx" />
     <Content Include="WebServices\TallyApprovedData.asmx" />
     <Content Include="ZM_Form.aspx" />
@@ -555,6 +557,8 @@
     <Compile Include="Class\Declaration\WebServices\WSARWebService.cs" />
     <Compile Include="Class\Declaration\WebServices\WSError.cs" />
     <Compile Include="Class\Declaration\WebServices\WSMahitiKhanaja.cs" />
+    <Compile Include="Class\Declaration\WebServices\WSPayment.cs" />
+    <Compile Include="Class\Declaration\WebServices\WSPaymentStatistics.cs" />
     <Compile Include="Class\Declaration\WebServices\WSSEWebService.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
@@ -776,6 +780,10 @@
       <DependentUpon>Get_AR_Applications.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WebServices\Get_Payments.asmx.cs">
+      <DependentUpon>Get_Payments.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebServices\Get_SE_Applications.asmx.cs">
       <DependentUpon>Get_SE_Applications.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -790,6 +798,10 @@
     </Compile>
     <Compile Include="WebServices\NadaKacheri_GetData.asmx.cs">
       <DependentUpon>NadaKacheri_GetData.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\RcoveryStats.asmx.cs">
+      <DependentUpon>RcoveryStats.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebServices\SelfEmploymentData.asmx.cs">
