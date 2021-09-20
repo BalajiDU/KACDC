@@ -40,7 +40,7 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
 
             //Todo
             //pdfDoc.Add(PrintPageHeading(phrase, "Self Employment Loan"));
-            PdfPCell cellWithRowspan = new PdfPCell(LOGO.ImageCell("~/Image/KACDC_PDF.png", 30f, PdfPCell.ALIGN_CENTER, BaseColor.BLACK));
+            PdfPCell cellWithRowspan = new PdfPCell(LOGO.ImageCell("~/Files_SelfEmployment/AadhaarApplicantPhoto/" + ApplicationNumber + ".png", 30f, PdfPCell.ALIGN_CENTER, BaseColor.BLACK));
 
             //System.Drawing.Image imageBIt = ConvertTextToImage("ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ನನಗೆ ತಿಳಿದ<br />ABCjhk", "Arial", 10, Color.Yellow, Color.Black);
             //iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(imageBIt, System.Drawing.Imaging.ImageFormat.Jpeg);

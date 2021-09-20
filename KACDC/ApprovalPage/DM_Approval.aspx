@@ -117,6 +117,7 @@
                                             <li><a class="nav-item nav-link" id="nav-NavCEOSEAppnProcess-tab" data-toggle="tab" href="#nav-NavCEOSEAppnProcess" role="tab" aria-controls="nav-NavCEOSEAppnProcess" aria-selected="false">CEO Committee</a></li>
                                             <li><a class="nav-item nav-link" id="nav-NavDOCSEAppnProcess-tab" data-toggle="tab" href="#nav-NavDOCSEAppnProcess" role="tab" aria-controls="nav-NavDOCSEAppnProcess" aria-selected="false">Document Verification</a></li>
                                             <li><a class="nav-item nav-link" id="nav-NavDMSEAppnStatus-tab" data-toggle="tab" href="#nav-NavDMSEAppnStatus" role="tab" aria-controls="nav-NavDMSEAppnStatus" aria-selected="false">Application Status</a></li>
+                                            <li><a class="nav-item nav-link" id="nav-NavDMSERepaymentStats-tab" data-toggle="tab" href="#nav-NavDMSERepaymentStats" role="tab" aria-controls="nav-NavDMSERepaymentStats" aria-selected="false">Repayment Stats</a></li>
                                             <li><a class="nav-item nav-link" id="nav-NavDMSEMobileUpdate-tab" data-toggle="tab" href="#nav-NavDMSEMobileUpdate" role="tab" aria-controls="nav-NavDMSEMobileUpdate" aria-selected="false">Application Update</a></li>
                                         </ul>
                                     </li>
@@ -503,7 +504,7 @@
                                 BackgroundCssClass="modalBackground">
                             </cc1:ModalPopupExtender>
                                     <div class="text-center">
-                                        <asp:Button ID="btnOldProcess" class="DownloadButton" Text="Continue To 2019-20 Process" ForeColor="LightGoldenrodYellow" runat="server" OnClick="btnOldProcess_Click" />
+                                        <asp:Button ID="btnOldProcess" class="DownloadButton" Text="Continue To 2019-20 Process" ForeColor="LightGoldenrodYellow" Visible="false" runat="server" OnClick="btnOldProcess_Click" />
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-NavDMARAppnProcess" role="tabpanel" aria-labelledby="nav-NavDMARAppnProcess-tab">
@@ -2083,7 +2084,7 @@
                                                                     <asp:Label ID="Label194" runat="server">Account Holder Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblARRenewalBAccountHolderName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblARRenewalBDAccountHolderName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -2091,7 +2092,7 @@
                                                                     <asp:Label ID="Label195" runat="server">Account Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblARRenewalBAccountNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblARRenewalBDAccountNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -2099,7 +2100,7 @@
                                                                     <asp:Label ID="Label196" runat="server">Bank Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblARRenewalBBankName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblARRenewalBDBankName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -2107,7 +2108,7 @@
                                                                     <asp:Label ID="Label197" runat="server">Branch Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblARRenewalBBranch" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblARRenewalBDBranchName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -2115,7 +2116,7 @@
                                                                     <asp:Label ID="Label198" runat="server">IFSC Code</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblARRenewalBIFSCCode" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblARRenewalBDIFSCCode" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -2124,7 +2125,7 @@
                                                                     <asp:Label ID="Label199" runat="server">Address</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblARRenewalBBankAddress" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblARRenewalBDBankAddress" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -4044,6 +4045,86 @@
                                         </ProgressTemplate>
                                     </asp:UpdateProgress>
                                 </div>
+
+                                <div class="tab-pane fade" id="nav-NavDMSERepaymentStats" role="tabpanel" aria-labelledby="nav-NavDMSERepaymentStats-tab">
+                                    <asp:UpdatePanel ID="UpdatePanelDMSERepaymentStats" runat="server">
+                                        <ContentTemplate>
+                                            <div class="flex-container ContantMain" id="div6" runat="server">
+                                                <div class="NeumorphicDiv">
+                                                    <div class="navFormHeading">
+                                                        <asp:Label runat="server">Repayment Stats</asp:Label>
+                                                    </div>
+                                                    <div><asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ApplicationNumber"  RowHeaderColumn="ApplicationNumber" Font-Size="Larger" OnRowDataBound="gvRepaymentStats_RowDataBound">
+                                                            <Columns>
+                                                                <asp:BoundField DataField="ApplicationNumber" HeaderText="Application Number" ReadOnly="True" SortExpression="Application Number" />
+                                                                <asp:BoundField DataField="ApplicantName" HeaderText="Applicant Name" SortExpression="Applicant Name" />
+                                                                <asp:BoundField DataField="LoanAmount" HeaderText="Loan Amount" SortExpression="Loan Amount" />
+                                                                <asp:BoundField DataField="ReleaseDate" HeaderText="Release Date" SortExpression="Release Date" />
+                                                                <%--<asp:BoundField DataField="ZMApprove" HeaderText="ZMApprove" SortExpression="ZMApprove" />
+                    <asp:BoundField DataField="DISTRICT" HeaderText="DISTRICT" SortExpression="DISTRICT" />
+                    <asp:BoundField DataField="ZONE" HeaderText="ZONE" SortExpression="ZONE" />--%>
+                                                                <asp:BoundField DataField="LOANNUMBER" HeaderText="LOAN NUMBER" SortExpression="LOAN NUMBER" />
+                                                                <asp:BoundField DataField="TOTALPAID" HeaderText="TOTAL PAID" ReadOnly="True" SortExpression="TOTAL PAID" />
+                                                                <asp:BoundField DataField="LASTPAID" HeaderText="LAST PAID" ReadOnly="True" SortExpression="LAST PAID" />
+                                                                <asp:BoundField DataField="SINSCNOTPAID" HeaderText="SINSC NO TPAID" ReadOnly="True" SortExpression="SINSC NOT PAID" />
+                                                                <asp:BoundField DataField="INSTALMENT" HeaderText="INSTALMENT" ReadOnly="True" SortExpression="INSTALMENT" />
+                                                                <asp:BoundField DataField="PAYABLEINSTALMENTS" HeaderText="PAYABLE INSTALMENTS" ReadOnly="True" SortExpression="PAYABLE INSTALMENTS" />
+                                                                <asp:BoundField DataField="PAYABLEAMOUNT" HeaderText="PAYABLE AMOUNT" ReadOnly="True" SortExpression="PAYABLE AMOUNT" />
+                                                                <asp:BoundField DataField="REMAININGAMOUNT" HeaderText="REMAINING AMOUNT" ReadOnly="True" SortExpression="REMAINING AMOUNT" />
+                                                            </Columns>
+                                                            <HeaderStyle BackColor="#666666" ForeColor="#CCCCCC" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="Larger" />
+                                                            <RowStyle BackColor="#E7E7E7" BorderColor="#333333" BorderStyle="Solid" HorizontalAlign="Center" VerticalAlign="Middle" Wrap="True" />
+                                                        </asp:GridView>
+
+
+
+
+                                                        <asp:GridView ID="gvRepaymentStats" runat="server" AutoGenerateColumns="False" DataKeyNames="ApplicationNumber"  RowHeaderColumn="ApplicationNumber" Font-Size="Larger" OnRowDataBound="gvRepaymentStats_RowDataBound">
+                                                            <Columns>
+                                                                <asp:BoundField DataField="ApplicationNumber" HeaderText="Application Number" ReadOnly="True" SortExpression="Application Number" />
+                                                                <asp:BoundField DataField="ApplicantName" HeaderText="Applicant Name" SortExpression="Applicant Name" />
+                                                                <asp:BoundField DataField="LoanAmount" HeaderText="Loan Amount" SortExpression="Loan Amount" />
+                                                                <asp:BoundField DataField="ReleaseDate" HeaderText="Release Date" SortExpression="Release Date" />
+                                                                <%--<asp:BoundField DataField="ZMApprove" HeaderText="ZMApprove" SortExpression="ZMApprove" />
+                    <asp:BoundField DataField="DISTRICT" HeaderText="DISTRICT" SortExpression="DISTRICT" />
+                    <asp:BoundField DataField="ZONE" HeaderText="ZONE" SortExpression="ZONE" />--%>
+                                                                <asp:BoundField DataField="LOANNUMBER" HeaderText="LOAN NUMBER" SortExpression="LOAN NUMBER" />
+                                                                <asp:BoundField DataField="TOTALPAID" HeaderText="TOTAL PAID" ReadOnly="True" SortExpression="TOTAL PAID" />
+                                                                <asp:BoundField DataField="LASTPAID" HeaderText="LAST PAID" ReadOnly="True" SortExpression="LAST PAID" />
+                                                                <asp:BoundField DataField="SINSCNOTPAID" HeaderText="SINSC NO TPAID" ReadOnly="True" SortExpression="SINSC NOT PAID" />
+                                                                <asp:BoundField DataField="INSTALMENT" HeaderText="INSTALMENT" ReadOnly="True" SortExpression="INSTALMENT" />
+                                                                <asp:BoundField DataField="PAYABLEINSTALMENTS" HeaderText="PAYABLE INSTALMENTS" ReadOnly="True" SortExpression="PAYABLE INSTALMENTS" />
+                                                                <asp:BoundField DataField="PAYABLEAMOUNT" HeaderText="PAYABLE AMOUNT" ReadOnly="True" SortExpression="PAYABLE AMOUNT" />
+                                                                <asp:BoundField DataField="REMAININGAMOUNT" HeaderText="REMAINING AMOUNT" ReadOnly="True" SortExpression="REMAINING AMOUNT" />
+                                                            </Columns>
+                                                            <HeaderStyle BackColor="#666666" ForeColor="#CCCCCC" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="Larger" />
+                                                            <RowStyle BackColor="#E7E7E7" BorderColor="#333333" BorderStyle="Solid" HorizontalAlign="Center" VerticalAlign="Middle" Wrap="True" />
+                                                        </asp:GridView>
+                                                        <asp:SqlDataSource ID="SqlDataSourcegvRepaymentStats" runat="server" ConnectionString="<%$ ConnectionStrings:KACDCConnectionString %>" SelectCommand="spGetRcoveryStats" SelectCommandType="StoredProcedure">
+                                                            <SelectParameters>
+                                                                <asp:SessionParameter DefaultValue=" " Name="District" SessionField="District" Type="String" />
+                                                            </SelectParameters>
+                                                        </asp:SqlDataSource>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                    <asp:UpdateProgress AssociatedUpdatePanelID="UpdatePanelDMSERepaymentStats" runat="server" DisplayAfter="0">
+                                        <ProgressTemplate>
+                                            <div style="position: fixed; text-align: center; height: 100%; width: 100%; top: 0; right: 0; left: 0; z-index: 9999999; background-color: #000000; opacity: 0.7;">
+                                                <div style="position: absolute; left: 40%; top: 20%;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="300px" height="300px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                                                        <path fill="none" stroke="#ad0000" stroke-width="8" stroke-dasharray="42.76482137044271 42.76482137044271" d="M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40 C88.6 30 95 43.3 95 50s-6.4 20-19.3 20C56.4 70 43.6 30 24.3 30z" stroke-linecap="round" style="transform: scale(0.8); transform-origin: 50px 50px">
+                                                            <animate attributeName="stroke-dashoffset" repeatCount="indefinite" dur="2s" keyTimes="0;1" values="0;256.58892822265625"></animate>
+                                                        </path>
+                                                </div>
+                                            </div>
+                                        </ProgressTemplate>
+                                    </asp:UpdateProgress>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -167,7 +167,7 @@ body {
                         <asp:Label runat="server">WELCOME</asp:Label>
                     </div>
                     <div class="navFormWelcomeDistrict">
-                        <asp:Label ID="Label1" runat="server" Text="KACDC - Message Service"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="KACDC - Tracker Service"></asp:Label>
                     </div>
 
                     <asp:UpdatePanel ID="UpdatePanelMsgService" runat="server" UpdateMode="Conditional">

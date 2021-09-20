@@ -63,22 +63,22 @@
                                 <ul class="mainmenu">
                                     <li><a>Arivu</a>
                                         <ul class="submenu">
-                                            <li><a class="nav-item nav-link" id="nav-NavCwArAppnProcess-tab" data-toggle="tab" href="#nav-NavCwArAppnProcess" role="tab" aria-controls="nav-NavCwArAppnProcess" aria-selected="false">Application Peocess</a></li>
-                                            <li><a class="nav-item nav-link" id="nav-NavCwArAppnStatus-tab" data-toggle="tab" href="#nav-NavCwArAppnStatus" role="tab" aria-controls="nav-NavCwArAppnStatus" aria-selected="false">Application Status</a></li>
+                                            <li><a class="nav-item nav-link" id="nav-NavCWARAppnProcess-tab" data-toggle="tab" href="#nav-NavCWARAppnProcess" role="tab" aria-controls="nav-NavCWARAppnProcess" aria-selected="false">Application Peocess</a></li>
+                                            <li><a class="nav-item nav-link" id="nav-NavCWARAppnStatus-tab" data-toggle="tab" href="#nav-NavCWARAppnStatus" role="tab" aria-controls="nav-NavCWARAppnStatus" aria-selected="false">Application Status</a></li>
 
-                                            <%--<li><a class="nav-item nav-link" id="nav-NavCwArAppnProcess-tab1" data-toggle="tab" href="#NavCwArAppnProcess" role="tab" aria-controls="NavCwArAppnProcess" aria-selected="false">Application Peocess</a></li>
-                                    <li><a data-toggle="tab" href="#NavCwArAppnStatus" aria-controls="NavCwArAppnStatus" role="tab" aria-selected="false">Application Status</a></li>--%>
+                                            <%--<li><a class="nav-item nav-link" id="nav-NavCWARAppnProcess-tab1" data-toggle="tab" href="#NavCWARAppnProcess" role="tab" aria-controls="NavCWARAppnProcess" aria-selected="false">Application Peocess</a></li>
+                                    <li><a data-toggle="tab" href="#NavCWARAppnStatus" aria-controls="NavCWARAppnStatus" role="tab" aria-selected="false">Application Status</a></li>--%>
                                         </ul>
                                     </li>
                                     <li><a>Self Employment</a>
                                         <ul class="submenu">
-                                            <li><a class="nav-item nav-link" id="nav-NavCwSeAppnProcess-tab" data-toggle="tab" href="#nav-NavCwSeAppnProcess" role="tab" aria-controls="nav-NavCwSeAppnProcess" aria-selected="false">Application Peocess</a></li>
-                                            <li><a class="nav-item nav-link" id="nav-NavCwSeAppnStatus-tab" data-toggle="tab" href="#nav-NavCwSeAppnStatus" role="tab" aria-controls="nav-NavCwSeAppnStatus" aria-selected="false">Application Status</a></li>
+                                            <li><a class="nav-item nav-link" id="nav-NavCWSEAppnProcess-tab" data-toggle="tab" href="#nav-NavCWSEAppnProcess" role="tab" aria-controls="nav-NavCWSEAppnProcess" aria-selected="false">Application Peocess</a></li>
+                                            <li><a class="nav-item nav-link" id="nav-NavCWSEAppnStatus-tab" data-toggle="tab" href="#nav-NavCWSEAppnStatus" role="tab" aria-controls="nav-NavCWSEAppnStatus" aria-selected="false">Application Status</a></li>
 
-                                            <%-- <li><a data-toggle="tab" href="#NavCwSeAppnProcess">Application Peocess</a></li>
-                                    <li><a data-toggle="tab" href="#NavCwSeAppnStatus">Application Status</a></li>
-                                    <li><a class="nav-item nav-link" id="nav-NavCwSeAppnProcess-tab1" data-toggle="tab" href="#nav-NavCwSeAppnProcess" role="tab" aria-controls="nav-homePage" aria-selected="true">Application Peocess</a></li>
-                                    <li><a class="nav-item nav-link" id="nav-CwSeAppnStatus-tab" data-toggle="tab" href="#nav-CwSeAppnStatus" role="tab" aria-controls="nav-CwSeAppnStatus" aria-selected="false">Application Status</a></li>
+                                            <%-- <li><a data-toggle="tab" href="#NavCWSEAppnProcess">Application Peocess</a></li>
+                                    <li><a data-toggle="tab" href="#NavCWSEAppnStatus">Application Status</a></li>
+                                    <li><a class="nav-item nav-link" id="nav-NavCWSEAppnProcess-tab1" data-toggle="tab" href="#nav-NavCWSEAppnProcess" role="tab" aria-controls="nav-homePage" aria-selected="true">Application Peocess</a></li>
+                                    <li><a class="nav-item nav-link" id="nav-CWSEAppnStatus-tab" data-toggle="tab" href="#nav-CWSEAppnStatus" role="tab" aria-controls="nav-CWSEAppnStatus" aria-selected="false">Application Status</a></li>
                                     <li><a class="nav-item nav-link" id="nav-ARCEODownload-tab" data-toggle="tab" href="#nav-ARCEODownload" role="tab" aria-controls="nav-homePage" aria-selected="true">CEO Document</a></li>--%>
                                         </ul>
                                     </li>
@@ -236,7 +236,7 @@
                                     </cc1:ModalPopupExtender>
 
                                 </div>
-                                <div class="tab-pane fade" id="nav-NavCwArAppnProcess" role="tabpanel" aria-labelledby="nav-NavCwArAppnProcess-tab">
+                                <div class="tab-pane fade" id="nav-NavCWARAppnProcess" role="tabpanel" aria-labelledby="nav-NavCWARAppnProcess-tab">
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
                                             <div class="flex-container">
@@ -245,7 +245,7 @@
                                                 </div>
                                                 <div class="divGridview">
                                                     <div class="text-center">
-                                                        <asp:GridView ID="gvCwARApproveProcess" runat="server" class="GridView" OnRowDataBound="gvCwARApproveProcess_RowDataBound" AutoGenerateColumns="False" DataKeyNames="ApplicationNumber,ApplicantName,RDNumber,AadharNum,ClgHostel" Style="align-content: center;">
+                                                        <asp:GridView ID="gvCWARApproveProcess" runat="server" class="GridView" OnRowDataBound="gvCWARApproveProcess_RowDataBound" AutoGenerateColumns="False" DataKeyNames="ApplicationNumber,ApplicantName,RDNumber,AadharNum,ClgHostel" Style="align-content: center;">
                                                             <Columns>
                                                                 <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
                                                                     <ItemTemplate>
@@ -310,9 +310,9 @@
 
                                                                 <asp:TemplateField HeaderStyle-CssClass="text-center text-center font-weight-bold" HeaderText="Action" ItemStyle-Width="220">
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="btnCWArApprove" runat="server" OnClick="btnCWArApprove_Click" class="EligibleButton" Text="Eligible" /><br />
-                                                                        <asp:Button ID="btnCWArHold" runat="server" OnClick="btnCWArHold_Click" class="HoldButton" Text="Hold" Visible="false" /><br />
-                                                                        <asp:Button ID="btnCWArReject" runat="server" OnClick="btnCWArReject_Click" class="InEligibleButton" Text="Ineligible" />
+                                                                        <asp:Button ID="btnCWARApprove" runat="server" OnClick="btnCWARApprove_Click" class="EligibleButton" Text="Eligible" /><br />
+                                                                        <asp:Button ID="btnCWARHold" runat="server" OnClick="btnCWARHold_Click" class="HoldButton" Text="Hold" Visible="false" /><br />
+                                                                        <asp:Button ID="btnCWARReject" runat="server" OnClick="btnCWARReject_Click" class="InEligibleButton" Text="Ineligible" />
                                                                     </ItemTemplate>
                                                                     <HeaderStyle CssClass="text-center text-center font-weight-bold" />
                                                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
@@ -336,7 +336,7 @@
                                                                     <asp:Label ID="Label1" runat="server">Application Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARBDApplicationNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARBDApplicationNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -344,7 +344,7 @@
                                                                     <asp:Label ID="Label38" runat="server">Account Holder Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARBAccountHolderName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARBDAccountHolderName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -352,7 +352,7 @@
                                                                     <asp:Label ID="Label16" runat="server">Account Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARBAccountNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARBDAccountNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -360,7 +360,7 @@
                                                                     <asp:Label ID="Label17" runat="server">Bank Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARBBankName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARBDBankName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -368,7 +368,7 @@
                                                                     <asp:Label ID="Label13" runat="server">Branch Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARBBranch" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARBDBranchName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -376,7 +376,7 @@
                                                                     <asp:Label ID="Label18" runat="server">IFSC Code</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARBIFSCCode" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARBDIFSCCode" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -385,7 +385,7 @@
                                                                     <asp:Label ID="Label14" runat="server">Address</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARBBankAddress" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARBDBankAddress" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -400,11 +400,11 @@
                                                 </asp:Panel>
 
                                                 <asp:LinkButton ID="lnkBankDetailsFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="BankDetailsPopup" runat="server" TargetControlID="lnkBankDetailsFake" PopupControlID="PnlBankDetails"
+                                                <cc1:ModalPopupExtender ID="CWARBankDetailsPopup" runat="server" TargetControlID="lnkBankDetailsFake" PopupControlID="PnlBankDetails"
                                                     BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
-                                                <asp:Panel ID="PnlCwArConfirmReject" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
+                                                <asp:Panel ID="PnlCWARConfirmReject" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
                                                     <div class="Popup-flex-container">
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
@@ -417,7 +417,7 @@
                                                                     <asp:Label ID="Label36" runat="server">Application Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwArConfirmRejectAppNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARConfirmRejectAppNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -425,7 +425,7 @@
                                                                     <asp:Label ID="Label25" runat="server" Text="Applicant Name"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwArConfirmRejectAppName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARConfirmRejectAppName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -433,36 +433,36 @@
                                                                     <asp:Label ID="Label35" runat="server"> Select Reason<span style="color:red"> *</span></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input" style="flex-direction: column">
-                                                                    <asp:RadioButton ID="rbCWArConfirmRejectReasonName" runat="server" Class="radioButton" GroupName="CWARConfirmRejectReason" Text="Name Mismatch" AutoPostBack="true" OnCheckedChanged="rbCWArConfirmRejectReasonName_CheckedChanged" /><br />
-                                                                    <asp:RadioButton ID="rbCWArConfirmRejectReasonCET" runat="server" Class="radioButton" GroupName="CWARConfirmRejectReason" Text="Invalid CET Certificate" AutoPostBack="true" OnCheckedChanged="rbCWArConfirmRejectReasonName_CheckedChanged" /><br />
-                                                                    <asp:RadioButton ID="rbCWArConfirmRejectReasonOther" runat="server" Class="radioButton" GroupName="CWARConfirmRejectReason" Text="Other" AutoPostBack="true" OnCheckedChanged="rbCWArConfirmRejectReasonName_CheckedChanged" /><br />
+                                                                    <asp:RadioButton ID="rbCWARConfirmRejectReasonName" runat="server" Class="radioButton" GroupName="CWARConfirmRejectReason" Text="Name Mismatch" AutoPostBack="true" OnCheckedChanged="rbCWARConfirmRejectReasonName_CheckedChanged" /><br />
+                                                                    <asp:RadioButton ID="rbCWARConfirmRejectReasonCET" runat="server" Class="radioButton" GroupName="CWARConfirmRejectReason" Text="Invalid CET Certificate" AutoPostBack="true" OnCheckedChanged="rbCWARConfirmRejectReasonName_CheckedChanged" /><br />
+                                                                    <asp:RadioButton ID="rbCWARConfirmRejectReasonOther" runat="server" Class="radioButton" GroupName="CWARConfirmRejectReason" Text="Other" AutoPostBack="true" OnCheckedChanged="rbCWARConfirmRejectReasonName_CheckedChanged" /><br />
                                                                     <asp:Label runat="server" ID="lblCWARConfirmRejectAppReasonSelectionError" Style="color: red; font-size: 13px"></asp:Label>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-row" id="divCWArRejectReason" runat="server" visible="false">
+                                                            <div class="form-row" id="divCWARRejectReason" runat="server" visible="false">
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCWArRejectLabel" runat="server" Text="Reason"></asp:Label>
+                                                                    <asp:Label ID="lblCWARRejectLabel" runat="server" Text="Reason"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:TextBox ID="txtCwArConfirmRejectAppReason" CssClass="PopupTextBox" Height="80px" runat="server" TextMode="MultiLine"></asp:TextBox>
-                                                                    <asp:Label runat="server" ID="lblCwArConfirmRejectAppReasonError" Style="color: red; font-size: 13px"></asp:Label>
+                                                                    <asp:TextBox ID="txtCWARConfirmRejectAppReason" CssClass="PopupTextBox" Height="80px" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                                                    <asp:Label runat="server" ID="lblCWARConfirmRejectAppReasonError" Style="color: red; font-size: 13px"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Button ID="btnCwArConfirmRejectApplication" runat="server" CssClass="ActionButton" Text="Reject" OnClick="btnCwArConfirmRejectApplication_Click" />
+                                                                    <asp:Button ID="btnCWARConfirmRejectApplication" runat="server" CssClass="ActionButton" Text="Reject" OnClick="btnCWARConfirmRejectApplication_Click" />
                                                                     <asp:Button ID="Button3" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </asp:Panel>
-                                                <asp:LinkButton ID="lnkCwArConfirmRejectFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="CwArConfirmRejectPopup" runat="server" PopupControlID="PnlCwArConfirmReject"
-                                                    TargetControlID="lnkCwArConfirmRejectFake" BackgroundCssClass="modalBackground">
+                                                <asp:LinkButton ID="lnkCWARConfirmRejectFake" runat="server"></asp:LinkButton>
+                                                <cc1:ModalPopupExtender ID="CWARConfirmRejectPopup" runat="server" PopupControlID="PnlCWARConfirmReject"
+                                                    TargetControlID="lnkCWARConfirmRejectFake" BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
-                                                <asp:Panel ID="PnlCwArConfirmHold" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
+                                                <asp:Panel ID="PnlCWARConfirmHold" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
                                                     <div class="Popup-flex-container">
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
@@ -475,7 +475,7 @@
                                                                     <asp:Label ID="Label41" runat="server" Text="Application Number"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwArConfirmHoldAppNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARConfirmHoldAppNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -483,7 +483,7 @@
                                                                     <asp:Label ID="Label43" runat="server" Text="Applicant Name"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwArConfirmHoldAppName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARConfirmHoldAppName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -491,25 +491,25 @@
                                                                     <asp:Label ID="Label45" runat="server" Text="Reason"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:TextBox ID="txtCwArConfirmHoldAppReason" CssClass="PopupTextBox" runat="server" TextMode="MultiLine"></asp:TextBox>
-                                                                    <asp:Label runat="server" ID="lblCwArConfirmHoldAppReasonError" Style="color: red; font-size: 13px"></asp:Label>
+                                                                    <asp:TextBox ID="txtCWARConfirmHoldAppReason" CssClass="PopupTextBox" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                                                    <asp:Label runat="server" ID="lblCWARConfirmHoldAppReasonError" Style="color: red; font-size: 13px"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Button ID="btnCwArConfirmHoldApplication" runat="server" CssClass="ActionButton" Text="Hold" OnClick="btnCwArConfirmHoldApplication_Click" />
+                                                                    <asp:Button ID="btnCWARConfirmHoldApplication" runat="server" CssClass="ActionButton" Text="Hold" OnClick="btnCWARConfirmHoldApplication_Click" />
                                                                     <asp:Button ID="Button8" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </asp:Panel>
-                                                <asp:LinkButton ID="lnkCwArConfirmHoldFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="CwArConfirmHoldPopup" runat="server" PopupControlID="PnlCwArConfirmHold"
-                                                    TargetControlID="lnkCwArConfirmHoldFake" BackgroundCssClass="modalBackground">
+                                                <asp:LinkButton ID="lnkCWARConfirmHoldFake" runat="server"></asp:LinkButton>
+                                                <cc1:ModalPopupExtender ID="CWARConfirmHoldPopup" runat="server" PopupControlID="PnlCWARConfirmHold"
+                                                    TargetControlID="lnkCWARConfirmHoldFake" BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
-                                                <asp:Panel ID="PnlCwArConfirmApprove" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
+                                                <asp:Panel ID="PnlCWARConfirmApprove" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
                                                     <div class="Popup-flex-container">
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
@@ -522,7 +522,7 @@
                                                                     <asp:Label ID="Label37" runat="server" Text="Application Number"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwArConfirmApproveAppNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARConfirmApproveAppNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -530,22 +530,22 @@
                                                                     <asp:Label ID="Label40" runat="server" Text="Applicant Name"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwArConfirmApproveAppName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWARConfirmApproveAppName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Button ID="btnCwArConfirmApproveApplication" runat="server" CssClass="ActionButton" Text="Eligible" OnClick="btnCwArConfirmApproveApplication_Click" />
+                                                                    <asp:Button ID="btnCWARConfirmApproveApplication" runat="server" CssClass="ActionButton" Text="Eligible" OnClick="btnCWARConfirmApproveApplication_Click" />
                                                                     <asp:Button ID="Button7" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </asp:Panel>
-                                                <asp:LinkButton ID="lnkCwArConfirmApproveFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="CwArConfirmApprovePopup" runat="server" PopupControlID="PnlCwArConfirmApprove"
-                                                    TargetControlID="lnkCwArConfirmApproveFake" BackgroundCssClass="modalBackground">
+                                                <asp:LinkButton ID="lnkCWARConfirmApproveFake" runat="server"></asp:LinkButton>
+                                                <cc1:ModalPopupExtender ID="CWARConfirmApprovePopup" runat="server" PopupControlID="PnlCWARConfirmApprove"
+                                                    TargetControlID="lnkCWARConfirmApproveFake" BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
                                                 <asp:Panel ID="PnlCollegeDetails" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; height: 90%; width: 80%;">
@@ -561,25 +561,25 @@
                                                                     <asp:Label ID="Label3" runat="server">Application Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARClgPPApplicationNumber" runat="server" Style="color: brown"></asp:Label>
+                                                                    <asp:Label ID="lblCWARClgPPApplicationNumber" runat="server" Style="color: brown"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
                                                                     <asp:Label ID="Label4" runat="server">Name </asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARClgPPApplicationName" runat="server" Style="color: brown"></asp:Label>
+                                                                    <asp:Label ID="lblCWARClgPPApplicationName" runat="server" Style="color: brown"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
                                                                     <asp:Label ID="Label7" runat="server">CET Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARClgPPCETTicket" runat="server" Style="color: brown"></asp:Label>
+                                                                    <asp:Label ID="lblCWARClgPPCETTicket" runat="server" Style="color: brown"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
                                                                     <asp:Label ID="Label19" runat="server">Marks</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARClgPPMarks" runat="server" Style="color: brown"></asp:Label>
+                                                                    <asp:Label ID="lblCWARClgPPMarks" runat="server" Style="color: brown"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -587,25 +587,25 @@
                                                                     <asp:Label ID="Label9" runat="server">College</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARClgPPCollegeName" runat="server" Style="color: brown"></asp:Label>
+                                                                    <asp:Label ID="lblCWARClgPPCollegeName" runat="server" Style="color: brown"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
                                                                     <asp:Label ID="Label11" runat="server">Course</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARClgPPCourse" runat="server" Style="color: brown"></asp:Label>
+                                                                    <asp:Label ID="lblCWARClgPPCourse" runat="server" Style="color: brown"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
                                                                     <asp:Label ID="Label21" runat="server">Hostel</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARClgPPHostel" runat="server" Style="color: brown"></asp:Label>
+                                                                    <asp:Label ID="lblCWARClgPPHostel" runat="server" Style="color: brown"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
                                                                     <asp:Label ID="Label27" runat="server">Address</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwARClgPPClgAddress" runat="server" Style="color: brown"></asp:Label>
+                                                                    <asp:Label ID="lblCWARClgPPClgAddress" runat="server" Style="color: brown"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div>
@@ -628,7 +628,7 @@
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </div>
-                                <div class="tab-pane fade" id="nav-NavCwArAppnStatus" role="tabpanel" aria-labelledby="nav-NavCwArAppnStatus-tab">
+                                <div class="tab-pane fade" id="nav-NavCWARAppnStatus" role="tabpanel" aria-labelledby="nav-NavCWARAppnStatus-tab">
                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                         <ContentTemplate>
                                             <div class="flex-container">
@@ -638,9 +638,9 @@
                                                 <div class="navFormBody">
                                                     <div class="formFlex-row">
                                                         <asp:Label runat="server" class="labelStyle1" Text="Application Number"></asp:Label>
-                                                        <asp:TextBox ID="txtCwArApplicationStatus" class="textboxStyle1" runat="server"></asp:TextBox>
-                                                        <asp:Button ID="btnCwArGetApplicationStatus" runat="server" Text="Get Status" OnClick="btnCwArGetApplicationStatus_Click" />
-                                                        <asp:Panel ID="PnlCWArApplicationStatusDetails" runat="server" CssClass="modalPopup PopupPanel" Width="50%" Style="display: none;">
+                                                        <asp:TextBox ID="txtCWARApplicationStatus" class="textboxStyle1" runat="server"></asp:TextBox>
+                                                        <asp:Button ID="btnCWARGetApplicationStatus" runat="server" Text="Get Status" OnClick="btnCWARGetApplicationStatus_Click" />
+                                                        <asp:Panel ID="PnlCWARApplicationStatusDetails" runat="server" CssClass="modalPopup PopupPanel" Width="50%" Style="display: none;">
                                                             <div class="Popup-flex-container">
                                                                 <div class="">
                                                                     <div class="form-row" style="justify-content: center">
@@ -653,7 +653,7 @@
                                                                             <asp:Label ID="Label47" runat="server">Application Number</asp:Label>
                                                                         </div>
                                                                         <div class="Popup-row-label">
-                                                                            <asp:Label ID="lblCwARAppStatusApplicationNumber" runat="server"></asp:Label>
+                                                                            <asp:Label ID="lblCWARAppStatusApplicationNumber" runat="server"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-row">
@@ -661,7 +661,7 @@
                                                                             <asp:Label ID="Label50" runat="server">Applicant Name</asp:Label>
                                                                         </div>
                                                                         <div class="Popup-row-label">
-                                                                            <asp:Label ID="lblCwARAppStatusApplicationName" runat="server"></asp:Label>
+                                                                            <asp:Label ID="lblCWARAppStatusApplicationName" runat="server"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-row">
@@ -669,7 +669,7 @@
                                                                             <asp:Label ID="Label53" runat="server">Case Worker</asp:Label>
                                                                         </div>
                                                                         <div class="Popup-row-label">
-                                                                            <asp:Label ID="lblCwARAppStatusApplicationCWStat" runat="server"></asp:Label>
+                                                                            <asp:Label ID="lblCWARAppStatusApplicationCWStat" runat="server"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-row">
@@ -677,7 +677,7 @@
                                                                             <asp:Label ID="Label55" runat="server">District Manager</asp:Label>
                                                                         </div>
                                                                         <div class="Popup-row-label">
-                                                                            <asp:Label ID="lblCwARAppStatusApplicationDMStat" runat="server"></asp:Label>
+                                                                            <asp:Label ID="lblCWARAppStatusApplicationDMStat" runat="server"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-row">
@@ -685,7 +685,7 @@
                                                                             <asp:Label ID="Label57" runat="server">CEO Committee</asp:Label>
                                                                         </div>
                                                                         <div class="Popup-row-label">
-                                                                            <asp:Label ID="lblCwARAppStatusApplicationCEOStat" runat="server"></asp:Label>
+                                                                            <asp:Label ID="lblCWARAppStatusApplicationCEOStat" runat="server"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-row">
@@ -693,7 +693,7 @@
                                                                             <asp:Label ID="Label59" runat="server">Documentation</asp:Label>
                                                                         </div>
                                                                         <div class="Popup-row-label">
-                                                                            <asp:Label ID="lblCwARAppStatusApplicationDOCStat" runat="server"></asp:Label>
+                                                                            <asp:Label ID="lblCWARAppStatusApplicationDOCStat" runat="server"></asp:Label>
                                                                         </div>
                                                                     </div>
 
@@ -702,7 +702,7 @@
                                                                             <asp:Label ID="Label61" runat="server">Zonal Manager</asp:Label>
                                                                         </div>
                                                                         <div class="Popup-row-label">
-                                                                            <asp:Label ID="lblCwARAppStatusApplicationZMStat" runat="server"></asp:Label>
+                                                                            <asp:Label ID="lblCWARAppStatusApplicationZMStat" runat="server"></asp:Label>
                                                                         </div>
                                                                     </div>
 
@@ -716,8 +716,8 @@
                                                             </div>
                                                         </asp:Panel>
 
-                                                        <asp:LinkButton ID="lnkCWArApplicationStatusDetailsFake" runat="server"></asp:LinkButton>
-                                                        <cc1:ModalPopupExtender ID="CWArApplicationStatusDetailsPopup" runat="server" TargetControlID="lnkCWArApplicationStatusDetailsFake" PopupControlID="PnlCWArApplicationStatusDetails"
+                                                        <asp:LinkButton ID="lnkCWARApplicationStatusDetailsFake" runat="server"></asp:LinkButton>
+                                                        <cc1:ModalPopupExtender ID="CWARApplicationStatusDetailsPopup" runat="server" TargetControlID="lnkCWARApplicationStatusDetailsFake" PopupControlID="PnlCWARApplicationStatusDetails"
                                                             BackgroundCssClass="modalBackground">
                                                         </cc1:ModalPopupExtender>
                                                     </div>
@@ -726,7 +726,7 @@
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </div>
-                                <div class="tab-pane fade" id="nav-NavCwSeAppnProcess" role="tabpanel" aria-labelledby="nav-NavCwSeAppnProcess-tab">
+                                <div class="tab-pane fade" id="nav-NavCWSEAppnProcess" role="tabpanel" aria-labelledby="nav-NavCWSEAppnProcess-tab">
                                     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                         <ContentTemplate>
                                             <div class="flex-container">
@@ -735,7 +735,7 @@
                                                 </div>
                                                 <div class="divGridview">
                                                     <div class="text-center">
-                                                        <asp:GridView ID="gvCwSEApproveProcess" runat="server" class="GridView" OnRowDataBound="gvCwSEApproveProcess_RowDataBound" AutoGenerateColumns="False" DataKeyNames="ApplicationNumber,RDNumber,AadharNum,ApplicantName" Style="align-content: center;">
+                                                        <asp:GridView ID="gvCWSEApproveProcess" runat="server" class="GridView" OnRowDataBound="gvCWSEApproveProcess_RowDataBound" AutoGenerateColumns="False" DataKeyNames="ApplicationNumber,RDNumber,AadharNum,ApplicantName" Style="align-content: center;">
                                                             <Columns>
                                                                 <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
                                                                     <ItemTemplate>
@@ -795,7 +795,7 @@
                                                                     <ItemTemplate>
                                                                         <asp:Button ID="btnCWSEApprove" runat="server" OnClick="btnCWSEApprove_Click" class="EligibleButton" Text="Eligible" /><br />
                                                                         <asp:Button ID="btnCWSEHold" runat="server" OnClick="btnCWSEHold_Click" class="HoldButton" Text="Hold" Visible="false" /><br />
-                                                                        <asp:Button ID="btnCWASEReject" runat="server" OnClick="btnCWASEReject_Click" class="InEligibleButton" Text="Ineligible" />
+                                                                        <asp:Button ID="btnCWASEReject" runat="server" OnClick="btnCWSEReject_Click" class="InEligibleButton" Text="Ineligible" />
                                                                     </ItemTemplate>
                                                                     <HeaderStyle CssClass="text-center text-center font-weight-bold" Width="6%" />
                                                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -806,7 +806,7 @@
                                                     </div>
                                                 </div>
 
-                                                <asp:Panel ID="PnlCwSEBankDetails" runat="server" CssClass="modalPopup PopupPanel" Width="50%" Style="display: none;">
+                                                <asp:Panel ID="PnlCWSEBankDetails" runat="server" CssClass="modalPopup PopupPanel" Width="50%" Style="display: none;">
                                                     <div class="Popup-flex-container">
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
@@ -819,7 +819,7 @@
                                                                     <asp:Label ID="Label6" runat="server">Application Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEBDApplicationNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEBDApplicationNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -827,7 +827,7 @@
                                                                     <asp:Label ID="Label8" runat="server">Account Holder Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEBDAccountHolderName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEBDAccountHolderName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -835,7 +835,7 @@
                                                                     <asp:Label ID="Label10" runat="server">Account Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEBDAccountNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEBDAccountNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -843,7 +843,7 @@
                                                                     <asp:Label ID="Label12" runat="server">Bank Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEBDBankName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEBDBankName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -851,7 +851,7 @@
                                                                     <asp:Label ID="Label20" runat="server">Branch Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEBDBranchName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEBDBranchName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -859,7 +859,7 @@
                                                                     <asp:Label ID="Label22" runat="server">IFSC Code</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEBDIFSCCode" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEBDIFSCCode" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -868,7 +868,7 @@
                                                                     <asp:Label ID="Label28" runat="server">Address</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEBDBankAddress" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEBDBankAddress" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -880,12 +880,12 @@
                                                         </div>
                                                     </div>
                                                 </asp:Panel>
-                                                <asp:LinkButton ID="lnkCwSEBankDetailsFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="CwSEBankDetailsPopup" runat="server" TargetControlID="lnkCwSEBankDetailsFake" PopupControlID="PnlCwSEBankDetails"
+                                                <asp:LinkButton ID="lnkCWSEBankDetailsFake" runat="server"></asp:LinkButton>
+                                                <cc1:ModalPopupExtender ID="CWSEBankDetailsPopup" runat="server" TargetControlID="lnkCWSEBankDetailsFake" PopupControlID="PnlCWSEBankDetails"
                                                     BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
-                                                <asp:Panel ID="PnlCwSEConfirmHold" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
+                                                <asp:Panel ID="PnlCWSEConfirmHold" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
                                                     <div class="Popup-flex-container">
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
@@ -898,7 +898,7 @@
                                                                     <asp:Label ID="Label34" runat="server" Text="Application Number"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwSEConfirmHoldAppNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEConfirmHoldAppNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -906,7 +906,7 @@
                                                                     <asp:Label ID="Label42" runat="server" Text="Applicant Name"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwSEConfirmHoldAppName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEConfirmHoldAppName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -914,25 +914,25 @@
                                                                     <asp:Label ID="Label46" runat="server" Text="Reason"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:TextBox ID="txtCwSEConfirmHoldAppReason" CssClass="PopupTextBox" runat="server" TextMode="MultiLine"></asp:TextBox>
-                                                                    <asp:Label runat="server" ID="lblCwSEConfirmHoldAppReasonError" Style="color: red; font-size: 13px"></asp:Label>
+                                                                    <asp:TextBox ID="txtCWSEConfirmHoldAppReason" CssClass="PopupTextBox" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                                                    <asp:Label runat="server" ID="lblCWSEConfirmHoldAppReasonError" Style="color: red; font-size: 13px"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Button ID="btnCwSEConfirmHoldApplication" runat="server" CssClass="ActionButton" Text="Hold" OnClick="btnCwSEConfirmHoldApplication_Click" />
+                                                                    <asp:Button ID="btnCWSEConfirmHoldApplication" runat="server" CssClass="ActionButton" Text="Hold" OnClick="btnCWSEConfirmHoldApplication_Click" />
                                                                     <asp:Button ID="Button5" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </asp:Panel>
-                                                <asp:LinkButton ID="lnkCwSEConfirmHoldFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="CwSEConfirmHoldPopup" runat="server" PopupControlID="PnlCwSEConfirmHold"
-                                                    TargetControlID="lnkCwSEConfirmHoldFake" BackgroundCssClass="modalBackground">
+                                                <asp:LinkButton ID="lnkCWSEConfirmHoldFake" runat="server"></asp:LinkButton>
+                                                <cc1:ModalPopupExtender ID="CWSEConfirmHoldPopup" runat="server" PopupControlID="PnlCWSEConfirmHold"
+                                                    TargetControlID="lnkCWSEConfirmHoldFake" BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
-                                                <asp:Panel ID="PnlCwSEConfirmApprove" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
+                                                <asp:Panel ID="PnlCWSEConfirmApprove" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
                                                     <div class="Popup-flex-container">
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
@@ -945,7 +945,7 @@
                                                                     <asp:Label ID="Label49" runat="server" Text="Application Number"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwSEConfirmApproveAppNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEConfirmApproveAppNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -953,25 +953,25 @@
                                                                     <asp:Label ID="Label51" runat="server" Text="Applicant Name"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwSEConfirmApproveAppName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEConfirmApproveAppName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Button ID="btnCwSEConfirmApproveApplication" runat="server" CssClass="ActionButton" Text="Eligible" OnClick="btnCwSEConfirmApproveApplication_Click" />
+                                                                    <asp:Button ID="btnCWSEConfirmApproveApplication" runat="server" CssClass="ActionButton" Text="Eligible" OnClick="btnCWSEConfirmApproveApplication_Click" />
                                                                     <asp:Button ID="Button10" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </asp:Panel>
-                                                <asp:LinkButton ID="lnkCwSEConfirmApproveFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="CwSEConfirmApprovePopup" runat="server" PopupControlID="PnlCwSEConfirmApprove"
-                                                    TargetControlID="lnkCwSEConfirmApproveFake" BackgroundCssClass="modalBackground">
+                                                <asp:LinkButton ID="lnkCWSEConfirmApproveFake" runat="server"></asp:LinkButton>
+                                                <cc1:ModalPopupExtender ID="CWSEConfirmApprovePopup" runat="server" PopupControlID="PnlCWSEConfirmApprove"
+                                                    TargetControlID="lnkCWSEConfirmApproveFake" BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
-                                                <asp:Panel ID="PnlCwSERejectReason" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
+                                                <asp:Panel ID="PnlCWSERejectReason" runat="server" CssClass="modalPopup" Width="50%" Style="display: none">
                                                     <div class="Popup-flex-container">
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
@@ -984,7 +984,7 @@
                                                                     <asp:Label ID="Label31" runat="server" Text="Application Number"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwSEConfirmRejectAppNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEConfirmRejectAppNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -992,7 +992,7 @@
                                                                     <asp:Label ID="Label33" runat="server" Text="Applicant Name"></asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Label ID="lblCwSEConfirmRejectAppName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEConfirmRejectAppName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1011,28 +1011,28 @@
                                                                 </div>
                                                                 <div class="Popup-row-input">
                                                                     <asp:TextBox ID="txtCWSEConfirmRejectAppReason" CssClass="PopupTextBox" Style="height: 80px" runat="server" TextMode="MultiLine"></asp:TextBox>
-                                                                    <asp:Label runat="server" ID="lblCwSEConfirmRejectAppReasonError" Style="color: red; font-size: 13px"></asp:Label>
+                                                                    <asp:Label runat="server" ID="lblCWSEConfirmRejectAppReasonError" Style="color: red; font-size: 13px"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Button ID="btnCwSEConfirmRejectApplication" runat="server" CssClass="ActionButton" Text="Reject" OnClick="btnCwSEConfirmRejectApplication_Click" />
+                                                                    <asp:Button ID="btnCWSEConfirmRejectApplication" runat="server" CssClass="ActionButton" Text="Reject" OnClick="btnCWSEConfirmRejectApplication_Click" />
                                                                     <asp:Button ID="Button4" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </asp:Panel>
-                                                <asp:LinkButton ID="lnkCwSERejectReasonFake" runat="server"></asp:LinkButton>
-                                                <cc1:ModalPopupExtender ID="CwSEConfirmRejectPopup" runat="server" PopupControlID="PnlCwSERejectReason"
-                                                    TargetControlID="lnkCwSERejectReasonFake" BackgroundCssClass="modalBackground">
+                                                <asp:LinkButton ID="lnkCWSERejectReasonFake" runat="server"></asp:LinkButton>
+                                                <cc1:ModalPopupExtender ID="CWSEConfirmRejectPopup" runat="server" PopupControlID="PnlCWSERejectReason"
+                                                    TargetControlID="lnkCWSERejectReasonFake" BackgroundCssClass="modalBackground">
                                                 </cc1:ModalPopupExtender>
 
                                             </div>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </div>
-                                <div class="tab-pane fade" id="nav-NavCwSeAppnStatus" role="tabpanel" aria-labelledby="nav-NavCwSeAppnStatus-tab">
+                                <div class="tab-pane fade" id="nav-NavCWSEAppnStatus" role="tabpanel" aria-labelledby="nav-NavCWSEAppnStatus-tab">
                                     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                         <ContentTemplate>
                                             <div class="flex-container">
@@ -1042,8 +1042,8 @@
                                                 <div class="navFormBody">
                                                     <div class="formFlex-row">
                                                         <asp:Label runat="server" class="labelStyle1" Text="Application Number"></asp:Label>
-                                                        <asp:TextBox ID="txtCwSEApplicationStatus" class="textboxStyle1" runat="server"></asp:TextBox>
-                                                        <asp:Button ID="btnCwSEGetApplicationStatus" runat="server" Text="Get Status" OnClick="btnCwSEGetApplicationStatus_Click" />
+                                                        <asp:TextBox ID="txtCWSEApplicationStatus" class="textboxStyle1" runat="server"></asp:TextBox>
+                                                        <asp:Button ID="btnCWSEGetApplicationStatus" runat="server" Text="Get Status" OnClick="btnCWSEGetApplicationStatus_Click" />
                                                     </div>
                                                 </div>
                                                 <asp:Panel ID="PnlCWSEApplicationStatusDetails" runat="server" CssClass="modalPopup PopupPanel" Width="50%" Style="display: none;">
@@ -1059,7 +1059,7 @@
                                                                     <asp:Label ID="Label52" runat="server">Application Number</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEAppStatusApplicationNumber" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEAppStatusApplicationNumber" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1067,7 +1067,7 @@
                                                                     <asp:Label ID="Label56" runat="server">Applicant Name</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEAppStatusApplicationName" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEAppStatusApplicationName" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1075,7 +1075,7 @@
                                                                     <asp:Label ID="Label60" runat="server">Case Worker</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEAppStatusApplicationCWStat" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEAppStatusApplicationCWStat" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1083,7 +1083,7 @@
                                                                     <asp:Label ID="Label63" runat="server">District Manager</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEAppStatusApplicationDMStat" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEAppStatusApplicationDMStat" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1091,7 +1091,7 @@
                                                                     <asp:Label ID="Label65" runat="server">CEO Committee</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEAppStatusApplicationCEOStat" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEAppStatusApplicationCEOStat" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1099,7 +1099,7 @@
                                                                     <asp:Label ID="Label67" runat="server">Documentation</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEAppStatusApplicationDOCStat" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEAppStatusApplicationDOCStat" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 
@@ -1108,7 +1108,7 @@
                                                                     <asp:Label ID="Label69" runat="server">Zonal Manager</asp:Label>
                                                                 </div>
                                                                 <div class="Popup-row-label">
-                                                                    <asp:Label ID="lblCwSEAppStatusApplicationZMStat" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblCWSEAppStatusApplicationZMStat" runat="server"></asp:Label>
                                                                 </div>
                                                             </div>
 

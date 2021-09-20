@@ -1697,7 +1697,7 @@
                                 <asp:Button ID="btnPreviewEditBankDetails" runat="server" Visible="false" CssClass="NeoButton"  OnClick="btnPreviewEditBankDetails_Click" Text="Edit Bank Details" onpaste="return false" AutoCompleteType="Disabled" />
                             </div>
                              <div class="form-row-Button">
-                                <asp:Button ID="btnPreviewSubmitApplication" runat="server" CssClass="NeoButton"  OnClick="btnPreviewSubmitApplication_Click" Text="Submit Application" onpaste="return false" AutoCompleteType="Disabled" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
+                                <asp:Button ID="btnPreviewSubmitApplication" runat="server" CssClass="NeoButton"  OnClick="btnPreviewSubmitApplication_Click" Text="Submit Application" onpaste="return false" AutoCompleteType="Disabled" UseSubmitBehavior="false"  /><%--OnClientClick="this.disabled='true'; this.value='Please wait...';"--%>
                             </div>
 
                         </div>

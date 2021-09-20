@@ -60,7 +60,7 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
                         cmd.Parameters.AddWithValue("@ParTaluk", ParTaluk);
                         cmd.Parameters.AddWithValue("@ContTaluk", ContTaluk);
-                        cmd.Parameters.AddWithValue("@ImgCandidate", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ImgCandidate", System.Data.SqlTypes.SqlBinary.Null);
                         //cmd.Parameters.AddWithValue("@ContTaluk", DBNull.Value);
                         //cmd.Parameters.AddWithValue("@ImgSignature", DBNull.Value);
                         //cmd.Parameters.AddWithValue("@ImgAadharFront", DBNull.Value);
@@ -71,8 +71,8 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         cmd.Parameters.AddWithValue("@LoanDescription", LoanDescription);
                         cmd.Parameters.AddWithValue("@ApplicantNameNC", ApplicantNameNC);
 
-                        cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
-                        cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
+                        //cmd.Parameters.AddWithValue("@AppliedDate", Convert.ToDateTime(AppliedDate));
+                        //cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
 
                         kvdConn.Open();
                         cmd.ExecuteNonQuery();

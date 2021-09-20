@@ -3685,13 +3685,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label194;
         
         /// <summary>
-        /// lblARRenewalBAccountHolderName control.
+        /// lblARRenewalBDAccountHolderName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblARRenewalBAccountHolderName;
+        protected global::System.Web.UI.WebControls.Label lblARRenewalBDAccountHolderName;
         
         /// <summary>
         /// Label195 control.
@@ -3703,13 +3703,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label195;
         
         /// <summary>
-        /// lblARRenewalBAccountNumber control.
+        /// lblARRenewalBDAccountNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblARRenewalBAccountNumber;
+        protected global::System.Web.UI.WebControls.Label lblARRenewalBDAccountNumber;
         
         /// <summary>
         /// Label196 control.
@@ -3721,13 +3721,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label196;
         
         /// <summary>
-        /// lblARRenewalBBankName control.
+        /// lblARRenewalBDBankName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblARRenewalBBankName;
+        protected global::System.Web.UI.WebControls.Label lblARRenewalBDBankName;
         
         /// <summary>
         /// Label197 control.
@@ -3739,13 +3739,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label197;
         
         /// <summary>
-        /// lblARRenewalBBranch control.
+        /// lblARRenewalBDBranchName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblARRenewalBBranch;
+        protected global::System.Web.UI.WebControls.Label lblARRenewalBDBranchName;
         
         /// <summary>
         /// Label198 control.
@@ -3757,13 +3757,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label198;
         
         /// <summary>
-        /// lblARRenewalBIFSCCode control.
+        /// lblARRenewalBDIFSCCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblARRenewalBIFSCCode;
+        protected global::System.Web.UI.WebControls.Label lblARRenewalBDIFSCCode;
         
         /// <summary>
         /// Label199 control.
@@ -3775,13 +3775,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label199;
         
         /// <summary>
-        /// lblARRenewalBBankAddress control.
+        /// lblARRenewalBDBankAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblARRenewalBBankAddress;
+        protected global::System.Web.UI.WebControls.Label lblARRenewalBDBankAddress;
         
         /// <summary>
         /// Button31 control.
@@ -7562,5 +7562,50 @@ namespace KACDC.ApprovalPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSEUDNewEmailID;
+        
+        /// <summary>
+        /// UpdatePanelDMSERepaymentStats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelDMSERepaymentStats;
+        
+        /// <summary>
+        /// div6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div6;
+        
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// gvRepaymentStats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvRepaymentStats;
+        
+        /// <summary>
+        /// SqlDataSourcegvRepaymentStats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourcegvRepaymentStats;
     }
 }

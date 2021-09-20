@@ -972,6 +972,7 @@ namespace KACDC.Schemes.Self_Employment
                 btnPreviewEditOtherDetails.Visible = false;
                 //btnPreviewSubmitApplication.Visible = false;
                 divSubmitandEdit.Visible = false;
+                File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/"+ODSE.GeneratedApplicationNumber+".png"), ADSER.Photo);
                 if (GenerateApplicantPDF())
                 {
                     //if (SendSMSEmail())
@@ -1004,8 +1005,9 @@ namespace KACDC.Schemes.Self_Employment
             LOG.OnlineApplicationLog(ipaddress, Path.GetFileName(Request.Path), "SaveSE", ODSE.GeneratedApplicationNumber, "Success", (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"));
 
             //TODO delete 2 lines
-            HttpContext.Current.Response.Write(ODSE.GeneratedApplicationNumber);
-            Response.Write(ODSE.GeneratedApplicationNumber);
+            //HttpContext.Current.Response.Write(ODSE.GeneratedApplicationNumber);
+            //Response.Write("<br />ApplicationDateTime: " + ODSE.ApplicationDateTime);
+            //Response.Write("<br />DOB: "+ ADSER.DOB);
 
             if (ODSE.GeneratedApplicationNumber.Contains("KACDCSE")) 
             {
@@ -1063,7 +1065,7 @@ namespace KACDC.Schemes.Self_Employment
                     pdfDoc.Close();
                     byte[] bytes = memoryStream.ToArray();
                     memoryStream.Close();
-                    Response.Clear();
+                    //Response.Clear();
 
                     SaveFile SV = new SaveFile();
                     SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/"), ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf", bytes);
@@ -1082,20 +1084,29 @@ namespace KACDC.Schemes.Self_Employment
                 }
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                Response.Write("File Creation: "+ex.ToString());
                 return false;
             }
         }
         private bool SendSMSEmail()
         {
-            SubmitApplicationSMS SMS = new SubmitApplicationSMS();
-            ApplicationSubmitEmail EMAIL = new ApplicationSubmitEmail();
-            SMS.ApplicantSMSConfirmation(ODSE.MobileNumber, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
-            EMAIL.ApplicantEmailConfirmation(ODSE.EmailID, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name,
-                File.ReadAllBytes(Server.MapPath("~/Files_SelfEmployment/Application/"+ODSE.FinancialYear+"/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"), 
-                ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
-            return true;
+            try
+            {
+                SubmitApplicationSMS SMS = new SubmitApplicationSMS();
+                ApplicationSubmitEmail EMAIL = new ApplicationSubmitEmail();
+                SMS.ApplicantSMSConfirmation(ODSE.MobileNumber, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
+                EMAIL.ApplicantEmailConfirmation(ODSE.EmailID, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name,
+                    File.ReadAllBytes(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"),
+                    ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Response.Write("Send mail: "+ex.ToString());
+                return false;
+            }
         }
         protected void btnPrintApplication_Click(object sender, EventArgs e)
         {

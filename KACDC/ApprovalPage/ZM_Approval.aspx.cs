@@ -129,7 +129,7 @@ namespace KACDC.ApprovalPage
             Button btn = (Button)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             int rowindex = gvr.RowIndex;
-            GBD.GetApplicantBankDetails(gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            GBD.GetApplicantBankDetails(gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "AR");
             lblZMARBDUpdateApplicationNumber.Text = BD.ApplicationNumber;
             lblZMARBDUpdateAccountHolderName.Text = BD.ApplicantName;
             txtZMARBDUpdateAccountNumber.Text = BD.AccountNumber;
@@ -189,7 +189,7 @@ namespace KACDC.ApprovalPage
             Button btn = (Button)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             int rowindex = gvr.RowIndex;
-            GBD.GetApplicantBankDetails(gvZMARApproveProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "SE");
+            GBD.GetApplicantBankDetails(gvZMARReleaseProcess.DataKeys[rowindex].Values["ApplicationNumber"].ToString(), "AR");
             lblZMARBDUpdateReleaseApplicationNumber.Text = BD.ApplicationNumber;
             lblZMARBDUpdateReleaseAccountHolderName.Text = BD.ApplicantName;
             txtZMARBDUpdateReleaseAccountNumber.Text = BD.AccountNumber;
@@ -230,9 +230,9 @@ namespace KACDC.ApprovalPage
         {
             AP.ApplicationStatusUpdate("SEZMPROCESS", "APPROVED", lblZMSEConfirmApproveAppNumber.Text);
 
-            lblARNotificationHeading.Text = "Approved Application Number of <br />" + lblZMSEConfirmApproveAppName.Text + " <br />";
+            lblSENotificationHeading.Text = "Approved Application Number of <br />" + lblZMSEConfirmApproveAppName.Text + " <br />";
             this.FillGridSelfEmployment();
-            lblARNotificationContent.Text = GAAN.GetLoanNumber(lblZMSEConfirmApproveAppNumber.Text, "SelfEmpLoan");
+            lblSENotificationContent.Text = GAAN.GetLoanNumber(lblZMSEConfirmApproveAppNumber.Text, "SelfEmpLoan");
             SEOtherDetailsPopup.Show();
         }
         protected void btnZMARHold_Click(object sender, EventArgs e)
@@ -355,7 +355,7 @@ namespace KACDC.ApprovalPage
             rbZMARConfirmRejectReasonName.Checked = false;
             rbZMARConfirmRejectReasonCET.Checked = false;
             rbZMARConfirmRejectReasonOther.Checked = false;
-            txtZMARConfirmRejectAppReason.Visible = false;
+            divZMARRejectReason.Visible = false;
             lblZMARConfirmRejectAppReasonError.Text = "";
             lblZMARConfirmRejectAppReasonSelectionError.Text = "";
             Button btn = (Button)sender;
@@ -369,7 +369,7 @@ namespace KACDC.ApprovalPage
         {
             rbZMSEConfirmRejectReasonName.Checked = false;
             rbZMSEConfirmRejectReasonOther.Checked = false;
-            txtZMSEConfirmRejectAppReason.Visible = false;
+            divZMSERejectReason.Visible = false;
             lblZMSEConfirmRejectAppReasonError.Text = "";
             lblZMSEConfirmRejectAppReasonSelectionError.Text = "";
             Button btn = (Button)sender;
@@ -415,7 +415,7 @@ namespace KACDC.ApprovalPage
                 {
                     lblZMSEConfirmRejectAppReasonError.Text = "";
                     AP.ApplicationStatusUpdate("SEZMPROCESS", "REJECTED", lblZMSEConfirmRejectAppNumber.Text.Trim(), txtZMSEConfirmRejectAppReason.Text.Trim());
-                    this.FillGridArivu();
+                    this.FillGridSelfEmployment();
                 }
                 else
                 {
@@ -647,6 +647,7 @@ namespace KACDC.ApprovalPage
         {
 
         }
+
         protected void btnZMARBDUpdate_Click(object sender, EventArgs e)
         {
             if (lblZMARBDUpdateApplicationNumber.Text != "")
@@ -736,7 +737,60 @@ namespace KACDC.ApprovalPage
         }
         protected void btnZMARBDUpdateRelease_Click(object sender, EventArgs e)
         {
-
+            if (lblZMARBDUpdateReleaseApplicationNumber.Text != "")
+            {
+                if (txtZMARBDUpdateReleaseAccountNumber.Text.Trim() != "")
+                {
+                    if (txtZMARBDUpdateReleaseBankName.Text.Trim() != "")
+                    {
+                        if (txtZMARBDUpdateReleaseBranchName.Text.Trim() != "")
+                        {
+                            if (txtZMARBDUpdateReleaseIFSCCode.Text.Trim() != "")
+                            {
+                                if (txtZMARBDUpdateReleaseBankAddress.Text.Trim() != "")
+                                {
+                                    if (drpZMARBankModifyReleaseReason.SelectedValue != "0")
+                                    {
+                                        UBD.UpdateBankDetailsToDB(lblZMARBDUpdateReleaseApplicationNumber.Text, txtZMARBDUpdateReleaseAccountNumber.Text.Trim(), txtZMARBDUpdateReleaseBankName.Text.Trim(), txtZMARBDUpdateReleaseIFSCCode.Text.Trim(), txtZMARBDUpdateReleaseBranchName.Text.Trim(), txtZMARBDUpdateReleaseBankAddress.Text.Trim()
+                                            , drpZMARBankModifyReleaseReason.SelectedValue, lblZMARBDUpdateReleaseAccountHolderName.Text, "Arivu");
+                                        this.FillGridArivu();
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("sELECT REASON", this);
+                                        ZMARBankDetailsUpdateReleasePopup.Show();
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("Enter bank address", this);
+                                    ZMARBankDetailsUpdateReleasePopup.Show();
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("Enter IFSC Code", this);
+                                ZMARBankDetailsUpdateReleasePopup.Show();
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("Enter Branch Name", this);
+                            ZMARBankDetailsUpdateReleasePopup.Show();
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Enter Bank Name", this);
+                        ZMARBankDetailsUpdateReleasePopup.Show();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Enter Application Number", this);
+                    ZMARBankDetailsUpdateReleasePopup.Show();
+                }
+            }
         }
         protected void btnZMARGetApplicationStatus_Click(object sender, EventArgs e)
         {
@@ -838,7 +892,60 @@ namespace KACDC.ApprovalPage
         
         protected void btnZMSEBDUpdateRelease_Click(object sender, EventArgs e)
         {
-
+            if (lblZMSEBDUpdateReleaseApplicationNumber.Text != "")
+            {
+                if (txtZMSEBDUpdateReleaseAccountNumber.Text.Trim() != "")
+                {
+                    if (txtZMSEBDUpdateReleaseBankName.Text.Trim() != "")
+                    {
+                        if (txtZMSEBDUpdateReleaseBranchName.Text.Trim() != "")
+                        {
+                            if (txtZMSEBDUpdateReleaseIFSCCode.Text.Trim() != "")
+                            {
+                                if (txtZMSEBDUpdateReleaseBankAddress.Text.Trim() != "")
+                                {
+                                    if (drpZMSEBankModifyReleaseReason.SelectedValue != "0")
+                                    {
+                                        UBD.UpdateBankDetailsToDB(lblZMSEBDUpdateReleaseApplicationNumber.Text, txtZMSEBDUpdateReleaseAccountNumber.Text.Trim(), txtZMSEBDUpdateReleaseBankName.Text.Trim(), txtZMSEBDUpdateReleaseIFSCCode.Text.Trim(), txtZMSEBDUpdateReleaseBranchName.Text.Trim(), txtZMSEBDUpdateReleaseBankAddress.Text.Trim()
+                                            , drpZMSEBankModifyReleaseReason.SelectedValue, lblZMSEBDUpdateReleaseAccountHolderName.Text, "SE");
+                                        this.FillGridArivu();
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("sELECT REASON", this);
+                                        ZMSEBankDetailsUpdateReleasePopup.Show();
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("Enter bank address", this);
+                                    ZMSEBankDetailsUpdateReleasePopup.Show();
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("Enter IFSC Code", this);
+                                ZMSEBankDetailsUpdateReleasePopup.Show();
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("Enter Branch Name", this);
+                            ZMSEBankDetailsUpdateReleasePopup.Show();
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Enter Bank Name", this);
+                        ZMSEBankDetailsUpdateReleasePopup.Show();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Enter Application Number", this);
+                    ZMSEBankDetailsUpdateReleasePopup.Show();
+                }
+            }
         }
         protected void btnZMSEGetApplicationStatus_Click(object sender, EventArgs e)
         {

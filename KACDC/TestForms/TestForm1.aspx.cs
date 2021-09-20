@@ -8,6 +8,7 @@ using KACDC.Class.DataProcessing.FileProcessing;
 using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.ApplicationProcess;
 using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.PDFModuleProcess.ZMBankPDF;
 using KACDC.Class.DataProcessing.Nadakacheri;
+using KACDC.Class.DataProcessing.OnlineApplication;
 using KACDC.Class.Declaration.Aadhaar;
 using KACDC.Class.Declaration.BankDetails;
 using KACDC.Class.Declaration.Nadakacheri;
@@ -820,6 +821,103 @@ namespace KACDC.TestForms
             //page.ClientScript.RegisterStartupScript(owner.GetType(),"ShowMessage", string.Format("<script type='text/javascript'>alert('{0}')</script>",
             //    message));
             ScriptManager.RegisterClientScriptBlock(owner, owner.GetType(), "alertMessage", "alert('" + message.ToUpper() + "')", true);
+        }
+        protected void btnsepdfgeneratetest_click(object sender, EventArgs e)
+        {
+            GenerateApplicantPDF();
+        }
+        private bool GenerateApplicantPDF()
+        {
+            string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (ipaddress == "" || ipaddress == null)
+                ipaddress = Request.ServerVariables["REMOTE_ADDR"];
+            try
+            {
+                ODSE.GeneratedApplicationNumber = "TestApp"; ADSER.Name = "MyName";
+                NKSER.NCLanguage = "2";
+                string SelfEnglish = "I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Self Employment Loan. If any discrepancies are found later, I agree to take legal action against me.";
+                string SelfKannada = "\n ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು  ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು  ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ.  ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ  ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು \n ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿಯ ಕ್ರಮ ಜರುಗಿಸಲು ಒಪ್ಪಿರುತ್ತೇನೆ.";
+                string AadhaarEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+                string AadhaarKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
+                string ShareEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+                string ShareKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
+
+                PdfPTable HeadingTable = null;
+                HeadingTable = new PdfPTable(4);
+                HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", (Convert.ToDateTime(DateTime.Now.ToString())).ToString("MM/dd/yyyy hh:mm:sss tt"));
+                PdfPTable Table = null;
+                Table = new PdfPTable(4);
+                Table = APPLITAB.SEApplicantMainTable(Table, "GeneratedApplicationNumber", "Name", "NCApplicantFatherName","Gender", "Widow", "ODSE.Divorced", "ODSE.PersonWithDisabilities", "NDAR.NCAnnualIncome"," NDAR.NCGSCNumber"," ODSE.EmailID"," ODSE.MobileNumber"," ODSE.AlternateMobileNumber",
+            "ADSER.DOB", "ODSE.PurposeOfLoan", "ADSER.AadhaarVaultToken:", "", "ODSE.ContactFullAddress", "ODSE.ContactDistrictName", "ODSE.ContactPinCode", "NDAR.NCFullAddress", "NDAR.NCDistrictName", "NKSER.NCConstituency", "NDAR.NCApplicantCAddressPin",
+             (Convert.ToDateTime(DateTime.Now.ToString())).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(DateTime.Now.ToString())).ToString("MM/dd/yyyy hh:mm:sss tt"), "NDAR.NCTalukName", "ODSE.ContactTalukName", "ODSE.LoanDESCRIPTION", "NDAR.NCApplicantName", NKSER.NCLanguage);
+                PdfPTable BankTable = null;
+                BankTable = new PdfPTable(4);
+                BankTable = BT.GenerateBankTable(BankTable, "ADSER.Name", "BD.AccountNumber", "BD.BANK", "BD.BRANCH", "BD.IFSC", "BD.ADDRESS");
+                PdfPTable AgreeTable = null;
+                AgreeTable = new PdfPTable(4);
+                AgreeTable = AT.GenerateAgreementTable(AgreeTable, "SelfEnglish", "SelfKannada", "AadhaarEnglish", "AadhaarKannada"," ShareEnglish", "ShareKannada");
+                PdfPTable SignatureTable = null;
+                SignatureTable = new PdfPTable(4);
+                SignatureTable = ST.GenerateSignatureTable(SignatureTable);
+
+                Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(HeadingTable);
+                    pdfDoc.Add(Table);
+                    pdfDoc.Add(BankTable);
+                    pdfDoc.Add(AgreeTable);
+                    pdfDoc.Add(SignatureTable);
+
+                    pdfDoc.Close();
+                    byte[] bytes = memoryStream.ToArray();
+                    memoryStream.Close();
+                    //Response.Clear();
+
+                    SaveFile SV = new SaveFile();
+                    SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/Application/" + "2020" + "/"), ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf", bytes);
+                    if (File.Exists(Server.MapPath("~/Files_SelfEmployment/Application/" + "2020" + "/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"))
+                    {
+                        SendSMSEmail();
+                    }
+                    Response.ContentEncoding = System.Text.Encoding.UTF8;
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
+                    Response.ContentType = "application/pdf";
+                    Response.Buffer = true;
+                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    Response.BinaryWrite(bytes);
+                    Response.End();
+                    Response.Close();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("File Creation: " + ex.ToString()+ "<br / ><br / ><br / >"+ex.Message+"<br / ><br / ><br / ><br / >");
+                return false;
+            }
+        }
+        private bool SendSMSEmail()
+        {
+            try
+            {
+                ODSE.GeneratedApplicationNumber = "TestApp"; ADSER.Name = "MyName";
+
+                SubmitApplicationSMS SMS = new SubmitApplicationSMS();
+                ApplicationSubmitEmail EMAIL = new ApplicationSubmitEmail();
+                SMS.ApplicantSMSConfirmation("9740560748", ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
+                EMAIL.ApplicantEmailConfirmation("balaji.duk@gmail.com", ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name,
+                    File.ReadAllBytes(Server.MapPath("~/Files_SelfEmployment/Application/" + "2020" + "/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"),
+                    ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Send mail: " + ex.ToString());
+                return false;
+            }
         }
     }
 }

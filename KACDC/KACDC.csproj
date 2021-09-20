@@ -25,7 +25,6 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
-    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,8 +60,8 @@
     <Reference Include="Auth">
       <HintPath>C:\Users\balaj\OneDrive\Desktop\API 2.5\Dot Net Kit\required dll's\New DLL\Auth.dll</HintPath>
     </Reference>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>..\packages\CrystalDecisions.CrystalReports.Engine.1.0.0\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
@@ -72,6 +71,12 @@
     </Reference>
     <Reference Include="GoogleMaps.LocationServices, Version=1.2.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GoogleMaps.LocationServices.1.2.0.5\lib\netstandard2.0\GoogleMaps.LocationServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.7.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.7.25\lib\net46\Hangfire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.7.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.7.25\lib\net45\Hangfire.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
@@ -98,6 +103,12 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1400.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -138,6 +149,9 @@
     <Reference Include="Otp">
       <HintPath>C:\Users\balaj\OneDrive\Desktop\API 2.5\Dot Net Kit\required dll's\New DLL\Otp.dll</HintPath>
     </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
     </Reference>
@@ -172,8 +186,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +333,7 @@
     <Content Include="TestBa.aspx" />
     <Content Include="TestForms\AadhaarTest.aspx" />
     <Content Include="TestForms\TestForm1.aspx" />
+    <Content Include="TestForms\TestForm2.aspx" />
     <Content Include="WebServices\FetchSelfEmploymentData.asmx" />
     <Content Include="WebServices\GetCollegeDetails.asmx" />
     <Content Include="WebServices\Get_AR_Applications.asmx" />
@@ -330,6 +345,7 @@
     <Content Include="WebServices\RcoveryStats.asmx" />
     <Content Include="WebServices\SelfEmploymentData.asmx" />
     <Content Include="WebServices\TallyApprovedData.asmx" />
+    <Content Include="WebServices\TallyData.asmx" />
     <Content Include="ZM_Form.aspx" />
     <None Include="Connected Services\NadaKacheriServiceReference\WebService.wsdl" />
     <Content Include="Properties\DataSources\System.Xml.Linq.XElement.datasource" />
@@ -486,6 +502,7 @@
     <Compile Include="ApprovalPage\ZM_Approval.aspx.designer.cs">
       <DependentUpon>ZM_Approval.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="CheckRD.aspx.cs">
       <DependentUpon>CheckRD.aspx</DependentUpon>
@@ -562,6 +579,7 @@
     <Compile Include="Class\Declaration\WebServices\WSSEWebService.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
+    <Compile Include="Class\JobScheduler\HangFireJobScheduler.cs" />
     <Compile Include="Class\Log\DataLogging.cs" />
     <Compile Include="Class\MessageSending\SendMessage.cs" />
     <Compile Include="Class\NadaKacheri_SelfEmployment.cs" />
@@ -768,6 +786,13 @@
     <Compile Include="TestForms\TestForm1.aspx.designer.cs">
       <DependentUpon>TestForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestForms\TestForm2.aspx.cs">
+      <DependentUpon>TestForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestForms\TestForm2.aspx.designer.cs">
+      <DependentUpon>TestForm2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebServices\FetchSelfEmploymentData.asmx.cs">
       <DependentUpon>FetchSelfEmploymentData.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -810,6 +835,10 @@
     </Compile>
     <Compile Include="WebServices\TallyApprovedData.asmx.cs">
       <DependentUpon>TallyApprovedData.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\TallyData.asmx.cs">
+      <DependentUpon>TallyData.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ZM_Form.aspx.cs">

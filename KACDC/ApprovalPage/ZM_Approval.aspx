@@ -66,7 +66,7 @@
                                     <li><a>Arivu</a>
                                         <ul class="submenu">
                                             <li><a class="nav-item nav-link" id="nav-NavZMARCEODocument-tab" data-toggle="tab" href="#nav-NavZMARCEODocument" role="tab" aria-controls="nav-NavZMARCEODocument" aria-selected="false">CEO Document</a></li>
-                                            <li><a class="nav-item nav-link" id="nav-NavZMARAppnProcess-tab" data-toggle="tab" href="#nav-NavZMARAppnProcess" role="tab" aria-controls="nav-NavZMARAppnProcess" aria-selected="false">Application Peocess</a></li>
+                                            <li><a class="nav-item nav-link" id="nav-NavZMARAppnProcess-tab" data-toggle="tab" href="#nav-NavZMARAppnProcess" role="tab" aria-controls="nav-NavZMARAppnProcess" aria-selected="false">Application Process</a></li>
                                             <li><a class="nav-item nav-link" id="nav-NavZMARRTGSRelease-tab" data-toggle="tab" href="#nav-NavZMARRTGSRelease" role="tab" aria-controls="nav-NavZMARRTGSRelease" aria-selected="false">RTGS Release</a></li>
 <%--                                            <li><a class="nav-item nav-link" id="nav-NavZMARSanctionCopy-tab" data-toggle="tab" href="#nav-NavZMARSanctionCopy" role="tab" aria-controls="nav-NavZMARSanctionCopy" aria-selected="false">Sanctioned Copy</a></li>--%>
                                             <li><a class="nav-item nav-link" id="nav-NavZMARAppnStatus-tab" data-toggle="tab" href="#nav-NavZMARAppnStatus" role="tab" aria-controls="nav-NavZMARAppnStatus" aria-selected="false">Application Status</a></li>
@@ -75,7 +75,7 @@
                                     <li><a>Self Employment</a>
                                         <ul class="submenu">
                                             <li><a class="nav-item nav-link" id="nav-NavZMSECEODocument-tab" data-toggle="tab" href="#nav-NavZMSECEODocument" role="tab" aria-controls="nav-NavZMSECEODocument" aria-selected="false">CEO Document</a></li>
-                                            <li><a class="nav-item nav-link" id="nav-NavZMSEAppnProcess-tab" data-toggle="tab" href="#nav-NavZMSEAppnProcess" role="tab" aria-controls="nav-NavZMSEAppnProcess" aria-selected="false">Application Peocess</a></li>
+                                            <li><a class="nav-item nav-link" id="nav-NavZMSEAppnProcess-tab" data-toggle="tab" href="#nav-NavZMSEAppnProcess" role="tab" aria-controls="nav-NavZMSEAppnProcess" aria-selected="false">Application Process</a></li>
                                             <li><a class="nav-item nav-link" id="nav-NavZMSERTGSRelease-tab" data-toggle="tab" href="#nav-NavZMSERTGSRelease" role="tab" aria-controls="nav-NavZMSERTGSRelease" aria-selected="false">RTGS Release</a></li>
 <%--                                            <li><a class="nav-item nav-link" id="nav-NavZMSESanctionCopy-tab" data-toggle="tab" href="#nav-NavZMSESanctionCopy" role="tab" aria-controls="nav-NavZMSESanctionCopy" aria-selected="false">Sanctioned Copy</a></li>--%>
                                             <li><a class="nav-item nav-link" id="nav-NavZMSEAppnStatus-tab" data-toggle="tab" href="#nav-NavZMSEAppnStatus" role="tab" aria-controls="nav-NavZMSEAppnStatus" aria-selected="false">Application Status</a></li>
@@ -656,7 +656,7 @@
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
                                                                 <div class="Popup-row-label-Heading">
-                                                                    <asp:Label ID="Label29" class="" runat="server" Text="Confirm Eligible"></asp:Label>
+                                                                    <asp:Label ID="Label29" class="" runat="server" Text="Confirm Approve"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -678,7 +678,7 @@
 
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Button ID="btnZMARConfirmApproveApplication" runat="server" CssClass="ActionButton" Text="Eligible" OnClick="btnZMARConfirmApproveApplication_Click" />
+                                                                    <asp:Button ID="btnZMARConfirmApproveApplication" runat="server" CssClass="ActionButton" Text="Approve" OnClick="btnZMARConfirmApproveApplication_Click" />
                                                                     <asp:Button ID="Button7" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
                                                                 </div>
                                                             </div>
@@ -1645,7 +1645,7 @@
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
                                                                 <div class="Popup-row-label-Heading">
-                                                                    <asp:Label ID="Label39" class="" runat="server" Text="Confirm Eligible"></asp:Label>
+                                                                    <asp:Label ID="Label39" class="" runat="server" Text="Confirm Approve"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
@@ -1667,7 +1667,7 @@
 
                                                             <div class="form-row">
                                                                 <div class="Popup-row-input">
-                                                                    <asp:Button ID="btnZMSEConfirmApproveApplication" runat="server" CssClass="ActionButton" Text="Eligible" OnClick="btnZMSEConfirmApproveApplication_Click" />
+                                                                    <asp:Button ID="btnZMSEConfirmApproveApplication" runat="server" CssClass="ActionButton" Text="Approve" OnClick="btnZMSEConfirmApproveApplication_Click" />
                                                                     <asp:Button ID="Button10" runat="server" CssClass="CancelButton" Text="Cancel" OnClientClick="return ZMARHidepopup()" />
                                                                 </div>
                                                             </div>
@@ -1979,7 +1979,7 @@
                                                         <div class="">
                                                             <div class="form-row" style="justify-content: center">
                                                                 <div class="Popup-row-label-Heading">
-                                                                    <asp:Label ID="Label73" class="" runat="server" Text="Confirm Eligible"></asp:Label>
+                                                                    <asp:Label ID="Label73" class="" runat="server" Text="Confirm Approve"></asp:Label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">

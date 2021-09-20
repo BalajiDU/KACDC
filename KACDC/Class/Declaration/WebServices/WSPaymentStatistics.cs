@@ -8,6 +8,7 @@ namespace KACDC.Class.Declaration.WebServices
     public class WSPaymentStatistics
     {
         public string ApplicationNumber { get; set; }
+        public string TallyApplicationNumber { get; set; }
         public string ApplicantName { get; set; }
         public string LoanAmount { get; set; }
         public string ReleaseDate { get; set; }

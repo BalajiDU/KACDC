@@ -265,13 +265,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// gvCwARApproveProcess control.
+        /// gvCWARApproveProcess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCwARApproveProcess;
+        protected global::System.Web.UI.WebControls.GridView gvCWARApproveProcess;
         
         /// <summary>
         /// PnlBankDetails control.
@@ -301,13 +301,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// lblCwARBDApplicationNumber control.
+        /// lblCWARBDApplicationNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARBDApplicationNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWARBDApplicationNumber;
         
         /// <summary>
         /// Label38 control.
@@ -319,13 +319,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label38;
         
         /// <summary>
-        /// lblCwARBAccountHolderName control.
+        /// lblCWARBDAccountHolderName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARBAccountHolderName;
+        protected global::System.Web.UI.WebControls.Label lblCWARBDAccountHolderName;
         
         /// <summary>
         /// Label16 control.
@@ -337,13 +337,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label16;
         
         /// <summary>
-        /// lblCwARBAccountNumber control.
+        /// lblCWARBDAccountNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARBAccountNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWARBDAccountNumber;
         
         /// <summary>
         /// Label17 control.
@@ -355,13 +355,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label17;
         
         /// <summary>
-        /// lblCwARBBankName control.
+        /// lblCWARBDBankName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARBBankName;
+        protected global::System.Web.UI.WebControls.Label lblCWARBDBankName;
         
         /// <summary>
         /// Label13 control.
@@ -373,13 +373,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label13;
         
         /// <summary>
-        /// lblCwARBBranch control.
+        /// lblCWARBDBranchName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARBBranch;
+        protected global::System.Web.UI.WebControls.Label lblCWARBDBranchName;
         
         /// <summary>
         /// Label18 control.
@@ -391,13 +391,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label18;
         
         /// <summary>
-        /// lblCwARBIFSCCode control.
+        /// lblCWARBDIFSCCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARBIFSCCode;
+        protected global::System.Web.UI.WebControls.Label lblCWARBDIFSCCode;
         
         /// <summary>
         /// Label14 control.
@@ -409,13 +409,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label14;
         
         /// <summary>
-        /// lblCwARBBankAddress control.
+        /// lblCWARBDBankAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARBBankAddress;
+        protected global::System.Web.UI.WebControls.Label lblCWARBDBankAddress;
         
         /// <summary>
         /// btnBankDetailsBack control.
@@ -436,22 +436,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.LinkButton lnkBankDetailsFake;
         
         /// <summary>
-        /// BankDetailsPopup control.
+        /// CWARBankDetailsPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender BankDetailsPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWARBankDetailsPopup;
         
         /// <summary>
-        /// PnlCwArConfirmReject control.
+        /// PnlCWARConfirmReject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlCwArConfirmReject;
+        protected global::System.Web.UI.WebControls.Panel PnlCWARConfirmReject;
         
         /// <summary>
         /// Label24 control.
@@ -472,13 +472,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label36;
         
         /// <summary>
-        /// lblCwArConfirmRejectAppNumber control.
+        /// lblCWARConfirmRejectAppNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwArConfirmRejectAppNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWARConfirmRejectAppNumber;
         
         /// <summary>
         /// Label25 control.
@@ -490,13 +490,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label25;
         
         /// <summary>
-        /// lblCwArConfirmRejectAppName control.
+        /// lblCWARConfirmRejectAppName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwArConfirmRejectAppName;
+        protected global::System.Web.UI.WebControls.Label lblCWARConfirmRejectAppName;
         
         /// <summary>
         /// Label35 control.
@@ -508,31 +508,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label35;
         
         /// <summary>
-        /// rbCWArConfirmRejectReasonName control.
+        /// rbCWARConfirmRejectReasonName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbCWArConfirmRejectReasonName;
+        protected global::System.Web.UI.WebControls.RadioButton rbCWARConfirmRejectReasonName;
         
         /// <summary>
-        /// rbCWArConfirmRejectReasonCET control.
+        /// rbCWARConfirmRejectReasonCET control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbCWArConfirmRejectReasonCET;
+        protected global::System.Web.UI.WebControls.RadioButton rbCWARConfirmRejectReasonCET;
         
         /// <summary>
-        /// rbCWArConfirmRejectReasonOther control.
+        /// rbCWARConfirmRejectReasonOther control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbCWArConfirmRejectReasonOther;
+        protected global::System.Web.UI.WebControls.RadioButton rbCWARConfirmRejectReasonOther;
         
         /// <summary>
         /// lblCWARConfirmRejectAppReasonSelectionError control.
@@ -544,49 +544,49 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label lblCWARConfirmRejectAppReasonSelectionError;
         
         /// <summary>
-        /// divCWArRejectReason control.
+        /// divCWARRejectReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCWArRejectReason;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCWARRejectReason;
         
         /// <summary>
-        /// lblCWArRejectLabel control.
+        /// lblCWARRejectLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCWArRejectLabel;
+        protected global::System.Web.UI.WebControls.Label lblCWARRejectLabel;
         
         /// <summary>
-        /// txtCwArConfirmRejectAppReason control.
+        /// txtCWARConfirmRejectAppReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCwArConfirmRejectAppReason;
+        protected global::System.Web.UI.WebControls.TextBox txtCWARConfirmRejectAppReason;
         
         /// <summary>
-        /// lblCwArConfirmRejectAppReasonError control.
+        /// lblCWARConfirmRejectAppReasonError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwArConfirmRejectAppReasonError;
+        protected global::System.Web.UI.WebControls.Label lblCWARConfirmRejectAppReasonError;
         
         /// <summary>
-        /// btnCwArConfirmRejectApplication control.
+        /// btnCWARConfirmRejectApplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCwArConfirmRejectApplication;
+        protected global::System.Web.UI.WebControls.Button btnCWARConfirmRejectApplication;
         
         /// <summary>
         /// Button3 control.
@@ -598,31 +598,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Button Button3;
         
         /// <summary>
-        /// lnkCwArConfirmRejectFake control.
+        /// lnkCWARConfirmRejectFake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCwArConfirmRejectFake;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCWARConfirmRejectFake;
         
         /// <summary>
-        /// CwArConfirmRejectPopup control.
+        /// CWARConfirmRejectPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender CwArConfirmRejectPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWARConfirmRejectPopup;
         
         /// <summary>
-        /// PnlCwArConfirmHold control.
+        /// PnlCWARConfirmHold control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlCwArConfirmHold;
+        protected global::System.Web.UI.WebControls.Panel PnlCWARConfirmHold;
         
         /// <summary>
         /// Label23 control.
@@ -643,13 +643,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label41;
         
         /// <summary>
-        /// lblCwArConfirmHoldAppNumber control.
+        /// lblCWARConfirmHoldAppNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwArConfirmHoldAppNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWARConfirmHoldAppNumber;
         
         /// <summary>
         /// Label43 control.
@@ -661,13 +661,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label43;
         
         /// <summary>
-        /// lblCwArConfirmHoldAppName control.
+        /// lblCWARConfirmHoldAppName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwArConfirmHoldAppName;
+        protected global::System.Web.UI.WebControls.Label lblCWARConfirmHoldAppName;
         
         /// <summary>
         /// Label45 control.
@@ -679,31 +679,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label45;
         
         /// <summary>
-        /// txtCwArConfirmHoldAppReason control.
+        /// txtCWARConfirmHoldAppReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCwArConfirmHoldAppReason;
+        protected global::System.Web.UI.WebControls.TextBox txtCWARConfirmHoldAppReason;
         
         /// <summary>
-        /// lblCwArConfirmHoldAppReasonError control.
+        /// lblCWARConfirmHoldAppReasonError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwArConfirmHoldAppReasonError;
+        protected global::System.Web.UI.WebControls.Label lblCWARConfirmHoldAppReasonError;
         
         /// <summary>
-        /// btnCwArConfirmHoldApplication control.
+        /// btnCWARConfirmHoldApplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCwArConfirmHoldApplication;
+        protected global::System.Web.UI.WebControls.Button btnCWARConfirmHoldApplication;
         
         /// <summary>
         /// Button8 control.
@@ -715,31 +715,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Button Button8;
         
         /// <summary>
-        /// lnkCwArConfirmHoldFake control.
+        /// lnkCWARConfirmHoldFake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCwArConfirmHoldFake;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCWARConfirmHoldFake;
         
         /// <summary>
-        /// CwArConfirmHoldPopup control.
+        /// CWARConfirmHoldPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender CwArConfirmHoldPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWARConfirmHoldPopup;
         
         /// <summary>
-        /// PnlCwArConfirmApprove control.
+        /// PnlCWARConfirmApprove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlCwArConfirmApprove;
+        protected global::System.Web.UI.WebControls.Panel PnlCWARConfirmApprove;
         
         /// <summary>
         /// Label29 control.
@@ -760,13 +760,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label37;
         
         /// <summary>
-        /// lblCwArConfirmApproveAppNumber control.
+        /// lblCWARConfirmApproveAppNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwArConfirmApproveAppNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWARConfirmApproveAppNumber;
         
         /// <summary>
         /// Label40 control.
@@ -778,22 +778,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label40;
         
         /// <summary>
-        /// lblCwArConfirmApproveAppName control.
+        /// lblCWARConfirmApproveAppName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwArConfirmApproveAppName;
+        protected global::System.Web.UI.WebControls.Label lblCWARConfirmApproveAppName;
         
         /// <summary>
-        /// btnCwArConfirmApproveApplication control.
+        /// btnCWARConfirmApproveApplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCwArConfirmApproveApplication;
+        protected global::System.Web.UI.WebControls.Button btnCWARConfirmApproveApplication;
         
         /// <summary>
         /// Button7 control.
@@ -805,22 +805,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Button Button7;
         
         /// <summary>
-        /// lnkCwArConfirmApproveFake control.
+        /// lnkCWARConfirmApproveFake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCwArConfirmApproveFake;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCWARConfirmApproveFake;
         
         /// <summary>
-        /// CwArConfirmApprovePopup control.
+        /// CWARConfirmApprovePopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender CwArConfirmApprovePopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWARConfirmApprovePopup;
         
         /// <summary>
         /// PnlCollegeDetails control.
@@ -850,13 +850,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// lblCwARClgPPApplicationNumber control.
+        /// lblCWARClgPPApplicationNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARClgPPApplicationNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWARClgPPApplicationNumber;
         
         /// <summary>
         /// Label4 control.
@@ -868,13 +868,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// lblCwARClgPPApplicationName control.
+        /// lblCWARClgPPApplicationName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARClgPPApplicationName;
+        protected global::System.Web.UI.WebControls.Label lblCWARClgPPApplicationName;
         
         /// <summary>
         /// Label7 control.
@@ -886,13 +886,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// lblCwARClgPPCETTicket control.
+        /// lblCWARClgPPCETTicket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARClgPPCETTicket;
+        protected global::System.Web.UI.WebControls.Label lblCWARClgPPCETTicket;
         
         /// <summary>
         /// Label19 control.
@@ -904,13 +904,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label19;
         
         /// <summary>
-        /// lblCwARClgPPMarks control.
+        /// lblCWARClgPPMarks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARClgPPMarks;
+        protected global::System.Web.UI.WebControls.Label lblCWARClgPPMarks;
         
         /// <summary>
         /// Label9 control.
@@ -922,13 +922,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
-        /// lblCwARClgPPCollegeName control.
+        /// lblCWARClgPPCollegeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARClgPPCollegeName;
+        protected global::System.Web.UI.WebControls.Label lblCWARClgPPCollegeName;
         
         /// <summary>
         /// Label11 control.
@@ -940,13 +940,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
-        /// lblCwARClgPPCourse control.
+        /// lblCWARClgPPCourse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARClgPPCourse;
+        protected global::System.Web.UI.WebControls.Label lblCWARClgPPCourse;
         
         /// <summary>
         /// Label21 control.
@@ -958,13 +958,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label21;
         
         /// <summary>
-        /// lblCwARClgPPHostel control.
+        /// lblCWARClgPPHostel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARClgPPHostel;
+        protected global::System.Web.UI.WebControls.Label lblCWARClgPPHostel;
         
         /// <summary>
         /// Label27 control.
@@ -976,13 +976,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label27;
         
         /// <summary>
-        /// lblCwARClgPPClgAddress control.
+        /// lblCWARClgPPClgAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARClgPPClgAddress;
+        protected global::System.Web.UI.WebControls.Label lblCWARClgPPClgAddress;
         
         /// <summary>
         /// application control.
@@ -1030,31 +1030,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// txtCwArApplicationStatus control.
+        /// txtCWARApplicationStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCwArApplicationStatus;
+        protected global::System.Web.UI.WebControls.TextBox txtCWARApplicationStatus;
         
         /// <summary>
-        /// btnCwArGetApplicationStatus control.
+        /// btnCWARGetApplicationStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCwArGetApplicationStatus;
+        protected global::System.Web.UI.WebControls.Button btnCWARGetApplicationStatus;
         
         /// <summary>
-        /// PnlCWArApplicationStatusDetails control.
+        /// PnlCWARApplicationStatusDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlCWArApplicationStatusDetails;
+        protected global::System.Web.UI.WebControls.Panel PnlCWARApplicationStatusDetails;
         
         /// <summary>
         /// Label44 control.
@@ -1075,13 +1075,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label47;
         
         /// <summary>
-        /// lblCwARAppStatusApplicationNumber control.
+        /// lblCWARAppStatusApplicationNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARAppStatusApplicationNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWARAppStatusApplicationNumber;
         
         /// <summary>
         /// Label50 control.
@@ -1093,13 +1093,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label50;
         
         /// <summary>
-        /// lblCwARAppStatusApplicationName control.
+        /// lblCWARAppStatusApplicationName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARAppStatusApplicationName;
+        protected global::System.Web.UI.WebControls.Label lblCWARAppStatusApplicationName;
         
         /// <summary>
         /// Label53 control.
@@ -1111,13 +1111,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label53;
         
         /// <summary>
-        /// lblCwARAppStatusApplicationCWStat control.
+        /// lblCWARAppStatusApplicationCWStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARAppStatusApplicationCWStat;
+        protected global::System.Web.UI.WebControls.Label lblCWARAppStatusApplicationCWStat;
         
         /// <summary>
         /// Label55 control.
@@ -1129,13 +1129,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label55;
         
         /// <summary>
-        /// lblCwARAppStatusApplicationDMStat control.
+        /// lblCWARAppStatusApplicationDMStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARAppStatusApplicationDMStat;
+        protected global::System.Web.UI.WebControls.Label lblCWARAppStatusApplicationDMStat;
         
         /// <summary>
         /// Label57 control.
@@ -1147,13 +1147,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label57;
         
         /// <summary>
-        /// lblCwARAppStatusApplicationCEOStat control.
+        /// lblCWARAppStatusApplicationCEOStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARAppStatusApplicationCEOStat;
+        protected global::System.Web.UI.WebControls.Label lblCWARAppStatusApplicationCEOStat;
         
         /// <summary>
         /// Label59 control.
@@ -1165,13 +1165,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label59;
         
         /// <summary>
-        /// lblCwARAppStatusApplicationDOCStat control.
+        /// lblCWARAppStatusApplicationDOCStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARAppStatusApplicationDOCStat;
+        protected global::System.Web.UI.WebControls.Label lblCWARAppStatusApplicationDOCStat;
         
         /// <summary>
         /// Label61 control.
@@ -1183,13 +1183,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label61;
         
         /// <summary>
-        /// lblCwARAppStatusApplicationZMStat control.
+        /// lblCWARAppStatusApplicationZMStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwARAppStatusApplicationZMStat;
+        protected global::System.Web.UI.WebControls.Label lblCWARAppStatusApplicationZMStat;
         
         /// <summary>
         /// Button2 control.
@@ -1201,22 +1201,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// lnkCWArApplicationStatusDetailsFake control.
+        /// lnkCWARApplicationStatusDetailsFake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCWArApplicationStatusDetailsFake;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCWARApplicationStatusDetailsFake;
         
         /// <summary>
-        /// CWArApplicationStatusDetailsPopup control.
+        /// CWARApplicationStatusDetailsPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender CWArApplicationStatusDetailsPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWARApplicationStatusDetailsPopup;
         
         /// <summary>
         /// UpdatePanel3 control.
@@ -1228,22 +1228,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
-        /// gvCwSEApproveProcess control.
+        /// gvCWSEApproveProcess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCwSEApproveProcess;
+        protected global::System.Web.UI.WebControls.GridView gvCWSEApproveProcess;
         
         /// <summary>
-        /// PnlCwSEBankDetails control.
+        /// PnlCWSEBankDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlCwSEBankDetails;
+        protected global::System.Web.UI.WebControls.Panel PnlCWSEBankDetails;
         
         /// <summary>
         /// Label5 control.
@@ -1264,13 +1264,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// lblCwSEBDApplicationNumber control.
+        /// lblCWSEBDApplicationNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEBDApplicationNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWSEBDApplicationNumber;
         
         /// <summary>
         /// Label8 control.
@@ -1282,13 +1282,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label8;
         
         /// <summary>
-        /// lblCwSEBDAccountHolderName control.
+        /// lblCWSEBDAccountHolderName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEBDAccountHolderName;
+        protected global::System.Web.UI.WebControls.Label lblCWSEBDAccountHolderName;
         
         /// <summary>
         /// Label10 control.
@@ -1300,13 +1300,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label10;
         
         /// <summary>
-        /// lblCwSEBDAccountNumber control.
+        /// lblCWSEBDAccountNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEBDAccountNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWSEBDAccountNumber;
         
         /// <summary>
         /// Label12 control.
@@ -1318,13 +1318,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
-        /// lblCwSEBDBankName control.
+        /// lblCWSEBDBankName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEBDBankName;
+        protected global::System.Web.UI.WebControls.Label lblCWSEBDBankName;
         
         /// <summary>
         /// Label20 control.
@@ -1336,13 +1336,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label20;
         
         /// <summary>
-        /// lblCwSEBDBranchName control.
+        /// lblCWSEBDBranchName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEBDBranchName;
+        protected global::System.Web.UI.WebControls.Label lblCWSEBDBranchName;
         
         /// <summary>
         /// Label22 control.
@@ -1354,13 +1354,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label22;
         
         /// <summary>
-        /// lblCwSEBDIFSCCode control.
+        /// lblCWSEBDIFSCCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEBDIFSCCode;
+        protected global::System.Web.UI.WebControls.Label lblCWSEBDIFSCCode;
         
         /// <summary>
         /// Label28 control.
@@ -1372,13 +1372,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label28;
         
         /// <summary>
-        /// lblCwSEBDBankAddress control.
+        /// lblCWSEBDBankAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEBDBankAddress;
+        protected global::System.Web.UI.WebControls.Label lblCWSEBDBankAddress;
         
         /// <summary>
         /// Button1 control.
@@ -1390,31 +1390,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// lnkCwSEBankDetailsFake control.
+        /// lnkCWSEBankDetailsFake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCwSEBankDetailsFake;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCWSEBankDetailsFake;
         
         /// <summary>
-        /// CwSEBankDetailsPopup control.
+        /// CWSEBankDetailsPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender CwSEBankDetailsPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWSEBankDetailsPopup;
         
         /// <summary>
-        /// PnlCwSEConfirmHold control.
+        /// PnlCWSEConfirmHold control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlCwSEConfirmHold;
+        protected global::System.Web.UI.WebControls.Panel PnlCWSEConfirmHold;
         
         /// <summary>
         /// Label32 control.
@@ -1435,13 +1435,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label34;
         
         /// <summary>
-        /// lblCwSEConfirmHoldAppNumber control.
+        /// lblCWSEConfirmHoldAppNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEConfirmHoldAppNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWSEConfirmHoldAppNumber;
         
         /// <summary>
         /// Label42 control.
@@ -1453,13 +1453,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label42;
         
         /// <summary>
-        /// lblCwSEConfirmHoldAppName control.
+        /// lblCWSEConfirmHoldAppName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEConfirmHoldAppName;
+        protected global::System.Web.UI.WebControls.Label lblCWSEConfirmHoldAppName;
         
         /// <summary>
         /// Label46 control.
@@ -1471,31 +1471,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label46;
         
         /// <summary>
-        /// txtCwSEConfirmHoldAppReason control.
+        /// txtCWSEConfirmHoldAppReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCwSEConfirmHoldAppReason;
+        protected global::System.Web.UI.WebControls.TextBox txtCWSEConfirmHoldAppReason;
         
         /// <summary>
-        /// lblCwSEConfirmHoldAppReasonError control.
+        /// lblCWSEConfirmHoldAppReasonError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEConfirmHoldAppReasonError;
+        protected global::System.Web.UI.WebControls.Label lblCWSEConfirmHoldAppReasonError;
         
         /// <summary>
-        /// btnCwSEConfirmHoldApplication control.
+        /// btnCWSEConfirmHoldApplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCwSEConfirmHoldApplication;
+        protected global::System.Web.UI.WebControls.Button btnCWSEConfirmHoldApplication;
         
         /// <summary>
         /// Button5 control.
@@ -1507,31 +1507,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Button Button5;
         
         /// <summary>
-        /// lnkCwSEConfirmHoldFake control.
+        /// lnkCWSEConfirmHoldFake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCwSEConfirmHoldFake;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCWSEConfirmHoldFake;
         
         /// <summary>
-        /// CwSEConfirmHoldPopup control.
+        /// CWSEConfirmHoldPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender CwSEConfirmHoldPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWSEConfirmHoldPopup;
         
         /// <summary>
-        /// PnlCwSEConfirmApprove control.
+        /// PnlCWSEConfirmApprove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlCwSEConfirmApprove;
+        protected global::System.Web.UI.WebControls.Panel PnlCWSEConfirmApprove;
         
         /// <summary>
         /// Label39 control.
@@ -1552,13 +1552,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label49;
         
         /// <summary>
-        /// lblCwSEConfirmApproveAppNumber control.
+        /// lblCWSEConfirmApproveAppNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEConfirmApproveAppNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWSEConfirmApproveAppNumber;
         
         /// <summary>
         /// Label51 control.
@@ -1570,22 +1570,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label51;
         
         /// <summary>
-        /// lblCwSEConfirmApproveAppName control.
+        /// lblCWSEConfirmApproveAppName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEConfirmApproveAppName;
+        protected global::System.Web.UI.WebControls.Label lblCWSEConfirmApproveAppName;
         
         /// <summary>
-        /// btnCwSEConfirmApproveApplication control.
+        /// btnCWSEConfirmApproveApplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCwSEConfirmApproveApplication;
+        protected global::System.Web.UI.WebControls.Button btnCWSEConfirmApproveApplication;
         
         /// <summary>
         /// Button10 control.
@@ -1597,31 +1597,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Button Button10;
         
         /// <summary>
-        /// lnkCwSEConfirmApproveFake control.
+        /// lnkCWSEConfirmApproveFake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCwSEConfirmApproveFake;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCWSEConfirmApproveFake;
         
         /// <summary>
-        /// CwSEConfirmApprovePopup control.
+        /// CWSEConfirmApprovePopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender CwSEConfirmApprovePopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWSEConfirmApprovePopup;
         
         /// <summary>
-        /// PnlCwSERejectReason control.
+        /// PnlCWSERejectReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlCwSERejectReason;
+        protected global::System.Web.UI.WebControls.Panel PnlCWSERejectReason;
         
         /// <summary>
         /// Label30 control.
@@ -1642,13 +1642,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label31;
         
         /// <summary>
-        /// lblCwSEConfirmRejectAppNumber control.
+        /// lblCWSEConfirmRejectAppNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEConfirmRejectAppNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWSEConfirmRejectAppNumber;
         
         /// <summary>
         /// Label33 control.
@@ -1660,13 +1660,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label33;
         
         /// <summary>
-        /// lblCwSEConfirmRejectAppName control.
+        /// lblCWSEConfirmRejectAppName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEConfirmRejectAppName;
+        protected global::System.Web.UI.WebControls.Label lblCWSEConfirmRejectAppName;
         
         /// <summary>
         /// Label158 control.
@@ -1732,22 +1732,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.TextBox txtCWSEConfirmRejectAppReason;
         
         /// <summary>
-        /// lblCwSEConfirmRejectAppReasonError control.
+        /// lblCWSEConfirmRejectAppReasonError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEConfirmRejectAppReasonError;
+        protected global::System.Web.UI.WebControls.Label lblCWSEConfirmRejectAppReasonError;
         
         /// <summary>
-        /// btnCwSEConfirmRejectApplication control.
+        /// btnCWSEConfirmRejectApplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCwSEConfirmRejectApplication;
+        protected global::System.Web.UI.WebControls.Button btnCWSEConfirmRejectApplication;
         
         /// <summary>
         /// Button4 control.
@@ -1759,22 +1759,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
-        /// lnkCwSERejectReasonFake control.
+        /// lnkCWSERejectReasonFake control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCwSERejectReasonFake;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCWSERejectReasonFake;
         
         /// <summary>
-        /// CwSEConfirmRejectPopup control.
+        /// CWSEConfirmRejectPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender CwSEConfirmRejectPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender CWSEConfirmRejectPopup;
         
         /// <summary>
         /// UpdatePanel4 control.
@@ -1786,22 +1786,22 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.UpdatePanel UpdatePanel4;
         
         /// <summary>
-        /// txtCwSEApplicationStatus control.
+        /// txtCWSEApplicationStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCwSEApplicationStatus;
+        protected global::System.Web.UI.WebControls.TextBox txtCWSEApplicationStatus;
         
         /// <summary>
-        /// btnCwSEGetApplicationStatus control.
+        /// btnCWSEGetApplicationStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCwSEGetApplicationStatus;
+        protected global::System.Web.UI.WebControls.Button btnCWSEGetApplicationStatus;
         
         /// <summary>
         /// PnlCWSEApplicationStatusDetails control.
@@ -1831,13 +1831,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label52;
         
         /// <summary>
-        /// lblCwSEAppStatusApplicationNumber control.
+        /// lblCWSEAppStatusApplicationNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEAppStatusApplicationNumber;
+        protected global::System.Web.UI.WebControls.Label lblCWSEAppStatusApplicationNumber;
         
         /// <summary>
         /// Label56 control.
@@ -1849,13 +1849,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label56;
         
         /// <summary>
-        /// lblCwSEAppStatusApplicationName control.
+        /// lblCWSEAppStatusApplicationName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEAppStatusApplicationName;
+        protected global::System.Web.UI.WebControls.Label lblCWSEAppStatusApplicationName;
         
         /// <summary>
         /// Label60 control.
@@ -1867,13 +1867,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label60;
         
         /// <summary>
-        /// lblCwSEAppStatusApplicationCWStat control.
+        /// lblCWSEAppStatusApplicationCWStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEAppStatusApplicationCWStat;
+        protected global::System.Web.UI.WebControls.Label lblCWSEAppStatusApplicationCWStat;
         
         /// <summary>
         /// Label63 control.
@@ -1885,13 +1885,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label63;
         
         /// <summary>
-        /// lblCwSEAppStatusApplicationDMStat control.
+        /// lblCWSEAppStatusApplicationDMStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEAppStatusApplicationDMStat;
+        protected global::System.Web.UI.WebControls.Label lblCWSEAppStatusApplicationDMStat;
         
         /// <summary>
         /// Label65 control.
@@ -1903,13 +1903,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label65;
         
         /// <summary>
-        /// lblCwSEAppStatusApplicationCEOStat control.
+        /// lblCWSEAppStatusApplicationCEOStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEAppStatusApplicationCEOStat;
+        protected global::System.Web.UI.WebControls.Label lblCWSEAppStatusApplicationCEOStat;
         
         /// <summary>
         /// Label67 control.
@@ -1921,13 +1921,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label67;
         
         /// <summary>
-        /// lblCwSEAppStatusApplicationDOCStat control.
+        /// lblCWSEAppStatusApplicationDOCStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEAppStatusApplicationDOCStat;
+        protected global::System.Web.UI.WebControls.Label lblCWSEAppStatusApplicationDOCStat;
         
         /// <summary>
         /// Label69 control.
@@ -1939,13 +1939,13 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label69;
         
         /// <summary>
-        /// lblCwSEAppStatusApplicationZMStat control.
+        /// lblCWSEAppStatusApplicationZMStat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCwSEAppStatusApplicationZMStat;
+        protected global::System.Web.UI.WebControls.Label lblCWSEAppStatusApplicationZMStat;
         
         /// <summary>
         /// Button6 control.

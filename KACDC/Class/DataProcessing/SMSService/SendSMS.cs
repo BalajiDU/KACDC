@@ -286,7 +286,7 @@ namespace KACDC.Class.DataProcessing.SMSService
             }
         }
 
-        public string BulkMessaging(string username, string password, string senderid, string MobileNumber, string Message, string secureKey, string templateid, string Language, string MessageType,string Cetegory)
+        public string BulkMessaging(string username, string password, string senderid, string MobileNumber, string Message, string secureKey, string templateid, string Language, string MessageType, string Cetegory)
         {
             string MessageStatus = "";
             if (Language == "Kannada")
@@ -294,7 +294,8 @@ namespace KACDC.Class.DataProcessing.SMSService
                 MessageStatus = sendUnicodeSMS(username, password, senderid, MobileNumber, Message, secureKey, templateid);
             }
             else
-            {if (MessageType == "FGTPWD")
+            {
+                if (MessageType == "FGTPWD")
                 {
                     MessageStatus = sendOTPMSG(username, password, senderid, MobileNumber, Message, secureKey, templateid);
                 }

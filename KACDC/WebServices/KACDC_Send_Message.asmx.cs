@@ -32,7 +32,13 @@ namespace KACDC.WebServices
             SendSMS SM = new SendSMS();
             //try
             //{
-                if (Key == "KABA94ASBHSU14DBA3U")
+            if (MessageType == "OPT")
+            {
+                string OTPString = Message.Substring(16, 8);
+                Message = "Dear Beneficiary, " + OTPString + " is your new Password for KACDC Application, to reset your Password navigate to PASSWORD RESET option in Menu. From: KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION LTD";
+                MessageType = "FGTPWD";
+            }
+            if (Key == "KABA94ASBHSU14DBA3U")
                 {
                     if (Message.Length > 1)
                     {
@@ -72,6 +78,8 @@ namespace KACDC.WebServices
                                     str = MS.GetData("GET", SenderUserName);
                                 string SenderPassword = str[0];
                                 string SenderAPIkey = str[1];
+
+                                
 
                                 if (MessageType != "FGTPWD")
                                 {

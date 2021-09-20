@@ -392,8 +392,9 @@
             <asp:Label ID ="lbl2" runat="server"></asp:Label>
         <hr />
                     <asp:Label ID ="lblStatuscode" runat="server"></asp:Label>
-
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+        <br /><hr />
+        <asp:Button ID="btnsepdfgeneratetest" runat="server" Text="pdf generate test" OnClick="btnsepdfgeneratetest_click" />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Visible="false">
             <Columns>
             <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
                                             <ItemTemplate>

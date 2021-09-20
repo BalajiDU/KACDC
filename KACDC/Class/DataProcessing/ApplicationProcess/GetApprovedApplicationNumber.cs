@@ -35,6 +35,7 @@ namespace KACDC.Class.DataProcessing.ApplicationProcess
             }
             catch (Exception ex)
             {
+                string message = ex.Message;
                 return "NA";
             }
         }
