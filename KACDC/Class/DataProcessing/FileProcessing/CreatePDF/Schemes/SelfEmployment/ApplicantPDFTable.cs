@@ -25,7 +25,7 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
         StringBuilder TextArea3 { get; set; } = new StringBuilder();
         StringBuilder TextArea4 { get; set; } = new StringBuilder();
         public PdfPTable SEApplicantMainTable(PdfPTable Table,string ApplicationNumber="", string ApplicantName="", string FatherName="", string Gender="", string Widowed="", string Divorced="", string PhysicallyChallenged="", string AnualIncome="", string RDNumber="", string EmailID="", string MobileNumber="", string AlternateNumber="", string DoB="", string LoanPurpose="", string AadharNum="", string Occupation = "",
-            string ContactAddress="", string ContDistrict="", string ContPincode="", string ParmanentAddress="", string ParDistrict="", string ParConstituency="", string ParPincode="",  string AppliedDate="", string ModifiedDate="", string ParTaluk="", string ContTaluk="", string LoanDescription="", string ApplicantNameNC = "", string Language = "99")
+            string ContactAddress="", string ContDistrict="", string ContPincode="", string ParmanentAddress="", string ParDistrict="", string ParConstituency="", string ParPincode="",  string AppliedDate="", string ModifiedDate="", string ParTaluk="", string ContTaluk="", string LoanDescription="", string ApplicantNameNC = "", string Language = "99",string PhotoName="")
         {
             
             Table = TS.SetSize(Table);
@@ -40,7 +40,7 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
 
             //Todo
             //pdfDoc.Add(PrintPageHeading(phrase, "Self Employment Loan"));
-            PdfPCell cellWithRowspan = new PdfPCell(LOGO.ImageCell("~/Files_SelfEmployment/AadhaarApplicantPhoto/" + ApplicationNumber + ".png", 30f, PdfPCell.ALIGN_CENTER, BaseColor.BLACK));
+            PdfPCell cellWithRowspan = new PdfPCell(LOGO.ImageCell("~/Files_SelfEmployment/AadhaarApplicantPhoto/" + PhotoName + ".png", 30f, PdfPCell.ALIGN_CENTER, BaseColor.BLACK));
 
             //System.Drawing.Image imageBIt = ConvertTextToImage("ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು ನನಗೆ ತಿಳಿದ<br />ABCjhk", "Arial", 10, Color.Yellow, Color.Black);
             //iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(imageBIt, System.Drawing.Imaging.ImageFormat.Jpeg);

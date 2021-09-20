@@ -972,7 +972,7 @@ namespace KACDC.Schemes.Self_Employment
                 btnPreviewEditOtherDetails.Visible = false;
                 //btnPreviewSubmitApplication.Visible = false;
                 divSubmitandEdit.Visible = false;
-                File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/"+ODSE.GeneratedApplicationNumber+".png"), ADSER.Photo);
+                File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/"+ODSE.GeneratedApplicationNumber+"_"+ADSER.AadhaarVaultToken + ".png"), ADSER.Photo);
                 if (GenerateApplicantPDF())
                 {
                     //if (SendSMSEmail())
@@ -1040,7 +1040,7 @@ namespace KACDC.Schemes.Self_Employment
                 Table = new PdfPTable(4);
                 Table = APPLITAB.SEApplicantMainTable(Table, ODSE.GeneratedApplicationNumber, ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODSE.Widow, ODSE.Divorced, ODSE.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODSE.EmailID, ODSE.MobileNumber, ODSE.AlternateMobileNumber,
             ADSER.DOB, ODSE.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODSE.ContactFullAddress, ODSE.ContactDistrictName, ODSE.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
-             (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
+             (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage, ODSE.GeneratedApplicationNumber + "_" + ADSER.AadhaarVaultToken);
                 PdfPTable BankTable = null;
                 BankTable = new PdfPTable(4);
                 BankTable = BT.GenerateBankTable(BankTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);
