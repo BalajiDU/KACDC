@@ -11,7 +11,6 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
-using Microsoft.Reporting.WebForms;
 using Ionic.Zip;
 using System.Net.Mail;
 using System.Collections;
@@ -1316,8 +1315,8 @@ ORDER BY ApplicationNumber ";
 
             }
 
-            rvDMReportArivu.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
-            rvDMReportArivu.LocalReport.ReportPath = Server.MapPath("~/DMReport.rdlc");
+            //rvDMReportArivu.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
+            //rvDMReportArivu.LocalReport.ReportPath = Server.MapPath("~/DMReport.rdlc");
         }
 
         protected void btnExportSE_Click(object sender, EventArgs e)
@@ -1345,8 +1344,8 @@ ORDER BY ApplicationNumber ";
 
             }
 
-            rvDMReportSE.LocalReport.ReportPath = Server.MapPath("~/DMSEReport.rdlc");
-            rvDMReportSE.LocalReport.DataSources.Add(new ReportDataSource("SEReportConnection", dt));
+            //rvDMReportSE.LocalReport.ReportPath = Server.MapPath("~/DMSEReport.rdlc");
+            //rvDMReportSE.LocalReport.DataSources.Add(new ReportDataSource("SEReportConnection", dt));
 
         }
         private DataSet GetData(string query)

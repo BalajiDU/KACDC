@@ -80,12 +80,19 @@ namespace KACDC.WebServices
                         while (rdr.Read())
                         {
                             WSApprovedDataForTally AR = new WSApprovedDataForTally();
+                            AR.FinancialYear = rdr["FinancialYear"].ToString();
+                            AR.Zone = rdr["Zone"].ToString();
+                            AR.DistrictCode = rdr["DistrictCode"].ToString();
+                            AR.District = rdr["District"].ToString();
+                            AR.DATE = rdr["DATE"].ToString();
                             AR.ApplicationNumber = rdr["ApplicationNumber"].ToString();
                             AR.ApplicantName = rdr["ApplicantName"].ToString();
-                            AR.DistrictCD = rdr["DistrictCD"].ToString();
-                            AR.LoanName = rdr["LoanName"].ToString();
+                            AR.Narration = rdr["Narration"].ToString();
+                            AR.ApprovedApplicationNum = rdr["ApprovedApplicationNum"].ToString();
+                            AR.DR = rdr["DR"].ToString();
                             AR.LoanAmount = rdr["LoanAmount"].ToString();
-                            AR.ACCOUNTNUMBER = rdr["ACCOUNTNUMBER"].ToString();
+                            AR.PRINCIPLE = rdr["PRINCIPLE"].ToString();
+                            AR.SUBSIDY = rdr["SUBSIDY"].ToString();
                             ARApplication.Add(AR);
 
                         }

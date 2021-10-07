@@ -64,7 +64,7 @@ namespace KACDC.Class.DataProcessing.FileProcessing
                 cellRang.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 cellRang.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
                 cellRang.Font.Size = 14;
-                excelWorkSheet.Cells[1, 1] = "Sales Report of " + DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
+                excelWorkSheet.Cells[1, 1] = "Report of " + DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
                 //excelWorkSheet.Cells[60, 5] = "=SUM(E4,E59)";
                 //excelWorkSheet.Cells[dtbl.Rows.Count + 2, dtbl.Columns.Count].Formula = a;
 
@@ -97,6 +97,11 @@ namespace KACDC.Class.DataProcessing.FileProcessing
 
             //Set Defualt Page
             (excelWorkBook.Sheets[1] as Excel._Worksheet).Activate();
+
+            if (System.IO.File.Exists(FilePath))
+            {
+                System.IO.File.Delete(FilePath);
+            }
 
             excelWorkBook.SaveAs(FilePath, Default, Default, Default, false, Default, Excel.XlSaveAsAccessMode.xlNoChange, Default, Default, Default, Default, Default);
             excelWorkBook.Close();

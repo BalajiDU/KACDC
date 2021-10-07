@@ -77,7 +77,7 @@
                                             <li><a class="nav-item nav-link" id="nav-NavZMSECEODocument-tab" data-toggle="tab" href="#nav-NavZMSECEODocument" role="tab" aria-controls="nav-NavZMSECEODocument" aria-selected="false">CEO Document</a></li>
                                             <li><a class="nav-item nav-link" id="nav-NavZMSEAppnProcess-tab" data-toggle="tab" href="#nav-NavZMSEAppnProcess" role="tab" aria-controls="nav-NavZMSEAppnProcess" aria-selected="false">Application Process</a></li>
                                             <li><a class="nav-item nav-link" id="nav-NavZMSERTGSRelease-tab" data-toggle="tab" href="#nav-NavZMSERTGSRelease" role="tab" aria-controls="nav-NavZMSERTGSRelease" aria-selected="false">RTGS Release</a></li>
-<%--                                            <li><a class="nav-item nav-link" id="nav-NavZMSESanctionCopy-tab" data-toggle="tab" href="#nav-NavZMSESanctionCopy" role="tab" aria-controls="nav-NavZMSESanctionCopy" aria-selected="false">Sanctioned Copy</a></li>--%>
+                                            <li><a class="nav-item nav-link" id="nav-NavZMSESanctionCopy-tab" data-toggle="tab" href="#nav-NavZMSESanctionCopy" role="tab" aria-controls="nav-NavZMSESanctionCopy" aria-selected="false">Sanctioned Copy</a></li>
                                             <li><a class="nav-item nav-link" id="nav-NavZMSEAppnStatus-tab" data-toggle="tab" href="#nav-NavZMSEAppnStatus" role="tab" aria-controls="nav-NavZMSEAppnStatus" aria-selected="false">Application Status</a></li>
                                         </ul>
                                     </li>

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TestForm1.aspx.cs" Inherits="KACDC.TestForms.TestForm1" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 
@@ -380,244 +381,246 @@
     </style>
 </head>
 <body>
+
     <form id="form1" runat="server">
         <div>
-            <asp:TextBox ID="txt1" runat="server"></asp:TextBox>
-            <asp:Button ID="btn1" runat="server" Text="verify substring" OnClick="btn1_Click" />
-            <asp:Label ID ="lbl1" runat="server"></asp:Label>
+            <asp:textbox id="txt1" runat="server"></asp:textbox>
+            <asp:button id="btn1" runat="server" text="verify substring" onclick="btn1_Click" />
+            <asp:label id="lbl1" runat="server"></asp:label>
         </div>
         <hr />
-                                                <asp:RadioButton ID="rbContactAddressYes" Class="radioButton" runat="server" GroupName="ContactAddress" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbContactAddress_CheckedChanged"  />
-                                        <asp:RadioButton ID="rbContactAddressNo" Class="radioButton" runat="server" GroupName="ContactAddress" Text="No" AutoPostBack="true" OnCheckedChanged="rbContactAddress_CheckedChanged" />
-            <asp:Label ID ="lbl2" runat="server"></asp:Label>
+        <asp:radiobutton id="rbContactAddressYes" class="radioButton" runat="server" groupname="ContactAddress" text="Yes" autopostback="true" oncheckedchanged="rbContactAddress_CheckedChanged" />
+        <asp:radiobutton id="rbContactAddressNo" class="radioButton" runat="server" groupname="ContactAddress" text="No" autopostback="true" oncheckedchanged="rbContactAddress_CheckedChanged" />
+        <asp:label id="lbl2" runat="server"></asp:label>
         <hr />
-                    <asp:Label ID ="lblStatuscode" runat="server"></asp:Label>
-        <br /><hr />
-        <asp:Button ID="btnsepdfgeneratetest" runat="server" Text="pdf generate test" OnClick="btnsepdfgeneratetest_click" />
+        <asp:label id="lblStatuscode" runat="server"></asp:label>
+        <br />
+        <hr />
+        <asp:button id="btnsepdfgeneratetest" runat="server" text="pdf generate test" onclick="btnsepdfgeneratetest_click" />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Visible="false">
             <Columns>
-            <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
-                                            <ItemTemplate>
-                                                <%# Eval("ApplicationNumber")%>
-                                            </ItemTemplate>
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("ApplicationNumber") %>' Enabled="false" />
-                                            </EditItemTemplate>
-                                            <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
-                                        </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
-                                            <ItemTemplate>
-                                                <%# Eval("ApplicantName")%>
-                                            </ItemTemplate>
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("ApplicantName") %>' Enabled="false" />
-                                            </EditItemTemplate>
-                                            <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
-                                        </asp:TemplateField>
+                    <ItemTemplate>
+                        <%# Eval("ApplicationNumber")%>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("ApplicationNumber") %>' Enabled="false" />
+                    </EditItemTemplate>
+                    <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
+                </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
-                                            <ItemTemplate>
-                                                <%# Eval("FinancialYear")%>
-                                            </ItemTemplate>
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("FinancialYear") %>' Enabled="false" />
-                                            </EditItemTemplate>
-                                            <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
-                                        </asp:TemplateField>
+                    <ItemTemplate>
+                        <%# Eval("ApplicantName")%>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("ApplicantName") %>' Enabled="false" />
+                    </EditItemTemplate>
+                    <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
+                </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-CssClass="text-center font-weight-bold" HeaderText="Application Number" ItemStyle-Width="100">
+                    <ItemTemplate>
+                        <%# Eval("FinancialYear")%>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtAppNum" runat="server" Text='<%# Eval("FinancialYear") %>' Enabled="false" />
+                    </EditItemTemplate>
+                    <HeaderStyle Font-Bold="True" Font-Size="Larger" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="180px" />
+                </asp:TemplateField>
 
-                </Columns>
+            </Columns>
         </asp:GridView>
         <hr />
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="verify substring" OnClick="Button1_Click" />
-            <asp:Label ID ="Label1" runat="server"></asp:Label>
+        <asp:textbox id="TextBox1" runat="server"></asp:textbox>
+        <asp:button id="Button1" runat="server" text="verify substring" onclick="Button1_Click" />
+        <asp:label id="Label1" runat="server"></asp:label>
         <hr />
-        
-            <asp:Label ID ="Label2" runat="server"></asp:Label>
+
+        <asp:label id="Label2" runat="server"></asp:label>
         <hr />
-        <asp:Button ID="btnExportExcel" runat="server" Text="Export Excel" OnClick="btnExportExcel_Click" />
-        <asp:Button ID="btnExportPDFZMApproved" runat="server" Text="Export PDF ZM Approved" OnClick="btnExportPDFZMApproved_Click" />
-  <hr />
-   
-    <hr />
-
-       <div>
-                  
-
-
-                   <asp:TextBox ID="txtAppdfgNum" runat="server" MaxLengt="1" pattern="[0-9]{1}" />
-           <asp:RegularExpressionValidator runat="server" ControlToValidate="txtAppdfgNum" ValidationExpression="[0-9]{1}" ErrorMessage="wrong" ></asp:RegularExpressionValidator>
-
-       </div>
+        <asp:button id="btnExportExcel" runat="server" text="Export Excel" onclick="btnExportExcel_Click" />
+        <asp:button id="btnExportPDFZMApproved" runat="server" text="Export PDF ZM Approved" onclick="btnExportPDFZMApproved_Click" />
+        <hr />
 
         <hr />
-RD Number Test
-         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-      <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+
+        <div>
+
+
+
+            <asp:textbox id="txtAppdfgNum" runat="server" maxlengt="1" pattern="[0-9]{1}" />
+            <asp:regularexpressionvalidator runat="server" controltovalidate="txtAppdfgNum" validationexpression="[0-9]{1}" errormessage="wrong"></asp:regularexpressionvalidator>
+
+        </div>
+
+        <hr />
+        RD Number Test
+         <asp:scriptmanager id="ScriptManager1" runat="server"></asp:scriptmanager>
+        <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
              <ContentTemplate>--%>
         <div id="divRDNumber" runat="server" visible="true" class="form-row">
-                            <div class="form-row-label">
-                                <asp:Label ID="Label10" class="" runat="server">RD Number(Form - G)<span style="color:red"> *</span><br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ(ನಮೂನೆ - ಜಿ)</asp:Label>
-                            </div>
-                            <div class="form-row-input">
-                                <asp:TextBox ID="txtRDNumber" CssClass="NeoTextBox" runat="server"  placeholder="rd number" style="text-transform:uppercase" MaxLength="15"  AutoCompleteType="Disabled"></asp:TextBox>
-                                <div id="divRDNumChkError" runat="server" class="DisplayError" style="font-size:18px; font-weight: bold;color:#7b0000"></div>
-                            </div>
-                            <div class="form-row-Botton">
-                                <asp:Button ID="btnVerifyRdNumber" runat="server" CssClass="NeoButton" OnClick="btnVerifyRDNumber_Click" Text="Verify" onpaste="return false"  UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
-                                <asp:Label ID="lblRDNumberVerified" Visible="false" runat="server" Text=" Verified" CssClass=" fa fa-check VerifiedLabel"></asp:Label>
-                            </div>
-                        </div>
+            <div class="form-row-label">
+                <asp:label id="Label10" class="" runat="server">RD Number(Form - G)<span style="color:red"> *</span><br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ(ನಮೂನೆ - ಜಿ)</asp:label>
+            </div>
+            <div class="form-row-input">
+                <asp:textbox id="txtRDNumber" cssclass="NeoTextBox" runat="server" placeholder="rd number" style="text-transform: uppercase" maxlength="15" autocompletetype="Disabled"></asp:textbox>
+                <div id="divRDNumChkError" runat="server" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
+            </div>
+            <div class="form-row-Botton">
+                <asp:button id="btnVerifyRdNumber" runat="server" cssclass="NeoButton" onclick="btnVerifyRDNumber_Click" text="Verify" onpaste="return false" usesubmitbehavior="false" onclientclick="this.disabled='true'; this.value='Please wait...';" />
+                <asp:label id="lblRDNumberVerified" visible="false" runat="server" text=" Verified" cssclass=" fa fa-check VerifiedLabel"></asp:label>
+            </div>
+        </div>
 
-<%--        <asp:Panel ID="PnlCasteCertificate" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; ">--%>
+        <%--        <asp:Panel ID="PnlCasteCertificate" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; ">--%>
 
-                    <div class="flex-container" runat="server" id="divCasteCertificate">
-                        <div class="">
-                            <div class="form-row" style="justify-content:center">
-                                <div class="Popup-row-label-Heading">
-                                    <asp:Label ID="Label19" class="" Style="font-size: 20px; margin-top: 20px;" runat="server" Text="Caste And Income Certificate Details"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label20" runat="server">RD Number<br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCGSCNumber" Width="40px" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label22" runat="server">Name<br />ಹೆಸರು</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCApplicantName" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label24" runat="server">Annual Income<br />ವಾರ್ಷಿಕ ಆದಾಯ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCAnnualIncome" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label39" runat="server">Constituency<span style="color:red"> *</span><br />ಕ್ಷೇತ್ರ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:DropDownList ID="drpConst" Class="rowMargin txtcolor text-uppercase form-control" AutoPostBack="true" runat="server" ClientIDMode="Static" ></asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label27" runat="server">Father / Guardian Name<br />ತಂದೆ / ಪೋಷಕರ ಹೆಸರು</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCApplicantFatherName" runat="server"></asp:Label>
-                                </div>
-                            </div>
+        <div class="flex-container" runat="server" id="divCasteCertificate">
+            <div class="">
+                <div class="form-row" style="justify-content: center">
+                    <div class="Popup-row-label-Heading">
+                        <asp:label id="Label19" class="" style="font-size: 20px; margin-top: 20px;" runat="server" text="Caste And Income Certificate Details"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label20" runat="server">RD Number<br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblNCGSCNumber" width="40px" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label22" runat="server">Name<br />ಹೆಸರು</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblNCApplicantName" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label24" runat="server">Annual Income<br />ವಾರ್ಷಿಕ ಆದಾಯ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblNCAnnualIncome" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label39" runat="server">Constituency<span style="color:red"> *</span><br />ಕ್ಷೇತ್ರ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:dropdownlist id="drpConst" class="rowMargin txtcolor text-uppercase form-control" autopostback="true" runat="server" clientidmode="Static"></asp:dropdownlist>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label27" runat="server">Father / Guardian Name<br />ತಂದೆ / ಪೋಷಕರ ಹೆಸರು</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblNCApplicantFatherName" runat="server"></asp:label>
+                    </div>
+                </div>
 
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label29" runat="server">Address<br />ವಿಳಾಸ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCFullAddress" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label9" runat="server">Taluk<br />ತಾಲ್ಲೂಕು</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCTaluk" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label23" runat="server">District<br />ಜಿಲ್ಲೆ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCDistrict" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div id="divContactAddressOption" visible="true" runat="server" class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label21" runat="server" >Contact Address same as above<span style="color:red"> *</span></asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                   <%-- <asp:DropDownList ID="drpContactAddress" Visible="false" Class="rowMargin txtcolor text-uppercase NeuoDropdown" runat="server"  AutoPostBack="true">
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label29" runat="server">Address<br />ವಿಳಾಸ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblNCFullAddress" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label9" runat="server">Taluk<br />ತಾಲ್ಲೂಕು</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblNCTaluk" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label23" runat="server">District<br />ಜಿಲ್ಲೆ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblNCDistrict" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div id="divContactAddressOption" visible="true" runat="server" class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label21" runat="server">Contact Address same as above<span style="color:red"> *</span></asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <%-- <asp:DropDownList ID="drpContactAddress" Visible="false" Class="rowMargin txtcolor text-uppercase NeuoDropdown" runat="server"  AutoPostBack="true">
                                         <asp:ListItem>--SELECT--</asp:ListItem>
                                         <asp:ListItem Value="YES">YES</asp:ListItem>
                                         <asp:ListItem Value="NO">NO</asp:ListItem>
                                     </asp:DropDownList>--%>
-                                        <asp:RadioButton ID="RadioButton1" Class="radioButton" runat="server" GroupName="ContactAddress" Text="Yes" AutoPostBack="true" OnCheckedChanged="rbContactAddress_CheckedChanged"  />
-                                        <asp:RadioButton ID="RadioButton2" Class="radioButton" runat="server" GroupName="ContactAddress" Text="No" AutoPostBack="true" OnCheckedChanged="rbContactAddress_CheckedChanged" />
-                                </div>
-                            </div>
-                            <div id="divContactAddress" runat="server" visible="false">
-                                <div runat="server" class="form-row" style="padding:1px">
-                                    <div class="Popup-row-label">
-                                        <asp:Label ID="Label25" runat="server">Contact Address<br />ಸಂಪರ್ಕಿಸುವ ವಿಳಾಸ</asp:Label>
-                                    </div>
-                                    <div class="Popup-row-label">
-                                        <asp:TextBox ID="txtContactAddress" CssClass="NeoTextBox"  placeholder="contact address" TextMode="MultiLine" Height="50px" runat="server" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div runat="server" class="form-row"  style="padding:1px">
-                                    <div class="Popup-row-label">
-                                        <asp:Label ID="Label53" runat="server">District  ಜಿಲ್ಲೆ <span style="color:red"> *</span></asp:Label>
-                                    </div>
-                                    <div class="Popup-row-label">
-                                        <asp:DropDownList ID="drpContDistrict" Class="rowMargin txtcolor text-uppercase form-control NeuoDropdown" AutoPostBack="true" runat="server" ClientIDMode="Static" >
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div runat="server" class="form-row"  style="padding:1px">
-                                    <div class="Popup-row-label">
-                                        <asp:Label ID="Label54" runat="server">Taluk  ತಾಲ್ಲೂಕು <span style="color:red"> *</span></asp:Label>
-                                    </div>
-                                    <div class="Popup-row-label">
-                                        <asp:DropDownList ID="drpContTaluk" Class="text-uppercase rowMargin txtcolor form-control NeuoDropdown" AutoPostBack="true"  runat="server" ClientIDMode="Static">
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div runat="server" class="form-row"  style="padding:1px">
-                                    <div class="Popup-row-label">
-                                        <asp:Label ID="Label55" runat="server">Pin code  ಅಂಚೆ ಸಂಖ್ಯೆ <span style="color:red"> *</span></asp:Label>
-                                    </div>
-                                    <div class="Popup-row-label">
-                                        <asp:TextBox ID="txtContPincode" CssClass="NeoTextBox"  placeholder="Pin code" onkeypress="return CheckPinCode(event)" runat="server" ForeColor="Black" TextMode="Number" MaxLength="6" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="divButtonSubmitApplication" class="form-row" runat="server" style="justify-content:center">
-                                <%--<div class="Popup-row-label">
-                                </div>--%>
-                                <div class="form-row-Botton">
-                                    <asp:Button ID="btnNadakachriBack" runat="server"   CssClass="NeoButton" Text="Back"  />
-                                </div>
-                                <div class="form-row-Botton">
-                                    <asp:Button ID="btnSaveContactAddress" runat="server"   CssClass="NeoButton" Text="Save and Proceed"  UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
-                                </div>
-                                <div class="form-row-Botton">
-                                    <asp:Button ID="btnNadakachriOK" runat="server"  CssClass="NeoButton" Text="Proceed" OnClientClick="return CasteCertificateHidePopup()" />
-                                </div>
-                            </div>
-                               
-                            </div>
+                        <asp:radiobutton id="RadioButton1" class="radioButton" runat="server" groupname="ContactAddress" text="Yes" autopostback="true" oncheckedchanged="rbContactAddress_CheckedChanged" />
+                        <asp:radiobutton id="RadioButton2" class="radioButton" runat="server" groupname="ContactAddress" text="No" autopostback="true" oncheckedchanged="rbContactAddress_CheckedChanged" />
                     </div>
-             <%--   </asp:Panel>
+                </div>
+                <div id="divContactAddress" runat="server" visible="false">
+                    <div runat="server" class="form-row" style="padding: 1px">
+                        <div class="Popup-row-label">
+                            <asp:label id="Label25" runat="server">Contact Address<br />ಸಂಪರ್ಕಿಸುವ ವಿಳಾಸ</asp:label>
+                        </div>
+                        <div class="Popup-row-label">
+                            <asp:textbox id="txtContactAddress" cssclass="NeoTextBox" placeholder="contact address" textmode="MultiLine" height="50px" runat="server" onpaste="return false" autocompletetype="Disabled"></asp:textbox>
+                        </div>
+                    </div>
+                    <div runat="server" class="form-row" style="padding: 1px">
+                        <div class="Popup-row-label">
+                            <asp:label id="Label53" runat="server">District  ಜಿಲ್ಲೆ <span style="color:red"> *</span></asp:label>
+                        </div>
+                        <div class="Popup-row-label">
+                            <asp:dropdownlist id="drpContDistrict" class="rowMargin txtcolor text-uppercase form-control NeuoDropdown" autopostback="true" runat="server" clientidmode="Static">
+                                        </asp:dropdownlist>
+                        </div>
+                    </div>
+                    <div runat="server" class="form-row" style="padding: 1px">
+                        <div class="Popup-row-label">
+                            <asp:label id="Label54" runat="server">Taluk  ತಾಲ್ಲೂಕು <span style="color:red"> *</span></asp:label>
+                        </div>
+                        <div class="Popup-row-label">
+                            <asp:dropdownlist id="drpContTaluk" class="text-uppercase rowMargin txtcolor form-control NeuoDropdown" autopostback="true" runat="server" clientidmode="Static">
+                                        </asp:dropdownlist>
+                        </div>
+                    </div>
+                    <div runat="server" class="form-row" style="padding: 1px">
+                        <div class="Popup-row-label">
+                            <asp:label id="Label55" runat="server">Pin code  ಅಂಚೆ ಸಂಖ್ಯೆ <span style="color:red"> *</span></asp:label>
+                        </div>
+                        <div class="Popup-row-label">
+                            <asp:textbox id="txtContPincode" cssclass="NeoTextBox" placeholder="Pin code" onkeypress="return CheckPinCode(event)" runat="server" forecolor="Black" textmode="Number" maxlength="6" onpaste="return false" autocompletetype="Disabled"></asp:textbox>
+                        </div>
+                    </div>
+                </div>
+                <div id="divButtonSubmitApplication" class="form-row" runat="server" style="justify-content: center">
+                    <%--<div class="Popup-row-label">
+                                </div>--%>
+                    <div class="form-row-Botton">
+                        <asp:button id="btnNadakachriBack" runat="server" cssclass="NeoButton" text="Back" />
+                    </div>
+                    <div class="form-row-Botton">
+                        <asp:button id="btnSaveContactAddress" runat="server" cssclass="NeoButton" text="Save and Proceed" usesubmitbehavior="false" onclientclick="this.disabled='true'; this.value='Please wait...';" />
+                    </div>
+                    <div class="form-row-Botton">
+                        <asp:button id="btnNadakachriOK" runat="server" cssclass="NeoButton" text="Proceed" onclientclick="return CasteCertificateHidePopup()" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <%--   </asp:Panel>
 
                 <asp:LinkButton ID="lnkCasteCertificate" runat="server"></asp:LinkButton>
                 <cc1:ModalPopupExtender ID="CasteCertificatePopup" runat="server" TargetControlID="lnkCasteCertificate" PopupControlID="PnlCasteCertificate"
                     BackgroundCssClass="modalBackground">
                 </cc1:ModalPopupExtender>--%>
-               <%--  </ContentTemplate>
+        <%--  </ContentTemplate>
             </asp:UpdatePanel>--%>
 
 
@@ -625,125 +628,119 @@ RD Number Test
 
 
         <%--Aadhaar Number--%>
-                        <div class="form-row">
-                            <div class="form-row-label">
-                                <asp:Label ID="Label26" class="" runat="server">Aadhaar Number<span style="color:red"> *</span><br />ಆಧಾರ್ ಸಂಖ್ಯೆ</asp:Label><br />
-                                <%--<asp:Label runat="server" Style="font-size: 8px; color: red;">(As Per Aadhar)</asp:Label>--%>
-                            </div>
-                            <%-- TODO onpaste="return false" AutoCompleteType="Disabled" --%>
-                            <div class="form-row-input">
-                                <asp:TextBox ID="txtAadhaarNumber" CssClass="NeoTextBox" runat="server" placeholder="Aadhaar Number" TextMode="Number" MaxLength="12" ></asp:TextBox>
-                                <div id="divAadhaarChkError" class="DisplayError"  style="font-size:18px; font-weight: bold;color:#7b0000"></div>
-                            </div>
-                            <div class="form-row-Botton" id="divMovileNumberStatus" runat="server">
-                                <asp:Button ID="btnAadhaarGetOTP" runat="server" CssClass="NeoButton"  OnClick="btnAadhaarGetOTP_Click" Text="Get OTP" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
-                            </div>
-                        </div>
-                        <%--OTP Verify--%>
-                        <div id="divMobileOTP" runat="server" visible="TRUE" class="form-row">
-                            <div class="form-row-label">
-                                <asp:Label ID="Label3" class="" runat="server">OTP<br />ಒಟಿಪಿ</asp:Label>
-                            </div>
-                            <div class="form-row-input">
-                                <asp:TextBox ID="txtOTP" CssClass="NeoTextBox" runat="server" MaxLength="8"  placeholder="otp" onkeypress="return CheckOTP(event)" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
-                                <div id="divOTPChkError" class="DisplayError" style="font-size:18px; font-weight: bold;color:#7b0000"></div>
-                            </div>
-                            <div class="form-row-Botton">
-                                <asp:Button ID="btnVerifyAadhaarOTP" runat="server" CssClass="NeoButton" OnClick="btnVerifyAadhaarOTP_Click" Text="Verify" onpaste="return false" AutoCompleteType="Disabled" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
-                            </div>
-                        </div>
+        <div class="form-row">
+            <div class="form-row-label">
+                <asp:label id="Label26" class="" runat="server">Aadhaar Number<span style="color:red"> *</span><br />ಆಧಾರ್ ಸಂಖ್ಯೆ</asp:label>
+                <br />
+                <%--<asp:Label runat="server" Style="font-size: 8px; color: red;">(As Per Aadhar)</asp:Label>--%>
+            </div>
+            <%-- TODO onpaste="return false" AutoCompleteType="Disabled" --%>
+            <div class="form-row-input">
+                <asp:textbox id="txtAadhaarNumber" cssclass="NeoTextBox" runat="server" placeholder="Aadhaar Number" textmode="Number" maxlength="12"></asp:textbox>
+                <div id="divAadhaarChkError" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
+            </div>
+            <div class="form-row-Botton" id="divMovileNumberStatus" runat="server">
+                <asp:button id="btnAadhaarGetOTP" runat="server" cssclass="NeoButton" onclick="btnAadhaarGetOTP_Click" text="Get OTP" usesubmitbehavior="false" onclientclick="this.disabled='true'; this.value='Please wait...';" />
+            </div>
+        </div>
+        <%--OTP Verify--%>
+        <div id="divMobileOTP" runat="server" visible="TRUE" class="form-row">
+            <div class="form-row-label">
+                <asp:label id="Label3" class="" runat="server">OTP<br />ಒಟಿಪಿ</asp:label>
+            </div>
+            <div class="form-row-input">
+                <asp:textbox id="txtOTP" cssclass="NeoTextBox" runat="server" maxlength="8" placeholder="otp" onkeypress="return CheckOTP(event)" onpaste="return false" autocompletetype="Disabled"></asp:textbox>
+                <div id="divOTPChkError" class="DisplayError" style="font-size: 18px; font-weight: bold; color: #7b0000"></div>
+            </div>
+            <div class="form-row-Botton">
+                <asp:button id="btnVerifyAadhaarOTP" runat="server" cssclass="NeoButton" onclick="btnVerifyAadhaarOTP_Click" text="Verify" onpaste="return false" autocompletetype="Disabled" usesubmitbehavior="false" onclientclick="this.disabled='true'; this.value='Please wait...';" />
+            </div>
+        </div>
 
 
 
-<%--          <asp:Panel ID="PnlAadhaarDetails" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; width:50%;height:80%; padding: 5px">--%>
-                   <div class="flex-container">
-                        <div class="">
-                            <div class="form-row" style="justify-content:center">
-                                <div class="Popup-row-label-Heading">
-                                    <asp:Label ID="Label43" class="" Style="font-size: 20px; margin-top: 20px" runat="server" Text="Aadhaar Details"></asp:Label>
-                                </div>
-                            </div>
-                           <div class="form-row">
-                               <%-- <div class="Popup-row-label">
+        <%--          <asp:Panel ID="PnlAadhaarDetails" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; width:50%;height:80%; padding: 5px">--%>
+        <div class="flex-container">
+            <div class="">
+                <div class="form-row" style="justify-content: center">
+                    <div class="Popup-row-label-Heading">
+                        <asp:label id="Label43" class="" style="font-size: 20px; margin-top: 20px" runat="server" text="Aadhaar Details"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <%-- <div class="Popup-row-label">
                                     <asp:Label ID="Label51" runat="server">Photo<br />ಭಾವಚಿತ್ರ</asp:Label>
                                 </div>--%>
-                                 <div class="Popup-row-label">
-                                    <asp:Image ID="ImgAadhaarPopupPhoto" runat="server" Height="160px" Width="140px" />
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label44" runat="server">Name<br />ಹೆಸರು</asp:Label>
-                                </div>
-                                 <div class="Popup-row-label">
-                                    <asp:Label ID="lblAadhaarPopupName"  runat="server"></asp:Label>
-                                </div>
-                            </div>
-                             <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label46" runat="server">DOB<br />ಜನ್ಮ ದಿನಾಂಕ</asp:Label>
-                                </div>
-                                 <div class="Popup-row-label">
-                                    <asp:Label ID="lblAadhaarPopupDOB"  runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label47" runat="server">Gender<br />ಲಿಂಗ</asp:Label>
-                                </div>
-                                 <div class="Popup-row-label">
-                                    <asp:Label ID="lblAadhaarPopupGender"  runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label49" runat="server">District<br />ಜಿಲ್ಲೆ</asp:Label>
-                                </div>
-                                 <div class="Popup-row-label">
-                                    <asp:Label ID="lblAadhaarPopupDistrict"  runat="server"></asp:Label>
-                                </div>
-                            </div>
-                             <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label50" runat="server">Pincode<br />ಅಂಚೆ ಸಂಖ್ಯೆ</asp:Label>
-                                </div>
-                                 <div class="Popup-row-label">
-                                    <asp:Label ID="lblAadhaarPopupPincode"  runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label48" runat="server">State<br />ರಾಜ್ಯ</asp:Label>
-                                </div>
-                                 <div class="Popup-row-label">
-                                    <asp:Label ID="lblAadhaarPopupState" Width="40px" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-row-Botton">
-                                    <asp:Button ID="btnAadhaarkDetailsBack" runat="server" CssClass="NeoButton" Text="Back"  />
-                                    <asp:Button ID="btnAadhaarkDetailsProceed" runat="server" CssClass="NeoButton" Text="Proceed"  />
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="Popup-row-label">
+                        <asp:image id="ImgAadhaarPopupPhoto" runat="server" height="160px" width="140px" />
                     </div>
-              <%--  </asp:Panel>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label44" runat="server">Name<br />ಹೆಸರು</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblAadhaarPopupName" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label46" runat="server">DOB<br />ಜನ್ಮ ದಿನಾಂಕ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblAadhaarPopupDOB" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label47" runat="server">Gender<br />ಲಿಂಗ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblAadhaarPopupGender" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label49" runat="server">District<br />ಜಿಲ್ಲೆ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblAadhaarPopupDistrict" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label50" runat="server">Pincode<br />ಅಂಚೆ ಸಂಖ್ಯೆ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblAadhaarPopupPincode" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="Popup-row-label">
+                        <asp:label id="Label48" runat="server">State<br />ರಾಜ್ಯ</asp:label>
+                    </div>
+                    <div class="Popup-row-label">
+                        <asp:label id="lblAadhaarPopupState" width="40px" runat="server"></asp:label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-row-Botton">
+                        <asp:button id="btnAadhaarkDetailsBack" runat="server" cssclass="NeoButton" text="Back" />
+                        <asp:button id="btnAadhaarkDetailsProceed" runat="server" cssclass="NeoButton" text="Proceed" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <%--  </asp:Panel>
 
                  <asp:LinkButton ID="lnkAadhaarDetails" runat="server"></asp:LinkButton>
                 <cc1:ModalPopupExtender ID="AadhaarPopup" runat="server" TargetControlID="lnkAadhaarDetails" PopupControlID="PnlAadhaarDetails"
                     BackgroundCssClass="modalBackground">
                 </cc1:ModalPopupExtender>--%>
-
-
-
-
-
-
-
     </form>
-  
-    
+
+
 
 </body>
 </html>

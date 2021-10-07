@@ -13,7 +13,6 @@ using iTextSharp.text.pdf;
 using System.Text;
 using System.Security.Cryptography;
 using iTextSharp.text.html.simpleparser;
-using Microsoft.Reporting.WebForms;
 
 namespace KACDC
 {
