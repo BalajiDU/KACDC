@@ -142,7 +142,7 @@ namespace KACDC.TestForms
                 PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
                 pdfDoc.Open();
                 pdfDoc.Add(Heading.GenerateHeading("ಕರ್ನಾಟಕ"));
-                Paragraph p = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 95.0F, BaseColor.BLACK, Element.ALIGN_CENTER, 1)));
+                Paragraph p = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(1.0F, 95.0F, BaseColor.BLACK, Element.ALIGN_CENTER, 1)));
                 //p.setSpacingBefore = 20f;
                 pdfDoc.Add(p);
 

@@ -43,5 +43,38 @@ namespace KACDC.Class.DataProcessing.FileProcessing.CreatePDF
             }
             File.WriteAllBytes(sourceFilePath, bytes);
         }
+        public void PdfStampInExistingFileOver(string sourceFilePath, string watermarkImagePath)
+        {
+            byte[] bytes = File.ReadAllBytes(sourceFilePath);
+            var img = iTextSharp.text.Image.GetInstance(watermarkImagePath);
+            img.SetAbsolutePosition(80, 200);
+            PdfContentByte waterMark;
+
+            using (MemoryStream stream = new MemoryStream())
+            {
+                PdfReader reader = new PdfReader(bytes);
+                using (PdfStamper stamper = new PdfStamper(reader, stream))
+                {
+                    int pages = reader.NumberOfPages;
+                    for (int i = 1; i <= pages; i++)
+                    {
+                        PdfContentByte under = stamper.GetUnderContent(i);
+                        iTextSharp.text.Rectangle pagesize = reader.GetPageSize(i);
+                        float x = (pagesize.Left + pagesize.Right) / 2;
+                        float y = (pagesize.Bottom + pagesize.Top) / 2;
+                        PdfGState gs = new PdfGState();
+                        gs.FillOpacity = 0.1f;
+                        under.SaveState();
+                        under.SetGState(gs);
+                        under.SetRGBColorFill(200, 200, 0);
+
+                        waterMark = stamper.GetOverContent(i);
+                        waterMark.AddImage(img);
+                    }
+                }
+                bytes = stream.ToArray();
+            }
+            File.WriteAllBytes(sourceFilePath, bytes);
+        }
     }
 }

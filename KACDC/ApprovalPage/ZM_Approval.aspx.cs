@@ -25,6 +25,8 @@ namespace KACDC.ApprovalPage
         ApprovalProcess AP = new ApprovalProcess();
         GetCount GC = new GetCount();
         GetApprovedApplicationNumber GAAN = new GetApprovedApplicationNumber();
+        SanctionLetter SL = new SanctionLetter();
+        GenerateSanctionCopy GSC = new GenerateSanctionCopy();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["USERTYPE"] != "ZONALMANAGER")
@@ -91,6 +93,49 @@ namespace KACDC.ApprovalPage
 
                 gvZMSEReleaseProcess.DataSource = GDTP.GetData("spGetDataToApprovalProcess","SESELECTRELEASE", drpZoneSelDistrict.SelectedValue);
                 gvZMSEReleaseProcess.DataBind();
+            }
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("select distinct FinancialYear from SelfEmpLoan"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@District", drpZoneSelDistrict.SelectedValue);
+                    cmd.Connection = kvdConn;
+                    kvdConn.Open();
+                    drpZoneSESanctionFY.DataSource = cmd.ExecuteReader();
+                    drpZoneSESanctionFY.DataTextField = "FinancialYear";
+                    drpZoneSESanctionFY.DataValueField = "FinancialYear";
+                    drpZoneSESanctionFY.DataBind();
+                    drpZoneSESanctionFY.Items.Insert(0, "--SELECT--");
+                    kvdConn.Close();
+                }
+            }
+
+        }
+        private void FillSanction()
+        {
+            if (drpZoneSelDistrict.SelectedItem.Text != "--SELECT--")
+            {
+                using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("select ApplicationNumber+' '+ApplicantName as 'AppName',ApplicationNumber,ApplicantName from SelfEmpLoan where ParDistrict=@District and FinancialYear=@FinancialYear and ApplicationStatus='APPROVED' order by ApplicationNumber"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@District", drpZoneSelDistrict.SelectedValue);
+                        cmd.Parameters.AddWithValue("@FinancialYear", drpZoneSESanctionFY.SelectedValue);
+                        cmd.Connection = kvdConn;
+                        kvdConn.Open();
+                        drpZoneSESanction.DataSource = cmd.ExecuteReader();
+                        drpZoneSESanction.DataTextField = "AppName";
+                        drpZoneSESanction.DataValueField = "ApplicationNumber";
+                        drpZoneSESanction.DataBind();
+                        drpZoneSESanction.Items.Insert(0, "--SELECT--");
+                        kvdConn.Close();
+                    }
+                }
+            }else
+            {
+                DisplayAlert("District Not Selected", this);
             }
         }
         protected void drpZoneSelDistrict_SelectedIndexChanged(object sender, EventArgs e)
@@ -607,16 +652,113 @@ namespace KACDC.ApprovalPage
             }
         }
         //Last
+        protected void drpZoneSESanctionFY_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (drpZoneSESanctionFY.SelectedIndex != 0)
+                this.FillSanction();
+            SESanctionReset();
+        }
         protected void drpZoneSESanction_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (drpZoneSESanction.SelectedIndex != 0)
+            {
+                SEGetSanctionCopyDetails();
+            }
+            else
+            {
+                SESanctionReset();
+            }
+        }
+        private void SESanctionReset()
+        {
+            lblSESanctionError.Text = "";
 
-
+            lblSESanctionApplicationNumber.Text = "";
+            lblSESanctionName.Text = "";
+            lblSESanctionLoanNumber.Text = "";
+            lblSESanctionLoanAmount.Text = "";
+            lblSESanctionInstalment.Text = "";
+            lblSESanctionEmail.Text = "";
+            lblSESanctionReleaseDate.Text = "";
+            divSESanctionDownloadButton.Visible = false;
         }
         protected void btnCWLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();
             Response.Redirect("~/Login.aspx");
         }
+        protected void btnSESanctionDownload_Click(object sender, EventArgs e)
+        {
+           
+        }
+        protected void btnSESanctionSend_Click(object sender, EventArgs e)
+        {
+           
+        }
+        protected void btnZMSEGetApplicationSanction_Click(object sender, EventArgs e)
+        {
+            SEGetSanctionCopyDetails();
+        }
+        private void SEGetSanctionCopyDetails()
+        {
+            SESanctionReset();
+            string SQL = "select se.ApplicationNumber,SE.LoanAmount,ParDistrict,ApplicationStatus,ApplicantName,EmailID,SE.ApprovedApplicationNum AS 'LOANNUMBER',ReleaseDate,CAST((ROUND(((0.8 * CAST(SE.LoanAmount AS int)) / 34), 0)) as INT) as 'Principle',cast(LoanAmount as int)-((cast(LoanAmount as int)*20)/100) as 'TotalPrinciple',CAST((ROUND((((0.8 * CAST(SE.LoanAmount AS int)) + (ROUND(((0.8 * CAST(SE.LoanAmount AS int)) / 34), 0))) * 4 * 3 * (36 + 1) / 200 / 34 / 34), 0))AS INT) as 'Intrest',CAST((ROUND(((0.8 * CAST(SE.LoanAmount AS int)) / 34), 0)) + (ROUND((((0.8 * CAST(SE.LoanAmount AS int)) + (ROUND(((0.8 * CAST(SE.LoanAmount AS int)) / 34), 0))) * 4 * 3 * (36 + 1) / 200 / 34 / 34), 0))AS INT) as 'INSTALMENT' from SelfEmpLoan as SE where ApplicationNumber = @ApplicationNumber";
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(SQL))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ApplicationNumber", drpZoneSESanction.SelectedValue);
+                    cmd.Connection = kvdConn;
+                    kvdConn.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        sdr.Read();
+                        SL.ApplicationNumber = sdr["ApplicationNumber"].ToString();
+                        SL.ApplicantName = sdr["ApplicantName"].ToString();
+                        SL.LoanAmount = sdr["LoanAmount"].ToString();
+                        SL.EmailID = sdr["EmailID"].ToString();
+                        SL.LOANNUMBER = sdr["LOANNUMBER"].ToString();
+                        SL.Principle = sdr["Principle"].ToString();
+                        SL.Intrest = sdr["Intrest"].ToString();
+                        SL.INSTALMENT = sdr["INSTALMENT"].ToString();
+                        SL.TotalPrinciple = sdr["TotalPrinciple"].ToString();
+                        SL.ReleaseDate = sdr["ReleaseDate"].ToString();
+                        kvdConn.Close();
+                        //Scroll1.Text = "<font color=" + sdr["Value1"].ToString() + ">" + sdr["Value"].ToString().ToUpper() + "</font>";
+                    }
+                }
+            }
+            lblSESanctionApplicationNumber.Text = SL.ApplicationNumber;
+            lblSESanctionName.Text = SL.ApplicantName;
+            lblSESanctionLoanNumber.Text = SL.LOANNUMBER;
+            lblSESanctionLoanAmount.Text = SL.LoanAmount;
+            lblSESanctionInstalment.Text = SL.INSTALMENT + "(" + SL.Principle + "+" + SL.Intrest + ")";
+            lblSESanctionEmail.Text = SL.EmailID;
+            lblSESanctionReleaseDate.Text = SL.ReleaseDate;
+            if (SL.ReleaseDate != "")
+            {
+                divSESanctionDownloadButton.Visible = true;
+                GSC.CreateSanctionCopy(SL.ApplicantName, SL.ApplicationNumber, SL.LOANNUMBER, SL.LoanAmount, SL.ReleaseDate, "1", "2", SL.TotalPrinciple, "Months", SL.Principle, SL.Intrest, SL.INSTALMENT, Server.MapPath("~/Files_SelfEmployment/SanctionCopy/" + drpZoneSESanctionFY.SelectedValue + "/"), SL.ApplicationNumber, Server.MapPath("~/Image/KACDC_App.png"));
+            }
+            else
+            {
+                divSESanctionDownloadButton.Visible = false;
+                DisplayAlert("Release date is not available", this);
+                lblSESanctionError.Text = "Release date is not available, Update in RTGS Release Section";
+            }
+            if (SL.EmailID != "")
+            {
+                btnSESanctionSend.Visible = true;
+            }
+            else
+            {
+                btnSESanctionSend.Visible = false;
+                lblSESanctionError.Text = "Contact Beneficiary for email ID";
+
+            }
+        }
+
         protected void btnOldProcess_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ZM_Form.aspx");

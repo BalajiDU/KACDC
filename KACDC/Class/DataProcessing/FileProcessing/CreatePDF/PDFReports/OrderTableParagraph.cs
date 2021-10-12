@@ -32,10 +32,11 @@ namespace KACDC.Class.DataProcessing.FileProcessing.CreatePDF.PDFReports
             PdfImgConvert GIC = new PdfImgConvert();
             PdfPCell cell = null;
             BaseColor color = new BaseColor(123, 0, 0);
+            BaseColor color1 = new BaseColor(255, 255, 255, 0);
             Phrase KaPhrase = new Phrase();
             cell = new PdfPCell(GIC.GenerateImgCell(15, Text, KanFontSize, TextColor));
             cell.BorderWidth = .5f;
-            cell.BorderColor = BaseColor.WHITE;
+            cell.BorderColor = color1;
             cell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
             cell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
             cell.PaddingTop = PaddingTop;

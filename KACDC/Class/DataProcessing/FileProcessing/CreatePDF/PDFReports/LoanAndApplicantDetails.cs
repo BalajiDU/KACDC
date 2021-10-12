@@ -23,9 +23,9 @@ namespace KACDC.Class.DataProcessing.FileProcessing.CreatePDF.PDFReports
         private Paragraph OrderHeader(PdfPTable table, Phrase phrase, string Name,string ApplicationNumber,string LoanNumber,string LoanAmount,string LoanDate)
         {
             Paragraph p = new Paragraph();
-            table.AddCell(NameAddr("ಫಲಾನುಭವಿಯ \nಹೆಸರು", 24f, System.Drawing.Color.Black));
-            table.AddCell(NameAddr("ಫಲಾನುಭವಿಯ \nಅರ್ಜಿ ಸಂಖ್ಯೆ", 24f, System.Drawing.Color.Black));
-            table.AddCell(NameAddr("ಸಾಲದ ಐ.ಡಿ \nಸಂಖ್ಯೆ", 24f, System.Drawing.Color.Black));
+            table.AddCell(NameAddr("ಫಲಾನುಭವಿಯ \n  ಹೆಸರು", 24f, System.Drawing.Color.Black));
+            table.AddCell(NameAddr("ಫಲಾನುಭವಿಯ \n ಅರ್ಜಿ ಸಂಖ್ಯೆ", 24f, System.Drawing.Color.Black));
+            table.AddCell(NameAddr("ಸಾಲದ ಐ.ಡಿ \n  ಸಂಖ್ಯೆ", 24f, System.Drawing.Color.Black));
             table.AddCell(NameAddr("ಒಟ್ಟು ಸಾಲ ಮತ್ತು\nಸಹಾಯಧನ ಮೊತ್ತ", 22f, System.Drawing.Color.Black));
             table.AddCell(NameAddr("ಸಾಲ ಬಿಡುಗಡೆ \nಮಾಡಿದ ದಿನಾಂಕ", 24f, System.Drawing.Color.Black));
             table.AddCell(DetailsEngCell(Name));
@@ -84,7 +84,7 @@ namespace KACDC.Class.DataProcessing.FileProcessing.CreatePDF.PDFReports
             cell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
             cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             table.AddCell(cell);
-            cell = NameAddr("ವಿರಾಮ \nಅವಧಿ", 26f, System.Drawing.Color.Black);
+            cell = NameAddr("ವಿರಾಮ \nಅವಧಿ\n(ತಿಂಗಳು)", 26f, System.Drawing.Color.Black);
             cell.Rowspan = 2;
             table.AddCell(cell);
             cell = NameAddr("ಸಾಲದ \nಮೊತ್ತ", 26f, System.Drawing.Color.Black);

@@ -3676,6 +3676,15 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.UpdatePanel UpdatePanelSESanctionCopy;
         
         /// <summary>
+        /// drpZoneSESanctionFY control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpZoneSESanctionFY;
+        
+        /// <summary>
         /// drpZoneSESanction control.
         /// </summary>
         /// <remarks>
@@ -3703,6 +3712,15 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSEApplicationMail;
         
         /// <summary>
+        /// lblSESanctionError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSESanctionError;
+        
+        /// <summary>
         /// Label107 control.
         /// </summary>
         /// <remarks>
@@ -3712,13 +3730,40 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label107;
         
         /// <summary>
-        /// Label108 control.
+        /// lblSESanctionApplicationNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label108;
+        protected global::System.Web.UI.WebControls.Label lblSESanctionApplicationNumber;
+        
+        /// <summary>
+        /// diva2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl diva2;
+        
+        /// <summary>
+        /// Label10aG7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label10aG7;
+        
+        /// <summary>
+        /// lblSESanctionName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSESanctionName;
         
         /// <summary>
         /// div2 control.
@@ -3730,40 +3775,31 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
         
         /// <summary>
-        /// Labesl107 control.
+        /// Labdesl107 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labesl107;
+        protected global::System.Web.UI.WebControls.Label Labdesl107;
         
         /// <summary>
-        /// Labaecl108 control.
+        /// lblSESanctionLoanNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labaecl108;
+        protected global::System.Web.UI.WebControls.Label lblSESanctionLoanNumber;
         
         /// <summary>
-        /// diva control.
+        /// disva control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl diva;
-        
-        /// <summary>
-        /// Labeal107 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labeal107;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl disva;
         
         /// <summary>
         /// Label109 control.
@@ -3775,6 +3811,96 @@ namespace KACDC.ApprovalPage {
         protected global::System.Web.UI.WebControls.Label Label109;
         
         /// <summary>
+        /// lblSESanctionReleaseDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSESanctionReleaseDate;
+        
+        /// <summary>
+        /// Div3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
+        
+        /// <summary>
+        /// Labeal1a07 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labeal1a07;
+        
+        /// <summary>
+        /// lblSESanctionLoanAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSESanctionLoanAmount;
+        
+        /// <summary>
+        /// daivA2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl daivA2;
+        
+        /// <summary>
+        /// Label108 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label108;
+        
+        /// <summary>
+        /// lblSESanctionInstalment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSESanctionInstalment;
+        
+        /// <summary>
+        /// Div1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        
+        /// <summary>
+        /// Labeal107 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labeal107;
+        
+        /// <summary>
+        /// lblSESanctionEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSESanctionEmail;
+        
+        /// <summary>
         /// daiv2 control.
         /// </summary>
         /// <remarks>
@@ -3782,6 +3908,42 @@ namespace KACDC.ApprovalPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl daiv2;
+        
+        /// <summary>
+        /// divSESanctionDownloadButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSESanctionDownloadButton;
+        
+        /// <summary>
+        /// btnSESanctionDownload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSESanctionDownload;
+        
+        /// <summary>
+        /// btnSESanctionSend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSESanctionSend;
+        
+        /// <summary>
+        /// daidvA2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl daidvA2;
         
         /// <summary>
         /// UpdatePanel4 control.
