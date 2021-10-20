@@ -1429,3 +1429,19 @@ WebPage Name :Login.aspx
 User Name:ZMBLR
 User Type:ZONALMANAGER
 IP:::1
+
+-----------------New Login-----------------
+Date : 18-10-2021
+Time : 11:52 AM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-10-2021
+Time : 12:14 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1
