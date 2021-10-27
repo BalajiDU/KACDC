@@ -2166,6 +2166,10 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-NavZMSESanctionCopy" role="tabpanel" aria-labelledby="nav-NavZMSESanctionCopy-tab">
                                     <asp:UpdatePanel ID="UpdatePanelSESanctionCopy" runat="server">
+                                        <Triggers>
+                                            <asp:PostBackTrigger ControlID="btnSESanctionDownload" />
+                                            <asp:PostBackTrigger ControlID="btnSESanctionSend" />
+                                        </Triggers>
                                         <ContentTemplate>
                                             <div class="flex-container">
                                                 <div class="navFormHeading">
@@ -2178,7 +2182,7 @@
                                                         <asp:DropDownList ID="drpZoneSESanctionFY" Class="ac" Style="width: 15%; height:30px; border-radius:10px;border-style:none;background-color:lightgoldenrodyellow; text-align:center" runat="server" OnSelectedIndexChanged="drpZoneSESanctionFY_SelectedIndexChanged" AutoPostBack="true">
                                                         </asp:DropDownList>
                                                         <asp:Label runat="server" class="labelStyle1" style="margin-left:25px" Text="Application Number"></asp:Label>
-                                                        <asp:DropDownList ID="drpZoneSESanction" Class="ac" Style="width: 30%; " runat="server" OnSelectedIndexChanged="drpZoneSESanction_SelectedIndexChanged" AutoPostBack="true">
+                                                        <asp:DropDownList ID="drpZoneSESanction" Class="ac" Style="width: 30%; height:30px; border-radius:10px;border-style:none;background-color:lightgoldenrodyellow; text-align:left" runat="server" OnSelectedIndexChanged="drpZoneSESanction_SelectedIndexChanged" AutoPostBack="true">
                                                         </asp:DropDownList>
 <%--                                                        <asp:TextBox runat="SERVER"></asp:TextBox>--%>
                                                         <asp:Button ID="Button20" runat="server" Visible="false" Text="Get Details" OnClick="btnZMSEGetApplicationSanction_Click" />
@@ -2263,7 +2267,16 @@
                                                         <div class="form-row-Botton" id="daiv2" runat="server">
                                                         </div>
                                                     </div>
-                                                    
+                                                    <div class="form-row">
+                                                        <div class="form-row-label" style="color: black">
+                                                            <asp:Label ID="Label111" class="" runat="server">Sanction Copy Mail Status</asp:Label><br />
+                                                        </div>
+                                                        <div class="form-row-input">
+                                                            <asp:Label ID="lblSESanctionMailStatus" class="" runat="server"></asp:Label><br />
+                                                        </div>
+                                                        <div class="form-row-Botton" id="Div4" runat="server">
+                                                        </div>
+                                                    </div>
                                                     <div class="form-row" runat="server" id="divSESanctionDownloadButton" visible="false">
                                                         <div class="form-row-label" style="color: black">
                                                         </div>

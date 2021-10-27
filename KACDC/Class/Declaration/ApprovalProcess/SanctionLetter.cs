@@ -57,6 +57,11 @@ namespace KACDC.Class.Declaration.ApprovalProcess
             set { HttpContext.Current.Session["ReleaseDate"] = value; }
             get { return HttpContext.Current.Session["ReleaseDate"] as string; }
         }
+        public string SanctionedCopyStatus
+        {
+            set { HttpContext.Current.Session["SanctionedCopyStatus"] = value; }
+            get { return HttpContext.Current.Session["SanctionedCopyStatus"] as string; }
+        }
 
     }
 }

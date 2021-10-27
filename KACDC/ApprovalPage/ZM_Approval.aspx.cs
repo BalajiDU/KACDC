@@ -2,6 +2,7 @@
 using KACDC.Class.DataProcessing.ApplicationProcess;
 using KACDC.Class.DataProcessing.ApplicationProcess.BankDetails;
 using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.ApplicationProcess;
+using KACDC.Class.DataProcessing.OnlineApplication;
 using KACDC.Class.Declaration.ApprovalProcess;
 using KACDC.Class.GetCountStatistics;
 using System;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -680,6 +682,7 @@ namespace KACDC.ApprovalPage
             lblSESanctionInstalment.Text = "";
             lblSESanctionEmail.Text = "";
             lblSESanctionReleaseDate.Text = "";
+            lblSESanctionMailStatus.Text = "";
             divSESanctionDownloadButton.Visible = false;
         }
         protected void btnCWLogout_Click(object sender, EventArgs e)
@@ -689,20 +692,86 @@ namespace KACDC.ApprovalPage
         }
         protected void btnSESanctionDownload_Click(object sender, EventArgs e)
         {
-           
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + SL.ApplicationNumber + ".pdf");
+            Response.TransmitFile(Server.MapPath("~/Files_SelfEmployment/SanctionCopy/" + drpZoneSESanctionFY.SelectedValue + "/" + SL.ApplicationNumber + ".pdf"));
+            Response.End();
         }
         protected void btnSESanctionSend_Click(object sender, EventArgs e)
         {
-           
+            //try
+            //{
+            //    SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString);
+            //    if (kvdConn.State == ConnectionState.Closed) { kvdConn.Open(); }
+
+
+            //    SqlCommand cmd = new SqlCommand("update SelfEmpLoan set SanctionedCopyStatus='SENT' where ApplicationNumber= = @ApplicationNumber", kvdConn);
+
+            //    cmd.ExecuteNonQuery();
+
+            //    kvdConn.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    DisplayAlert(ex.Message, this);
+            //}
+
+
+
+            string SQL = "update SelfEmpLoan set SanctionedCopyStatus='SENT' where ApplicationNumber = @ApplicationNumber";
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(SQL))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@ApplicationNumber", drpZoneSESanction.SelectedValue);
+                    cmd.Connection = kvdConn;
+                    kvdConn.Open();
+                    cmd.ExecuteNonQuery();
+                    kvdConn.Close();
+                    SESanctionGetDetails();
+                    //Scroll1.Text = "<font color=" + sdr["Value1"].ToString() + ">" + sdr["Value"].ToString().ToUpper() + "</font>";
+
+                }
+            }
+            SendSMSEmail(Server.MapPath("~/Files_SelfEmployment/SanctionCopy/" + drpZoneSESanctionFY.SelectedValue + "/" + SL.ApplicationNumber + ".pdf"), SL.ApplicationNumber + ".pdf");
         }
         protected void btnZMSEGetApplicationSanction_Click(object sender, EventArgs e)
         {
             SEGetSanctionCopyDetails();
         }
-        private void SEGetSanctionCopyDetails()
+        private bool SendSMSEmail(string FilePath,string FileName)
         {
-            SESanctionReset();
-            string SQL = "select se.ApplicationNumber,SE.LoanAmount,ParDistrict,ApplicationStatus,ApplicantName,EmailID,SE.ApprovedApplicationNum AS 'LOANNUMBER',ReleaseDate,CAST((ROUND(((0.8 * CAST(SE.LoanAmount AS int)) / 34), 0)) as INT) as 'Principle',cast(LoanAmount as int)-((cast(LoanAmount as int)*20)/100) as 'TotalPrinciple',CAST((ROUND((((0.8 * CAST(SE.LoanAmount AS int)) + (ROUND(((0.8 * CAST(SE.LoanAmount AS int)) / 34), 0))) * 4 * 3 * (36 + 1) / 200 / 34 / 34), 0))AS INT) as 'Intrest',CAST((ROUND(((0.8 * CAST(SE.LoanAmount AS int)) / 34), 0)) + (ROUND((((0.8 * CAST(SE.LoanAmount AS int)) + (ROUND(((0.8 * CAST(SE.LoanAmount AS int)) / 34), 0))) * 4 * 3 * (36 + 1) / 200 / 34 / 34), 0))AS INT) as 'INSTALMENT' from SelfEmpLoan as SE where ApplicationNumber = @ApplicationNumber";
+            try
+            {
+                SubmitApplicationSMS SMS = new SubmitApplicationSMS();
+                ApplicationSubmitEmail EMAIL = new ApplicationSubmitEmail();
+                //SMS.ApplicantSMSConfirmation(ODSE.MobileNumber, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
+                EMAIL.ApplicantEmailSanction(SL.EmailID, SL.ApplicationNumber, SL.LOANNUMBER, "Self Employment", SL.ApplicantName,
+                    File.ReadAllBytes(FilePath), FileName);
+                // ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
+
+                Response.Clear();
+
+                Response.Buffer = true;
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("Content-Disposition", "attachment; filename="+SL.ApplicationNumber + ".pdf");
+                Response.TransmitFile(Server.MapPath("~/Files_SelfEmployment/SanctionCopy/" + drpZoneSESanctionFY.SelectedValue + "/" + SL.ApplicationNumber + ".pdf"));
+                Response.Flush();
+                Response.End();
+                //window.location.reload();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Send mail: " + ex.ToString());
+                return false;
+            }
+        }
+
+        private void SESanctionGetDetails()
+        {
+            string SQL = "select ApplicationNumber,LoanAmount,ParDistrict,SanctionedCopyStatus,ApplicationStatus,ApplicantName,EmailID,ApprovedApplicationNum AS 'LOANNUMBER',ReleaseDate,CAST((ROUND(((0.8 * CAST(LoanAmount AS int)) / 34), 0)) as INT) as 'Principle',cast(LoanAmount as int)-((cast(LoanAmount as int)*20)/100) as 'TotalPrinciple',CAST((ROUND((((0.8 * CAST(LoanAmount AS int)) + (ROUND(((0.8 * CAST(LoanAmount AS int)) / 34), 0))) * 4 * 3 * (36 + 1) / 200 / 34 / 34), 0))AS INT) as 'Intrest',CAST((ROUND(((0.8 * CAST(LoanAmount AS int)) / 34), 0)) + (ROUND((((0.8 * CAST(LoanAmount AS int)) + (ROUND(((0.8 * CAST(LoanAmount AS int)) / 34), 0))) *4 * 3 * (36 + 1) / 200 / 34 / 34), 0))AS INT) as 'INSTALMENT' from SelfEmpLoan where ApplicationNumber = @ApplicationNumber";
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(SQL))
@@ -724,6 +793,7 @@ namespace KACDC.ApprovalPage
                         SL.INSTALMENT = sdr["INSTALMENT"].ToString();
                         SL.TotalPrinciple = sdr["TotalPrinciple"].ToString();
                         SL.ReleaseDate = sdr["ReleaseDate"].ToString();
+                        SL.SanctionedCopyStatus = sdr["SanctionedCopyStatus"].ToString();
                         kvdConn.Close();
                         //Scroll1.Text = "<font color=" + sdr["Value1"].ToString() + ">" + sdr["Value"].ToString().ToUpper() + "</font>";
                     }
@@ -736,6 +806,14 @@ namespace KACDC.ApprovalPage
             lblSESanctionInstalment.Text = SL.INSTALMENT + "(" + SL.Principle + "+" + SL.Intrest + ")";
             lblSESanctionEmail.Text = SL.EmailID;
             lblSESanctionReleaseDate.Text = SL.ReleaseDate;
+            lblSESanctionMailStatus.Text= SL.SanctionedCopyStatus != "SENT" ? "Not Sent Through Email" : "Sanction Copy Sent";
+        }
+        private void SEGetSanctionCopyDetails()
+        {
+            SESanctionReset();
+            SESanctionGetDetails();
+            
+
             if (SL.ReleaseDate != "")
             {
                 divSESanctionDownloadButton.Visible = true;
@@ -749,14 +827,23 @@ namespace KACDC.ApprovalPage
             }
             if (SL.EmailID != "")
             {
-                btnSESanctionSend.Visible = true;
+                if (SL.SanctionedCopyStatus != "SENT")
+                {
+                    lblSESanctionMailStatus.Text = "Not Sent Through Email";
+                    btnSESanctionSend.Visible = true;
+                }
+                else
+                {
+                    lblSESanctionMailStatus.Text = "Sanction Copy Already Sent";
+                    btnSESanctionSend.Visible = false;
+                }
             }
             else
             {
                 btnSESanctionSend.Visible = false;
                 lblSESanctionError.Text = "Contact Beneficiary for email ID";
-
             }
+            
         }
 
         protected void btnOldProcess_Click(object sender, EventArgs e)
