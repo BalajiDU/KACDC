@@ -82,7 +82,11 @@ namespace KACDC.Class.Declaration.Aadhaar
             set { HttpContext.Current.Session["Pincode"] = value; }
             get { return HttpContext.Current.Session["Pincode"] as string; }
         }
-        
+        public string KannadaName
+        {
+            set { HttpContext.Current.Session["KannadaName"] = value; }
+            get { return HttpContext.Current.Session["KannadaName"] as string; }
+        }
 
     }
 }

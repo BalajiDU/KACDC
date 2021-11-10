@@ -354,6 +354,7 @@
     <Content Include="TestForms\TestForm2.aspx" />
     <Content Include="TestForms\TestForm3.aspx" />
     <Content Include="TestForms\TestForm4.aspx" />
+    <Content Include="TestForms\TestFormSimilarity.aspx" />
     <Content Include="WebServices\FetchSelfEmploymentData.asmx" />
     <Content Include="WebServices\GetCollegeDetails.asmx" />
     <Content Include="WebServices\Get_AR_Applications.asmx" />
@@ -544,6 +545,7 @@
     <Compile Include="Class\DataProcessing\ApplicationProcess\BankDetails\UpdateBankDetails.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessArivu.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessSelfEmployment.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\CheckNameSimilarity.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\DMGetApplicantDetails.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GenerateSanctionCopy.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GetApprovedApplicationNumber.cs" />
@@ -841,6 +843,13 @@
     </Compile>
     <Compile Include="TestForms\TestForm4.aspx.designer.cs">
       <DependentUpon>TestForm4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestForms\TestFormSimilarity.aspx.cs">
+      <DependentUpon>TestFormSimilarity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestForms\TestFormSimilarity.aspx.designer.cs">
+      <DependentUpon>TestFormSimilarity.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebServices\FetchSelfEmploymentData.asmx.cs">
       <DependentUpon>FetchSelfEmploymentData.asmx</DependentUpon>

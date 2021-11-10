@@ -25,6 +25,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using KACDC.Class.DataProcessing.ApplicationProcess;
 
 namespace KACDC.Schemes.Self_Employment
 {
@@ -44,6 +45,8 @@ namespace KACDC.Schemes.Self_Employment
         SignatureTable ST = new SignatureTable();
         HeadingTable HT = new HeadingTable();
         VerifyEmailID VEID = new VerifyEmailID();
+        CheckNameSimilarity CNS = new CheckNameSimilarity();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //ODSE.ApplicationDateTime=( DateTime.Now.ToString());
@@ -202,65 +205,72 @@ namespace KACDC.Schemes.Self_Employment
                         {
                             if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
                             {
-                                if (Int32.Parse(NKSER.NCStatusCode) == 1)
+                                if (VerifySimilarities())
                                 {
-                                    if (Int32.Parse(NKSER.NCFacilityCode) == 42)
+
+                                    if (Int32.Parse(NKSER.NCStatusCode) == 1)
                                     {
-                                        if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
+                                        if (Int32.Parse(NKSER.NCFacilityCode) == 42)
                                         {
-                                            if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                            if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
                                             {
-                                                if (NDAR.NCGender == "MALE")
+                                                if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
                                                 {
-                                                    ODSE.Widow = "NA";
-                                                    ODSE.Divorced = "NA";
-                                                    divFemaleOptions.Visible = false;
+                                                    if (NDAR.NCGender == "MALE")
+                                                    {
+                                                        ODSE.Widow = "NA";
+                                                        ODSE.Divorced = "NA";
+                                                        divFemaleOptions.Visible = false;
+                                                    }
+                                                    else
+                                                    {
+                                                        divFemaleOptions.Visible = true;
+                                                    }
+                                                    rbContactAddressYes.Checked = false;
+                                                    rbContactAddressNo.Checked = false;
+                                                    btnNadakachriOK.Visible = false;
+                                                    btnSaveContactAddress.Visible = false;
+                                                    divContactAddress.Visible = false;
+                                                    divButtonBankDetails.Visible = true;
+
+                                                    btnVerifyRdNumber.Visible = false;
+                                                    NKAR.UpdateDistrict();
+                                                    ConstituencyDropDownBinding();
+                                                    lblNCGSCNumber.Text = NKSER.NCGSCNumber;
+                                                    lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                                    //NKSER.NCDateOfIssue;
+                                                    lblNCApplicantName.Text = NKSER.NCApplicantName;
+                                                    lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
+                                                    lblNCDistrict.Text = NKSER.NCDistrictName;
+                                                    lblNCTaluk.Text = NKSER.NCTalukName;
+                                                    lblNCFullAddress.Text = NKSER.NCFullAddress;
+
+                                                    CasteCertificatePopup.Show();
                                                 }
                                                 else
                                                 {
-                                                    divFemaleOptions.Visible = true;
+                                                    DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
                                                 }
-                                                rbContactAddressYes.Checked = false;
-                                                rbContactAddressNo.Checked = false;
-                                                btnNadakachriOK.Visible = false;
-                                                btnSaveContactAddress.Visible = false;
-                                                divContactAddress.Visible = false;
-                                                divButtonBankDetails.Visible = true;
-                                                
-                                                btnVerifyRdNumber.Visible = false;
-                                                NKAR.UpdateDistrict();
-                                                ConstituencyDropDownBinding();
-                                                lblNCGSCNumber.Text = NKSER.NCGSCNumber;
-                                                lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
-                                                //NKSER.NCDateOfIssue;
-                                                lblNCApplicantName.Text = NKSER.NCApplicantName;
-                                                lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
-                                                lblNCDistrict.Text = NKSER.NCDistrictName;
-                                                lblNCTaluk.Text = NKSER.NCTalukName;
-                                                lblNCFullAddress.Text = NKSER.NCFullAddress;
-                                                
-                                                CasteCertificatePopup.Show();
                                             }
                                             else
                                             {
-                                                DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                                DisplayAlert("Income must be less then 1,00,000", this);
                                             }
                                         }
                                         else
                                         {
-                                            DisplayAlert("Income must be less then 1,00,000", this);
+                                            DisplayAlert("Only Arya vysya Community is eligible", this);
                                         }
                                     }
                                     else
                                     {
-                                        DisplayAlert("Only Arya vysya Community is eligible", this);
+                                        DisplayAlert("Invalid RD Number", this);
                                     }
                                 }
                                 else
                                 {
-                                    DisplayAlert("Invalid RD Number", this);
+                                    DisplayAlert("Aadhar and Caste certificate name is mismatching, try again", this);
                                 }
-
                             }
                             else
                             {
@@ -285,6 +295,25 @@ namespace KACDC.Schemes.Self_Employment
             else
             {
                 DisplayAlert("Invalid RD Number", this);
+            }
+        }
+        private bool VerifySimilarities()
+        {
+            if (Int32.Parse(NKSER.NCLanguage) == 1)
+            {
+                if (CNS.CalculateSimilarity(ADSER.KannadaName, NKSER.NCApplicantName) > 0.7)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                if (CNS.CalculateSimilarity(ADSER.Name, NKSER.NCApplicantName) > 0.7)
+                {
+                    return true;
+                }
+                return false;
             }
         }
         protected void btnNadakachriBack_Click(object sender, EventArgs e)
