@@ -1,23 +1,23 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using KACDC.CreateTextSharpPDF.Process;
 
-namespace KACDC.CreateTextSharpPDF.Process
+namespace KACDC.Class.DataProcessing.FileProcessing.CreatePDF.PDFModuleProcess
 {
-    public class HeadingTable
+    public class HeadingTableKannada
     {
-
-        public PdfPTable GenerateHeading(PdfPTable Table, string LoanName,string AppDate)
+        public PdfPTable GenerateHeading(PdfPTable Table, string LoanName, string AppDate)
         {
             Phrase phrase = null;
             //Create Header Table
             Table.TotalWidth = 550f;
             Table.LockedWidth = true;
             Table.SetWidths(new float[] { 0.2f, 0.3f, 0.3f, 0.2f });
-            PageHeader(Table, phrase, LoanName,AppDate);
+            PageHeader(Table, phrase, LoanName, AppDate);
             return Table;
         }
         public PdfPTable GenerateHeadingARRenewal(PdfPTable Table, string LoanName, string AppDate)
@@ -30,7 +30,7 @@ namespace KACDC.CreateTextSharpPDF.Process
             PageHeader(Table, phrase, LoanName, AppDate);
             return Table;
         }
-        private PdfPTable PageHeader(PdfPTable table, Phrase phrase, string LoanType, string AppDate,string FinancialYear = "")
+        private PdfPTable PageHeader(PdfPTable table, Phrase phrase, string LoanType, string AppDate, string FinancialYear = "")
         {
             //DateTime.ParseExact(AppDate, "MM-dd-yyyy", System.Globalization.CultureInfo.InvariantCulture);
             //Convert.ToDateTime(AppDate, System.Globalization.CultureInfo.InvariantCulture);
@@ -77,9 +77,8 @@ namespace KACDC.CreateTextSharpPDF.Process
             phrase = new Phrase();
             BaseColor color = new BaseColor(123, 0, 0);
             phrase.Add(new Chunk("KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION\n", FontFactory.GetFont("sans-serif", 15, iTextSharp.text.Font.BOLD, color)));
-            
             phrase.Add(new Chunk("\n", FontFactory.GetFont("sans-serif", 8, iTextSharp.text.Font.BOLD, BaseColor.BLACK)));
-            if (FinancialYear!="")
+            if (FinancialYear != "")
             {
                 phrase.Add(new Chunk(LoanName.ToUpper() + " ( " + FinancialYear + " )" + "\n", FontFactory.GetFont("sans-serif", 13, iTextSharp.text.Font.BOLD, BaseColor.BLACK)));
             }
@@ -98,24 +97,6 @@ namespace KACDC.CreateTextSharpPDF.Process
         private static PdfPCell PhraseCell(Phrase phrase, int align)
         {
             PdfPCell cell = new PdfPCell(phrase);
-
-
-            //TextToImage TTI = new TextToImage();
-            //iTextSharp.text.Image KannadaImage = TTI.ConvertTextToImage("         ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ\n                    ಅಭಿವೃಧಿ ನಿಗಮ(ನಿ)", "sans-serif", 10, System.Drawing.Color.White, System.Drawing.Color.Black);
-            ////phrase.Add(new Chunk(KannadaImage, FontFactory.GetFont("sans-serif", 15, iTextSharp.text.Font.BOLD, color)));
-
-            //KannadaImage.ScalePercent(30f);
-            //cell.AddElement(KannadaImage);
-
-            //iTextSharp.text.Image KannadaImage1 = TTI.ConvertTextToImage("             ಸ್ವಯಂ ಉದ್ಯೋಗ ನೇರ ಸಾಲ ಯೋಜನೆ", "sans-serif", 10, System.Drawing.Color.White, System.Drawing.Color.Black);
-            ////phrase.Add(new Chunk(KannadaImage, FontFactory.GetFont("sans-serif", 15, iTextSharp.text.Font.BOLD, color)));
-
-            //KannadaImage1.ScalePercent(26f);
-            //cell.AddElement(KannadaImage1);
-
-            //cell.AddElement(new Phrase((new Chunk("     Date: " + Convert.ToDateTime(DateTime.Now, System.Globalization.CultureInfo.InvariantCulture).ToString("dd MMMM yyyy hh:mm tt"), FontFactory.GetFont("sans-serif", 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK)))));
-
-
             cell.BorderColor = BaseColor.WHITE;
             cell.VerticalAlignment = PdfPCell.ALIGN_TOP;
             cell.HorizontalAlignment = align;

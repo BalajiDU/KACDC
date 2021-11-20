@@ -8,6 +8,7 @@ namespace KACDC.Class.Declaration.WebServices
     public class WSSEWebService
     {
         public string ImgPath { get; set; }
+        public string FinancialYear { get; set; }
         public string ApplicationNumber { get; set; }
         public string ApplicantName { get; set; }
         public string ApplicantNameNC { get; set; }

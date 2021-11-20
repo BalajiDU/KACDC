@@ -98,7 +98,7 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
 
             Table.AddCell(LAN.GenerateCell("Person With Disablities", 12, "ತಂದೆ / ರಕ್ಷಕರ ಹೆಸರು", 20f));
             Table.AddCell(PCell.PrintCell(PhysicallyChallenged, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
-            Table.AddCell(LAN.GenerateCell("Anual Income", 12, "ವಾರ್ಷಿಕ ಆದಾಯ", 20f));
+            Table.AddCell(LAN.GenerateCell("Annual Income", 12, "ವಾರ್ಷಿಕ ಆದಾಯ", 20f));
             Table.AddCell(PCell.PrintCell(AnualIncome, "sans-serif", 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK, 20f, Left, VCenter));
 
             //Row 8.1(Optional)
@@ -132,7 +132,7 @@ namespace KACDC.CreateTextSharpPDF.Schemes.SelfEmployment
             if (Language == "1")
             {
                 //Row 10
-                Table.AddCell(LAN.GenerateCell("Parmanent Address", 12, "ಶಾಶ್ವತ ವಿಳಾಸ", 20f));
+                Table.AddCell(LAN.GenerateCell("Parmanent Address", 12, "ಖಾಯಂ ವಿಳಾಸ", 20f));
                 PdfPCell FullAddresscell;
 
                 iTextSharp.text.Image FullAddressImage = TTI.ConvertTextToImage(MLT.GenerateMultiLineText(TextArea1, ParmanentAddress, 18), "sans-serif", 10, Color.White, Color.Black);

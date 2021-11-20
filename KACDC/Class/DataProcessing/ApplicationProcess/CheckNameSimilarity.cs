@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KACDC.Class.Declaration.Aadhaar;
+using KACDC.Class.Declaration.Nadakacheri;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +9,27 @@ namespace KACDC.Class.DataProcessing.ApplicationProcess
 {
     public class CheckNameSimilarity
     {
+        public bool VerifySimilarities()
+        {
+            NadaKacheri NKSER = new NadaKacheri();
+            AadhaarServiceData ADSER = new AadhaarServiceData();
+            if (Int32.Parse(NKSER.NCLanguage) == 1)
+            {
+                if (CalculateSimilarity(ADSER.KannadaName, NKSER.NCApplicantName) > 0.7)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                if (CalculateSimilarity(ADSER.Name, NKSER.NCApplicantName) > 0.7)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
         public  double CalculateSimilarity(string source, string target)
         {
             if (string.IsNullOrEmpty(source))

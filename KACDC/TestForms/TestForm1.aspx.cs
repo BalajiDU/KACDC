@@ -847,15 +847,13 @@ namespace KACDC.TestForms
                 HeadingTable = HT.GenerateHeading(HeadingTable, "Self Employment Loan", (Convert.ToDateTime(DateTime.Now.ToString())).ToString("MM/dd/yyyy hh:mm:sss tt"));
                 PdfPTable Table = null;
                 Table = new PdfPTable(4);
-                Table = APPLITAB.SEApplicantMainTable(Table, "GeneratedApplicationNumber", "Name", "NCApplicantFatherName","Gender", "Widow", "ODSE.Divorced", "ODSE.PersonWithDisabilities", "NDAR.NCAnnualIncome"," NDAR.NCGSCNumber"," ODSE.EmailID"," ODSE.MobileNumber"," ODSE.AlternateMobileNumber",
-            "ADSER.DOB", "ODSE.PurposeOfLoan", "ADSER.AadhaarVaultToken:", "", "ODSE.ContactFullAddress", "ODSE.ContactDistrictName", "ODSE.ContactPinCode", "NDAR.NCFullAddress", "NDAR.NCDistrictName", "NKSER.NCConstituency", "NDAR.NCApplicantCAddressPin",
-             (Convert.ToDateTime(DateTime.Now.ToString())).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(DateTime.Now.ToString())).ToString("MM/dd/yyyy hh:mm:sss tt"), "NDAR.NCTalukName", "ODSE.ContactTalukName", "ODSE.LoanDESCRIPTION", "NDAR.NCApplicantName", NKSER.NCLanguage);
+                //Table = APPLITAB.SEApplicantMainTable(Table, "GeneratedApplicationNumber", "Name", "NCApplicantFatherName","Gender", "Widow", "ODSE.Divorced", "ODSE.PersonWithDisabilities", "NDAR.NCAnnualIncome"," NDAR.NCGSCNumber"," ODSE.EmailID"," ODSE.MobileNumber"," ODSE.AlternateMobileNumber","ADSER.DOB", "ODSE.PurposeOfLoan", "ADSER.AadhaarVaultToken:", "", "ODSE.ContactFullAddress", "ODSE.ContactDistrictName", "ODSE.ContactPinCode", "NDAR.NCFullAddress", "NDAR.NCDistrictName", "NKSER.NCConstituency", "NDAR.NCApplicantCAddressPin",           (Convert.ToDateTime(DateTime.Now.ToString())).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(DateTime.Now.ToString())).ToString("MM/dd/yyyy hh:mm:sss tt"), "NDAR.NCTalukName", "ODSE.ContactTalukName", "ODSE.LoanDESCRIPTION", "NDAR.NCApplicantName", NKSER.NCLanguage);
                 PdfPTable BankTable = null;
                 BankTable = new PdfPTable(4);
-                BankTable = BT.GenerateBankTable(BankTable, "ADSER.Name", "BD.AccountNumber", "BD.BANK", "BD.BRANCH", "BD.IFSC", "BD.ADDRESS");
+                //BankTable = BT.GenerateBankTable(BankTable, "ADSER.Name", "BD.AccountNumber", "BD.BANK", "BD.BRANCH", "BD.IFSC", "BD.ADDRESS");
                 PdfPTable AgreeTable = null;
                 AgreeTable = new PdfPTable(4);
-                AgreeTable = AT.GenerateAgreementTable(AgreeTable, "SelfEnglish", "SelfKannada", "AadhaarEnglish", "AadhaarKannada"," ShareEnglish", "ShareKannada");
+                //AgreeTable = AT.GenerateAgreementTable(AgreeTable, "SelfEnglish", "SelfKannada", "AadhaarEnglish", "AadhaarKannada"," ShareEnglish", "ShareKannada");
                 PdfPTable SignatureTable = null;
                 SignatureTable = new PdfPTable(4);
                 SignatureTable = ST.GenerateSignatureTable(SignatureTable);
@@ -866,9 +864,9 @@ namespace KACDC.TestForms
                     PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
                     pdfDoc.Open();
                     pdfDoc.Add(HeadingTable);
-                    pdfDoc.Add(Table);
-                    pdfDoc.Add(BankTable);
-                    pdfDoc.Add(AgreeTable);
+                    //pdfDoc.Add(Table);
+                    //pdfDoc.Add(BankTable);
+                    //pdfDoc.Add(AgreeTable);
                     pdfDoc.Add(SignatureTable);
 
                     pdfDoc.Close();

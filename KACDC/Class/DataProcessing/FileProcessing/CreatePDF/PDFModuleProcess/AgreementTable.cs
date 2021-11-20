@@ -31,7 +31,7 @@ namespace KACDC.CreateTextSharpPDF.Process
             Table.AddCell(EmptyCell);
             Table.AddCell(AGC.AGCell(SelfEnglish, SelfKannada));
             Table.AddCell(AGC.AGCell(AadhaarEnglish, AadhaarKannada));
-            Table.AddCell(AGC.AGCell(ShareEnglish, ShareKannada));
+            //Table.AddCell(AGC.AGCell(ShareEnglish, ShareKannada));
 
             return Table;
         }

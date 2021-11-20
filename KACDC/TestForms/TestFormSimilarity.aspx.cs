@@ -1,5 +1,10 @@
-﻿using System;
+﻿using KACDC.Class.DataProcessing.Aadhaar;
+using KACDC.Class.DataProcessing.OnlineApplication;
+using KACDC.Class.Declaration.Aadhaar;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -65,6 +70,65 @@ namespace KACDC.TestForms
             }
 
             return distance[sourceLength, targetLength];
+        }
+
+        protected void btnExist_Click(object sender, EventArgs e)
+        {
+            IsAadhaarExist AE = new IsAadhaarExist();
+            Label1.Text=AE.CheckAadhaar(TextBox1.Text.Trim());
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string sql = "select ApplicationNumber,AadharNum from SelfEmpLoan where FinancialYear='2019-20'";
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+
+                kvdConn.Open();
+                using (SqlDataReader rdr = new SqlCommand(sql, kvdConn).ExecuteReader())
+                {
+
+                    while (rdr.Read())
+                    {
+                        AadhaarEnceyption AE = new AadhaarEnceyption();
+                        AadhaarServiceData ADSER = new AadhaarServiceData();
+                        AE.GetAadhaarToken(rdr["ApplicationNumber"].ToString());
+                        Label2.Text +=("<br />", rdr["ApplicationNumber"].ToString(), rdr["AadharNum"].ToString(), ADSER.AadhaarVaultToken);
+
+                        string updateSQL = "update SelfEmpLoan set	AadharNum=@AadharNum where ApplicationNumber=@ApplicationNumber";
+                        SqlCommand cmd = new SqlCommand(updateSQL, kvdConn);
+                        cmd.Parameters.AddWithValue("@AadharNum", ADSER.AadhaarVaultToken);
+                        cmd.Parameters.AddWithValue("@ApplicationNumber", rdr["ApplicationNumber"].ToString());
+                        //Console.WriteLine((string)c["LoginID"]);
+                    }
+                }
+            }
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string sql = "select ApplicationNumber,AadharNum from SelfEmpLoan where cast(right(ApplicationNumber,6)as int)<5";
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+
+                kvdConn.Open();
+                using (SqlDataReader Reader = new SqlCommand(sql, kvdConn).ExecuteReader())
+                {
+
+                    foreach (System.Data.Common.DbDataRecord rdr in Reader)
+                    {
+                        AadhaarEnceyption AE = new AadhaarEnceyption();
+                        AadhaarServiceData ADSER = new AadhaarServiceData();
+                        AE.GetAadhaarToken(rdr["ApplicationNumber"].ToString());
+                        Label2.Text += ("<br />", rdr["ApplicationNumber"].ToString(), rdr["AadharNum"].ToString(), ADSER.AadhaarVaultToken);
+
+                        string updateSQL = "update SelfEmpLoan set	AadharNum=@AadharNum where ApplicationNumber=@ApplicationNumber";
+                        SqlCommand cmd = new SqlCommand(updateSQL, kvdConn);
+                        cmd.Parameters.AddWithValue("@AadharNum", ADSER.AadhaarVaultToken);
+                        cmd.Parameters.AddWithValue("@ApplicationNumber", rdr["ApplicationNumber"].ToString());
+                        //Console.WriteLine((string)c["LoginID"]);
+                    }
+                }
+            }
         }
     }
 }

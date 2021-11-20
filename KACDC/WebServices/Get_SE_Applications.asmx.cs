@@ -86,6 +86,7 @@ namespace KACDC.WebServices
                             SE.AadhaarNumber = "";
                             SE.Zone = rdr["ZoneName"].ToString();
                             SE.Taluk = rdr["ParTaluk"].ToString();
+                            SE.FinancialYear = rdr["FinancialYear"].ToString();
                             SEApplication.Add(SE);
                         }
                     }

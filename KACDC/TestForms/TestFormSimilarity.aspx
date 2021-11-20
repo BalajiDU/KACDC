@@ -14,6 +14,19 @@
             <asp:Button runat="server" ID="btnCheck" Text="Cal" OnClick="btnCheck_Click" />
             <asp:Label runat="server" ID="lblRes"></asp:Label>
         </div>
+        <hr />
+        <div>
+            <asp:TextBox runat="server" ID="TextBox1"></asp:TextBox>
+            <asp:Button runat="server" ID="btnExist" Text="Cal" OnClick="btnExist_Click" />
+            <asp:Label runat="server" ID="Label1"></asp:Label>
+        </div>
+        <hr />
+        <div>
+            <asp:TextBox runat="server" ID="TextBox2"></asp:TextBox>
+            <asp:Button runat="server" ID="Button1" Text="UPDATE VAULT TOKEN" OnClick="Button1_Click" />
+            <asp:Button runat="server" ID="Button2" Text="UPDATE VAULT TOKEN for 5" OnClick="Button2_Click" />
+            <asp:Label runat="server" ID="Label2"></asp:Label>
+        </div>
     </form>
 </body>
 </html>

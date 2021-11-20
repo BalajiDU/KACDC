@@ -559,6 +559,7 @@
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\ApplicantPDFMerge.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ApplicationProcess\PDFFileOperation.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\ArivuRenewalAcknoledgement\GenerateRenewalAcknolegdement.cs" />
+    <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\HeadingTableKannada.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\ReportTableHeading.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\ZMBankPDF\PDFParagraph.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFReports\HeadingKanTable.cs" />
@@ -575,6 +576,7 @@
     <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\ArRenewalProcess.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\SubmitARApplication.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\AryaVysyaPortalStore\AryaVysyaPortalSave.cs" />
+    <Compile Include="Class\DataProcessing\OnlineApplication\IsAadhaarExist.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\SelfEmployment\StoreSEApplication.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\SubmitApplicationSMS.cs" />
     <Compile Include="Class\DataProcessing\OTPService\OTP.cs" />
@@ -608,6 +610,7 @@
     <Compile Include="Class\Declaration\WebServices\WSPayment.cs" />
     <Compile Include="Class\Declaration\WebServices\WSPaymentStatistics.cs" />
     <Compile Include="Class\Declaration\WebServices\WSSEWebService.cs" />
+    <Compile Include="Class\Declaration\WebServices\WSSuvidha.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
     <Compile Include="Class\JobScheduler\HangFireJobScheduler.cs" />
@@ -649,6 +652,7 @@
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\PDFModuleProcess\TextToImage.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\Schemes\Arivu\ApplicantPDFTableAR.cs" />
     <Compile Include="Class\DataProcessing\FileProcessing\CreatePDF\Schemes\SelfEmployment\ApplicantPDFTable.cs" />
+    <Compile Include="Controllers\Suvidha\KACDCSuvidhaController.cs" />
     <Compile Include="CW_Form.aspx.cs">
       <DependentUpon>CW_Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -696,6 +700,7 @@
     </Compile>
     <Compile Include="Models\CaseWorker.cs" />
     <Compile Include="Models\CountValue.cs" />
+    <Compile Include="Models\WSSuvidhaS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schemes\Arivu\AboutArivu.aspx.cs">
       <DependentUpon>AboutArivu.aspx</DependentUpon>

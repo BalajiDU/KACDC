@@ -149,6 +149,7 @@ namespace KACDC.Class.DataProcessing.Aadhaar
                         ADSER.Pincode = response.GetKycRes().UidData.Poa.pc;
 
                         ADSER.District = response.GetKycRes().UidData.Poa.dist;
+                        ADSER.KannadaName = response.GetKycRes().UidData.LData.name;
                         File.WriteAllBytes(HttpContext.Current.Server.MapPath("~/DownloadFiles/AadhaarLogImage/" + ADSER.AadhaarVaultToken + ".png"), ADSER.Photo);
 
                         ADStore.StoreAadhaar(
