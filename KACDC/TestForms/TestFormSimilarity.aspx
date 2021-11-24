@@ -23,8 +23,9 @@
         <hr />
         <div>
             <asp:TextBox runat="server" ID="TextBox2"></asp:TextBox>
-            <asp:Button runat="server" ID="Button1" Text="UPDATE VAULT TOKEN" OnClick="Button1_Click" />
-            <asp:Button runat="server" ID="Button2" Text="UPDATE VAULT TOKEN for 5" OnClick="Button2_Click" />
+            <asp:Button runat="server" ID="Button1" Text="UPDATE VAULT TOKEN" Visible="false" OnClick="Button1_Click" />
+            <asp:Button runat="server" ID="Button2" Text="UPDATE VAULT TOKEN for 5" Visible="false" OnClick="Button2_Click" />
+            <asp:Button runat="server" ID="Button3" Text="Test VAULT TOKEN " Visible="false" OnClick="Button3_Click" />
             <asp:Label runat="server" ID="Label2"></asp:Label>
         </div>
     </form>

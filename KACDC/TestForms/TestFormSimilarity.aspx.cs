@@ -9,6 +9,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 
 namespace KACDC.TestForms
 {
@@ -80,7 +82,9 @@ namespace KACDC.TestForms
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string sql = "select ApplicationNumber,AadharNum from SelfEmpLoan where FinancialYear='2019-20'";
+            //AadhaarServiceData SER = new AadhaarServiceData();
+            //SER.AadhaarVaultToken = "Test123456";
+            string sql = "select ApplicationNumber,AadharNum from ArivuEduLoan where FinancialYear='2019-20' ";
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
 
@@ -90,15 +94,22 @@ namespace KACDC.TestForms
 
                     while (rdr.Read())
                     {
-                        AadhaarEnceyption AE = new AadhaarEnceyption();
-                        AadhaarServiceData ADSER = new AadhaarServiceData();
-                        AE.GetAadhaarToken(rdr["ApplicationNumber"].ToString());
-                        Label2.Text +=("<br />", rdr["ApplicationNumber"].ToString(), rdr["AadharNum"].ToString(), ADSER.AadhaarVaultToken);
+                        //AadhaarServiceData ADSER = new AadhaarServiceData();
+                        string VaultToken=this.GetAadhaarToken(rdr["AadharNum"].ToString());
+                        //ADSER.AadhaarVaultToken = SER.AadhaarVaultToken;
+                        Label2.Text +=("<br />", rdr["ApplicationNumber"].ToString(), rdr["AadharNum"].ToString(), VaultToken);
 
-                        string updateSQL = "update SelfEmpLoan set	AadharNum=@AadharNum where ApplicationNumber=@ApplicationNumber";
-                        SqlCommand cmd = new SqlCommand(updateSQL, kvdConn);
-                        cmd.Parameters.AddWithValue("@AadharNum", ADSER.AadhaarVaultToken);
-                        cmd.Parameters.AddWithValue("@ApplicationNumber", rdr["ApplicationNumber"].ToString());
+                        
+
+                        using (SqlConnection kvdConn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                        {
+                            string updateSQL = "update ArivuEduLoan set	AadharNum=@AadharNum where ApplicationNumber=@ApplicationNumber";
+                            SqlCommand cmd = new SqlCommand(updateSQL, kvdConn1);
+                            cmd.Parameters.AddWithValue("@AadharNum", VaultToken);
+                            cmd.Parameters.AddWithValue("@ApplicationNumber", rdr["ApplicationNumber"].ToString());
+                            kvdConn1.Open();
+                            cmd.ExecuteNonQuery();
+                        }
                         //Console.WriteLine((string)c["LoginID"]);
                     }
                 }
@@ -106,29 +117,96 @@ namespace KACDC.TestForms
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
-            string sql = "select ApplicationNumber,AadharNum from SelfEmpLoan where cast(right(ApplicationNumber,6)as int)<5";
+            //AadhaarServiceData SER = new AadhaarServiceData();
+            //SER.AadhaarVaultToken = "Test123456";
+            string sql = "select ApplicationNumber,AadharNum from ArivuEduLoan where cast(right(ApplicationNumber,6)as int)<5";
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
 
                 kvdConn.Open();
                 using (SqlDataReader Reader = new SqlCommand(sql, kvdConn).ExecuteReader())
                 {
-
+                    //SqlDataReader ReaderTemp = new SqlDataReader();
+                    //ReaderTemp = Reader;
+                    //Reader.Close();
                     foreach (System.Data.Common.DbDataRecord rdr in Reader)
                     {
-                        AadhaarEnceyption AE = new AadhaarEnceyption();
-                        AadhaarServiceData ADSER = new AadhaarServiceData();
-                        AE.GetAadhaarToken(rdr["ApplicationNumber"].ToString());
-                        Label2.Text += ("<br />", rdr["ApplicationNumber"].ToString(), rdr["AadharNum"].ToString(), ADSER.AadhaarVaultToken);
+                        //AadhaarServiceData ADSER = new AadhaarServiceData();
+                        string VaultToken=this.GetAadhaarToken(rdr["AadharNum"].ToString());
+                        //ADSER.AadhaarVaultToken = SER.AadhaarVaultToken;
+                        Label2.Text += ("<br />", rdr["ApplicationNumber"].ToString(), rdr["AadharNum"].ToString(), VaultToken);
 
-                        string updateSQL = "update SelfEmpLoan set	AadharNum=@AadharNum where ApplicationNumber=@ApplicationNumber";
-                        SqlCommand cmd = new SqlCommand(updateSQL, kvdConn);
-                        cmd.Parameters.AddWithValue("@AadharNum", ADSER.AadhaarVaultToken);
-                        cmd.Parameters.AddWithValue("@ApplicationNumber", rdr["ApplicationNumber"].ToString());
+                        using (SqlConnection kvdConn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                        {
+                            string updateSQL = "update ArivuEduLoan set	AadharNum=@AadharNum where ApplicationNumber=@ApplicationNumber";
+                            SqlCommand cmd = new SqlCommand(updateSQL, kvdConn1);
+                            cmd.Parameters.AddWithValue("@AadharNum", VaultToken);
+                            cmd.Parameters.AddWithValue("@ApplicationNumber", rdr["ApplicationNumber"].ToString());
+                            kvdConn1.Open();
+                            cmd.ExecuteNonQuery();
+                        }
                         //Console.WriteLine((string)c["LoginID"]);
                     }
                 }
             }
+        }
+        public string GetAadhaarToken(string AadhaarNumber)
+        {
+            try
+            {
+                var client = new RestClient("http://172.31.36.246:8080/tmrest/SafeNetTokenManager/insertToken");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/json");
+                //request.AddParameter("application/json", "{\"naeUser\":\"tmtestuser\",\"naePassword\":\"P@ssw0rd\",\"dbUser\":\"DBTEST\",\"dbPassword\":\"rndo_1234\",\"value\":\"" + txtAadhaar.Text.Trim() + "\",\"tableName\":\"DBVAULT\",\"format\":\"103\"}", ParameterType.RequestBody);
+                request.AddParameter("application/json", "{\"naeUser\":\"" + ConfigurationSettings.AppSettings["naeUser"].ToString() +
+                    "\",\"naePassword\":\"" + ConfigurationSettings.AppSettings["naePassword"].ToString() +
+                    "\",\"dbUser\":\"" + ConfigurationSettings.AppSettings["dbUser"].ToString() +
+                    "\",\"dbPassword\":\"" + ConfigurationSettings.AppSettings["dbPassword"].ToString() +
+                    "\",\"value\":\"" + AadhaarNumber +
+                    "\",\"tableName\":\"" + ConfigurationSettings.AppSettings["tableName"].ToString() +
+                    "\",\"format\":\"" + ConfigurationSettings.AppSettings["format"].ToString() + "\"}", RestSharp.ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                Console.WriteLine(response.Content);
+                //Response.Write("___response Data" + response.Content);
+                string responseData = response.Content;
+
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    var jObject = JObject.Parse(response.Content);
+                    //string token1 = jObject.GetValue("token").ToString();
+                    return jObject.GetValue("token").ToString();
+
+                    //Response.Write("___response token is:" + token1);
+                }
+                else
+                {
+                    //Response.Write("___response code:" + response.StatusCode.ToString());
+                    //Response.Write("___response code:" + response.ErrorMessage);
+                }
+                return "NA";
+            }
+            catch (Exception ex)
+            {
+                //DisplayAlert(ex.Message, this);
+                return "ER";
+            }
+        }
+        private void Update(string AadhaarVaultToken, string ApplicationNumber)
+        {
+            using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+            {
+                string updateSQL = "update ArivuEduLoan set	AadharNum=@AadharNum where ApplicationNumber=@ApplicationNumber";
+                SqlCommand cmd = new SqlCommand(updateSQL, kvdConn);
+                cmd.Parameters.AddWithValue("@AadharNum", AadhaarVaultToken);
+                cmd.Parameters.AddWithValue("@ApplicationNumber", ApplicationNumber);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Write(this.GetAadhaarToken("301007056373"));
         }
     }
 }
