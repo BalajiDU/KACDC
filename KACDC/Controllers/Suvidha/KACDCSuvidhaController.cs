@@ -16,7 +16,7 @@ namespace KACDC.Controllers.Suvidha
     {
         [HttpGet]
         //[DataMember(EmitDefaultValue = false)]
-        public IHttpActionResult KACDCSuvidhaVerify(string Scheme, string RDNumber = "", string Aadhaar= "")
+        public IHttpActionResult KACDCSuvidhaVerify(string Scheme, string RDNumber = "", string Aadhar= "")
         {
             WSSuvidha WSS = new WSSuvidha();
             KACDC.Models.WSSuvidha WS = new KACDC.Models.WSSuvidha();
@@ -33,8 +33,8 @@ namespace KACDC.Controllers.Suvidha
                        
                         if (RDNumber != "")
                             cmd.Parameters.AddWithValue("@RDNumber", RDNumber);
-                        if (Aadhaar != "")
-                            cmd.Parameters.AddWithValue("@Aadhaar", Aadhaar);
+                        if (Aadhar != "")
+                            cmd.Parameters.AddWithValue("@Aadhaar", Aadhar);
 
                         kvdConn.Open();
                         SqlDataReader rdr = cmd.ExecuteReader();
