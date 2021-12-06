@@ -136,17 +136,22 @@ namespace KACDC.Schemes.Self_Employment
                 string IsAadhaarNumberExist = AE.CheckAadhaar(ADSER.AadhaarVaultToken);
                 if (IsAadhaarNumberExist == "NA")
                 {
-                    lblAadhaarPopupDOB.Text = ADSER.DOB;
-                    lblAadhaarPopupGender.Text = ADSER.Gender;
-                    lblAadhaarPopupName.Text = ADSER.Name;
+                    if (CheckAge())
+                    {
 
-                    lblAadhaarPopupState.Text = ADSER.State;
 
-                    ImgAadhaarPopupPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
-                    lblAadhaarPopupPincode.Text = ADSER.Pincode;
+                        lblAadhaarPopupDOB.Text = ADSER.DOB;
+                        lblAadhaarPopupGender.Text = ADSER.Gender;
+                        lblAadhaarPopupName.Text = ADSER.Name;
 
-                    lblAadhaarPopupDistrict.Text = ADSER.District;
-                    AadhaarPopup.Show();
+                        lblAadhaarPopupState.Text = ADSER.State;
+
+                        ImgAadhaarPopupPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
+                        lblAadhaarPopupPincode.Text = ADSER.Pincode;
+
+                        lblAadhaarPopupDistrict.Text = ADSER.District;
+                        AadhaarPopup.Show();
+                    }
                 }
                 else
                 {
@@ -170,6 +175,23 @@ namespace KACDC.Schemes.Self_Employment
                 AadhaarError AE = new AadhaarError();
                 DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.OTPErrorCode), this);
             }
+        }
+
+        private bool CheckAge()
+        {
+            int age = 0;
+            age = DateTime.Now.Subtract(DateTime.Parse(ADSER.DOB)).Days;
+            age = age / 365;
+            if(age<18 || age>45)
+            {
+                DisplayAlert("Age must be between 18 to 45", this);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+               
         }
         protected void btnAadhaarkDetailsProceed_Click(object sender, EventArgs e)
         {

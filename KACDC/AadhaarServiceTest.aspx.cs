@@ -38,8 +38,8 @@ using KACDC.Class.Declaration.Aadhaar;
 using KACDC.Class.Declaration.BankDetails;
 using KACDC.NadaKacheriServiceReference;
 using System.Xml.Linq;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
+//using CrystalDecisions.CrystalReports.Engine;
+//using CrystalDecisions.Shared;
 using KACDC.Class.DataProcessing.FileProcessing;
 using KACDC.Class.DataProcessing.GetDataToFillGridView;
 using KACDC.Class.MessageSending;
@@ -800,22 +800,22 @@ namespace KACDC
         protected void btnPDFGenerate_Click(object sender, EventArgs e)
         {
             
-            ReportDocument RD = new ReportDocument();
-            RD.Load(Server.MapPath("/Reports/DocumentationDownload.rpt"));
-            ParameterField myParam = new ParameterField();
-            ParameterDiscreteValue myDiscreteValue = new ParameterDiscreteValue();
+            //ReportDocument RD = new ReportDocument();
+            //RD.Load(Server.MapPath("/Reports/DocumentationDownload.rpt"));
+            //ParameterField myParam = new ParameterField();
+            //ParameterDiscreteValue myDiscreteValue = new ParameterDiscreteValue();
 
-            //            RD.SetParameterValue("rptTxtBalaji","dbsdjf");
+            ////            RD.SetParameterValue("rptTxtBalaji","dbsdjf");
 
-            //TextObject TO = (TextObject)RD.ReportDefinition.Sections["Section1"].ReportObjects["rptTxtBalaji"];
-            //TextObject TO1 = (TextObject)RD.ReportDefinition.Sections["Section1"].ReportObjects["Text1"];
-            //TO.Text = "23 kajsdnf";
-            //TO1.Text = "CªÀ¢üAiÀÄ£ÀÄß";
-            //TO.ApplyFont(new System.Drawing.Font("Arial", 11f, System.Drawing.FontStyle.Bold));
-            //TO1.ApplyFont(new System.Drawing.Font("Nudi 01 e", 11f, System.Drawing.FontStyle.Bold));
+            ////TextObject TO = (TextObject)RD.ReportDefinition.Sections["Section1"].ReportObjects["rptTxtBalaji"];
+            ////TextObject TO1 = (TextObject)RD.ReportDefinition.Sections["Section1"].ReportObjects["Text1"];
+            ////TO.Text = "23 kajsdnf";
+            ////TO1.Text = "CªÀ¢üAiÀÄ£ÀÄß";
+            ////TO.ApplyFont(new System.Drawing.Font("Arial", 11f, System.Drawing.FontStyle.Bold));
+            ////TO1.ApplyFont(new System.Drawing.Font("Nudi 01 e", 11f, System.Drawing.FontStyle.Bold));
 
-            RD.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, false, "abc");
-            RD.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, "Crystal");
+            //RD.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, false, "abc");
+            //RD.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, "Crystal");
         }
     }
     public class TokenResponse

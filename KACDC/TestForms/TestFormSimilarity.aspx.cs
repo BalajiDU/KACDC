@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using KACDC.Class.DataProcessing.ApplicationProcess;
 
 namespace KACDC.TestForms
 {
@@ -23,6 +24,7 @@ namespace KACDC.TestForms
 
         protected void btnCheck_Click(object sender, EventArgs e)
         {
+            CheckNameSimilarity CNS = new CheckNameSimilarity();
             lblRes.Text= (CalculateSimilarity(txt1.Text.Trim(), txt2.Text.Trim())).ToString();
 
         }

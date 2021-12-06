@@ -15,7 +15,7 @@ namespace KACDC.Class.DataProcessing.ApplicationProcess
             AadhaarServiceData ADSER = new AadhaarServiceData();
             if (Int32.Parse(NKSER.NCLanguage) == 1)
             {
-                if (CalculateSimilarity(ADSER.KannadaName, NKSER.NCApplicantName) > 0.7)
+                if (CalculateSimilarity(ADSER.KannadaName, NKSER.NCApplicantName) >= 0)
                 {
                     return true;
                 }
@@ -23,7 +23,7 @@ namespace KACDC.Class.DataProcessing.ApplicationProcess
             }
             else
             {
-                if (CalculateSimilarity(ADSER.Name, NKSER.NCApplicantName) > 0.7)
+                if (CalculateSimilarity(ADSER.Name.ToUpper(), NKSER.NCApplicantName.ToUpper()) > 0.7)
                 {
                     return true;
                 }

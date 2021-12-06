@@ -35,32 +35,69 @@
                 color: darkslategray;
                 font-size: 20px;
             }
+                       .LocalNav {
+    position: absolute;
+    float: left;
+    z-index:100;
+}
+                       .gridTable{
+                           padding-top:50px;
+                           z-index:-1;
+                           width:100%;
+                           overflow:scroll;
+                       }
+
+        @media (max-width: 768px) {
+            .LocalNav {
+                /*padding-top:100px;*/
+                display: block;
+            }
+
+            .container {
+                /*padding-top:100px;*/
+            }
+
+            .row {
+                /*margin-top: 100px;*/
+            }
+
+            .NeumorphicNavbarDiv {
+                display: none;
+            }
+
+            .toggle {
+                display: block;
+            }
+            tr{
+                text-wrap:initial;
+            }
+        }
     </style>
     <div class="container">
         <section id="tabs">
             <div class="align-content-center">
                 <div class="col-xs-12 ">
-                    <nav>
+                    <nav class="LocalNav">
                         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Arivu</a>
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Self Employment</a>
                         </div>
                     </nav>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <asp:DataGrid ID="DataGrid1" runat="server" BorderColor="#000066" BorderWidth="5px" CellPadding="1" CellSpacing="1" DataSourceID="FillArivu" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Size="Medium" Font-Strikeout="False" Font-Underline="False" Height="159px" HorizontalAlign="Center" Width="887px" ForeColor="#666666">
+                <div class="container" >
+                    <div  style="width:100%">
+                        <div class="">
+                            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent" >
+                                <div class="tab-pane fade show active gridTable" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <asp:DataGrid ID="DataGrid1" runat="server" BorderColor="#000066" BorderWidth="5px" CellPadding="1" CellSpacing="1" DataSourceID="FillArivu" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Size="Medium" Font-Strikeout="False" Font-Underline="False" Height="159px" Width="80%" HorizontalAlign="Center"  ForeColor="#666666">
                                         <FooterStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Wrap="False" />
                                         <HeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Italic="False" Font-Names="Rockwell" Font-Overline="False" Font-Size="Large" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" HorizontalAlign="Center" VerticalAlign="Middle" Wrap="False" />
                                         <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Center" />
                                         <PagerStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Wrap="False" />
                                     </asp:DataGrid>
                                 </div>
-                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <asp:DataGrid ID="dgvArivuView0" runat="server" BorderColor="#000066" BorderWidth="5px" CellPadding="1" CellSpacing="1" DataSourceID="FillSelfEmp" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Size="Medium" Font-Strikeout="False" Font-Underline="False" Height="159px" HorizontalAlign="Center" Width="887px" ForeColor="#666666">
+                                <div class="tab-pane fade gridTable" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <asp:DataGrid ID="dgvArivuView0" runat="server" BorderColor="#000066" BorderWidth="5px" CellPadding="1" CellSpacing="1" DataSourceID="FillSelfEmp" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Size="Medium" Font-Strikeout="False" Font-Underline="False" Height="159px" HorizontalAlign="Center" Width="80%" ForeColor="#666666">
                                         <FooterStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Wrap="False" />
                                         <HeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Italic="False" Font-Names="Rockwell" Font-Overline="False" Font-Size="Large" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" HorizontalAlign="Center" VerticalAlign="Middle" Wrap="False" />
                                         <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Center" />
@@ -70,10 +107,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <%--<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     </div>
                     <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </section>

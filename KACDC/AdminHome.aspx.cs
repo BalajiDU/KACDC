@@ -381,7 +381,7 @@ namespace KACDC
 
         protected void btnArivuEnable_Click(object sender, EventArgs e)
         {
-            using (SqlCommand cmd = new SqlCommand("Update KACDCInfo set  [Arivu Enable]='" + drpArivuEnable.Text + "' where id=1"))
+            using (SqlCommand cmd = new SqlCommand("update KACDCSettings set Value='" + drpArivuEnable.Text + "' where KeyVal='ArivuApplicationEnable'"))
             {
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = kvdConn;
@@ -393,7 +393,7 @@ namespace KACDC
 
         protected void btnSEEnable_Click(object sender, EventArgs e)
         {
-            using (SqlCommand cmd = new SqlCommand("Update KACDCInfo set  [Self Employment Enable]='" + drpSEEnable.Text + "' where id=1"))
+            using (SqlCommand cmd = new SqlCommand("update KACDCSettings set Value='" + drpSEEnable.Text + "' where KeyVal='SEApplicationEnable'"))
             {
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = kvdConn;
@@ -1659,7 +1659,7 @@ namespace KACDC
 
         protected void btnARRenewalEnable_Click(object sender, EventArgs e)
         {
-            using (SqlCommand cmd = new SqlCommand("Update KACDCInfo set  [Arivu_Renewal]='" + drpARRenewal.Text + "' where id=1"))
+            using (SqlCommand cmd = new SqlCommand("update KACDCSettings set Value='" + drpARRenewal.Text + "' where KeyVal='ArivuRenewalEnable'"))
             {
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = kvdConn;
