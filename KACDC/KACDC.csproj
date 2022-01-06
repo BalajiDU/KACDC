@@ -480,6 +480,7 @@
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarError.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\ApplicantDetails.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\ApprovalProcess.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\BankDetails\GetBankDetails.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\BankDetails\UpdateBankDetails.cs" />
@@ -487,6 +488,7 @@
     <Compile Include="Class\DataProcessing\ApplicationProcess\CaseWorker\GetDataToProcessSelfEmployment.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\CheckNameSimilarity.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\DMGetApplicantDetails.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\DownloadApplication.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GenerateSanctionCopy.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GetApprovedApplicationNumber.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GetDataToProcess.cs" />
@@ -526,6 +528,7 @@
     <Compile Include="Class\Declaration\Aadhaar\AadhaarServiceData.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\ArivuRenewal\RenewalApplicantDetails.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\DistrictManager\DistrictManagerProcess.cs" />
+    <Compile Include="Class\Declaration\ApprovalProcess\DownloadApplicationDec.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\SanctionLetter.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\StoreBankDetails\SBankDetails.cs" />
     <Compile Include="Class\Declaration\ApprovalProcess\CaseWorker\CWApprovalArivu.cs" />

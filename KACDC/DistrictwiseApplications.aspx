@@ -79,8 +79,8 @@
                 <div class="col-xs-12 ">
                     <nav class="LocalNav">
                         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Arivu</a>
-                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Self Employment</a>
+                            <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Self Employment</a>
+                             <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Arivu</a>
                         </div>
                     </nav>
                 </div>
@@ -88,7 +88,7 @@
                     <div  style="width:100%">
                         <div class="">
                             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent" >
-                                <div class="tab-pane fade show active gridTable" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                 <div class="tab-pane fade show  gridTable" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                     <asp:DataGrid ID="DataGrid1" runat="server" BorderColor="#000066" BorderWidth="5px" CellPadding="1" CellSpacing="1" DataSourceID="FillArivu" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Size="Medium" Font-Strikeout="False" Font-Underline="False" Height="159px" Width="80%" HorizontalAlign="Center"  ForeColor="#666666">
                                         <FooterStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Wrap="False" />
                                         <HeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Italic="False" Font-Names="Rockwell" Font-Overline="False" Font-Size="Large" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" HorizontalAlign="Center" VerticalAlign="Middle" Wrap="False" />
@@ -96,7 +96,7 @@
                                         <PagerStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Wrap="False" />
                                     </asp:DataGrid>
                                 </div>
-                                <div class="tab-pane fade gridTable" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <div class="tab-pane fade gridTable active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                     <asp:DataGrid ID="dgvArivuView0" runat="server" BorderColor="#000066" BorderWidth="5px" CellPadding="1" CellSpacing="1" DataSourceID="FillSelfEmp" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Size="Medium" Font-Strikeout="False" Font-Underline="False" Height="159px" HorizontalAlign="Center" Width="80%" ForeColor="#666666">
                                         <FooterStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Wrap="False" />
                                         <HeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Italic="False" Font-Names="Rockwell" Font-Overline="False" Font-Size="Large" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" HorizontalAlign="Center" VerticalAlign="Middle" Wrap="False" />
@@ -118,7 +118,7 @@
     
     <div>
         <br />
-        <asp:SqlDataSource ID="FillSelfEmp" runat="server" ConnectionString="<%$ ConnectionStrings:KACDCConnectionString %>" SelectCommand="spGetCountSE" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+         <asp:SqlDataSource ID="FillSelfEmp" runat="server" ConnectionString="<%$ ConnectionStrings:KACDCConnectionString %>" SelectCommand="spGetCountSE" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
         <asp:SqlDataSource ID="FillArivu" runat="server" ConnectionString="<%$ ConnectionStrings:KACDCConnectionString %>" SelectCommand="spGetCountArivu" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     </div>
 </asp:Content>

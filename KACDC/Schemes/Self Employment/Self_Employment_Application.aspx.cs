@@ -26,6 +26,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using KACDC.Class.DataProcessing.ApplicationProcess;
+using KACDC.Class.MessageSending;
 
 namespace KACDC.Schemes.Self_Employment
 {
@@ -77,7 +78,7 @@ namespace KACDC.Schemes.Self_Employment
                 }
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT FinancialYear FROM [dbo].[KACDCInfo]"))
+                    using (SqlCommand cmd = new SqlCommand("select Value from KACDCSettings where KeyVal='FinancialYear'"))
                     {
                         cmd.CommandType = CommandType.Text;
                         cmd.Connection = kvdConn;
@@ -85,7 +86,7 @@ namespace KACDC.Schemes.Self_Employment
                         using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
                             sdr.Read();
-                            ODSE.FinancialYear = sdr["FinancialYear"].ToString();
+                            ODSE.FinancialYear = sdr["Value"].ToString();
                             
                         }
                         kvdConn.Close();
@@ -1167,7 +1168,12 @@ namespace KACDC.Schemes.Self_Employment
             {
                 SubmitApplicationSMS SMS = new SubmitApplicationSMS();
                 ApplicationSubmitEmail EMAIL = new ApplicationSubmitEmail();
-                SMS.ApplicantSMSConfirmation(ODSE.MobileNumber, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
+                SendMessage SM = new SendMessage();
+                string Message = "Dear Applicant, " + ADSER.Name + " your Self Employment loan application number " + ODSE.GeneratedApplicationNumber + " is received. We will notify once processed. From:KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION";
+
+                //SMS.ApplicantSMSConfirmation(ODSE.MobileNumber, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
+
+                SM.NewMessageRequest(Message, ODSE.MobileNumber, "ACKNOW");
                 EMAIL.ApplicantEmailConfirmation(ODSE.EmailID, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name,
                     File.ReadAllBytes(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"),
                     ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
@@ -1201,7 +1207,7 @@ namespace KACDC.Schemes.Self_Employment
         //    Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
         //    //PdfWriter writer = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
         //    Phrase phrase = null;
-        //    //PdfPCell cell = null;
+        //    //PdfPCell cell = null
         //    PdfPTable table = null;
 
         //    PdfPTable BankTable = null;

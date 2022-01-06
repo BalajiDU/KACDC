@@ -25,6 +25,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using KACDC.Class.DataProcessing.ApplicationProcess;
 
 namespace KACDC.Schemes.Arivu
 {
@@ -47,6 +48,7 @@ namespace KACDC.Schemes.Arivu
         SignatureTable ST = new SignatureTable();
         HeadingTable HT = new HeadingTable();
         ApplicantCollegeData ACD = new ApplicantCollegeData();
+        CheckNameSimilarity CNS = new CheckNameSimilarity();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -127,17 +129,39 @@ namespace KACDC.Schemes.Arivu
 
             if (ADAR.VerifyAadhaarOTP(ipaddress, Path.GetFileName(Request.Path), Server.MapPath("~/LogFiles/AadhaarErrorLog/" + errorLogFilename)))
             {
-                lblAadhaarPopupDOB.Text = ADSER.DOB;
-                lblAadhaarPopupGender.Text = ADSER.Gender;
-                lblAadhaarPopupName.Text = ADSER.Name;
+                IsAadhaarExist AE = new IsAadhaarExist();
+                string IsAadhaarNumberExist = AE.CheckAadhaar(ADSER.AadhaarVaultToken);
+                if (IsAadhaarNumberExist == "NA")
+                {
+                    if (CheckAge())
+                    {
+                        lblAadhaarPopupDOB.Text = ADSER.DOB;
+                        lblAadhaarPopupGender.Text = ADSER.Gender;
+                        lblAadhaarPopupName.Text = ADSER.Name;
 
-                lblAadhaarPopupState.Text = ADSER.State;
+                        lblAadhaarPopupState.Text = ADSER.State;
 
-                ImgAadhaarPopupPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
-                lblAadhaarPopupPincode.Text = ADSER.Pincode;
+                        ImgAadhaarPopupPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
+                        lblAadhaarPopupPincode.Text = ADSER.Pincode;
 
-                lblAadhaarPopupDistrict.Text = ADSER.District;
-                AadhaarPopup.Show();
+                        lblAadhaarPopupDistrict.Text = ADSER.District;
+                        AadhaarPopup.Show();
+                    }
+                }  
+                else
+                {
+                    if (IsAadhaarNumberExist == "APPLIED")
+                    {
+                        DisplayAlert("You have already applied", this);
+                    }
+                    else
+                    {
+                        DisplayAlert("You have already avail the loan in " + IsAadhaarNumberExist + " financial year", this);
+                    }
+                    divMobileOTP.Visible = false;
+                    txtAadhaarNumber.ReadOnly = false;
+                    btnAadhaarGetOTP.Visible = true;
+                }
             }
             else
             {
@@ -145,6 +169,8 @@ namespace KACDC.Schemes.Arivu
                 DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.OTPErrorCode), this);
             }
         }
+
+
         protected void btnAadhaarkDetailsProceed_Click(object sender, EventArgs e)
         {
             txtAadhaarNumber.ReadOnly = true;
@@ -188,54 +214,57 @@ namespace KACDC.Schemes.Arivu
                         {
                             if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
                             {
-                                if (Int32.Parse(NKSER.NCStatusCode) == 1)
+                                if (CNS.VerifySimilarities())
                                 {
-                                    if (Int32.Parse(NKSER.NCFacilityCode) == 42)
+                                    if (Int32.Parse(NKSER.NCStatusCode) == 1)
                                     {
-                                        if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
+                                        if (Int32.Parse(NKSER.NCFacilityCode) == 42)
                                         {
-                                            if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                            if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
                                             {
-                                                
-                                                rbContactAddressYes.Checked = false;
-                                                rbContactAddressNo.Checked = false;
-                                                btnNadakachriOK.Visible = false;
-                                                btnSaveContactAddress.Visible = false;
-                                                divContactAddress.Visible = false;
-                                                divButtonBankDetails.Visible = true;
+                                                if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                                {
 
-                                                btnVerifyRDNumber.Visible = false;
-                                                NKAR.UpdateDistrict();
-                                                ConstituencyDropDownBinding();
-                                                lblNCGSCNumber.Text = NKSER.NCGSCNumber;
-                                                lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
-                                                //NKSER.NCDateOfIssue;
-                                                lblNCApplicantName.Text = NKSER.NCApplicantName;
-                                                lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
-                                                lblNCDistrict.Text = NKSER.NCDistrictName;
-                                                lblNCTaluk.Text = NKSER.NCTalukName;
-                                                lblNCFullAddress.Text = NKSER.NCFullAddress;
+                                                    rbContactAddressYes.Checked = false;
+                                                    rbContactAddressNo.Checked = false;
+                                                    btnNadakachriOK.Visible = false;
+                                                    btnSaveContactAddress.Visible = false;
+                                                    divContactAddress.Visible = false;
+                                                    divButtonBankDetails.Visible = true;
 
-                                                CasteCertificatePopup.Show();
+                                                    btnVerifyRDNumber.Visible = false;
+                                                    NKAR.UpdateDistrict();
+                                                    ConstituencyDropDownBinding();
+                                                    lblNCGSCNumber.Text = NKSER.NCGSCNumber;
+                                                    lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                                    //NKSER.NCDateOfIssue;
+                                                    lblNCApplicantName.Text = NKSER.NCApplicantName;
+                                                    lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
+                                                    lblNCDistrict.Text = NKSER.NCDistrictName;
+                                                    lblNCTaluk.Text = NKSER.NCTalukName;
+                                                    lblNCFullAddress.Text = NKSER.NCFullAddress;
+
+                                                    CasteCertificatePopup.Show();
+                                                }
+                                                else
+                                                {
+                                                    DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                                }
                                             }
                                             else
                                             {
-                                                DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                                DisplayAlert("Income must be less then 1,00,000", this);
                                             }
                                         }
                                         else
                                         {
-                                            DisplayAlert("Income must be less then 1,00,000", this);
+                                            DisplayAlert("Only Arya vysya Community is eligible", this);
                                         }
                                     }
                                     else
                                     {
-                                        DisplayAlert("Only Arya vysya Community is eligible", this);
+                                        DisplayAlert("Invalid RD Number", this);
                                     }
-                                }
-                                else
-                                {
-                                    DisplayAlert("Invalid RD Number", this);
                                 }
 
                             }
@@ -264,7 +293,44 @@ namespace KACDC.Schemes.Arivu
                 DisplayAlert("Invalid RD Number", this);
             }
         }
-        private void ConstituencyDropDownBinding()
+
+        private bool VerifySimilarities()
+        {
+            if (Int32.Parse(NKSER.NCLanguage) == 1)
+            {
+                if (CNS.CalculateSimilarity(ADSER.KannadaName, NKSER.NCApplicantName) > 0.7)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                if (CNS.CalculateSimilarity(ADSER.Name, NKSER.NCApplicantName) > 0.7)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+        private bool CheckAge()
+        {
+            int age = 0;
+            age = DateTime.Now.Subtract(DateTime.Parse(ADSER.DOB)).Days;
+            age = age / 365;
+            if (age < 18 || age > 35)
+            {
+                DisplayAlert("Age must be between 18 to 35", this);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+            private void ConstituencyDropDownBinding()
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {

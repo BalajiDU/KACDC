@@ -31,7 +31,7 @@ namespace KACDC.Class.DataProcessing.OnlineApplication.Arivu
                     }
                     //int count = (int)cmd.ExecuteScalar();
                     //return count.ToString();
-                    return "NA";
+                    //return "NA";
                 }
             }
         }
