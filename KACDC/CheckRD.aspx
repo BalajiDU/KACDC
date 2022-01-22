@@ -512,8 +512,8 @@ box-shadow:  10px 10px 25px #b0b0b0,
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server"></asp:ScriptManager>
 
-        <asp:UpdatePanel runat="server">
-            <ContentTemplate>
+      <%--  <asp:UpdatePanel runat="server">
+            <ContentTemplate>--%>
                 <div>
                     <div id="divRDNumber" runat="server" class="form-row">
                         <div class="form-row-label">
@@ -595,6 +595,7 @@ box-shadow:  10px 10px 25px #b0b0b0,
                                 <asp:Label ID="lblNCDistrict" runat="server"></asp:Label>
                             </div>
                         </div>
+                        <div id="divResponseText" runat="server"></div>
 
                         <div id="divButtonSubmitApplication" class="form-row" runat="server">
                             <div class="Popup-row-label">
@@ -612,8 +613,8 @@ box-shadow:  10px 10px 25px #b0b0b0,
                         </div>
                     </div>
                 </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+          <%--  </ContentTemplate>
+        </asp:UpdatePanel>--%>
                         <asp:Button ID="Button1" CssClass="Button" style="margin-left:20px; width:100px;border-color:red;margin-top:10px"  runat="server" Text="Logout" OnClick="btnLogout_Click" />
 
     </form>

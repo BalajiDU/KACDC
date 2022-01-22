@@ -11,7 +11,7 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
     public class StoreNadakacheriData
     {
         public void StoreCasteIncomeCert(string NCGSCNumber, string NCStatusCode, string NCStatusMsg, string NCFacilityCode, string NCFacilityName, string NCLanguage, string NCAnnualIncome, string NCDateOfIssue, string NCApplicantName,
-                        string NCTalukName, string NCApplicantCAddressPin, string NCApplicantCAddress1, string NCApplicantCAddress2, string NCApplicantCAddress3, string App_Title, string NCGender, string NCVerification,
+                        string NCTalukName, string NCDistrictName,string NCApplicantCAddressPin, string NCApplicantCAddress1, string NCApplicantCAddress2, string NCApplicantCAddress3, string App_Title, string NCGender, string NCVerification,
                         string TLIFileNo, string HobliName, string VillageName, string HabitationName, string ApplicantBincom, string Fat_Title, string ApplicantMotherName, string ReservationCategory, string AnnualIncomeInWords, string Purpose,
                         string ValidPeriod, string SpecialTaluk, string DocumentsSubmitted, string DisplayDocumentsSubmitted)
         {
@@ -30,6 +30,7 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                     cmd.Parameters.AddWithValue("@NCDateOfIssue", NCDateOfIssue);
                     cmd.Parameters.AddWithValue("@NCApplicantName", NCApplicantName);
                     cmd.Parameters.AddWithValue("@NCTalukName", NCTalukName);
+                    cmd.Parameters.AddWithValue("@NCDistrictName", NCDistrictName);
                     cmd.Parameters.AddWithValue("@NCApplicantCAddressPin", NCApplicantCAddressPin);
                     cmd.Parameters.AddWithValue("@NCApplicantCAddress1", NCApplicantCAddress1);
                     cmd.Parameters.AddWithValue("@NCApplicantCAddress2", NCApplicantCAddress2);

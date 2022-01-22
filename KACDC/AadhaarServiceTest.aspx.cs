@@ -680,7 +680,7 @@ namespace KACDC
             ExcelFileOperations FileOperations = new ExcelFileOperations();
             DataSet ds = new DataSet();
             ds.Tables.Add(FillGV.GetDMApprovedForCEO("spPrintExcel", "SEDOCAPPROVED", "Bengaluru Dakshina", "APPROVED"));
-            FileOperations.ExportToExcel(ds, Server.MapPath("~/DownloadFiles/" + "Bengaluru Dakshina" + ".xlsx"), "3", "Bengaluru Dakshina");
+            FileOperations.ExportToExcel(ds, Server.MapPath("~/DownloadFiles/") , "Bengaluru Dakshina" + ".xlsx", "3", "Bengaluru Dakshina");
             System.Threading.Thread.Sleep(3000);
             return true;
         }

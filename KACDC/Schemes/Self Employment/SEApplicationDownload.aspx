@@ -94,11 +94,11 @@
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <asp:UpdatePanel runat="server">
+       <%-- <asp:UpdatePanel runat="server">
             <Triggers>
                 <asp:PostBackTrigger ControlID="btnApplicationDownload" />
             </Triggers>
-            <ContentTemplate>
+            <ContentTemplate>--%>
                 <div>
                     <div class="flex-container ContantMain" id="divSEApplicationMain" runat="server">
                         <div class="NeumorphicDiv">
@@ -190,8 +190,8 @@
                         BackgroundCssClass="modalBackground">
                     </cc1:ModalPopupExtender>
                 </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+           <%-- </ContentTemplate>
+        </asp:UpdatePanel>--%>
     </form>
 </body>
 </html>

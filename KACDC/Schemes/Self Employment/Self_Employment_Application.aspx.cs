@@ -255,7 +255,7 @@ namespace KACDC.Schemes.Self_Employment
                                     {
                                         if (Int32.Parse(NKSER.NCFacilityCode) == 42)
                                         {
-                                            if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
+                                            if (Int32.Parse(NKSER.NCAnnualIncome) <= 300000)
                                             {
                                                 if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
                                                 {
@@ -297,7 +297,7 @@ namespace KACDC.Schemes.Self_Employment
                                             }
                                             else
                                             {
-                                                DisplayAlert("Income must be less then 1,00,000", this);
+                                                DisplayAlert("Income must be less then 3,00,000", this);
                                             }
                                         }
                                         else
@@ -445,7 +445,7 @@ namespace KACDC.Schemes.Self_Employment
         protected void drpConst_SelectedIndexChanged(object sender, EventArgs e)
         {
             NKSER.NCConstituency = drpConst.SelectedValue;
-            if (NKSER.NCDistrictName == "Bengaluru" || NKSER.NCDistrictName == "Bengaluru Uttara" || NKSER.NCDistrictName == "Bengaluru Dakshina")
+            if (NKSER.NCDistrictName == "Bengaluru" || NKSER.NCDistrictName == "Bengaluru Uttara" || NKSER.NCDistrictName == "Bengaluru Dakshina" || NKSER.NCDistrictName == "ಬೆಂಗಳೂರು")
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
@@ -462,6 +462,7 @@ namespace KACDC.Schemes.Self_Employment
                             NKSER.NCDistrictName = sdr["DistrictName"].ToString();
                         }
                         kvdConn.Close();
+                        DisplayAlert(NKSER.NCDistrictName, this);
                     }
 
                 }

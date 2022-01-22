@@ -1,16 +1,20 @@
-﻿using KACDC.Class.DataProcessing;
+﻿using KACDC.Class;
+using KACDC.Class.DataProcessing;
 using KACDC.Class.DataProcessing.ApplicationProcess;
 using KACDC.Class.DataProcessing.ApplicationProcess;
 using KACDC.Class.DataProcessing.ApplicationProcess.BankDetails;
 using KACDC.Class.DataProcessing.BankData;
+using KACDC.Class.DataProcessing.FileProcessing;
 using KACDC.Class.DataProcessing.FileProcessing.CreatePDF.ApplicationProcess;
 using KACDC.Class.DataProcessing.OnlineApplication.Arivu;
 using KACDC.Class.Declaration.ApprovalProcess;
 using KACDC.Class.Declaration.ApprovalProcess.ArivuRenewal;
 using KACDC.Class.Declaration.ApprovalProcess.DistrictManager;
+using KACDC.Class.FileSaving;
 using KACDC.Class.GetCountStatistics;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -29,12 +33,14 @@ namespace KACDC.ApprovalPage
         DistrictManagerProcess DMP = new DistrictManagerProcess();
         UpdateBankDetailsToDB UBDDB = new UpdateBankDetailsToDB();
         ArRenewalProcess ARP = new ArRenewalProcess();
+        GetFinancilaYear FY = new GetFinancilaYear();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["USERTYPE"] != "DISTRICTMANAGER")
             {
                 Response.Redirect("~/Login.aspx");
+                FY.GetFY();
                 gvRepaymentStats.DataSource = SqlDataSourcegvRepaymentStats;
                 gvRepaymentStats.DataBind();
                 //UserName = Session["UserName"].ToString();
@@ -143,7 +149,7 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDMARDownloadExcelForCEO_Click(object sender, EventArgs e)
         {
-
+          
         }
         protected void btnDMARConfirmRejectApplication_Click(object sender, EventArgs e)
         {
@@ -722,7 +728,27 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDMSEDownloadExcelForCEO_Click(object sender, EventArgs e)
         {
+            SaveFile SF = new SaveFile();
+            ExcelFileOperations FO = new ExcelFileOperations();
+            GetDataToProcess GDTP = new GetDataToProcess();
+            string Path = Server.MapPath("~/DownloadFiles/DMSelectedToCEOExcel/"+ Session["FinancilaYear"].ToString()+"/"+ Session["District"].ToString()+"/");
+            string Name = Session["District"].ToString() + "_DMSelected.xlsx";
+            DataTable employees = new DataTable();
+            DataSet ds = new DataSet();
+            SF.CheckDirExist(Path);
+            SF.IfFileExistDelete(Path, Name);
 
+            ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTMALE", Session["District"].ToString(), "MALE")));
+            ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTFEMALE", Session["District"].ToString(), "FEMALE")));
+            ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTPWD", Session["District"].ToString(), "PWD")));
+            FO.ExportToExcel(ds, Path, Name, "", Session["District"].ToString());
+            if (System.IO.File.Exists(Path + Name))
+            {
+                Response.ContentType = "application/vnd.ms-excel";
+                Response.AppendHeader("Content-Disposition", "attachment; " + Path + Name);
+                Response.End();
+                Response.Close();
+            }
         }
         protected void btnDMSEConfirmHoldApplication_Click(object sender, EventArgs e)
         {

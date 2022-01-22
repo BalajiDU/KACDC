@@ -1549,3 +1549,195 @@ WebPage Name :Login.aspx
 User Name:ZMBLR
 User Type:ZONALMANAGER
 IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 07:44 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 07:49 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 07:54 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 08:12 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 08:12 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 08:16 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 08:19 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 08:26 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 08:28 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 13-01-2022
+Time : 08:36 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 01:35 PM
+WebPage Name :Login.aspx
+User Name:dmblrr
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 04:24 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 04:34 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:08 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:09 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:11 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:18 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:22 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:26 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:29 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:34 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:40 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:44 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1
+
+-----------------New Login-----------------
+Date : 18-01-2022
+Time : 05:46 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1

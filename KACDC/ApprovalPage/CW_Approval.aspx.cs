@@ -41,7 +41,7 @@ namespace KACDC.ApprovalPage
         }
         protected void FetchCount()
         {
-            SE.CWSETotalApplicationCount = CwGetCount.GetTotalCount("spGetApplicationCount", "CWSECount","",CWP.CWDistrict);
+            SE.CWSETotalApplicationCount = CwGetCount.GetTotalCount("spGetApplicationCount", "CWSECount",CWP.CWDistrict);
             SE.CWSEApprovedApplicationCount = CwGetCount.GetTotalCount("spGetApplicationCount", "CWSECount", "APPROVED");
             SE.CWSEPendingApplicationCount = CwGetCount.GetTotalCount("spGetApplicationCount", "CWSECount", "PENDING");
             SE.CWSERejectedApplicationCount = CwGetCount.GetTotalCount("spGetApplicationCount", "CWSECount", "REJECTED");

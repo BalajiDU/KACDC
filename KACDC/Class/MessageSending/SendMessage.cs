@@ -38,10 +38,10 @@ namespace KACDC.Class.MessageSending
         {
             using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from SMSTemplate where TemplateID=@TemplateID"))
+                using (SqlCommand cmd = new SqlCommand("select * from SMSTemplate where Category=@Category"))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@TemplateID", MsgCategory);
+                    cmd.Parameters.AddWithValue("@Category", MsgCategory);
                     cmd.Connection = kvdConn;
                     kvdConn.Open();
                     using (SqlDataReader sdr = cmd.ExecuteReader())

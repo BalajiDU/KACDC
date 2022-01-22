@@ -35,7 +35,7 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                     NKSER.NCFacilityCode = xElement.Element("FacilityCode").Value.ToString();
                     NKSER.NCFacilityName = xElement.Element("FacilityName").Value.ToString();
                     NKSER.NCLanguage = xElement.Element("Language").Value.ToString();
-
+                    Console.Write(NKSER.NCLanguage);
                     string xml = HttpUtility.HtmlDecode(xElement.Element("xmlData").ToString()).Replace("\r", "").Replace("\n", "").Replace("{Text = \"", "").Replace("\"", "")
                 .Replace("{", "").Replace("}", "").Replace("\"", "");
                     xmlApplicantDetails.LoadXml(xml);
@@ -87,9 +87,10 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
 
                         NKSER.NCVerification = "Success";
                     }
+
                     //Label11.Text = NKSER.NCLanguage;
                     StoreNC.StoreCasteIncomeCert(NKSER.NCGSCNumber,NKSER.NCStatusCode, NKSER.NCStatusMsg, NKSER.NCFacilityCode, NKSER.NCFacilityName, NKSER.NCLanguage, NKSER.NCAnnualIncome, NKSER.NCDateOfIssue, NKSER.NCApplicantName,
-                        NKSER.NCTalukName, NKSER.NCApplicantCAddressPin, NKSER.NCApplicantCAddress1, NKSER.NCApplicantCAddress2, NKSER.NCApplicantCAddress3, NKSER.App_Title, NKSER.NCGender, NKSER.NCVerification,
+                        NKSER.NCTalukName, NKSER.NCDistrictName, NKSER.NCApplicantCAddressPin, NKSER.NCApplicantCAddress1, NKSER.NCApplicantCAddress2, NKSER.NCApplicantCAddress3, NKSER.App_Title, NKSER.NCGender, NKSER.NCVerification,
                         NKSER.TLIFileNo, NKSER.HobliName, NKSER.VillageName,NKSER.HabitationName, NKSER.ApplicantBincom, NKSER.Fat_Title, NKSER.ApplicantMotherName, NKSER.ReservationCategory, NKSER.AnnualIncomeInWords, NKSER.Purpose,
                         NKSER.ValidPeriod, NKSER.SpecialTaluk, NKSER.DocumentsSubmitted, NKSER.DisplayDocumentsSubmitted);
                 }
@@ -113,46 +114,49 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
         }
         public void UpdateDistrict()
         {
-            if (NKSER.NCLanguage == "1")
+            if (NKSER.NCDistrictName != "")
             {
-                if (NKSER.NCDistrictName != "ಬೆಂಗಳೂರು")
+                if (NKSER.NCLanguage == "1")
                 {
-                    using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                    if (NKSER.NCDistrictName != "ಬೆಂಗಳೂರು")
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT DistrictName FROM MstDistrict Where NC_District_Name_Kan=@District"))
+                        using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                         {
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
-                            cmd.Connection = kvdConn;
-                            kvdConn.Open();
-                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            using (SqlCommand cmd = new SqlCommand("SELECT DistrictName FROM MstDistrict Where NC_District_Name_Kan=@District"))
                             {
-                                sdr.Read();
-                                NKSER.NCDistrictName = sdr["DistrictName"].ToString();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
+                                cmd.Connection = kvdConn;
+                                kvdConn.Open();
+                                using (SqlDataReader sdr = cmd.ExecuteReader())
+                                {
+                                    sdr.Read();
+                                    if (sdr["DistrictName"].ToString() != "" && sdr["DistrictName"] != System.DBNull.Value) { NKSER.NCDistrictName = sdr["DistrictName"].ToString(); };
+                                }
+                                kvdConn.Close();
                             }
-                            kvdConn.Close();
                         }
                     }
                 }
-            }
-            if (NKSER.NCLanguage == "2")
-            {
-                if (NKSER.NCDistrictName != "Bengaluru")
+                if (NKSER.NCLanguage == "2" || NKSER.NCLanguage == "99")
                 {
-                    using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
+                    if (NKSER.NCDistrictName != "Bengaluru")
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT DistrictName FROM MstDistrict Where NC_District_Name_Eng=@District"))
+                        using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                         {
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
-                            cmd.Connection = kvdConn;
-                            kvdConn.Open();
-                            using (SqlDataReader sdr = cmd.ExecuteReader())
+                            using (SqlCommand cmd = new SqlCommand("SELECT DistrictName FROM MstDistrict Where NC_District_Name_Eng=@District"))
                             {
-                                sdr.Read();
-                                NKSER.NCDistrictName = sdr["DistrictName"].ToString();
+                                cmd.CommandType = CommandType.Text;
+                                cmd.Parameters.AddWithValue("@District", NKSER.NCDistrictName);
+                                cmd.Connection = kvdConn;
+                                kvdConn.Open();
+                                using (SqlDataReader sdr = cmd.ExecuteReader())
+                                {
+                                    sdr.Read();
+                                    NKSER.NCDistrictName = sdr["DistrictName"].ToString();
+                                }
+                                kvdConn.Close();
                             }
-                            kvdConn.Close();
                         }
                     }
                 }

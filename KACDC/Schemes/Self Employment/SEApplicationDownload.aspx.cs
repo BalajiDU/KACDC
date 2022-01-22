@@ -199,7 +199,7 @@ namespace KACDC.Schemes.Self_Employment
             Table = new PdfPTable(4);
             Table = APPLITAB.SEApplicantMainTable(Table, AD.ApprovedApplicationNum, AD.ApplicantName, AD.FatherName, AD.Gender, AD.Widowed, AD.Divorced, AD.PhysicallyChallenged, AD.AnualIncome, AD.RDNumber, AD.EmailID, AD.MobileNumber, AD.AlternateNumber,
         AD.DoB, AD.LoanPurpose, "", "", AD.ContactAddress, AD.ContDistrict, AD.ContPincode, AD.ParmanentAddress, AD.ParDistrict, AD.ParConstituency, AD.ParPincode,
-         (Convert.ToDateTime(AD.AppliedDate)).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(AD.AppliedDate)).ToString("MM/dd/yyyy hh:mm:sss tt"), AD.ParTaluk, AD.ContTaluk, AD.LoanDescription, AD.ApplicantName, DA.GetIncomeCertificate(AD.RDNumber), AD.ApprovedApplicationNum + "_" + AD.AadharNum);
+         (Convert.ToDateTime(AD.AppliedDate)).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(AD.AppliedDate)).ToString("MM/dd/yyyy hh:mm:sss tt"), AD.ParTaluk, AD.ContTaluk, AD.LoanDescription, AD.ApplicantName, DA.GetIncomeCertificate(AD.RDNumber), AD.ApplicationNumber + "_" + AD.AadharNum);
             PdfPTable BankTable = null;
             BankTable = new PdfPTable(4);
             BankTable = BT.GenerateBankTable(BankTable, AD.ApplicantName, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);

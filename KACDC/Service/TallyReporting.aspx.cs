@@ -83,7 +83,7 @@ namespace KACDC.Service
 
 
             DS.Tables.Add(dt);
-            EFO.ExportToExcel(DS, Server.MapPath("~/Files_SelfEmployment/"+ drpFinancialYear.SelectedValue + "_SelfEmployment_Report.xlsx"), "1", drpDistrict.SelectedValue);
+            EFO.ExportToExcel(DS, Server.MapPath("~/Files_SelfEmployment/"), drpFinancialYear.SelectedValue + "_SelfEmployment_Report.xlsx", "1", drpDistrict.SelectedValue);
             if (System.IO.File.Exists(Server.MapPath("~/Files_SelfEmployment/" + drpFinancialYear.SelectedValue + "_SelfEmployment_Report.xlsx")))
             {
                 Response.ContentType = "application/vnd.ms-excel";

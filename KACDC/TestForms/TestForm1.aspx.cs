@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using KACDC.Class;
 using KACDC.Class.DataProcessing.Aadhaar;
 using KACDC.Class.DataProcessing.ApplicationProcess;
 using KACDC.Class.DataProcessing.BankData;
@@ -489,16 +490,37 @@ namespace KACDC.TestForms
 
         protected void btnExportExcel_Click(object sender, EventArgs e)
         {
+            Session["District"] = "Bengaluru Dakshina";
+            GetFinancilaYear FY = new GetFinancilaYear();
+            FY.GetFY();
+
+
+            SaveFile SF = new SaveFile();
             ExcelFileOperations FO = new ExcelFileOperations();
             GetDataToProcess GDTP = new GetDataToProcess();
-
+            string Path = Server.MapPath("~/DownloadFiles/DMSelectedToCEOExcel/" + Session["FinancilaYear"].ToString() + "/" + Session["District"].ToString() + "/");
+            string Name = Session["District"].ToString() + "_DMSelected.xlsx";
             DataTable employees = new DataTable();
             DataSet ds = new DataSet();
-            ds.Tables.Add((GDTP.GetData("spGetDataToApprovalProcess","SESELECTCW", "Bengaluru Dakshina","asdf")));
-            ds.Tables.Add(GDTP.GetData("spGetDataToApprovalProcess","SESELECTCW", "Bengaluru Dakshina"));
-//D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\
-            FO.ExportToExcel(ds, Server.MapPath("~/DownloadFiles/") +"ABC.xlsx","", "Bengaluru Dakshina");
-
+            SF.CheckDirExist(Path);
+            SF.IfFileExistDelete(Path, Name);
+            ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTMALE", "Bengaluru Dakshina", "MALE")));
+            ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTFEMALE", "Bengaluru Dakshina", "FEMALE")));
+            ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTPWD", "Bengaluru Dakshina", "PWD")));
+            //D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\
+            FO.ExportToExcel(ds, Path, Name, "", "Bengaluru Dakshina");
+            if (System.IO.File.Exists(Path+Name))
+            {
+                Response.ContentType = "application/vnd.ms-excel";
+                Response.AppendHeader("Content-Disposition", "attachment; " + Path + Name);
+                //Response.TransmitFile(Server.MapPath("~/Files_Arivu/" + ARRD.Installment + "/RenewalRequestCopy/" + ARRD.FILENAME + ".pdf"));
+                //Response.ContentType = "application/pdf";
+                //Response.Buffer = true;
+                //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                //Response.BinaryWrite(bytes);
+                Response.End();
+                Response.Close();
+            }
         }
         private void ExportExcel(DataSet ds)
         {

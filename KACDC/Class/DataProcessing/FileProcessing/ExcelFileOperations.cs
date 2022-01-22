@@ -1,16 +1,23 @@
-﻿using System;
+﻿using KACDC.Class.FileSaving;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace KACDC.Class.DataProcessing.FileProcessing
 {
     public class ExcelFileOperations
     {
-        public void ExportToExcel(DataSet dataset,string FilePath,string number,string District,string ReportType="")
+        SaveFile SF = new SaveFile();
+        public void ExportToExcel(DataSet dataset,string FilePath,string FileName,string number,string District,string ReportType="")
         {
+            //SF.CheckDirExist(FilePath);
+            //SF.IfFileExistDelete(FilePath, FileName);
+            //Directory.GetAccessControl(FilePath+ FileName);
+
             int inHeaderLength = 2, inColumn = 0, inRow = 0;
             System.Reflection.Missing Default = System.Reflection.Missing.Value;
             //Create Excel File
@@ -103,7 +110,7 @@ namespace KACDC.Class.DataProcessing.FileProcessing
                 System.IO.File.Delete(FilePath);
             }
 
-            excelWorkBook.SaveAs(FilePath, Default, Default, Default, false, Default, Excel.XlSaveAsAccessMode.xlNoChange, Default, Default, Default, Default, Default);
+            excelWorkBook.SaveAs(FilePath+ FileName, Default, Default, Default, false, Default, Excel.XlSaveAsAccessMode.xlNoChange, Default, Default, Default, Default, Default);
             excelWorkBook.Close();
             excelApp.Quit();
         }

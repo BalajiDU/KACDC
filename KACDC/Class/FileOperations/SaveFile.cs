@@ -21,5 +21,15 @@ namespace KACDC.Class.FileSaving
                 Directory.CreateDirectory(path);
             }
         }
+        public void IfFileExistDelete(string path,string filename)
+        {
+            if (Directory.Exists(path))
+            {
+                if (File.Exists(path+ filename))
+                {
+                    File.Delete(path+ filename);
+                }
+            }
+        }
     }
 }
