@@ -1,0 +1,60 @@
+-------------------Error Log Start-----------as on 12:47 PM
+WebPage Name :ExFile
+Code:Ex-File_Cre_Started
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 12:47 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_DataStored
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 12:47 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_ExistChecked
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 12:47 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_Created
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 12:47 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_Closed
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 01:00 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_Started
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 01:00 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_DataStored
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 01:00 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_ExistChecked
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 01:00 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_Created
+Message:Comp
+IP:SYS
+-------------------End----------------------------
+------------------- 01:00 PM -----------
+WebPage Name :ExFile
+Code:Ex-File_Cre_Closed
+Message:Comp
+IP:SYS
+-------------------End----------------------------

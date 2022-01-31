@@ -491,7 +491,7 @@ namespace KACDC.TestForms
         protected void btnExportExcel_Click(object sender, EventArgs e)
         {
             Session["District"] = "Bengaluru Dakshina";
-            GetFinancilaYear FY = new GetFinancilaYear();
+            GetFinancialYear FY = new GetFinancialYear();
             FY.GetFY();
 
 

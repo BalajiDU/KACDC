@@ -1741,3 +1741,123 @@ WebPage Name :Login.aspx
 User Name:CheckRD
 User Type:CHECKRD
 IP:::1
+
+-----------------New Login-----------------
+Date : 24-01-2022
+Time : 08:07 PM
+WebPage Name :Login.aspx
+User Name:CWBGL
+User Type:CASEWORKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 24-01-2022
+Time : 08:08 PM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 11:12 AM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 11:17 AM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 11:19 AM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 11:46 AM
+WebPage Name :Login.aspx
+User Name:CWBGL
+User Type:CASEWORKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 11:47 AM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 11:56 AM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 12:21 PM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 12:27 PM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 12:31 PM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 12:35 PM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 12:45 PM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 29-01-2022
+Time : 12:59 PM
+WebPage Name :Login.aspx
+User Name:DMBGL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 30-01-2022
+Time : 07:26 AM
+WebPage Name :Login.aspx
+User Name:DMBAL
+User Type:DISTRICTMANAGER
+IP:::1

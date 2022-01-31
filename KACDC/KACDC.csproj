@@ -557,7 +557,7 @@
     <Compile Include="Class\Declaration\WebServices\WSSuvidha.cs" />
     <Compile Include="Class\FileOperations\SaveFile.cs" />
     <Compile Include="Class\GetCountStatistics\GetCount.cs" />
-    <Compile Include="Class\GetFinancilaYear.cs" />
+    <Compile Include="Class\GetFinancialYear.cs" />
     <Compile Include="Class\JobScheduler\HangFireJobScheduler.cs" />
     <Compile Include="Class\Log\DataLogging.cs" />
     <Compile Include="Class\MessageSending\SendMessage.cs" />

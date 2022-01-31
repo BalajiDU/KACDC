@@ -1,0 +1,28 @@
+-------------------Error Log Start-----------as on 07:27 AM
+WebPage Name :asdf
+Code:File Verification
+Message:Comp
+IP:D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\DMSelectedToCEOExcel\2021-22\Ballari\Ballari_DMApproved.xlsx
+-------------------End----------------------------
+------------------- 07:27 AM -----------
+WebPage Name :asdf
+Code:Data Received
+Message:Comp
+IP:D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\DMSelectedToCEOExcel\2021-22\Ballari\Ballari_DMApproved.xlsx
+-------------------End----------------------------
+------------------- 07:27 AM -----------
+WebPage Name :Er
+Code:Error
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\DMSelectedToCEOExcel\2021-22\Ballari\ErrorLog_30-01-2022.txt'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.CreateText(String path)
+   at KACDC.Class.Log.DataLogging.WriteErrorLog(String ErrCode, String ErrMsg, String ipaddress, String webPageName, String Log_File_Path) in D:\Project\KACDCProject\KACDC\KACDC\Class\Log\DataLogging.cs:line 29
+   at KACDC.Class.DataProcessing.FileProcessing.ExcelFileOperations.ExportToExcel(DataSet dataset, String FilePath, String FileName, String number, String District, String ReportType) in D:\Project\KACDCProject\KACDC\KACDC\Class\DataProcessing\FileProcessing\ExcelFileOperations.cs:line 129
+   at KACDC.ApprovalPage.DM_Approval.btnDMSEDownloadExcelForCEO_Click(Object sender, EventArgs e) in D:\Project\KACDCProject\KACDC\KACDC\ApprovalPage\DM_Approval.aspx.cs:line 733
+IP:Could not find a part of the path 'D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\DMSelectedToCEOExcel\2021-22\Ballari\ErrorLog_30-01-2022.txt'.
+-------------------End----------------------------

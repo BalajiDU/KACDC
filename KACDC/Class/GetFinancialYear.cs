@@ -8,7 +8,7 @@ using System.Web;
 
 namespace KACDC.Class
 {
-    public class GetFinancilaYear
+    public class GetFinancialYear
     {
         public void GetFY()
         {
