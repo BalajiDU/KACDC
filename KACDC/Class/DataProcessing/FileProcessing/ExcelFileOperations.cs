@@ -12,9 +12,9 @@ namespace KACDC.Class.DataProcessing.FileProcessing
 {
     public class ExcelFileOperations
     {
-        DataLogging DL = new DataLogging();
+        //DataLogging DL = new DataLogging();
         SaveFile SF = new SaveFile();
-        string strPath = null;
+        //string strPath = null;
         string Filename1 = string.Format(@"{0}.xlsx",Guid.NewGuid());
         public void ExportToExcel(DataSet dataset,string FilePath,string FileName,string number,string District,string ReportType="")
         {
@@ -23,12 +23,12 @@ namespace KACDC.Class.DataProcessing.FileProcessing
                 //SF.CheckDirExist(FilePath);
                 //SF.IfFileExistDelete(FilePath, FileName);
                 //Directory.GetAccessControl(FilePath+ FileName);
-                DL.WriteErrorLog("Ex-File_Cre_Started", "Comp", FilePath+"__"+FileName, FileName, FilePath);
+                //DL.WriteErrorLog("Ex-File_Cre_Started", "Comp", FilePath+"__"+FileName, FileName, FilePath);
 
                 int inHeaderLength = 2, inColumn = 0, inRow = 0;
                 System.Reflection.Missing Default = System.Reflection.Missing.Value;
                 //Create Excel File
-                strPath += @"\Excel" + DateTime.Now.ToString().Replace(':', '-') + ".xlsx";
+                //strPath += @"\Excel" + DateTime.Now.ToString().Replace(':', '-') + ".xlsx";
                 Excel.Application excelApp = new Excel.Application();
                 Excel.Workbook excelWorkBook = excelApp.Workbooks.Add(1);
 
@@ -127,7 +127,7 @@ namespace KACDC.Class.DataProcessing.FileProcessing
                 //DL.WriteErrorLog("Ex-File_Cre_Closed", "Comp", FilePath + "__"+ FileName, "ExFile", FilePath);
             }catch(Exception ex)
             {
-                DL.WriteErrorLog("Ex-File_Cre_Error___"+ ReportType, ex.ToString(), "\n"+ex.Message, "\n\n"+FilePath + "__"+ FileName, FilePath);
+                //DL.WriteErrorLog("Ex-File_Cre_Error___"+ ReportType, ex.ToString(), "\n"+ex.Message, "\n\n"+FilePath + "__"+ FileName, FilePath);
 
             }
         }

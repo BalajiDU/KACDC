@@ -730,7 +730,7 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDMSEDownloadExcelForCEO_Click(object sender, EventArgs e)
         {
-            DataLogging DL = new DataLogging();
+            //DataLogging DL = new DataLogging();
             try
             {
                 SaveFile SF = new SaveFile();
@@ -742,14 +742,14 @@ namespace KACDC.ApprovalPage
                 DataSet ds = new DataSet();
                 //SF.CheckDirExist(FilePath);
                 SF.IfFileExistDelete(Server.MapPath("~/DownloadFiles/") , Name);
-                DL.WriteErrorLog("File Verification", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
+                //DL.WriteErrorLog("File Verification", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
                 ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTMALE", Session["District"].ToString(), "MALE")));
                 ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTFEMALE", Session["District"].ToString(), "FEMALE")));
                 ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTPWD", Session["District"].ToString(), "PWD")));
-                DL.WriteErrorLog("Data Received", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
+                //DL.WriteErrorLog("Data Received", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
 
                 FO.ExportToExcel(ds, FilePath, Name, "", Session["District"].ToString(), Server.MapPath("~/DownloadFiles/"));
-                DL.WriteErrorLog("Excel Created", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
+                //DL.WriteErrorLog("Excel Created", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
 
                 if (System.IO.File.Exists(FilePath + Name))
                 {
@@ -770,7 +770,7 @@ namespace KACDC.ApprovalPage
             }
             catch (Exception Ex)
             {
-                DL.WriteErrorLog("Error", Ex.ToString(), Ex.Message, "Er", Server.MapPath("~/DownloadFiles/"));
+                //DL.WriteErrorLog("Error", Ex.ToString(), Ex.Message, "Er", Server.MapPath("~/DownloadFiles/"));
 
                 DisplayAlert(Ex.ToString(), this);
             }
