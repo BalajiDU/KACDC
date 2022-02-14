@@ -482,6 +482,7 @@
     <Compile Include="Class\DataProcessing\Aadhaar\AadhaarService.cs" />
     <Compile Include="Class\DataProcessing\Aadhaar\StoreAadhaarData.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\ApplicantDetails.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\ApplicationCount.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\ApprovalProcess.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\BankDetails\GetBankDetails.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\BankDetails\UpdateBankDetails.cs" />
@@ -493,6 +494,7 @@
     <Compile Include="Class\DataProcessing\ApplicationProcess\GenerateSanctionCopy.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GetApprovedApplicationNumber.cs" />
     <Compile Include="Class\DataProcessing\ApplicationProcess\GetDataToProcess.cs" />
+    <Compile Include="Class\DataProcessing\ApplicationProcess\UploadCEODoc.cs" />
     <Compile Include="Class\DataProcessing\BankData\GetBankDetailsIFSC.cs" />
     <Compile Include="Class\DataProcessing\EmailService\VerifyEmailID.cs" />
     <Compile Include="Class\DataProcessing\EmailService\MailingService.cs" />

@@ -1861,3 +1861,219 @@ WebPage Name :Login.aspx
 User Name:DMBAL
 User Type:DISTRICTMANAGER
 IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 01:11 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 02:51 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 02:51 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 02:54 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 02:59 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 03:01 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 03:25 PM
+WebPage Name :Login.aspx
+User Name:DMBAL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 03:27 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 04:09 PM
+WebPage Name :Login.aspx
+User Name:DMBAL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 04:11 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 04:13 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 05-02-2022
+Time : 05:04 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 02:04 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 03:12 PM
+WebPage Name :Login.aspx
+User Name:CWBGL
+User Type:CASEWORKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 03:13 PM
+WebPage Name :Login.aspx
+User Name:DMBAL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 03:20 PM
+WebPage Name :Login.aspx
+User Name:DMBAL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 03:22 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 03:24 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 04:11 PM
+WebPage Name :Login.aspx
+User Name:CWBGL
+User Type:CASEWORKER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 04:13 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 04:16 PM
+WebPage Name :Login.aspx
+User Name:DMBAL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 04:18 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 04:21 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 07-02-2022
+Time : 05:57 PM
+WebPage Name :Login.aspx
+User Name:DMBLRS
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 08-02-2022
+Time : 05:22 PM
+WebPage Name :Login.aspx
+User Name:DMBAL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 08-02-2022
+Time : 05:25 PM
+WebPage Name :Login.aspx
+User Name:DMBAL
+User Type:DISTRICTMANAGER
+IP:::1
+
+-----------------New Login-----------------
+Date : 09-02-2022
+Time : 04:02 PM
+WebPage Name :Login.aspx
+User Name:ZMBLR
+User Type:ZONALMANAGER
+IP:::1

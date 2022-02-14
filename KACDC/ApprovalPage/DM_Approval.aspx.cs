@@ -36,7 +36,8 @@ namespace KACDC.ApprovalPage
         UpdateBankDetailsToDB UBDDB = new UpdateBankDetailsToDB();
         ArRenewalProcess ARP = new ArRenewalProcess();
         GetFinancialYear FY = new GetFinancialYear();
-
+        UploadCEODoc CEOFU = new UploadCEODoc();
+        ApplicationCount AC = new ApplicationCount();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["USERTYPE"] != "DISTRICTMANAGER")
@@ -46,12 +47,22 @@ namespace KACDC.ApprovalPage
                 gvRepaymentStats.DataSource = SqlDataSourcegvRepaymentStats;
                 gvRepaymentStats.DataBind();
                 //UserName = Session["UserName"].ToString();
+                
             }
             if (!IsPostBack)
             {
                 this.FillGrid();
             }
-            
+            if (CheckCEOFileExis())
+            {
+                divCEOSEApplicationProcess.Visible = true;
+                divCEOSEFileUpload.Visible = false;
+            }
+            else
+            {
+                divCEOSEApplicationProcess.Visible = false;
+                divCEOSEFileUpload.Visible = true;
+            }
         }
         private void FillGrid()
         {
@@ -825,7 +836,61 @@ namespace KACDC.ApprovalPage
         }
         protected void btnSEUploadCeoDoc_Click(object sender, EventArgs e)
         {
+            if (FileCeoSE.HasFile)
+            {
+                if (FileCeoSE.PostedFile.GetType().ToString().ToLower() == ".pdf"|| (Path.GetExtension(FileCeoSE.FileName)).ToLower()==".pdf")
+                {
+                    if (FileCeoSE.PostedFile.ContentLength <= 1048576)
+                    {
+                        Stream fs = FileCeoSE.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
+
+                        FileCeoSE.SaveAs(Server.MapPath("~/ImageUpload/" + Session["FinancialYear"].ToString()+"_"+ Session["District"].ToString()+".pdf"));
+                        CEOFU.UploadDoc("SE", Session["FinancialYear"].ToString(), Session["District"].ToString(), bytes);
+                        if (CheckCEOFileExis())
+                        {
+                            divCEOSEApplicationProcess.Visible = true;
+                            divCEOSEFileUpload.Visible = false;
+                        }
+                        else
+                        {
+                            divCEOSEApplicationProcess.Visible = false;
+                            divCEOSEFileUpload.Visible = true;
+                        }
+                        DisplayAlert("File Uploaded successfully",this);
+                       
+                    }
+                    else
+                    {
+                        DisplayAlert("maximum file size is 1 mb", this);
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Only pdf file is allowed",this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Select File", this);
+            }
+        }
+        private bool CheckCEOFileExis()
+        {
+
+            string count = AC.Count("spGetApplicationCount", "SECEOFileCount","", Session["District"].ToString());
+            if (count != "NA")
+            {
+                Int32.TryParse(count, out int Res);
+                if (Res != 0)
+                {
+                    return true;
+                }
+                else  return false;
+            }
+            else return false;
         }
         protected void btnCEOSEDisplayBankDetails_Click(object sender, EventArgs e)
         {
