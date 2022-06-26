@@ -28,9 +28,9 @@ using System.Web.UI.WebControls;
 using KACDC.Class.DataProcessing.ApplicationProcess;
 using KACDC.Class.MessageSending;
 
-namespace KACDC.Schemes.Self_Employment
+namespace KACDC.Schemes.AVAaharaVahini
 {
-    public partial class Self_Employment_Application : System.Web.UI.Page
+    public partial class AVAaharaVahiniApplication : System.Web.UI.Page
     {
         AadhaarService ADAR = new AadhaarService();
         AadhaarServiceData ADSER = new AadhaarServiceData();
@@ -62,7 +62,7 @@ namespace KACDC.Schemes.Self_Employment
                     kvdConn.Open();
                     using (SqlCommand cmd = new SqlCommand("SELECT * FROM KACDCSettings where KeyVal=@Key"))
                     {
-                        cmd.Parameters.AddWithValue("@Key", "SEApplicationEnable");
+                        cmd.Parameters.AddWithValue("@Key", "AVApplicationEnable");
                         cmd.CommandType = CommandType.Text;
                         cmd.Connection = kvdConn;
                         using (SqlDataReader sdr = cmd.ExecuteReader())
@@ -87,7 +87,7 @@ namespace KACDC.Schemes.Self_Employment
                         {
                             sdr.Read();
                             ODSE.FinancialYear = sdr["Value"].ToString();
-                            
+
                         }
                         kvdConn.Close();
                     }
@@ -103,7 +103,7 @@ namespace KACDC.Schemes.Self_Employment
                     ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
                     if (ADAR.SendOTP(txtAadhaarNumber.Text.Trim()))
                     {
-                        DisplayAlert("OTP sent to registered mobile number", this);
+                        DisplayAlert("otp sent to registered mobile number", this);
                         divMobileOTP.Visible = true;
                         txtOTP.Focus();
                     }
@@ -169,7 +169,7 @@ namespace KACDC.Schemes.Self_Employment
                     btnAadhaarGetOTP.Visible = true;
                 }
 
-                
+
             }
             else
             {
@@ -183,7 +183,7 @@ namespace KACDC.Schemes.Self_Employment
             int age = 0;
             age = DateTime.Now.Subtract(DateTime.Parse(ADSER.DOB)).Days;
             age = age / 365;
-            if(age<18 || age>45)
+            if (age < 18 || age > 45)
             {
                 DisplayAlert("Age must be between 18 to 45", this);
                 return false;
@@ -192,7 +192,7 @@ namespace KACDC.Schemes.Self_Employment
             {
                 return true;
             }
-               
+
         }
         protected void btnAadhaarkDetailsProceed_Click(object sender, EventArgs e)
         {
@@ -322,7 +322,7 @@ namespace KACDC.Schemes.Self_Employment
                         }
                         else
                         {
-                            DisplayAlert("You have already avail the loan in "+ IsRDExist + " financial year", this);
+                            DisplayAlert("You have already avail the loan in " + IsRDExist + " financial year", this);
                         }
                     }
                     else
@@ -371,7 +371,7 @@ namespace KACDC.Schemes.Self_Employment
             if (rbContactAddressYes.Checked == true)
             {
                 divContactAddress.Visible = false;
-                
+
                 btnNadakachriOK.Visible = false;
                 btnSaveContactAddress.Visible = true;
                 ODSE.ContactPinCode = NKSER.NCApplicantCAddressPin;
@@ -496,17 +496,18 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnSaveContactAddress_Click(object sender, EventArgs e)
         {
-            
-            if (drpConst.SelectedIndex!=0) {
+
+            if (drpConst.SelectedIndex != 0)
+            {
                 if (rbContactAddressNo.Checked == true)
                 {
                     if (txtContactAddress.Text.Trim() != "" && txtContactAddress.Text.Trim() != null)
                     {
                         if (txtContactAddress.Text.Trim().Length >= 10)
                         {
-                            if (drpContDistrict.SelectedValue != "" && drpContDistrict.SelectedValue != null && drpContDistrict.SelectedIndex!=0)
+                            if (drpContDistrict.SelectedValue != "" && drpContDistrict.SelectedValue != null && drpContDistrict.SelectedIndex != 0)
                             {
-                                if (drpContTaluk.SelectedValue != "" && drpContTaluk.SelectedValue != null && drpContTaluk.SelectedIndex!=0)
+                                if (drpContTaluk.SelectedValue != "" && drpContTaluk.SelectedValue != null && drpContTaluk.SelectedIndex != 0)
                                 {
                                     if (txtContPincode.Text.Trim() != "" && txtContPincode.Text.Trim() != null)
                                     {
@@ -556,7 +557,7 @@ namespace KACDC.Schemes.Self_Employment
                 CasteCertificatePopup.Show();
             }
         }
-        
+
         protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)
         {
             btnViewRDNumber.Visible = true;
@@ -573,7 +574,7 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnGetBankDetails_Click(object sender, EventArgs e)
         {
-            if(txtAccountNumber.Text.Trim()!=null && txtAccountNumber.Text.Trim() != "")
+            if (txtAccountNumber.Text.Trim() != null && txtAccountNumber.Text.Trim() != "")
             {
                 if (Regex.IsMatch(txtAccountNumber.Text.Trim(), @"^\d+$"))
                 {
@@ -884,7 +885,7 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void rbMarriedYes_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             if (rbMarriedYes.Checked == true)
             {
                 divFemaleMarriedOption.Visible = true;
@@ -996,8 +997,8 @@ namespace KACDC.Schemes.Self_Employment
             lblGender.Text = NDAR.NCGender;
             lblDOB.Text = ADSER.DOB;
             lblRDNum.Text = "VERIFIED";
-            lblWidowed.Text = ODSE.Widow==null ? "NA" : ODSE.Widow;
-            lblDivorced.Text = ODSE.Divorced==null ? "NA" : ODSE.Divorced;
+            lblWidowed.Text = ODSE.Widow == null ? "NA" : ODSE.Widow;
+            lblDivorced.Text = ODSE.Divorced == null ? "NA" : ODSE.Divorced;
             lblPurpose.Text = ODSE.PurposeOfLoan;
             lblLoanDescription.Text = ODSE.LoanDESCRIPTION;
             lblPhysicallyCha.Text = ODSE.PersonWithDisabilities;
@@ -1040,12 +1041,12 @@ namespace KACDC.Schemes.Self_Employment
         {
             //ODSE.ApplicationDateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss");
             ODSE.ApplicationDateTime = DateTime.Now.ToString();
-            if(SaveApplicationDB())
+            if (SaveApplicationDB())
             {
                 btnPreviewEditOtherDetails.Visible = false;
                 //btnPreviewSubmitApplication.Visible = false;
                 divSubmitandEdit.Visible = false;
-                File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/"+ODSE.GeneratedApplicationNumber+"_"+ADSER.AadhaarVaultToken + ".png"), ADSER.Photo);
+                File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/" + ODSE.GeneratedApplicationNumber + "_" + ADSER.AadhaarVaultToken + ".png"), ADSER.Photo);
                 if (GenerateApplicantPDF())
                 {
                     //if (SendSMSEmail())
@@ -1082,7 +1083,7 @@ namespace KACDC.Schemes.Self_Employment
             //Response.Write("<br />ApplicationDateTime: " + ODSE.ApplicationDateTime);
             //Response.Write("<br />DOB: "+ ADSER.DOB);
 
-            if (ODSE.GeneratedApplicationNumber.Contains("KACDCSE")) 
+            if (ODSE.GeneratedApplicationNumber.Contains("KACDCSE"))
             {
                 return true;
             }
@@ -1142,12 +1143,12 @@ namespace KACDC.Schemes.Self_Employment
 
                     SaveFile SV = new SaveFile();
                     SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/"), ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf", bytes);
-                    if (File.Exists(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/")+ ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"))
+                    if (File.Exists(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"))
                     {
                         SendSMSEmail();
                     }
                     Response.ContentEncoding = System.Text.Encoding.UTF8;
-                    Response.AddHeader("Content-Disposition", "attachment; filename=" + ODSE.GeneratedApplicationNumber+"_"+ ADSER.Name + ".pdf");
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
                     Response.ContentType = "application/pdf";
                     Response.Buffer = true;
                     Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -1157,9 +1158,9 @@ namespace KACDC.Schemes.Self_Employment
                 }
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.Write("File Creation: "+ex.ToString());
+                Response.Write("File Creation: " + ex.ToString());
                 return false;
             }
         }
@@ -1180,9 +1181,9 @@ namespace KACDC.Schemes.Self_Employment
                     ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.Write("Send mail: "+ex.ToString());
+                Response.Write("Send mail: " + ex.ToString());
                 return false;
             }
         }
@@ -1507,8 +1508,8 @@ namespace KACDC.Schemes.Self_Employment
         {
 
         }
-        
-        
+
+
         protected void btnNextShowRDNumber_Click(object sender, EventArgs e)
         {
             divButtonToOtherDetails.Visible = false;
@@ -1524,7 +1525,7 @@ namespace KACDC.Schemes.Self_Employment
             divOtherDetailsNew.Visible = true;
             divOtherDetails.Visible = false;
         }
-        
+
         protected void btnOtherDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
         {
             if (this.VerifyOtherDetails())
@@ -1536,7 +1537,7 @@ namespace KACDC.Schemes.Self_Employment
                 divPreviewApplication.Visible = true;
             }
         }
-        
+
         protected void btnOtherDetailsOk_Click(object sender, EventArgs e)
         {
             divOtherDetailsNew.Visible = false;
@@ -1544,3 +1545,14 @@ namespace KACDC.Schemes.Self_Employment
         }
     }
 }
+
+//namespace KACDC.Schemes.AVAaharaVahini
+//{
+//    public partial class AVAaharaVahiniApplication : System.Web.UI.Page
+//    {
+//        protected void Page_Load(object sender, EventArgs e)
+//        {
+
+//        }
+//    }
+//}

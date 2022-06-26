@@ -259,6 +259,10 @@
     <Content Include="Schemes\Arivu\Arivu_Application.aspx" />
     <Content Include="Schemes\Arivu\Arivu_Renewal.aspx" />
     <Content Include="Schemes\AryaVysyaPortal\AryaVysyaPortal.aspx" />
+    <Content Include="Schemes\AVAaharaVahini\AboutAVAaharaVahini.aspx" />
+    <Content Include="Schemes\AVAaharaVahini\AVAaharaVahiniApplication.aspx" />
+    <Content Include="Schemes\AVAaharaVahini\AVAaharaVahiniApplicationDownload.aspx" />
+    <Content Include="Schemes\AVAaharaVahini\AVAaharaVahiniPrerequisites.aspx" />
     <Content Include="Schemes\Self Employment\AboutSelfEmployment.aspx" />
     <Content Include="Schemes\Self Employment\SEApplicationDownload.aspx" />
     <Content Include="Schemes\Self Employment\SelfEmploymentPrerequisite.aspx" />
@@ -296,6 +300,7 @@
     <Content Include="TestForms\TestForm3.aspx" />
     <Content Include="TestForms\TestForm4.aspx" />
     <Content Include="TestForms\TestFormSimilarity.aspx" />
+    <Content Include="TestForms\timer.aspx" />
     <Content Include="WebServices\FetchSelfEmploymentData.asmx" />
     <Content Include="WebServices\GetCollegeDetails.asmx" />
     <Content Include="WebServices\Get_AR_Applications.asmx" />
@@ -684,6 +689,34 @@
     <Compile Include="Schemes\AryaVysyaPortal\AryaVysyaPortal.aspx.designer.cs">
       <DependentUpon>AryaVysyaPortal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Schemes\AVAaharaVahini\AboutAVAaharaVahini.aspx.cs">
+      <DependentUpon>AboutAVAaharaVahini.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\AVAaharaVahini\AboutAVAaharaVahini.aspx.designer.cs">
+      <DependentUpon>AboutAVAaharaVahini.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\AVAaharaVahini\AVAaharaVahiniApplication.aspx.cs">
+      <DependentUpon>AVAaharaVahiniApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\AVAaharaVahini\AVAaharaVahiniApplication.aspx.designer.cs">
+      <DependentUpon>AVAaharaVahiniApplication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\AVAaharaVahini\AVAaharaVahiniApplicationDownload.aspx.cs">
+      <DependentUpon>AVAaharaVahiniApplicationDownload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\AVAaharaVahini\AVAaharaVahiniApplicationDownload.aspx.designer.cs">
+      <DependentUpon>AVAaharaVahiniApplicationDownload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schemes\AVAaharaVahini\AVAaharaVahiniPrerequisites.aspx.cs">
+      <DependentUpon>AVAaharaVahiniPrerequisites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schemes\AVAaharaVahini\AVAaharaVahiniPrerequisites.aspx.designer.cs">
+      <DependentUpon>AVAaharaVahiniPrerequisites.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Schemes\Self Employment\AboutSelfEmployment.aspx.cs">
       <DependentUpon>AboutSelfEmployment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -803,6 +836,13 @@
     <Compile Include="TestForms\TestFormSimilarity.aspx.designer.cs">
       <DependentUpon>TestFormSimilarity.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestForms\timer.aspx.cs">
+      <DependentUpon>timer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestForms\timer.aspx.designer.cs">
+      <DependentUpon>timer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebServices\FetchSelfEmploymentData.asmx.cs">
       <DependentUpon>FetchSelfEmploymentData.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -904,6 +944,7 @@
     <Folder Include="AadhaarLogPhoto\" />
     <Folder Include="ApplicationProcessFiles\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Class\DataProcessing\OnlineApplication\FoodTruck\" />
     <Folder Include="DownloadFiles\AadhaarLogImage\" />
     <Folder Include="Files_Arivu\2ND_INSTALMENT\PreviousMarksCard\" />
     <Folder Include="Files_Arivu\3RD_INSTALMENT\" />

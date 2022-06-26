@@ -1,10 +1,12 @@
 ﻿using iTextSharp.text;
+using iTextSharp.text.html;
 using iTextSharp.text.pdf;
 using KACDC.Class.CreateLog;
 using KACDC.Class.DataProcessing.Aadhaar;
 using KACDC.Class.DataProcessing.BankData;
 using KACDC.Class.DataProcessing.Nadakacheri;
 using KACDC.Class.DataProcessing.OnlineApplication;
+using KACDC.Class.DataProcessing.EmailService;
 using KACDC.Class.Declaration.Aadhaar;
 using KACDC.Class.Declaration.BankDetails;
 using KACDC.Class.Declaration.CollegeData;
@@ -26,6 +28,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using KACDC.Class.DataProcessing.ApplicationProcess;
+using KACDC.Class.MessageSending;
 
 namespace KACDC.Schemes.Arivu
 {
@@ -75,7 +78,7 @@ namespace KACDC.Schemes.Arivu
                 }
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT FinancialYear FROM [dbo].[KACDCInfo]"))
+                    using (SqlCommand cmd = new SqlCommand("select Value from KACDCSettings where KeyVal='FinancialYear'"))
                     {
                         cmd.CommandType = CommandType.Text;
                         cmd.Connection = kvdConn;
@@ -83,7 +86,7 @@ namespace KACDC.Schemes.Arivu
                         using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
                             sdr.Read();
-                            ODAR.FinancialYear = sdr["FinancialYear"].ToString();
+                            ODAR.FinancialYear = sdr["Value"].ToString();
 
                         }
                         kvdConn.Close();
@@ -100,8 +103,9 @@ namespace KACDC.Schemes.Arivu
                     ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
                     if (ADAR.SendOTP(txtAadhaarNumber.Text.Trim()))
                     {
-                        DisplayAlert("otp sent to registered mobile number", this);
+                        DisplayAlert("OTP sent to registered mobile number", this);
                         divMobileOTP.Visible = true;
+                        txtOTP.Focus();
                     }
                     else
                     {

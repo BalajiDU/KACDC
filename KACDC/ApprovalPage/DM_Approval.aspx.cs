@@ -948,7 +948,50 @@ namespace KACDC.ApprovalPage
         }
         protected void btnDMSECEOGenerateReport_Click(object sender, EventArgs e)
         {
+            DataLogging DL = new DataLogging();
+            try
+            {
+                SaveFile SF = new SaveFile();
+                ExcelFileOperations FO = new ExcelFileOperations();
+                GetDataToProcess GDTP = new GetDataToProcess();
+                string FilePath = Server.MapPath("~/DownloadFiles/DMSelectedToCEOExcel/" + Session["FinancialYear"].ToString() + "/" + Session["District"].ToString() + "/");
+                string Name = Session["District"].ToString() + "_DMApproved.xlsx";//Session["District"].ToString() +
+                DataTable employees = new DataTable();
+                DataSet ds = new DataSet();
+                //SF.CheckDirExist(FilePath);
+                SF.IfFileExistDelete(Server.MapPath("~/DownloadFiles/"), Name);
+                DL.WriteErrorLog("File Verification", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
+                ds.Tables.Add((GDTP.GetData("spPrintExcel", "SECEOAPPROVED", Session["District"].ToString(), "MALE")));
+                //ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTFEMALE", Session["District"].ToString(), "FEMALE")));
+                //ds.Tables.Add((GDTP.GetData("spPrintExcel", "SEPRINTPWD", Session["District"].ToString(), "PWD")));
+                DL.WriteErrorLog("Data Received", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
 
+                FO.ExportToExcel(ds, FilePath, Name, "", Session["District"].ToString(), Server.MapPath("~/DownloadFiles/"));
+                DL.WriteErrorLog("Excel Created", "Comp", FilePath + Name, "asdf", Server.MapPath("~/DownloadFiles/"));
+
+                if (System.IO.File.Exists(FilePath + Name))
+                {
+                    //Response.ContentType = "application/vnd.ms-excel";
+                    //Response.AppendHeader("Content-Disposition", "attachment; filename=" + Path + Name);
+                    //Response.End();
+                    //Response.Close();
+
+                    Response.ContentEncoding = System.Text.Encoding.UTF8;
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + Server.MapPath("~/DownloadFiles/") + Name);
+                    Response.ContentType = "application/vnd.ms-excel";
+                    Response.Buffer = true;
+                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    Response.BinaryWrite(File.ReadAllBytes(Server.MapPath("~/DownloadFiles/") + Name));
+                    Response.End();
+                    Response.Close();
+                }
+            }
+            catch (Exception Ex)
+            {
+                DL.WriteErrorLog("Error", Ex.ToString(), Ex.Message, "Er", Server.MapPath("~/DownloadFiles/"));
+
+                DisplayAlert(Ex.ToString(), this);
+            }
         }
         protected void btDMSECEODownloadApproved_Click(object sender, EventArgs e)
         {

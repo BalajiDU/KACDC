@@ -1,0 +1,18 @@
+-------------------Error Log Start-----------as on 05:54 PM
+WebPage Name :asdf
+Code:File Verification
+Message:Comp
+IP:D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\DMSelectedToCEOExcel\2021-22\Bengaluru Dakshina\Bengaluru Dakshina_DMApproved.xlsx
+-------------------End----------------------------
+------------------- 05:54 PM -----------
+WebPage Name :asdf
+Code:Data Received
+Message:Comp
+IP:D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\DMSelectedToCEOExcel\2021-22\Bengaluru Dakshina\Bengaluru Dakshina_DMApproved.xlsx
+-------------------End----------------------------
+------------------- 05:54 PM -----------
+WebPage Name :asdf
+Code:Excel Created
+Message:Comp
+IP:D:\Project\KACDCProject\KACDC\KACDC\DownloadFiles\DMSelectedToCEOExcel\2021-22\Bengaluru Dakshina\Bengaluru Dakshina_DMApproved.xlsx
+-------------------End----------------------------
