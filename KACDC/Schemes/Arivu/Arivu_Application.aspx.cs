@@ -42,10 +42,10 @@ namespace KACDC.Schemes.Arivu
         NadakacheriProcess NKAR = new NadakacheriProcess();
         OtherDataArivu ODAR = new OtherDataArivu();
         NadaKacheri NKSER = new NadaKacheri();
-        GetBankDetailsIFSC GETBD = new GetBankDetailsIFSC();
-        DecBankDetails BD = new DecBankDetails();
+        GetBankDetailsIFSC GETBD = new GetBankDetailsIFSC();//Check This
+        DecBankDetails BD = new DecBankDetails();//Check This
         ApplicantPDFTableAR APPLITAB = new ApplicantPDFTableAR();
-        BankTable BT = new BankTable();
+        BankTable BT = new BankTable();//Check This
         CollegeTable CT = new CollegeTable();
         AgreementTable AT = new AgreementTable();
         SignatureTable ST = new SignatureTable();
@@ -234,7 +234,7 @@ namespace KACDC.Schemes.Arivu
                                                     btnNadakachriOK.Visible = false;
                                                     btnSaveContactAddress.Visible = false;
                                                     divContactAddress.Visible = false;
-                                                    divButtonBankDetails.Visible = true;
+                                                    divButtonBankDetails.Visible = false;//SET TO FALSE
 
                                                     btnVerifyRDNumber.Visible = false;
                                                     NKAR.UpdateDistrict();
@@ -385,131 +385,131 @@ namespace KACDC.Schemes.Arivu
             btnNadakachriOK.Visible = true;
             CasteCertificatePopup.Show();
         }
-        protected void btnNextChangeRDNumber_Click(object sender, EventArgs e)
+        protected void btnNextChangeRDNumber_Click(object sender, EventArgs e)//HAVE TO CHECK THIS
         {
             divButtonBankDetails.Visible = false;
             txtRDNumber.ReadOnly = false;
             btnVerifyRDNumber.Visible = true;
             btnViewRDNumber.Visible = false;
         }
-        protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)
+        protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)//HAVE TO CHECK THIS
         {
             btnViewRDNumber.Visible = true;
             divButtonBankDetails.Visible = false;
-            divBankDetails.Visible = true;
+            divBankDetails.Visible = false;//MAKE IT FALSE
             txtRDNumber.ReadOnly = true;
         }
 
-        protected void btnGetBankDetails_Click(object sender, EventArgs e)
-        {
-            if (txtAccountNumber.Text.Trim() != null && txtAccountNumber.Text.Trim() != "")
-            {
-                if (Regex.IsMatch(txtAccountNumber.Text.Trim(), @"^\d+$"))
-                {
-                    if (txtAccountNumber.Text.Trim().Length > 5)
-                    {
-                        BD.AccountNumber = txtAccountNumber.Text.Trim();
-                        if (txtIFSCCode.Text.Trim() != null && txtIFSCCode.Text.Trim() != "")
-                        {
-                            if (txtIFSCCode.Text.Trim().Length > 10)
-                            {
-                                if (GETBD.GetBankDetails(txtIFSCCode.Text.Trim()))
-                                {
-                                    if (BD.STATE == "KARNATAKA")
-                                    {
-                                        if (BD.NEFT.ToUpper() == "TRUE")
-                                        {
-                                            if (BD.RTGS.ToUpper() == "TRUE")
-                                            {
-                                                lblAccountHolderName.Text = ADSER.Name;
-                                                lblAccountNumber.Text = BD.AccountNumber;
-                                                lblBankName.Text = BD.BANK;
-                                                lblBranch.Text = BD.BRANCH;
-                                                lblIFSCCode.Text = BD.IFSC;
-                                                lblBankAddress.Text = BD.FULLADDRESS;
-                                                BankDetailsPopup.Show();
+        //protected void btnGetBankDetails_Click(object sender, EventArgs e)
+        //{
+        //    if (txtAccountNumber.Text.Trim() != null && txtAccountNumber.Text.Trim() != "")
+        //    {
+        //        if (Regex.IsMatch(txtAccountNumber.Text.Trim(), @"^\d+$"))
+        //        {
+        //            if (txtAccountNumber.Text.Trim().Length > 5)
+        //            {
+        //                BD.AccountNumber = txtAccountNumber.Text.Trim();
+        //                if (txtIFSCCode.Text.Trim() != null && txtIFSCCode.Text.Trim() != "")
+        //                {
+        //                    if (txtIFSCCode.Text.Trim().Length > 10)
+        //                    {
+        //                        if (GETBD.GetBankDetails(txtIFSCCode.Text.Trim()))
+        //                        {
+        //                            if (BD.STATE == "KARNATAKA")
+        //                            {
+        //                                if (BD.NEFT.ToUpper() == "TRUE")
+        //                                {
+        //                                    if (BD.RTGS.ToUpper() == "TRUE")
+        //                                    {
+        //                                        lblAccountHolderName.Text = ADSER.Name;//the whole section should be commented
+        //                                        lblAccountNumber.Text = BD.AccountNumber;
+        //                                        lblBankName.Text = BD.BANK;
+        //                                        lblBranch.Text = BD.BRANCH;
+        //                                        lblIFSCCode.Text = BD.IFSC;
+        //                                        lblBankAddress.Text = BD.FULLADDRESS;
+        //                                        BankDetailsPopup.Show();
 
-                                                txtAccountNumber.ReadOnly = true;
-                                                txtIFSCCode.ReadOnly = true;
-                                                btnGetBankDetails.Visible = false;
-                                                btnViewBankDetails.Visible = true;
-                                                divButtonToCollegeDetails.Visible = true;
-                                            }
-                                            else
-                                            {
-                                                DisplayAlert("ENTER RTGS FACILITY AVAILABLE BANK", this);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            DisplayAlert("ENTER NEFT FACILITY AVAILABLE BANK", this);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        DisplayAlert("bank must be related to karnataka state", this);
-                                    }
-                                }
-                                else
-                                {
-                                    DisplayAlert("invalid ifsc code", this);
-                                    txtIFSCCode.Focus();
-                                }
-                            }
-                            else
-                            {
-                                DisplayAlert("invalid ifsc code", this);
-                                txtIFSCCode.Focus();
-                            }
-                        }
-                        else
-                        {
-                            DisplayAlert("enter ifsc code", this);
-                            txtIFSCCode.Focus();
-                        }
-                    }
-                    else
-                    {
-                        DisplayAlert("enter valid bank account number", this);
-                        txtAccountNumber.Focus();
-                    }
-                }
-                else
-                {
-                    DisplayAlert("enter valid bank account number", this);
-                    txtAccountNumber.Focus();
-                }
-            }
-            else
-            {
-                DisplayAlert("enter bank account number", this);
-                txtAccountNumber.Focus();
-            }
-        }
+        //                                        txtAccountNumber.ReadOnly = true;
+        //                                        txtIFSCCode.ReadOnly = true;
+        //                                        btnGetBankDetails.Visible = false;
+        //                                        btnViewBankDetails.Visible = true;
+        //                                        divButtonToCollegeDetails.Visible = true;
+        //                                    }
+        //                                    else
+        //                                    {
+        //                                        DisplayAlert("ENTER RTGS FACILITY AVAILABLE BANK", this);
+        //                                    }
+        //                                }
+        //                                else
+        //                                {
+        //                                    DisplayAlert("ENTER NEFT FACILITY AVAILABLE BANK", this);
+        //                                }
+        //                            }
+        //                            else
+        //                            {
+        //                                DisplayAlert("bank must be related to karnataka state", this);
+        //                            }
+        //                        }
+        //                        else
+        //                        {
+        //                            DisplayAlert("invalid ifsc code", this);
+        //                            txtIFSCCode.Focus();
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        DisplayAlert("invalid ifsc code", this);
+        //                        txtIFSCCode.Focus();
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    DisplayAlert("enter ifsc code", this);
+        //                    txtIFSCCode.Focus();
+        //                }
+        //            }
+        //            else
+        //            {
+        //                DisplayAlert("enter valid bank account number", this);
+        //                txtAccountNumber.Focus();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            DisplayAlert("enter valid bank account number", this);
+        //            txtAccountNumber.Focus();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        DisplayAlert("enter bank account number", this);
+        //        txtAccountNumber.Focus();
+        //    }
+        //}
 
-        protected void btnViewBankDetails_Click(object sender, EventArgs e)
-        {
-            BankDetailsPopup.Show();
-        }
-        protected void btnNextShowRDNumber_Click(object sender, EventArgs e)
-        {
-            divButtonToOtherDetails.Visible = false;
-            divBankDetails.Visible = false;
-            divButtonBankDetails.Visible = true;
-        }
-        protected void btnNextChangeBankDetails_Click(object sender, EventArgs e)
-        {
-            txtAccountNumber.ReadOnly = false;
-            txtIFSCCode.ReadOnly = false;
-            btnGetBankDetails.Visible = true;
-            btnViewBankDetails.Visible = false;
-            divButtonToCollegeDetails.Visible = false;
-        }
+        //protected void btnViewBankDetails_Click(object sender, EventArgs e)
+        //{
+        //    BankDetailsPopup.Show();
+        //}
+        //protected void btnNextShowRDNumber_Click(object sender, EventArgs e)
+        //{
+        //    divButtonToOtherDetails.Visible = false;
+        //    divBankDetails.Visible = false;
+        //    divButtonBankDetails.Visible = false;//set to false
+        //}
+        //protected void btnNextChangeBankDetails_Click(object sender, EventArgs e)
+        //{
+        //    txtAccountNumber.ReadOnly = false;
+        //    txtIFSCCode.ReadOnly = false;
+        //    btnGetBankDetails.Visible = true;
+        //    btnViewBankDetails.Visible = false;
+        //    divButtonToCollegeDetails.Visible = false;
+        //}
         protected void btnNextDisplayCollegeDetails_Click(object sender, EventArgs e)
         {
             divCollegeDetails.Visible = false;
             divCollegeDetailsFill.Visible = true;
-            divButtonToCollegeDetails.Visible = false;
+            divButtonToCollegeDetails.Visible = false;//ADD THIS TO THE PREVIOUS PART
         }
         protected void btnViewCollegeDetails_Click(object sender, EventArgs e)
         {
@@ -1123,11 +1123,11 @@ namespace KACDC.Schemes.Arivu
             btnOtherDetailsUpdate.Visible = false;
             btnOtherDetailsView.Visible = true;
         }
-        protected void btnNextShowBankDetails_Click(object sender, EventArgs e)
-        {
-            divButtonToOtherDetails.Visible = true;
-            divButtonToAgrement.Visible = false;
-        }
+        //protected void btnNextShowBankDetails_Click(object sender, EventArgs e)
+        //{
+        //    divButtonToOtherDetails.Visible = true;
+        //    divButtonToAgrement.Visible = false;
+        //}
         protected void btnNextChangeOtherDetails_Click(object sender, EventArgs e)
         {
             txtEmailID.ReadOnly = false;
@@ -1200,12 +1200,13 @@ namespace KACDC.Schemes.Arivu
             lblContTaluk.Text = ODAR.ContactTalukName;
             lblParTaluk.Text = NDAR.NCTalukName;
             lblParConstituency.Text = NDAR.NCConstituency;
-            lblAccountHolder.Text = ADSER.Name;
-            lblAccountNum.Text = BD.AccountNumber;
-            lblBank.Text = BD.BANK;
-            lblBranchName.Text = BD.BRANCH;
-            lblIFCSCode.Text = BD.IFSC;
-            lblBankAddr.Text = BD.FULLADDRESS;
+
+            //lblAccountHolder.Text = ADSER.Name;
+            //lblAccountNum.Text = BD.AccountNumber;
+            //lblBank.Text = BD.BANK;
+            //lblBranchName.Text = BD.BRANCH;
+            //lblIFCSCode.Text = BD.IFSC;
+            //lblBankAddr.Text = BD.FULLADDRESS;
         }
         protected void btnProvideDetailsYes_Click(object sender, EventArgs e)
         {
@@ -1269,6 +1270,11 @@ namespace KACDC.Schemes.Arivu
             ODAR.GeneratedApplicationNumber = SaveSE.StoreSE(ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODAR.Widow, ODAR.Divorced, ODAR.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODAR.EmailID, ODAR.MobileNumber, ODAR.AlternateMobileNumber,
             ADSER.DOB, ODAR.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODAR.ContactFullAddress, ODAR.ContactDistrictName, ODAR.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
             ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS, ODAR.ApplicationDateTime, ODAR.ApplicationDateTime, NDAR.NCTalukName, ODAR.ContactTalukName, ODAR.LoanDESCRIPTION, NDAR.NCApplicantName);
+
+
+            //ODAR.GeneratedApplicationNumber = SaveSE.StoreSE(ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODAR.Widow, ODAR.Divorced, ODAR.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODAR.EmailID, ODAR.MobileNumber, ODAR.AlternateMobileNumber,
+            //ADSER.DOB, ODAR.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODAR.ContactFullAddress, ODAR.ContactDistrictName, ODAR.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
+            //ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS, ODAR.ApplicationDateTime, ODAR.ApplicationDateTime, NDAR.NCTalukName, ODAR.ContactTalukName, ODAR.LoanDESCRIPTION, NDAR.NCApplicantName); WHAT SHOULD BE DONE FOR THIS IN DB
             if (ODAR.GeneratedApplicationNumber != "NA")
             {
                 string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
@@ -1310,10 +1316,10 @@ namespace KACDC.Schemes.Arivu
                 CollegeTable = new PdfPTable(4);
                 CollegeTable = CT.GenerateCollegeTable(CollegeTable, ACD.CETAdmissionTicketNumber, ACD.CETApplicationNumber, ACD.CollegeName , ACD.CollegeAddress , ACD.Course , ACD.Year ,
              ACD.PreviousYearMarks , ACD.RequiredLoanAmount , ACD.CollegeHostel);
-                PdfPTable BankTable = null;
+                //PdfPTable BankTable = null;
 
-                BankTable = new PdfPTable(4);
-                BankTable = BT.GenerateBankTable(BankTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);
+                //BankTable = new PdfPTable(4);
+                //BankTable = BT.GenerateBankTable(BankTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);
                 PdfPTable AgreeTable = null;
                 AgreeTable = new PdfPTable(4);
                 AgreeTable = AT.GenerateAgreementTable(AgreeTable, SelfEnglish, SelfKannada, AadhaarEnglish, AadhaarKannada, ShareEnglish, ShareKannada);
@@ -1328,7 +1334,7 @@ namespace KACDC.Schemes.Arivu
                     pdfDoc.Open();
                     pdfDoc.Add(HeadingTable);
                     pdfDoc.Add(Table);
-                    pdfDoc.Add(BankTable);
+                    //pdfDoc.Add(BankTable);
                     pdfDoc.Add(AgreeTable);
                     pdfDoc.Add(SignatureTable);
 
@@ -1419,7 +1425,7 @@ namespace KACDC.Schemes.Arivu
                                                 ODAR.ContactDistrictName = drpContDistrict.SelectedValue;
                                                 ODAR.ContactTalukName = drpContTaluk.SelectedValue;
                                                 ODAR.ContactPinCode = txtContPincode.Text.Trim();
-                                                divButtonBankDetails.Visible = true;
+                                                divButtonBankDetails.Visible = false;// SET TO FALSE
                                                 btnVerifyRDNumber.Visible = false;
                                                 btnViewRDNumber.Visible = true;
                                                 txtRDNumber.ReadOnly = true;
@@ -1507,7 +1513,7 @@ namespace KACDC.Schemes.Arivu
         {
             txtAccountNumber.ReadOnly = false;
             txtIFSCCode.ReadOnly = false;
-            btnGetBankDetails.Visible = true;
+            btnGetBankDetails.Visible = false;//SET to False
             btnViewBankDetails.Visible = false;
             divButtonToCollegeDetails.Visible = false;
         }
