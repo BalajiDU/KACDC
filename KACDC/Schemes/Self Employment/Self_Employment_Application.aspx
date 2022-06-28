@@ -275,15 +275,13 @@
         }
 
         .NeoButton {
-            border: none;
-            padding: 3px;
-            margin: 7px;
             outline: none;
             /*width: 80%;*/
-            padding-right:20px;
-            padding-left:20px;
-            height: 35px;
-            align-items: center;
+            border-color: inherit;
+          border-width: medium;
+          padding: 3px 20px;
+          margin: 7px;
+          align-items: center;
             align-content: center;
             border-radius: 3px;
             letter-spacing: .05em;
@@ -1179,7 +1177,7 @@
                             </div>
                             <div class="form-row-Botton">
                                 <asp:Button ID="btnOtherDetailsUpdate" runat="server" CssClass="NeoButton" OnClick="btnOtherDetailsUpdate_Click" Text="Confirm and Continue" />
-                                <asp:Button ID="btnOtherDetailsView" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnOtherDetailsView_Click" Text="View" />
+                                <asp:Button ID="btnOtherDetailsView" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnOtherDetailsView_Click" Text="View" Height="35px" />
                             </div>
                         </div>
                         <%--Other Details Fill--%>
@@ -2151,6 +2149,7 @@
                         </div>
                     </div>
                 </div>
+                </span>
             </ContentTemplate>
         </asp:UpdatePanel>
         <div class="flex-container" id="divPrintApplication" visible="false" runat="server">

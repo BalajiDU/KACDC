@@ -392,13 +392,13 @@ namespace KACDC.Schemes.Arivu
             btnVerifyRDNumber.Visible = true;
             btnViewRDNumber.Visible = false;
         }
-        protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)//HAVE TO CHECK THIS
-        {
-            btnViewRDNumber.Visible = true;
-            divButtonBankDetails.Visible = false;
-            divBankDetails.Visible = false;//MAKE IT FALSE
-            txtRDNumber.ReadOnly = true;
-        }
+        //protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)//HAVE TO CHECK THIS
+        //{
+        //    btnViewRDNumber.Visible = true;
+        //    divButtonBankDetails.Visible = false;
+        //    divBankDetails.Visible = false;//MAKE IT FALSE
+        //    txtRDNumber.ReadOnly = true;
+        //}
 
         //protected void btnGetBankDetails_Click(object sender, EventArgs e)
         //{
@@ -510,6 +510,8 @@ namespace KACDC.Schemes.Arivu
             divCollegeDetails.Visible = false;
             divCollegeDetailsFill.Visible = true;
             divButtonToCollegeDetails.Visible = false;//ADD THIS TO THE PREVIOUS PART
+            txtRDNumber.ReadOnly = true;//ADDed from btnNextDisplayBankDetails_Click 
+            btnViewRDNumber.Visible = true;//ADDed from btnNextDisplayBankDetails_Click 
         }
         protected void btnViewCollegeDetails_Click(object sender, EventArgs e)
         {
