@@ -1625,7 +1625,7 @@
                                 <td class="auto-style12">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td class="auto-style3" colspan="6" style="font-size:20px;text-align:center" ><strong>BANK DETAILS</strong></td>
+                                <td class="auto-style3" colspan="6" style="font-size:20px;text-align:center" ><strong>PWD DETAILS</strong></td>
                                 
                             </tr>
                             <tr>
@@ -1635,41 +1635,37 @@
                                 <td class="auto-style12">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td class="auto-style3">Account Holder Name<br />
-                                    ಖಾತೆದಾರರ ಹೆಸರು</td>
+                                <td class="auto-style3">Applicant Name<br />
+                                    ಅರ್ಜಿದಾರರ ಹೆಸರು</td>
                                 <td colspan="2" class="auto-style4">
-                                    <asp:Label ID="lblAccountHolder" runat="server"></asp:Label>
+                                    <asp:Label ID="lblAccountHolder" runat="server"></asp:Label>//change to pwd number labels
                                 </td>
-                                <td colspan="2" class="auto-style7">A/C Number<br />
-                                    ಖಾತೆ ಸಂಖ್ಯೆ</td>
+                                <td colspan="2" class="auto-style7">UDIN Number<br />
+                                     ಸಂಖ್ಯೆ</td>
                                 <td class="auto-style12">
                                     <asp:Label ID="lblAccountNum" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style3">Bank
+                                <td class="auto-style3">Applicant Disability
                                      <br />
-                                    ಬ್ಯಾಂಕ್</td>
+                                    ಅರ್ಜಿದಾರರ ಅಂಗವಿಕಲತೆ</td>
                                 <td colspan="2" class="auto-style4">
                                     <asp:Label ID="lblBank" runat="server"></asp:Label>
                                 </td>
-                                <td colspan="2" class="auto-style7">Branch<br />
-                                    ಶಾಖೆ</td>
+                                <td colspan="2" class="auto-style7">Disability Percentage<br />
+                                    ಅರ್ಜಿದಾರರ ಶೇಕಡಾವಾರು ಅಸಮರ್ಥತೆ/ಅಂಗವಿಕಲತೆ</td>
                                 <td class="auto-style12">
                                     <asp:Label ID="lblBranchName" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style3">IFSC Code<br />
-                                    ಐಎಫ್‌ಎಸ್‌ಸಿ ಕೋಡ್</td>
+                                <td class="auto-style3">District<br />
+                                    ಜಿಲ್ಲೆ</td>
                                 <td colspan="2" class="auto-style4">
                                     <asp:Label ID="lblIFCSCode" runat="server"></asp:Label>
                                 </td>
-                                <td colspan="2" class="auto-style7">Address<br />
-                                    ವಿಳಾಸ</td>
-                                <td class="auto-style12">
-                                    <asp:Label ID="lblBankAddr" runat="server"></asp:Label>
-                                </td>
+                                
                             </tr>
                             <tr>
                                 <td class="auto-style3">&nbsp;</td>

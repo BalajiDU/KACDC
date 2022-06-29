@@ -1111,15 +1111,6 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.Label lblIFCSCode;
         
         /// <summary>
-        /// lblBankAddr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBankAddr;
-        
-        /// <summary>
         /// divSubmitandEdit control.
         /// </summary>
         /// <remarks>
