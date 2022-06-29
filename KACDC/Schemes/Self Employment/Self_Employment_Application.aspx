@@ -1228,6 +1228,11 @@
                                         <asp:RadioButton ID="rbApplicantPWDNo" runat="server" Class="radioButton" GroupName="ApplicantPWD" Text="No" AutoPostBack="true" OnCheckedChanged="rbApplicantPWD_CheckedChanged" />
 
                                     </div>
+                                    <div class="form-row-Botton">
+                                        <asp:Button ID="btnVerifyPWDNumber" runat="server" CssClass="NeoButton" OnClick="btnVerifyPWDNumber_Click" Text="Verify" onpaste="return false" AutoCompleteType="Disabled" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
+                                        <asp:Button ID="btnViewPWDNumber" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnViewPWDNumber_Click" Text="View" />
+                                        <asp:Label ID="lblPWDNumberVerified" Visible="false" runat="server" Text=" Verified" CssClass=" fa fa-check VerifiedLabel"></asp:Label>
+                                    </div>
                                 </div>
                                 <div id="divPWDIdNumber" visible="false" class="form-row" runat="server">
                                     <div class="form-row-label">
@@ -1935,6 +1940,105 @@
 
                 <asp:LinkButton ID="lnkCasteCertificate" runat="server"></asp:LinkButton>
                 <cc1:ModalPopupExtender ID="CasteCertificatePopup" runat="server" TargetControlID="lnkCasteCertificate" PopupControlID="PnlCasteCertificate"
+                    BackgroundCssClass="modalBackground">
+                </cc1:ModalPopupExtender>
+
+                 <%--Caste Certificate--%>
+                <asp:Panel ID="PnlPWD" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; ">
+
+                    <div class="flex-container">
+                        <div class="">
+                            <div class="form-row" style="justify-content:center">
+                                <div class="Popup-row-label-Heading">
+                                    <asp:Label ID="Label60" class="" Style="font-size: 20px; margin-top: 20px;" runat="server" Text="Caste And Income Certificate Details"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label61" runat="server">RD Number<br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ</asp:Label>
+                                </div>
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label62" Width="40px" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label63" runat="server">Name<br />ಹೆಸರು</asp:Label>
+                                </div>
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label64" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label65" runat="server">Annual Income<br />ವಾರ್ಷಿಕ ಆದಾಯ</asp:Label>
+                                </div>
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label66" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label67" runat="server">Constituency<span style="color:red"> *</span><br />ಕ್ಷೇತ್ರ</asp:Label>
+                                </div>
+                                <div class="Popup-row-label">
+                                    <asp:DropDownList ID="DropDownList1" Class="rowMargin txtcolor text-uppercase form-control" AutoPostBack="true" runat="server" ClientIDMode="Static" OnSelectedIndexChanged="drpConst_SelectedIndexChanged"></asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label68" runat="server">Father / Guardian Name<br />ತಂದೆ / ಪೋಷಕರ ಹೆಸರು</asp:Label>
+                                </div>
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label69" runat="server"></asp:Label>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label70" runat="server">Address<br />ವಿಳಾಸ</asp:Label>
+                                </div>
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label71" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label72" runat="server">Taluk<br />ತಾಲ್ಲೂಕು</asp:Label>
+                                </div>
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label73" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label74" runat="server">District<br />ಜಿಲ್ಲೆ</asp:Label>
+                                </div>
+                                <div class="Popup-row-label">
+                                    <asp:Label ID="Label75" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                            
+                            <div id="div2" class="form-row" runat="server" style="justify-content:center">
+                                <%--<div class="Popup-row-label">
+                                </div>--%>
+                                <div class="form-row-Botton">
+                                    <asp:Button ID="btnNKPWDConfirm" runat="server"   CssClass="NeoButton" Text="Proceed" OnClick="btnNKPWDConfirm_Click" />
+                                </div>
+                                <div class="form-row-Botton">
+                                    <asp:Button ID="btnNKPWDCancel" runat="server"   CssClass="NeoButton" Text="Save and Proceed" OnClick="btnNKPWDCancel_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
+                                </div>
+                                <div class="form-row-Botton">
+                                    <asp:Button ID="btnPWDModify" runat="server"  CssClass="NeoButton" Text="Proceed" OnClientClick="return PWDHidePopup()" />
+                                </div>
+                            </div>
+                               
+                            </div>
+                    </div>
+                </asp:Panel>
+
+                <asp:LinkButton ID="lnkPWD" runat="server"></asp:LinkButton>
+                <cc1:ModalPopupExtender ID="PWDPopup" runat="server" TargetControlID="lnkPWD" PopupControlID="PnlPWD"
                     BackgroundCssClass="modalBackground">
                 </cc1:ModalPopupExtender>
 

@@ -1136,7 +1136,7 @@
                             </div>
                         </div>
                         <%--Button to Bank Details THIS SECTION HAS TO BE REMOVED AND SHOULD BE ADDED IN Button to College Details--%>
-                        <div id="divButtonBankDetails" runat="server" visible="true" class="form-row"><%--MAKING THIS TRUE--%>
+                        <div id="divButtonBankDetails" runat="server" visible="false" class="form-row"><%--MAKING THIS TRUE--%>
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
@@ -1149,8 +1149,8 @@
 
 
                         <%--Bank Details--%>
-                        <%--<div id="divBankDetails" class="form-row" runat="server" visible="true"> <%--MAKING THIS TRUE --%>
-                            <%--<div class="form-row-label">
+                       <div id="divBankDetails" class="form-row" runat="server" visible="false"> <%--MAKING THIS TRUE --%>
+                            <div class="form-row-label">
                                 <asp:Label ID="Label12" class="" runat="server">Bank Details<span style="color:#a30000"> *</span><br />ಬ್ಯಾಂಕ್ ವಿವರಗಳು</asp:Label><br />
                                 <asp:Label ID="Label56" class="" runat="server"><span style="color:#7b0000">ಕರ್ನಾಟಕ ರಾಜ್ಯಕ್ಕೆ ಸಂಬಂಧ ಪಟ್ಟ ಬ್ಯಾಂಕ್ ಖಾತೆಯ ವಿವರ</span></asp:Label><br />
                             </div>
@@ -1172,7 +1172,7 @@
                             </div>
                             <div class="form-row-input">
                                 <asp:Button ID="btnNextShowRDNumber1" runat="server" CssClass="NeoButton" Visible="false"  OnClick="btnNextShowRDNumber_Click" Text="Back" onpaste="return false" AutoCompleteType="Disabled" />
-                                <%--<asp:Button ID="btnNextChangeBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeBankDetails_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />--%>
+                                <asp:Button ID="btnNextChangeBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeBankDetails_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />
                                 <asp:Button ID="btnNextDisplayCollegeDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayCollegeDetails_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
                             </div>
                             <div class="form-row-Botton">

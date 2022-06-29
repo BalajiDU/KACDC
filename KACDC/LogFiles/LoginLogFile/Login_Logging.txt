@@ -2205,3 +2205,11 @@ WebPage Name :Login.aspx
 User Name:CheckRD
 User Type:CHECKRD
 IP:::1
+
+-----------------New Login-----------------
+Date : 28-06-2022
+Time : 02:09 PM
+WebPage Name :Login.aspx
+User Name:CheckRD
+User Type:CHECKRD
+IP:::1

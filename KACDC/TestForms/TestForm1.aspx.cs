@@ -699,7 +699,7 @@ namespace KACDC.TestForms
                         string IsRDExist = NKAR.CheckRDNumberExist(txtRDNumber.Text.Trim());
                         if (IsRDExist == "NA")
                         {
-                            if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
+                            if (NKAR.GetPWDCertificate(txtRDNumber.Text.Trim()))
                             {
                                 if (Int32.Parse(NKSER.NCStatusCode) == 1)
                                 {

@@ -5,8 +5,9 @@ using System.Web;
 
 namespace KACDC.Class.Declaration.Nadakacheri
 {
-    public class NadaKacheri
+    public class NadakacheriPWD
     {
+
         public string OTP
         {
             set { HttpContext.Current.Session["OTP"] = value; }
@@ -37,7 +38,7 @@ namespace KACDC.Class.Declaration.Nadakacheri
 
 
 
-        
+
         public string NCLanguage
         {
             set { HttpContext.Current.Session["NCLanguage"] = value; }
@@ -233,6 +234,32 @@ namespace KACDC.Class.Declaration.Nadakacheri
             set { HttpContext.Current.Session["AppDisability"] = value; }
             get { return HttpContext.Current.Session["AppDisability"] as string; }
         }
+        public string PermanentOrTemporaryDisability
+        {
+            set { HttpContext.Current.Session["PermanentOrTemporaryDisability"] = value; }
+            get { return HttpContext.Current.Session["PermanentOrTemporaryDisability"] as string; }
+        }
+        public string DisabilityPercentage
+        {
+            set { HttpContext.Current.Session["DisabilityPercentage"] = value; }
+            get { return HttpContext.Current.Session["DisabilityPercentage"] as string; }
+        }
+        public string ApplicantEName
+        {
+            set { HttpContext.Current.Session["ApplicantEName"] = value; }
+            get { return HttpContext.Current.Session["ApplicantEName"] as string; }
+        }
+        public string RIReportDate
+        {
+            set { HttpContext.Current.Session["RIReportDate"] = value; }
+            get { return HttpContext.Current.Session["RIReportDate"] as string; }
+        }
+        public string EffectiveDate
+        {
+            set { HttpContext.Current.Session["EffectiveDate"] = value; }
+            get { return HttpContext.Current.Session["EffectiveDate"] as string; }
+        }
+
 
     }
 }

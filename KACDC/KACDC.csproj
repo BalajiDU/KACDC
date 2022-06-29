@@ -522,6 +522,7 @@
     <Compile Include="Class\DataProcessing\MasterPage\MasterSettings.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\NadakacheriProcess.cs" />
     <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriData.cs" />
+    <Compile Include="Class\DataProcessing\Nadakacheri\StoreNadakacheriPWDData.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\ApplicationSubmitEmail.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\ArRenewalProcess.cs" />
     <Compile Include="Class\DataProcessing\OnlineApplication\Arivu\SubmitARApplication.cs" />
@@ -548,6 +549,7 @@
     <Compile Include="Class\Declaration\MasterPageData\MasterPageData.cs" />
     <Compile Include="Class\Declaration\MessageDeclaration\Message.cs" />
     <Compile Include="Class\Declaration\Nadakacheri\NadaKacheri.cs" />
+    <Compile Include="Class\Declaration\Nadakacheri\NadakacheriPWD.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\ArRenewalDec.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataArivu.cs" />
     <Compile Include="Class\Declaration\OnlineApplication\OtherDataSelfEmployment.cs" />

@@ -9,26 +9,50 @@ namespace KACDC.Class.DataProcessing.ApplicationProcess
 {
     public class CheckNameSimilarity
     {
-        public bool VerifySimilarities()
+        public bool VerifySimilarities(string PWD="")
         {
             NadaKacheri NKSER = new NadaKacheri();
+            NadakacheriPWD NKPWD = new NadakacheriPWD();
             AadhaarServiceData ADSER = new AadhaarServiceData();
-            if (Int32.Parse(NKSER.NCLanguage) == 1)
+            if (PWD == "")
             {
-                if (CalculateSimilarity(ADSER.KannadaName, NKSER.NCApplicantName) >= 0)
+                if (Int32.Parse(NKSER.NCLanguage) == 1)
                 {
-                    return true;
+                    if (CalculateSimilarity(ADSER.KannadaName, NKSER.NCApplicantName) >= 0)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
+                else
+                {
+                    if (CalculateSimilarity(ADSER.Name.ToUpper(), NKSER.NCApplicantName.ToUpper()) > 0.7)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
             }
-            else
+            if (PWD != "")
             {
-                if (CalculateSimilarity(ADSER.Name.ToUpper(), NKSER.NCApplicantName.ToUpper()) > 0.7)
+                if (Int32.Parse(NKPWD.NCLanguage) == 1)
                 {
-                    return true;
+                    if (CalculateSimilarity(ADSER.KannadaName, NKPWD.NCApplicantName) >= 0)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
+                else
+                {
+                    if (CalculateSimilarity(ADSER.Name.ToUpper(), NKPWD.NCApplicantName.ToUpper()) > 0.7)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
             }
+            return false;
         }
         public  double CalculateSimilarity(string source, string target)
         {

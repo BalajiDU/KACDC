@@ -15,7 +15,9 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
     public class NadakacheriProcess
     {
         NadaKacheri NKSER = new NadaKacheri();
+        NadakacheriPWD NKPWD = new NadakacheriPWD();
         StoreNadakacheriData StoreNC = new StoreNadakacheriData();
+        StoreNadakacheriPWDData StorePWD = new StoreNadakacheriPWDData();
         public bool GetCasteAndIncomeCertificate(string RDNumber)
         {
             XElement xElement = null;
@@ -103,6 +105,116 @@ namespace KACDC.Class.DataProcessing.Nadakacheri
                 if (xElement.Element("Status").Value.ToString() == "0")
                 {
                     
+                    //todo
+                    //lblEligibility.Text = xElement.Element("StatusMsg").Value.ToString();
+                    //lblEligibility.Style.Add("color", "RED");
+                    //DisplayAlert(xElement.Element("StatusMsg").Value.ToString(), this);
+
+                }
+                return false;
+            }
+        }
+        public bool GetPWDCertificate(string RDNumber)
+        {
+            XElement xElement = null;
+            try
+            {
+
+                XmlDocument xmlDocument = new XmlDocument();
+                XmlDocument xmlApplicantDetails = new XmlDocument();
+                WebServiceSoapClient NCWebService = new WebServiceSoapClient("WebServiceSoap");
+                xElement = NCWebService.GetXmlDataWoDSCV(RDNumber);
+                //xElement = NCWebService.GetXmlDataWoDSCV("RD0038750142124");
+                xmlDocument.LoadXml(xElement.ToString());
+                if (true)
+                {
+                    NKPWD.PermanentOrTemporaryDisability = xElement.Element("PermanentOrTemporaryDisability").Value.ToString().ToUpper();
+                    NKPWD.DisabilityPercentage = xElement.Element("DisabilityPercentage").Value.ToString();
+                    NKPWD.NCStatusMsg = xElement.Element("StatusMsg").Value.ToString();
+                    NKPWD.NCFacilityCode = xElement.Element("FacilityCode").Value.ToString();
+                    NKPWD.NCFacilityName = xElement.Element("FacilityName").Value.ToString();
+                    //NKPWD.NCLanguage = xElement.Element("Language").Value.ToString();
+                    Console.Write(NKPWD.NCLanguage);
+                    string xml = HttpUtility.HtmlDecode(xElement.Element("xmlData").ToString()).Replace("\r", "").Replace("\n", "").Replace("{Text = \"", "").Replace("\"", "")
+                .Replace("{", "").Replace("}", "").Replace("\"", "");
+                    xmlApplicantDetails.LoadXml(xml);
+
+                    XmlNodeList PWDnodeList = xmlApplicantDetails.GetElementsByTagName("PHPCertificate");
+                    XmlNodeList nodeList = xmlApplicantDetails.GetElementsByTagName("ApplicantDetails");
+                    foreach (XmlNode nodeRes in nodeList)
+                    {
+                        NKPWD.RIReportNo = nodeRes["RIReportNo"].InnerText;
+                        NKPWD.RIReportDate = nodeRes["RIReportDate"].InnerText;
+                        NKPWD.AppDisability = nodeRes["AppDisability"].InnerText; 
+                        NKPWD.DisabilityPercentage = nodeRes["DisabilityPercentage"].InnerText; 
+                        NKPWD.NCGSCNumber = nodeRes["GSCNo"].InnerText;
+                        NKPWD.ApplicantEName = nodeRes["ApplicantEName"].InnerText;
+                        NKPWD.EffectiveDate = nodeRes["EffectiveDate"].InnerText; 
+                        NKPWD.NCApplicantName = nodeRes["ApplicantName"].InnerText;
+                        NKPWD.NCApplicantFatherName = nodeRes["ApplicantFatherName"].InnerText;
+                        NKPWD.NCDistrictName = nodeRes["DistrictName"].InnerText;
+                        NKPWD.NCTalukName = nodeRes["TalukName"].InnerText;
+                        if (nodeRes["ApplicantCAddressPin"] != null) { NKPWD.NCApplicantCAddressPin = nodeRes["ApplicantCAddressPin"].InnerText; } else { NKPWD.NCApplicantCAddressPin = ""; }
+                        if (nodeRes["ApplicantCAddress1"] != null) { NKPWD.NCApplicantCAddress1 = nodeRes["ApplicantCAddress1"].InnerText; } else { NKPWD.NCApplicantCAddress1 = ""; }
+                        if (nodeRes["ApplicantCAddress2"] != null) { NKPWD.NCApplicantCAddress2 = nodeRes["ApplicantCAddress2"].InnerText; } else { NKPWD.NCApplicantCAddress2 = ""; }
+                        if (nodeRes["ApplicantCAddress3"] != null) { NKPWD.NCApplicantCAddress3 = nodeRes["ApplicantCAddress3"].InnerText; } else { NKPWD.NCApplicantCAddress3 = ""; }
+                        NKPWD.NCFullAddress = NKPWD.NCApplicantCAddress1 + ", " + NKPWD.NCApplicantCAddress2 + ", " + NKPWD.NCApplicantCAddress3 + ", " + NKPWD.NCTalukName + ", " + NKPWD.NCDistrictName;
+
+
+                        if (nodeRes["TLIFileNo"] != null) { NKPWD.TLIFileNo = nodeRes["TLIFileNo"].InnerText; } else { NKPWD.TLIFileNo = ""; }
+                        if (nodeRes["HobliName"] != null) { NKPWD.HobliName = nodeRes["HobliName"].InnerText; } else { NKPWD.HobliName = ""; }
+                        if (nodeRes["VillageName"] != null) { NKPWD.VillageName = nodeRes["VillageName"].InnerText; } else { NKPWD.VillageName = ""; }
+                        if (nodeRes["HabitationName"] != null) { NKPWD.HabitationName = nodeRes["HabitationName"].InnerText; } else { NKPWD.HabitationName = ""; }
+                        if (nodeRes["ApplicantBincom"] != null) { NKPWD.ApplicantBincom = nodeRes["ApplicantBincom"].InnerText; } else { NKPWD.ApplicantBincom = ""; }
+                        if (nodeRes["Fat_Title"] != null) { NKPWD.Fat_Title = nodeRes["Fat_Title"].InnerText; } else { NKPWD.Fat_Title = ""; }
+                        if (nodeRes["ApplicantMotherName"] != null) { NKPWD.ApplicantMotherName = nodeRes["ApplicantMotherName"].InnerText; } else { NKPWD.ApplicantMotherName = ""; }
+                        //if (nodeRes["ReservationCategory"] != null) { NKPWD.ReservationCategory = nodeRes["ReservationCategory"].InnerText; } else { NKPWD.ReservationCategory = ""; }
+                        //if (nodeRes["AnnualIncomeInWords"] != null) { NKPWD.AnnualIncomeInWords = nodeRes["AnnualIncomeInWords"].InnerText; } else { NKPWD.AnnualIncomeInWords = ""; }
+                        //if (nodeRes["Purpose"] != null) { NKPWD.Purpose = nodeRes["Purpose"].InnerText; } else { NKPWD.Purpose = ""; }
+                        if (nodeRes["ValidPeriod"] != null) { NKPWD.ValidPeriod = nodeRes["ValidPeriod"].InnerText; } else { NKPWD.ValidPeriod = ""; }
+                        if (nodeRes["SpecialTaluk"] != null) { NKPWD.SpecialTaluk = nodeRes["SpecialTaluk"].InnerText; } else { NKPWD.SpecialTaluk = ""; }
+                        //if (nodeRes["DocumentsSubmitted"] != null) { NKPWD.DocumentsSubmitted = nodeRes["DocumentsSubmitted"].InnerText; } else { NKPWD.DocumentsSubmitted = ""; }
+                        //if (nodeRes["DisplayDocumentsSubmitted"] != null) { NKPWD.DisplayDocumentsSubmitted = nodeRes["DisplayDocumentsSubmitted"].InnerText; } else { NKPWD.DisplayDocumentsSubmitted = ""; }
+
+
+
+
+                        NKPWD.App_Title = nodeRes["App_Title"].InnerText;
+                        if (NKPWD.App_Title == "ಶ್ರೀ." || NKPWD.App_Title == "ಕುಮಾರ." || NKPWD.App_Title == "Sri." || NKPWD.App_Title == "Kumar." || NKPWD.App_Title == "ಕುಮಾರ.")
+                        {
+                            NKPWD.NCGender = "MALE";
+                        }
+                        else
+                        {
+                            NKPWD.NCGender = "FEMALE";
+                        }
+                        if (NKPWD.App_Title == "ಶ್ರೀ." || NKPWD.App_Title == "ಕುಮಾರ." || NKPWD.App_Title == "ಕುಮಾರ." || NKPWD.App_Title == "ಶ್ರೀಮತಿ.")
+                        {
+                            NKPWD.NCLanguage = "1";
+                        }
+                        else
+                        {
+                            NKPWD.NCLanguage = "99";
+                        }
+
+                        NKPWD.NCVerification = "Success";
+                    }
+
+                    //Label11.Text = NKPWD.NCLanguage;
+                    StorePWD.StorePWDCert(NKPWD.NCGSCNumber, NKPWD.RIReportNo, NKPWD.RIReportDate, NKPWD.AppDisability, NKPWD.DisabilityPercentage, NKPWD.ApplicantEName, NKPWD.EffectiveDate, NKPWD.NCApplicantName,
+                        NKPWD.NCTalukName, NKPWD.NCDistrictName, NKPWD.NCApplicantCAddressPin, NKPWD.NCApplicantCAddress1, NKPWD.NCApplicantCAddress2, NKPWD.NCApplicantCAddress3, NKPWD.App_Title, NKPWD.NCGender, NKPWD.NCVerification,
+                        NKPWD.TLIFileNo, NKPWD.HobliName, NKPWD.VillageName, NKPWD.HabitationName, NKPWD.ApplicantBincom, NKPWD.Fat_Title, NKPWD.ApplicantMotherName,
+                        NKPWD.SpecialTaluk);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                NKPWD.NCError = msg;
+                if (xElement.Element("Status").Value.ToString() == "0")
+                {
+
                     //todo
                     //lblEligibility.Text = xElement.Element("StatusMsg").Value.ToString();
                     //lblEligibility.Style.Add("color", "RED");

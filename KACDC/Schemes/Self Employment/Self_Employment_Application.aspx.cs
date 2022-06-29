@@ -38,6 +38,7 @@ namespace KACDC.Schemes.Self_Employment
         NadakacheriProcess NKAR = new NadakacheriProcess();
         OtherDataSelfEmployment ODSE = new OtherDataSelfEmployment();
         NadaKacheri NKSER = new NadaKacheri();
+        NadakacheriPWD NKPWD = new NadakacheriPWD();
         GetBankDetailsIFSC GETBD = new GetBankDetailsIFSC();
         DecBankDetails BD = new DecBankDetails();
         ApplicantPDFTable APPLITAB = new ApplicantPDFTable();
@@ -227,6 +228,97 @@ namespace KACDC.Schemes.Self_Employment
             btnNadakachriOK.Visible = true;
             CasteCertificatePopup.Show();
         }
+        protected void btnVerifyPWDNumber_Click(object sender, EventArgs e)
+        {
+            rbContactAddressNo.Enabled = true;
+            rbContactAddressYes.Enabled = true;
+            drpConst.Enabled = true;
+            btnSaveContactAddress.Visible = false;
+            btnNadakachriBack.Visible = true;
+            txtContactAddress.ReadOnly = false;
+            drpContDistrict.Enabled = true;
+            //drpContTaluk.Enabled = true;//check
+            btnNadakachriOK.Visible = false;
+            if (txtRDNumber.Text.Trim().Length == 15)
+            {
+                if (txtRDNumber.Text.Trim().ToUpper().Substring(0, 2) == "RD" || txtRDNumber.Text.Trim().ToUpper().Substring(0, 2) == "KA")//TODO: Check prefix
+                {
+                    if (Regex.IsMatch(txtRDNumber.Text.Trim().Substring(2, 13), @"^\d+$"))
+                    {
+
+                        if (NKAR.GetPWDCertificate(txtRDNumber.Text.Trim()))
+                        {
+                            if (CNS.VerifySimilarities(txtRDNumber.Text.Trim()))
+                            {
+                                if (NKPWD.PermanentOrTemporaryDisability == "P"||NKPWD.PermanentOrTemporaryDisability == "T")
+                                {
+                                    if (Int32.Parse(NKPWD.DisabilityPercentage) > 50)
+                                    {
+                                        if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                        {
+                                            
+                                            rbContactAddressYes.Checked = false;
+                                            rbContactAddressNo.Checked = false;
+                                            btnNadakachriOK.Visible = false;
+                                            btnSaveContactAddress.Visible = false;
+                                            divContactAddress.Visible = false;
+
+                                            btnVerifyRdNumber.Visible = false;
+                                            NKAR.UpdateDistrict();
+                                            ConstituencyDropDownBinding();
+                                            lblNCGSCNumber.Text = NKSER.NCGSCNumber;
+                                            lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                            //NKSER.NCDateOfIssue;
+                                            lblNCApplicantName.Text = NKSER.NCApplicantName;
+                                            lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
+                                            lblNCDistrict.Text = NKSER.NCDistrictName;
+                                            lblNCTaluk.Text = NKSER.NCTalukName;
+                                            lblNCFullAddress.Text = NKSER.NCFullAddress;
+
+                                            PWDPopup.Show();
+                                        }
+                                        else
+                                        {
+                                            DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("Only Arya vysya Community is eligible", this);
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("Invalid RD Number", this);
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("Aadhar and Caste certificate name is mismatching, try again", this);
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("Invalid RD Number", this);
+                        }
+
+                    }
+                    else
+                    {
+                        DisplayAlert("Invalid RD Number", this);
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Invalid RD Number", this);
+                }
+            }
+            else
+            {
+                DisplayAlert("Invalid RD Number", this);
+            }
+        }
         protected void btnVerifyRDNumber_Click(object sender, EventArgs e)
         {
             rbContactAddressNo.Enabled = true;
@@ -340,6 +432,7 @@ namespace KACDC.Schemes.Self_Employment
                 DisplayAlert("Invalid RD Number", this);
             }
         }
+
         private bool VerifySimilarities()
         {
             if (Int32.Parse(NKSER.NCLanguage) == 1)

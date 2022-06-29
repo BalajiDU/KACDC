@@ -234,7 +234,7 @@ namespace KACDC.Schemes.Arivu
                                                     btnNadakachriOK.Visible = false;
                                                     btnSaveContactAddress.Visible = false;
                                                     divContactAddress.Visible = false;
-                                                    divButtonBankDetails.Visible = false;//SET TO FALSE
+                                                    divButtonBankDetails.Visible = true;//SET TO FALSE
 
                                                     btnVerifyRDNumber.Visible = false;
                                                     NKAR.UpdateDistrict();
@@ -392,126 +392,124 @@ namespace KACDC.Schemes.Arivu
             btnVerifyRDNumber.Visible = true;
             btnViewRDNumber.Visible = false;
         }
-        //protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)//HAVE TO CHECK THIS
-        //{
-        //    btnViewRDNumber.Visible = true;
-        //    divButtonBankDetails.Visible = false;
-        //    divBankDetails.Visible = false;//MAKE IT FALSE
-        //    txtRDNumber.ReadOnly = true;
-        //}
+        protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)//HAVE TO CHECK THIS
+        {
+            btnViewRDNumber.Visible = true;
+            divButtonBankDetails.Visible = false;
+            divBankDetails.Visible = true;//MAKE IT FALSE
+            txtRDNumber.ReadOnly = true;
+        }
 
-        //protected void btnGetBankDetails_Click(object sender, EventArgs e)
-        //{
-        //    if (txtAccountNumber.Text.Trim() != null && txtAccountNumber.Text.Trim() != "")
-        //    {
-        //        if (Regex.IsMatch(txtAccountNumber.Text.Trim(), @"^\d+$"))
-        //        {
-        //            if (txtAccountNumber.Text.Trim().Length > 5)
-        //            {
-        //                BD.AccountNumber = txtAccountNumber.Text.Trim();
-        //                if (txtIFSCCode.Text.Trim() != null && txtIFSCCode.Text.Trim() != "")
-        //                {
-        //                    if (txtIFSCCode.Text.Trim().Length > 10)
-        //                    {
-        //                        if (GETBD.GetBankDetails(txtIFSCCode.Text.Trim()))
-        //                        {
-        //                            if (BD.STATE == "KARNATAKA")
-        //                            {
-        //                                if (BD.NEFT.ToUpper() == "TRUE")
-        //                                {
-        //                                    if (BD.RTGS.ToUpper() == "TRUE")
-        //                                    {
-        //                                        lblAccountHolderName.Text = ADSER.Name;//the whole section should be commented
-        //                                        lblAccountNumber.Text = BD.AccountNumber;
-        //                                        lblBankName.Text = BD.BANK;
-        //                                        lblBranch.Text = BD.BRANCH;
-        //                                        lblIFSCCode.Text = BD.IFSC;
-        //                                        lblBankAddress.Text = BD.FULLADDRESS;
-        //                                        BankDetailsPopup.Show();
+        protected void btnGetBankDetails_Click(object sender, EventArgs e)
+        {
+            if (txtAccountNumber.Text.Trim() != null && txtAccountNumber.Text.Trim() != "")
+            {
+                if (Regex.IsMatch(txtAccountNumber.Text.Trim(), @"^\d+$"))
+                {
+                    if (txtAccountNumber.Text.Trim().Length > 5)
+                    {
+                        BD.AccountNumber = txtAccountNumber.Text.Trim();
+                        if (txtIFSCCode.Text.Trim() != null && txtIFSCCode.Text.Trim() != "")
+                        {
+                            if (txtIFSCCode.Text.Trim().Length > 10)
+                            {
+                                if (GETBD.GetBankDetails(txtIFSCCode.Text.Trim()))
+                                {
+                                    if (BD.STATE == "KARNATAKA")
+                                    {
+                                        if (BD.NEFT.ToUpper() == "TRUE")
+                                        {
+                                            if (BD.RTGS.ToUpper() == "TRUE")
+                                            {
+                                                lblAccountHolderName.Text = ADSER.Name;//the whole section should be commented
+                                                lblAccountNumber.Text = BD.AccountNumber;
+                                                lblBankName.Text = BD.BANK;
+                                                lblBranch.Text = BD.BRANCH;
+                                                lblIFSCCode.Text = BD.IFSC;
+                                                lblBankAddress.Text = BD.FULLADDRESS;
+                                                BankDetailsPopup.Show();
 
-        //                                        txtAccountNumber.ReadOnly = true;
-        //                                        txtIFSCCode.ReadOnly = true;
-        //                                        btnGetBankDetails.Visible = false;
-        //                                        btnViewBankDetails.Visible = true;
-        //                                        divButtonToCollegeDetails.Visible = true;
-        //                                    }
-        //                                    else
-        //                                    {
-        //                                        DisplayAlert("ENTER RTGS FACILITY AVAILABLE BANK", this);
-        //                                    }
-        //                                }
-        //                                else
-        //                                {
-        //                                    DisplayAlert("ENTER NEFT FACILITY AVAILABLE BANK", this);
-        //                                }
-        //                            }
-        //                            else
-        //                            {
-        //                                DisplayAlert("bank must be related to karnataka state", this);
-        //                            }
-        //                        }
-        //                        else
-        //                        {
-        //                            DisplayAlert("invalid ifsc code", this);
-        //                            txtIFSCCode.Focus();
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        DisplayAlert("invalid ifsc code", this);
-        //                        txtIFSCCode.Focus();
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    DisplayAlert("enter ifsc code", this);
-        //                    txtIFSCCode.Focus();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                DisplayAlert("enter valid bank account number", this);
-        //                txtAccountNumber.Focus();
-        //            }
-        //        }
-        //        else
-        //        {
-        //            DisplayAlert("enter valid bank account number", this);
-        //            txtAccountNumber.Focus();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        DisplayAlert("enter bank account number", this);
-        //        txtAccountNumber.Focus();
-        //    }
-        //}
+                                                txtAccountNumber.ReadOnly = true;
+                                                txtIFSCCode.ReadOnly = true;
+                                                btnGetBankDetails.Visible = false;
+                                                btnViewBankDetails.Visible = true;
+                                                divButtonToCollegeDetails.Visible = true;
+                                            }
+                                            else
+                                            {
+                                                DisplayAlert("ENTER RTGS FACILITY AVAILABLE BANK", this);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            DisplayAlert("ENTER NEFT FACILITY AVAILABLE BANK", this);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        DisplayAlert("bank must be related to karnataka state", this);
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayAlert("invalid ifsc code", this);
+                                    txtIFSCCode.Focus();
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("invalid ifsc code", this);
+                                txtIFSCCode.Focus();
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("enter ifsc code", this);
+                            txtIFSCCode.Focus();
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("enter valid bank account number", this);
+                        txtAccountNumber.Focus();
+                    }
+                }
+                else
+                {
+                    DisplayAlert("enter valid bank account number", this);
+                    txtAccountNumber.Focus();
+                }
+            }
+            else
+            {
+                DisplayAlert("enter bank account number", this);
+                txtAccountNumber.Focus();
+            }
+        }
 
-        //protected void btnViewBankDetails_Click(object sender, EventArgs e)
-        //{
-        //    BankDetailsPopup.Show();
-        //}
-        //protected void btnNextShowRDNumber_Click(object sender, EventArgs e)
-        //{
-        //    divButtonToOtherDetails.Visible = false;
-        //    divBankDetails.Visible = false;
-        //    divButtonBankDetails.Visible = false;//set to false
-        //}
-        //protected void btnNextChangeBankDetails_Click(object sender, EventArgs e)
-        //{
-        //    txtAccountNumber.ReadOnly = false;
-        //    txtIFSCCode.ReadOnly = false;
-        //    btnGetBankDetails.Visible = true;
-        //    btnViewBankDetails.Visible = false;
-        //    divButtonToCollegeDetails.Visible = false;
-        //}
+        protected void btnViewBankDetails_Click(object sender, EventArgs e)
+        {
+            BankDetailsPopup.Show();
+        }
+        protected void btnNextShowRDNumber_Click(object sender, EventArgs e)
+        {
+            divButtonToOtherDetails.Visible = false;
+            divBankDetails.Visible = false;
+            divButtonBankDetails.Visible = true;//set to false
+        }
+        protected void btnNextChangeBankDetails_Click(object sender, EventArgs e)
+        {
+            txtAccountNumber.ReadOnly = false;
+            txtIFSCCode.ReadOnly = false;
+            btnGetBankDetails.Visible = true;
+            btnViewBankDetails.Visible = false;
+            divButtonToCollegeDetails.Visible = false;
+        }
         protected void btnNextDisplayCollegeDetails_Click(object sender, EventArgs e)
         {
             divCollegeDetails.Visible = false;
             divCollegeDetailsFill.Visible = true;
             divButtonToCollegeDetails.Visible = false;//ADD THIS TO THE PREVIOUS PART
-            txtRDNumber.ReadOnly = true;//ADDed from btnNextDisplayBankDetails_Click 
-            btnViewRDNumber.Visible = true;//ADDed from btnNextDisplayBankDetails_Click 
         }
         protected void btnViewCollegeDetails_Click(object sender, EventArgs e)
         {
@@ -1515,7 +1513,7 @@ namespace KACDC.Schemes.Arivu
         {
             txtAccountNumber.ReadOnly = false;
             txtIFSCCode.ReadOnly = false;
-            btnGetBankDetails.Visible = false;//SET to False
+            btnGetBankDetails.Visible = true;//SET to False
             btnViewBankDetails.Visible = false;
             divButtonToCollegeDetails.Visible = false;
         }
