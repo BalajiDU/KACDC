@@ -239,23 +239,22 @@ namespace KACDC.Schemes.Self_Employment
             drpContDistrict.Enabled = true;
             //drpContTaluk.Enabled = true;//check
             btnNadakachriOK.Visible = false;
-            if (txtRDNumber.Text.Trim().Length == 15)
+            if (txtPwdIdNumber.Text.Trim().Length == 15)
             {
-                if (txtRDNumber.Text.Trim().ToUpper().Substring(0, 2) == "RD" || txtRDNumber.Text.Trim().ToUpper().Substring(0, 2) == "KA")//TODO: Check prefix
+                if (txtPwdIdNumber.Text.Trim().ToUpper().Substring(0, 2) == "RD" || txtPwdIdNumber.Text.Trim().ToUpper().Substring(0, 2) == "KA")//TODO: Check prefix
                 {
-                    if (Regex.IsMatch(txtRDNumber.Text.Trim().Substring(2, 13), @"^\d+$"))
+                    if (Regex.IsMatch(txtPwdIdNumber.Text.Trim().Substring(2, 13), @"^\d+$"))
                     {
 
-                        if (NKAR.GetPWDCertificate(txtRDNumber.Text.Trim()))
+                        if (NKAR.GetPWDCertificate(txtPwdIdNumber.Text.Trim()))
                         {
-                            if (CNS.VerifySimilarities(txtRDNumber.Text.Trim()))
+                            if (CNS.VerifySimilarities(txtPwdIdNumber.Text.Trim()))
                             {
                                 if (NKPWD.PermanentOrTemporaryDisability == "P"||NKPWD.PermanentOrTemporaryDisability == "T")
                                 {
-                                    if (Int32.Parse(NKPWD.DisabilityPercentage) > 50)
-                                    {
-                                        if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
-                                        {
+                                    
+                                        
+                                        
                                             
                                             rbContactAddressYes.Checked = false;
                                             rbContactAddressNo.Checked = false;
@@ -266,28 +265,23 @@ namespace KACDC.Schemes.Self_Employment
                                             btnVerifyRdNumber.Visible = false;
                                             NKAR.UpdateDistrict();
                                             ConstituencyDropDownBinding();
-                                            lblNCGSCNumber.Text = NKSER.NCGSCNumber;
-                                            lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                            lblNCPWDGSCNumber.Text = NKPWD.NCGSCNumber;
+                                            //lblRIReportNo.Text = NKPWD.RIReportNo;
                                             //NKSER.NCDateOfIssue;
-                                            lblNCApplicantName.Text = NKSER.NCApplicantName;
-                                            lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
-                                            lblNCDistrict.Text = NKSER.NCDistrictName;
-                                            lblNCTaluk.Text = NKSER.NCTalukName;
-                                            lblNCFullAddress.Text = NKSER.NCFullAddress;
+                                            lblNCPWDApplicantName.Text = NKPWD.NCApplicantName;
+                                            lblAppDisability.Text = NKPWD.AppDisability;
+                                            lblDisabilityPercentage.Text = NKPWD.DisabilityPercentage;
+                                            lblNCApplicantFatherName.Text = NKPWD.NCApplicantFatherName;
+                                            lblNCPWDDistrict.Text = NKPWD.NCDistrictName;
+                                            //lblNCTaluk.Text = NKPWD.NCTalukName;
+                                            //lblNCFullAddress.Text = NKPWD.NCFullAddress;
 
                                             PWDPopup.Show();
-                                        }
-                                        else
-                                        {
-                                            DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
-                                        }
+                                        
+                                       
 
-                                    }
-                                    else
-                                    {
-                                        DisplayAlert("Only Arya vysya Community is eligible", this);
-                                    }
-                                }
+                                    
+                                 }
                                 else
                                 {
                                     DisplayAlert("Invalid RD Number", this);
@@ -295,7 +289,7 @@ namespace KACDC.Schemes.Self_Employment
                             }
                             else
                             {
-                                DisplayAlert("Aadhar and Caste certificate name is mismatching, try again", this);
+                                DisplayAlert("Aadhar and PWD Certificate name is mismatching, try again", this);
                             }
                         }
                         else
@@ -366,7 +360,7 @@ namespace KACDC.Schemes.Self_Employment
                                                     btnNadakachriOK.Visible = false;
                                                     btnSaveContactAddress.Visible = false;
                                                     divContactAddress.Visible = false;
-                                                    divButtonBankDetails.Visible = true;
+                                                    //divButtonBankDetails.Visible = true;
 
                                                     btnVerifyRdNumber.Visible = false;
                                                     NKAR.UpdateDistrict();
@@ -454,7 +448,7 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnNadakachriBack_Click(object sender, EventArgs e)
         {
-            divButtonBankDetails.Visible = false;
+            //divButtonBankDetails.Visible = false;
             btnViewRDNumber.Visible = false;
             btnVerifyRdNumber.Visible = true;
             divRDNumber.Visible = true;

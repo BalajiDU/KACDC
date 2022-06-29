@@ -229,132 +229,6 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.Label lblRDNumberVerified;
         
         /// <summary>
-        /// divButtonBankDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divButtonBankDetails;
-        
-        /// <summary>
-        /// btnNextChangeRDNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNextChangeRDNumber;
-        
-        /// <summary>
-        /// btnNextDisplayBankDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNextDisplayBankDetails;
-        
-        /// <summary>
-        /// divBankDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBankDetails;
-        
-        /// <summary>
-        /// Label12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
-        
-        /// <summary>
-        /// Label56 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label56;
-        
-        /// <summary>
-        /// txtAccountNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAccountNumber;
-        
-        /// <summary>
-        /// txtIFSCCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIFSCCode;
-        
-        /// <summary>
-        /// divBankError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBankError;
-        
-        /// <summary>
-        /// lblBankError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBankError;
-        
-        /// <summary>
-        /// div1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
-        
-        /// <summary>
-        /// btnGetBankDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGetBankDetails;
-        
-        /// <summary>
-        /// btnViewBankDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewBankDetails;
-        
-        /// <summary>
-        /// divBankVerifyStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBankVerifyStatus;
-        
-        /// <summary>
         /// divButtonToOtherDetails control.
         /// </summary>
         /// <remarks>
@@ -371,15 +245,6 @@ namespace KACDC.Schemes.Self_Employment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNextShowRDNumber;
-        
-        /// <summary>
-        /// btnNextChangeBankDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNextChangeBankDetails;
         
         /// <summary>
         /// btnNextDisplayOtherDetails control.
@@ -535,33 +400,6 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.RadioButton rbApplicantPWDNo;
         
         /// <summary>
-        /// btnVerifyPWDNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerifyPWDNumber;
-        
-        /// <summary>
-        /// btnViewPWDNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewPWDNumber;
-        
-        /// <summary>
-        /// lblPWDNumberVerified control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPWDNumberVerified;
-        
-        /// <summary>
         /// divPWDIdNumber control.
         /// </summary>
         /// <remarks>
@@ -587,6 +425,33 @@ namespace KACDC.Schemes.Self_Employment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPwdIdNumber;
+        
+        /// <summary>
+        /// btnVerifyPWDNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerifyPWDNumber;
+        
+        /// <summary>
+        /// btnViewPWDNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnViewPWDNumber;
+        
+        /// <summary>
+        /// lblPWDNumberVerified control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPWDNumberVerified;
         
         /// <summary>
         /// Label59 control.
@@ -1813,13 +1678,13 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.Label Label61;
         
         /// <summary>
-        /// Label62 control.
+        /// lblNCPWDGSCNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label62;
+        protected global::System.Web.UI.WebControls.Label lblNCPWDGSCNumber;
         
         /// <summary>
         /// Label63 control.
@@ -1831,13 +1696,13 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.Label Label63;
         
         /// <summary>
-        /// Label64 control.
+        /// lblNCPWDApplicantName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label64;
+        protected global::System.Web.UI.WebControls.Label lblNCPWDApplicantName;
         
         /// <summary>
         /// Label65 control.
@@ -1849,31 +1714,13 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.Label Label65;
         
         /// <summary>
-        /// Label66 control.
+        /// lblAppDisability control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label66;
-        
-        /// <summary>
-        /// Label67 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label67;
-        
-        /// <summary>
-        /// DropDownList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.Label lblAppDisability;
         
         /// <summary>
         /// Label68 control.
@@ -1885,49 +1732,13 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.Label Label68;
         
         /// <summary>
-        /// Label69 control.
+        /// lblDisabilityPercentage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label69;
-        
-        /// <summary>
-        /// Label70 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label70;
-        
-        /// <summary>
-        /// Label71 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label71;
-        
-        /// <summary>
-        /// Label72 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label72;
-        
-        /// <summary>
-        /// Label73 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label73;
+        protected global::System.Web.UI.WebControls.Label lblDisabilityPercentage;
         
         /// <summary>
         /// Label74 control.
@@ -1939,13 +1750,13 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.Label Label74;
         
         /// <summary>
-        /// Label75 control.
+        /// lblNCPWDDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label75;
+        protected global::System.Web.UI.WebControls.Label lblNCPWDDistrict;
         
         /// <summary>
         /// div2 control.
