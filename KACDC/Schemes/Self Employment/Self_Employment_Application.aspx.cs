@@ -313,6 +313,10 @@ namespace KACDC.Schemes.Self_Employment
                 DisplayAlert("Invalid RD Number", this);
             }
         }
+        protected void btnNextPurposeOfLoan_Click(object sender, EventArgs e)
+        {
+            //need to ASk
+        }
         protected void btnVerifyRDNumber_Click(object sender, EventArgs e)
         {
             rbContactAddressNo.Enabled = true;

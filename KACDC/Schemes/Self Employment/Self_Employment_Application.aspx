@@ -1241,7 +1241,12 @@
                                         <asp:Button ID="btnVerifyPWDNumber" runat="server" CssClass="NeoButton" OnClick="btnVerifyPWDNumber_Click" Text="Verify" onpaste="return false" AutoCompleteType="Disabled" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
                                         <asp:Button ID="btnViewPWDNumber" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnViewPWDNumber_Click" Text="View" />
                                         <asp:Label ID="lblPWDNumberVerified" Visible="false" runat="server" Text=" Verified" CssClass=" fa fa-check VerifiedLabel"></asp:Label>
-                                    </div>
+                                       </div>
+                                        <div class="form-row-input">
+                                <asp:Button ID="Button2" runat="server" CssClass="NeoButton" Visible="false"  OnClick="btnNextShowRDNumber_Click" Text="Back" onpaste="return false" AutoCompleteType="Disabled" />
+                                <%--<asp:Button ID="btnNextChangeBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeBankDetails_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />--%>
+                                <asp:Button ID="Button3" runat="server" CssClass="NeoButton"  OnClick="btnNextPurposeOfLoan_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
+                            </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
