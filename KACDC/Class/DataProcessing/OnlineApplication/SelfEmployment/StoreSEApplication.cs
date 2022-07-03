@@ -75,7 +75,7 @@ namespace KACDC.Class.DataProcessing.OnlineApplication
                         //cmd.Parameters.AddWithValue("@ModifiedDate", Convert.ToDateTime(ModifiedDate));
 
                         kvdConn.Open();
-                        cmd.ExecuteNonQuery();
+                        //cmd.ExecuteNonQuery();
                         string ReceivedApplicationNumber = (string)cmd.Parameters["@ApplicationNumber"].Value;
                         kvdConn.Close();
                         return ReceivedApplicationNumber;

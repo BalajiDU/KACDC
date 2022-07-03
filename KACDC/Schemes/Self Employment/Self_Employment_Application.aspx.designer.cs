@@ -247,13 +247,13 @@ namespace KACDC.Schemes.Self_Employment {
         protected global::System.Web.UI.WebControls.Button btnNextChangeRDNumber;
         
         /// <summary>
-        /// btnNextDisplayBankDetails control.
+        /// btnNextDisplayOtherDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNextDisplayBankDetails;
+        protected global::System.Web.UI.WebControls.Button btnNextDisplayOtherDetails;
         
         /// <summary>
         /// divBankDetails control.
@@ -371,24 +371,6 @@ namespace KACDC.Schemes.Self_Employment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNextShowRDNumber;
-        
-        /// <summary>
-        /// btnNextChangeBankDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNextChangeBankDetails;
-        
-        /// <summary>
-        /// btnNextDisplayOtherDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNextDisplayOtherDetails;
         
         /// <summary>
         /// divOtherDetails control.
