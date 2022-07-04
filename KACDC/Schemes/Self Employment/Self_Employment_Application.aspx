@@ -1123,21 +1123,22 @@
                             </div>
                         </div>
                         <%--Button to Bank Details--%>
-                        <%--<div id="divButtonBankDetails" runat="server" visible="false" class="form-row">
+                        <div id="divButtonBankDetails" runat="server" visible="false" class="form-row">
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
                                 <asp:Button ID="btnNextChangeRDNumber" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeRDNumber_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />
-                                <asp:Button ID="btnNextDisplayBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayBankDetails_Click" Text="Confirm and Continue" onpaste="return TRUE" AutoCompleteType="Disabled" />
+                                <%--<asp:Button ID="btnNextDisplayBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayBankDetails_Click" Text="Confirm and Continue" onpaste="return TRUE" AutoCompleteType="Disabled" />--%>
+                                <asp:Button ID="btnNextDisplayOtherDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayOtherDetails_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
 
                                 </div>
                             <div class="form-row-Botton">
                             </div>
-                        </div>--%>
+                        </div>
 
 
                         <%--Bank Details--%>
-                        <%--<div id="divBankDetails" class="form-row" runat="server" visible="false">
+                        <div id="divBankDetails" class="form-row" runat="server" visible="false">
                             <div class="form-row-label">
                                 <asp:Label ID="Label12" class="" runat="server">Bank Details<span style="color:red"> *</span><br />ಬ್ಯಾಂಕ್ ವಿವರಗಳು</asp:Label><br />
                                 <asp:Label ID="Label56" class="" runat="server"><span style="color:#9e0000">ಕರ್ನಾಟಕ ರಾಜ್ಯಕ್ಕೆ ಸಂಬಂಧ ಪಟ್ಟ ಬ್ಯಾಂಕ್ ಖಾತೆಯ ವಿವರ</span></asp:Label><br />
@@ -1153,7 +1154,7 @@
                                 <asp:Button ID="btnViewBankDetails" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnViewBankDetails_Click" Text="View" />
                                 <div id="divBankVerifyStatus" class="DisplayError" runat="server" style="font-size:18px; font-weight: bold;color:#7b0000"></div>
                             </div>
-                        </div>--%>
+                        </div>
                          <%--Button to Other Details--%>
                         <div id="divButtonToOtherDetails" runat="server" visible="false" class="form-row">
                             <div class="form-row-label">
@@ -1161,7 +1162,7 @@
                             <div class="form-row-input">
                                 <asp:Button ID="btnNextShowRDNumber" runat="server" CssClass="NeoButton" Visible="false"  OnClick="btnNextShowRDNumber_Click" Text="Back" onpaste="return false" AutoCompleteType="Disabled" />
                                 <%--<asp:Button ID="btnNextChangeBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeBankDetails_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />--%>
-                                <asp:Button ID="btnNextDisplayOtherDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayOtherDetails_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
+<%--                                <asp:Button ID="btnNextDisplayOtherDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayOtherDetails_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />--%>
                             </div>
                             <div class="form-row-Botton">
                             </div>

@@ -773,6 +773,7 @@ namespace KACDC.Schemes.Self_Employment
             //divOtherDetails.Visible = true;
             divOtherDetailsNew.Visible = true;
             divButtonToOtherDetails.Visible = false;
+            btnViewRDNumber.Visible = true;
         }
         protected void btnOtherDetailsSave_Click(object sender, EventArgs e)
         {
