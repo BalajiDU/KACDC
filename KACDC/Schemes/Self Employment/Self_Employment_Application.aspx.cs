@@ -918,11 +918,11 @@ namespace KACDC.Schemes.Self_Employment
         }
         private void fillApplicationPreview()
         {
-           //lblName.Text = ADSER.Name;
-           // ImgCandPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
+            lblName.Text = ADSER.Name;
+            ImgCandPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
             lblFatherName.Text = NDAR.NCApplicantFatherName;
             lblGender.Text = NDAR.NCGender;
-           // lblDOB.Text = ADSER.DOB;
+            lblDOB.Text = ADSER.DOB;
             lblRDNum.Text = "VERIFIED";
             lblWidowed.Text = ODSE.Widow==null ? "NA" : ODSE.Widow;
             lblDivorced.Text = ODSE.Divorced==null ? "NA" : ODSE.Divorced;
@@ -943,7 +943,7 @@ namespace KACDC.Schemes.Self_Employment
             lblParConstituency.Text = NDAR.NCConstituency;
             lblParPincode.Text = NDAR.NCApplicantCAddressPin;
             lblContPincode.Text = ODSE.ContactPinCode;
-           // lblAccountHolder.Text = ADSER.Name;
+            lblAccountHolder.Text = ADSER.Name;
             lblAccountNum.Text = BD.AccountNumber;
             lblBank.Text = BD.BANK;
             lblBranchName.Text = BD.BRANCH;
@@ -973,7 +973,7 @@ namespace KACDC.Schemes.Self_Employment
                 btnPreviewEditOtherDetails.Visible = false;
                 //btnPreviewSubmitApplication.Visible = false;
                 divSubmitandEdit.Visible = false;
-               // File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/"+ODSE.GeneratedApplicationNumber+".png"), ADSER.Photo);
+                File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/"+ODSE.GeneratedApplicationNumber+".png"), ADSER.Photo);
                 if (GenerateApplicantPDF())
                 {
                     //if (SendSMSEmail())
