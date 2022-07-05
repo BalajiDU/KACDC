@@ -275,13 +275,15 @@
         }
 
         .NeoButton {
+            border: none;
+            padding: 3px;
+            margin: 7px;
             outline: none;
             /*width: 80%;*/
-            border-color: inherit;
-          border-width: medium;
-          padding: 3px 20px;
-          margin: 7px;
-          align-items: center;
+            padding-right:20px;
+            padding-left:20px;
+            height: 35px;
+            align-items: center;
             align-content: center;
             border-radius: 3px;
             letter-spacing: .05em;
@@ -1097,7 +1099,7 @@
                             </div>
                         </div>
                         <%--Button to Display RD--%>
-                        <div id="divButtonToRDNum" runat="server" visible="false" class="form-row">
+                        <div id="divButtonToRDNum" runat="server" visible="true" class="form-row">
                             <div class="form-row-label">
                             </div>
                             <div class="form-row-input">
@@ -1128,10 +1130,10 @@
                             </div>
                             <div class="form-row-input">
                                 <asp:Button ID="btnNextChangeRDNumber" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeRDNumber_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />
-                                <%--<asp:Button ID="btnNextDisplayBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayBankDetails_Click" Text="Confirm and Continue" onpaste="return TRUE" AutoCompleteType="Disabled" />--%>
+                               <%--  <asp:Button ID="btnNextDisplayBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayBankDetails_Click" Text="Confirm and Continue" onpaste="return TRUE" AutoCompleteType="Disabled" />--%>
                                 <asp:Button ID="btnNextDisplayOtherDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayOtherDetails_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
 
-                                </div>
+                            </div>
                             <div class="form-row-Botton">
                             </div>
                         </div>
@@ -1161,9 +1163,9 @@
                             </div>
                             <div class="form-row-input">
                                 <asp:Button ID="btnNextShowRDNumber" runat="server" CssClass="NeoButton" Visible="false"  OnClick="btnNextShowRDNumber_Click" Text="Back" onpaste="return false" AutoCompleteType="Disabled" />
-                                <%--<asp:Button ID="btnNextChangeBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeBankDetails_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />--%>
-<%--                                <asp:Button ID="btnNextDisplayOtherDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayOtherDetails_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />--%>
-                            </div>
+                                <%--<asp:Button ID="btnNextChangeBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeBankDetails_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />
+                                <asp:Button ID="btnNextDisplayOtherDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextDisplayOtherDetails_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
+                           --%> </div>
                             <div class="form-row-Botton">
                             </div>
                         </div>
@@ -1179,7 +1181,7 @@
                             </div>
                             <div class="form-row-Botton">
                                 <asp:Button ID="btnOtherDetailsUpdate" runat="server" CssClass="NeoButton" OnClick="btnOtherDetailsUpdate_Click" Text="Confirm and Continue" />
-                                <asp:Button ID="btnOtherDetailsView" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnOtherDetailsView_Click" Text="View" Height="35px" />
+                                <asp:Button ID="btnOtherDetailsView" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnOtherDetailsView_Click" Text="View" />
                             </div>
                         </div>
                         <%--Other Details Fill--%>
@@ -1230,7 +1232,6 @@
                                         <asp:RadioButton ID="rbApplicantPWDNo" runat="server" Class="radioButton" GroupName="ApplicantPWD" Text="No" AutoPostBack="true" OnCheckedChanged="rbApplicantPWD_CheckedChanged" />
 
                                     </div>
-                                    
                                 </div>
                                 <div id="divPWDIdNumber" visible="false" class="form-row" runat="server">
                                     <div class="form-row-label">
@@ -1238,16 +1239,6 @@
                                     </div>
                                     <div class="form-row-label">
                                         <asp:TextBox ID="txtPwdIdNumber" CssClass="NeoTextBox"  placeholder="certificate number" TextMode="SingleLine" MaxLength="100" runat="server" onpaste="return false" AutoCompleteType="Disabled"></asp:TextBox>
-                                       <div class="form-row-Botton">
-                                        <asp:Button ID="btnVerifyPWDNumber" runat="server" CssClass="NeoButton" OnClick="btnVerifyPWDNumber_Click" Text="Verify" onpaste="return false" AutoCompleteType="Disabled" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
-                                        <asp:Button ID="btnViewPWDNumber" runat="server" Visible="false" CssClass="NeoButton" OnClick="btnViewPWDNumber_Click" Text="View" />
-                                        <asp:Label ID="lblPWDNumberVerified" Visible="false" runat="server" Text=" Verified" CssClass=" fa fa-check VerifiedLabel"></asp:Label>
-                                       </div>
-                                        <div class="form-row-input">
-                                <asp:Button ID="Button2" runat="server" CssClass="NeoButton" Visible="false"  OnClick="btnNextShowRDNumber_Click" Text="Back" onpaste="return false" AutoCompleteType="Disabled" />
-                                <%--<asp:Button ID="btnNextChangeBankDetails" runat="server" CssClass="NeoButton"  OnClick="btnNextChangeBankDetails_Click" Text="Modify" onpaste="return false" AutoCompleteType="Disabled" />--%>
-                                <asp:Button ID="Button3" runat="server" CssClass="NeoButton"  OnClick="btnNextPurposeOfLoan_Click" Text="Confirm and Continue" onpaste="return false" AutoCompleteType="Disabled" />
-                            </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -1626,7 +1617,7 @@
                                 <td class="auto-style12">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td class="auto-style3" colspan="6" style="font-size:20px;text-align:center" ><strong>PWD DETAILS</strong></td>
+                               <%-- <td class="auto-style3" colspan="6" style="font-size:20px;text-align:center" ><strong>BANK DETAILS</strong></td>
                                 
                             </tr>
                             <tr>
@@ -1636,44 +1627,48 @@
                                 <td class="auto-style12">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td class="auto-style3">Applicant Name<br />
-                                    ಅರ್ಜಿದಾರರ ಹೆಸರು</td>
+                                <td class="auto-style3">Account Holder Name<br />
+                                    ಖಾತೆದಾರರ ಹೆಸರು</td>
                                 <td colspan="2" class="auto-style4">
-                                    <asp:Label ID="lblAccountHolder" runat="server"></asp:Label>//change to pwd number labels
+                                    <asp:Label ID="lblAccountHolder" runat="server"></asp:Label>
                                 </td>
-                                <td colspan="2" class="auto-style7">UDIN Number<br />
-                                     ಸಂಖ್ಯೆ</td>
+                                <td colspan="2" class="auto-style7">A/C Number<br />
+                                    ಖಾತೆ ಸಂಖ್ಯೆ</td>
                                 <td class="auto-style12">
                                     <asp:Label ID="lblAccountNum" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style3">Applicant Disability
+                                <td class="auto-style3">Bank
                                      <br />
-                                    ಅರ್ಜಿದಾರರ ಅಂಗವಿಕಲತೆ</td>
+                                    ಬ್ಯಾಂಕ್</td>
                                 <td colspan="2" class="auto-style4">
                                     <asp:Label ID="lblBank" runat="server"></asp:Label>
                                 </td>
-                                <td colspan="2" class="auto-style7">Disability Percentage<br />
-                                    ಅರ್ಜಿದಾರರ ಶೇಕಡಾವಾರು ಅಸಮರ್ಥತೆ/ಅಂಗವಿಕಲತೆ</td>
+                                <td colspan="2" class="auto-style7">Branch<br />
+                                    ಶಾಖೆ</td>
                                 <td class="auto-style12">
                                     <asp:Label ID="lblBranchName" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style3">District<br />
-                                    ಜಿಲ್ಲೆ</td>
+                                <td class="auto-style3">IFSC Code<br />
+                                    ಐಎಫ್‌ಎಸ್‌ಸಿ ಕೋಡ್</td>
                                 <td colspan="2" class="auto-style4">
                                     <asp:Label ID="lblIFCSCode" runat="server"></asp:Label>
                                 </td>
-                                
+                                <td colspan="2" class="auto-style7">Address<br />
+                                    ವಿಳಾಸ</td>
+                                <td class="auto-style12">
+                                    <asp:Label ID="lblBankAddr" runat="server"></asp:Label>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="auto-style3">&nbsp;</td>
                                 <td colspan="2" class="auto-style4">&nbsp;</td>
                                 <td colspan="2" class="auto-style7">&nbsp;</td>
                                 <td class="auto-style12">&nbsp;</td>
-                            </tr>
+                            </tr>--%>
 
 
                             <tr>
@@ -1947,106 +1942,6 @@
                     BackgroundCssClass="modalBackground">
                 </cc1:ModalPopupExtender>
 
-                 <%--PWD Certificate--%>
-                <asp:Panel ID="PnlPWD" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; ">
-
-                    <div class="flex-container">
-                        <div class="">
-                            <div class="form-row" style="justify-content:center">
-                                <div class="Popup-row-label-Heading">
-                                    <asp:Label ID="Label60" class="" Style="font-size: 20px; margin-top: 20px;" runat="server" Text="PWD Certificate Details"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label61" runat="server">RD Number<br />ಆರ್.ಡಿ ಸಂಖ್ಯೆ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCPWDGSCNumber" Width="40px" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label63" runat="server">Name<br />ಹೆಸರು</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCPWDApplicantName" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label65" runat="server">Applicant Disablity<br />ವಾರ್ಷಿಕ ಆದಾಯ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblAppDisability" runat="server"></asp:Label>
-                                </div>
-                            </div>
-
-                            <%--<div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label67" runat="server">Constituency<span style="color:red"> *</span><br />ಕ್ಷೇತ್ರ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:DropDownList ID="DropDownList1" Class="rowMargin txtcolor text-uppercase form-control" AutoPostBack="true" runat="server" ClientIDMode="Static" OnSelectedIndexChanged="drpConst_SelectedIndexChanged"></asp:DropDownList>
-                                </div>
-                            </div>--%>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label68" runat="server">Disability Percentage</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblDisabilityPercentage" runat="server"></asp:Label>
-                                </div>
-                            </div>
-
-                            <%--<div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label70" runat="server">Address<br />ವಿಳಾಸ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label71" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label72" runat="server">Taluk<br />ತಾಲ್ಲೂಕು</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label73" runat="server"></asp:Label>
-                                </div>--%>
-                            </div>
-                            <div class="form-row">
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="Label74" runat="server">District<br />ಜಿಲ್ಲೆ</asp:Label>
-                                </div>
-                                <div class="Popup-row-label">
-                                    <asp:Label ID="lblNCPWDDistrict" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            
-                            <div id="div2" class="form-row" runat="server" style="justify-content:center">
-                                <%--<div class="Popup-row-label">
-                                </div>--%>
-                                <div class="form-row-Botton">
-                                    <asp:Button ID="btnNKPWDConfirm" runat="server"   CssClass="NeoButton" Text="Proceed" OnClick="btnNKPWDConfirm_Click" />
-                                </div>
-                                <div class="form-row-Botton">
-                                    <asp:Button ID="btnNKPWDCancel" runat="server"   CssClass="NeoButton" Text="Save and Proceed" OnClick="btnNKPWDCancel_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...';" />
-                                </div>
-                                <div class="form-row-Botton">
-                                    <asp:Button ID="btnPWDModify" runat="server"  CssClass="NeoButton" Text="Proceed" OnClientClick="return PWDHidePopup()" />
-                                </div>
-                            </div>
-                               
-                            </div>
-                    </div>
-                </asp:Panel>
-
-                <asp:LinkButton ID="lnkPWD" runat="server"></asp:LinkButton>
-                <cc1:ModalPopupExtender ID="PWDPopup" runat="server" TargetControlID="lnkPWD" PopupControlID="PnlPWD"
-                    BackgroundCssClass="modalBackground">
-                </cc1:ModalPopupExtender>
-
                 <%--Other Details--%>
                 <asp:Panel ID="PnlOtherDetails" runat="server" CssClass="modalPopup PopupPanel" Style="display: none; padding: 5px">
 
@@ -2258,7 +2153,6 @@
                         </div>
                     </div>
                 </div>
-                </span>
             </ContentTemplate>
         </asp:UpdatePanel>
         <div class="flex-container" id="divPrintApplication" visible="false" runat="server">

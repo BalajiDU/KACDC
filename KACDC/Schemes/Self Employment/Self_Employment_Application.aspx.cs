@@ -25,8 +25,6 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using KACDC.Class.DataProcessing.ApplicationProcess;
-using KACDC.Class.MessageSending;
 
 namespace KACDC.Schemes.Self_Employment
 {
@@ -38,7 +36,6 @@ namespace KACDC.Schemes.Self_Employment
         NadakacheriProcess NKAR = new NadakacheriProcess();
         OtherDataSelfEmployment ODSE = new OtherDataSelfEmployment();
         NadaKacheri NKSER = new NadaKacheri();
-        NadakacheriPWD NKPWD = new NadakacheriPWD();
         GetBankDetailsIFSC GETBD = new GetBankDetailsIFSC();
         DecBankDetails BD = new DecBankDetails();
         ApplicantPDFTable APPLITAB = new ApplicantPDFTable();
@@ -47,8 +44,6 @@ namespace KACDC.Schemes.Self_Employment
         SignatureTable ST = new SignatureTable();
         HeadingTable HT = new HeadingTable();
         VerifyEmailID VEID = new VerifyEmailID();
-        CheckNameSimilarity CNS = new CheckNameSimilarity();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             //ODSE.ApplicationDateTime=( DateTime.Now.ToString());
@@ -79,7 +74,7 @@ namespace KACDC.Schemes.Self_Employment
                 }
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("select Value from KACDCSettings where KeyVal='FinancialYear'"))
+                    using (SqlCommand cmd = new SqlCommand("SELECT FinancialYear FROM [dbo].[KACDCInfo]"))
                     {
                         cmd.CommandType = CommandType.Text;
                         cmd.Connection = kvdConn;
@@ -87,8 +82,8 @@ namespace KACDC.Schemes.Self_Employment
                         using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
                             sdr.Read();
-                            ODSE.FinancialYear = sdr["Value"].ToString();
-                            
+                            ODSE.FinancialYear = sdr["FinancialYear"].ToString();
+
                         }
                         kvdConn.Close();
                     }
@@ -104,7 +99,7 @@ namespace KACDC.Schemes.Self_Employment
                     ADSER.AadhaarNumber = txtAadhaarNumber.Text.Trim();
                     if (ADAR.SendOTP(txtAadhaarNumber.Text.Trim()))
                     {
-                        DisplayAlert("OTP sent to registered mobile number", this);
+                        DisplayAlert("otp sent to registered mobile number", this);
                         divMobileOTP.Visible = true;
                         txtOTP.Focus();
                     }
@@ -126,74 +121,34 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnVerifyAadhaarOTP_Click(object sender, EventArgs e)
         {
+
             ADSER.AadhaarApplicantOTP = txtOTP.Text.Trim();
             string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
             if (ipaddress == "" || ipaddress == null)
             { ipaddress = Request.ServerVariables["REMOTE_ADDR"]; }
             string errorLogFilename = "ErrorLog_" + DateTime.Now.ToString("dd-MM-yyyy") + ".txt";
+            string LogFilePath = Server.MapPath("~/LogFiles/AadhaarErrorLog/" + errorLogFilename);
 
-            if (ADAR.VerifyAadhaarOTP(ipaddress, Path.GetFileName(Request.Path), Server.MapPath("~/LogFiles/AadhaarErrorLog/" + errorLogFilename)))
+            Console.Write("LogFilePath:" + LogFilePath);
+            if (ADAR.VerifyAadhaarOTP(ipaddress, Path.GetFileName(Request.Path), LogFilePath))
             {
-                IsAadhaarExist AE = new IsAadhaarExist();
-                string IsAadhaarNumberExist = AE.CheckAadhaar(ADSER.AadhaarVaultToken);
-                if (IsAadhaarNumberExist == "NA")
-                {
-                    if (CheckAge())
-                    {
+                lblAadhaarPopupDOB.Text = ADSER.DOB;
+                lblAadhaarPopupGender.Text = ADSER.Gender;
+                lblAadhaarPopupName.Text = ADSER.Name;
 
+                lblAadhaarPopupState.Text = ADSER.State;
 
-                        lblAadhaarPopupDOB.Text = ADSER.DOB;
-                        lblAadhaarPopupGender.Text = ADSER.Gender;
-                        lblAadhaarPopupName.Text = ADSER.Name;
+                ImgAadhaarPopupPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
+                lblAadhaarPopupPincode.Text = ADSER.Pincode;
 
-                        lblAadhaarPopupState.Text = ADSER.State;
-
-                        ImgAadhaarPopupPhoto.ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(ADSER.Photo, 0, (ADSER.Photo).Length);
-                        lblAadhaarPopupPincode.Text = ADSER.Pincode;
-
-                        lblAadhaarPopupDistrict.Text = ADSER.District;
-                        AadhaarPopup.Show();
-                    }
-                }
-                else
-                {
-                    if (IsAadhaarNumberExist == "APPLIED")
-                    {
-                        DisplayAlert("You have already applied", this);
-                    }
-                    else
-                    {
-                        DisplayAlert("You have already avail the loan in " + IsAadhaarNumberExist + " financial year", this);
-                    }
-                    divMobileOTP.Visible = false;
-                    txtAadhaarNumber.ReadOnly = false;
-                    btnAadhaarGetOTP.Visible = true;
-                }
-
-                
+                lblAadhaarPopupDistrict.Text = ADSER.District;
+                AadhaarPopup.Show();
             }
             else
             {
                 AadhaarError AE = new AadhaarError();
                 DisplayAlert(AE.GetAadhaarErrorMessage(ADSER.OTPErrorCode), this);
             }
-        }
-
-        private bool CheckAge()
-        {
-            int age = 0;
-            age = DateTime.Now.Subtract(DateTime.Parse(ADSER.DOB)).Days;
-            age = age / 365;
-            if(age<18 || age>45)
-            {
-                DisplayAlert("Age must be between 18 to 45", this);
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-               
         }
         protected void btnAadhaarkDetailsProceed_Click(object sender, EventArgs e)
         {
@@ -228,95 +183,6 @@ namespace KACDC.Schemes.Self_Employment
             btnNadakachriOK.Visible = true;
             CasteCertificatePopup.Show();
         }
-        protected void btnVerifyPWDNumber_Click(object sender, EventArgs e)
-        {
-            rbContactAddressNo.Enabled = true;
-            rbContactAddressYes.Enabled = true;
-            drpConst.Enabled = true;
-            btnSaveContactAddress.Visible = false;
-            btnNadakachriBack.Visible = true;
-            txtContactAddress.ReadOnly = false;
-            drpContDistrict.Enabled = true;
-            //drpContTaluk.Enabled = true;//check
-            btnNadakachriOK.Visible = false;
-            if (txtPwdIdNumber.Text.Trim().Length == 15)
-            {
-                if (txtPwdIdNumber.Text.Trim().ToUpper().Substring(0, 2) == "RD" || txtPwdIdNumber.Text.Trim().ToUpper().Substring(0, 2) == "KA")//TODO: Check prefix
-                {
-                    if (Regex.IsMatch(txtPwdIdNumber.Text.Trim().Substring(2, 13), @"^\d+$"))
-                    {
-
-                        if (NKAR.GetPWDCertificate(txtPwdIdNumber.Text.Trim()))
-                        {
-                            if (CNS.VerifySimilarities(txtPwdIdNumber.Text.Trim()))
-                            {
-                                if (NKPWD.PermanentOrTemporaryDisability == "P"||NKPWD.PermanentOrTemporaryDisability == "T")
-                                {
-                                    
-                                        
-                                        
-                                            
-                                            rbContactAddressYes.Checked = false;
-                                            rbContactAddressNo.Checked = false;
-                                            btnNadakachriOK.Visible = false;
-                                            btnSaveContactAddress.Visible = false;
-                                            divContactAddress.Visible = false;
-
-                                            btnVerifyRdNumber.Visible = false;
-                                            NKAR.UpdateDistrict();
-                                            ConstituencyDropDownBinding();
-                                            lblNCPWDGSCNumber.Text = NKPWD.NCGSCNumber;
-                                            //lblRIReportNo.Text = NKPWD.RIReportNo;
-                                            //NKSER.NCDateOfIssue;
-                                            lblNCPWDApplicantName.Text = NKPWD.NCApplicantName;
-                                            lblAppDisability.Text = NKPWD.AppDisability;
-                                            lblDisabilityPercentage.Text = NKPWD.DisabilityPercentage;
-                                            lblNCApplicantFatherName.Text = NKPWD.NCApplicantFatherName;
-                                            lblNCPWDDistrict.Text = NKPWD.NCDistrictName;
-                                            //lblNCTaluk.Text = NKPWD.NCTalukName;
-                                            //lblNCFullAddress.Text = NKPWD.NCFullAddress;
-
-                                            PWDPopup.Show();
-                                        
-                                       
-
-                                    
-                                 }
-                                else
-                                {
-                                    DisplayAlert("Invalid RD Number", this);
-                                }
-                            }
-                            else
-                            {
-                                DisplayAlert("Aadhar and PWD Certificate name is mismatching, try again", this);
-                            }
-                        }
-                        else
-                        {
-                            DisplayAlert("Invalid RD Number", this);
-                        }
-
-                    }
-                    else
-                    {
-                        DisplayAlert("Invalid RD Number", this);
-                    }
-                }
-                else
-                {
-                    DisplayAlert("Invalid RD Number", this);
-                }
-            }
-            else
-            {
-                DisplayAlert("Invalid RD Number", this);
-            }
-        }
-        protected void btnNextPurposeOfLoan_Click(object sender, EventArgs e)
-        {
-            //need to ASk
-        }
         protected void btnVerifyRDNumber_Click(object sender, EventArgs e)
         {
             rbContactAddressNo.Enabled = true;
@@ -339,71 +205,65 @@ namespace KACDC.Schemes.Self_Employment
                         {
                             if (NKAR.GetCasteAndIncomeCertificate(txtRDNumber.Text.Trim()))
                             {
-                                if (CNS.VerifySimilarities())
+                                if (Int32.Parse(NKSER.NCStatusCode) == 1)
                                 {
-                                    if (Int32.Parse(NKSER.NCStatusCode) == 1)
+                                    if (Int32.Parse(NKSER.NCFacilityCode) == 42)
                                     {
-                                        if (Int32.Parse(NKSER.NCFacilityCode) == 42)
+                                        if (Int32.Parse(NKSER.NCAnnualIncome) < 300000)
                                         {
-                                            if (Int32.Parse(NKSER.NCAnnualIncome) <= 300000)
+                                            if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
                                             {
-                                                if (Convert.ToDateTime(NKSER.NCDateOfIssue) > Convert.ToDateTime("24/12/2019"))
+                                                if (NDAR.NCGender == "MALE")
                                                 {
-                                                    if (NDAR.NCGender == "MALE")
-                                                    {
-                                                        ODSE.Widow = "NA";
-                                                        ODSE.Divorced = "NA";
-                                                        divFemaleOptions.Visible = false;
-                                                    }
-                                                    else
-                                                    {
-                                                        divFemaleOptions.Visible = true;
-                                                    }
-                                                    rbContactAddressYes.Checked = false;
-                                                    rbContactAddressNo.Checked = false;
-                                                    btnNadakachriOK.Visible = false;
-                                                    btnSaveContactAddress.Visible = false;
-                                                    divContactAddress.Visible = false;
-                                                    //divButtonBankDetails.Visible = true;
-
-                                                    btnVerifyRdNumber.Visible = false;
-                                                    NKAR.UpdateDistrict();
-                                                    ConstituencyDropDownBinding();
-                                                    lblNCGSCNumber.Text = NKSER.NCGSCNumber;
-                                                    lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
-                                                    //NKSER.NCDateOfIssue;
-                                                    lblNCApplicantName.Text = NKSER.NCApplicantName;
-                                                    lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
-                                                    lblNCDistrict.Text = NKSER.NCDistrictName;
-                                                    lblNCTaluk.Text = NKSER.NCTalukName;
-                                                    lblNCFullAddress.Text = NKSER.NCFullAddress;
-
-                                                    CasteCertificatePopup.Show();
+                                                    ODSE.Widow = "NA";
+                                                    ODSE.Divorced = "NA";
+                                                    divFemaleOptions.Visible = false;
                                                 }
                                                 else
                                                 {
-                                                    DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
+                                                    divFemaleOptions.Visible = true;
                                                 }
+                                                rbContactAddressYes.Checked = false;
+                                                rbContactAddressNo.Checked = false;
+                                                btnNadakachriOK.Visible = false;
+                                                btnSaveContactAddress.Visible = false;
+                                                divContactAddress.Visible = false;
+                                                divButtonBankDetails.Visible = true;
+
+                                                btnVerifyRdNumber.Visible = false;
+                                                NKAR.UpdateDistrict();
+                                                ConstituencyDropDownBinding();
+                                                lblNCGSCNumber.Text = NKSER.NCGSCNumber;
+                                                lblNCAnnualIncome.Text = NKSER.NCAnnualIncome;
+                                                //NKSER.NCDateOfIssue;
+                                                lblNCApplicantName.Text = NKSER.NCApplicantName;
+                                                lblNCApplicantFatherName.Text = NKSER.NCApplicantFatherName;
+                                                lblNCDistrict.Text = NKSER.NCDistrictName;
+                                                lblNCTaluk.Text = NKSER.NCTalukName;
+                                                lblNCFullAddress.Text = NKSER.NCFullAddress;
+
+                                                CasteCertificatePopup.Show();
                                             }
                                             else
                                             {
-                                                DisplayAlert("Income must be less then 3,00,000", this);
+                                                DisplayAlert("new Caste and Income certificate must be taken, which is issued after 24/12/2019", this);
                                             }
                                         }
                                         else
                                         {
-                                            DisplayAlert("Only Arya vysya Community is eligible", this);
+                                            DisplayAlert("Income must be less then 1,00,000", this);
                                         }
                                     }
                                     else
                                     {
-                                        DisplayAlert("Invalid RD Number", this);
+                                        DisplayAlert("Only Arya vysya Community is eligible", this);
                                     }
                                 }
                                 else
                                 {
-                                    DisplayAlert("Aadhar and Caste certificate name is mismatching, try again", this);
+                                    DisplayAlert("Invalid RD Number", this);
                                 }
+
                             }
                             else
                             {
@@ -412,7 +272,7 @@ namespace KACDC.Schemes.Self_Employment
                         }
                         else
                         {
-                            DisplayAlert("You have already avail the loan in "+ IsRDExist + " financial year", this);
+                            DisplayAlert("You have already avail the loan in " + IsRDExist + " financial year", this);
                         }
                     }
                     else
@@ -430,29 +290,9 @@ namespace KACDC.Schemes.Self_Employment
                 DisplayAlert("Invalid RD Number", this);
             }
         }
-
-        private bool VerifySimilarities()
-        {
-            if (Int32.Parse(NKSER.NCLanguage) == 1)
-            {
-                if (CNS.CalculateSimilarity(ADSER.KannadaName, NKSER.NCApplicantName) > 0.7)
-                {
-                    return true;
-                }
-                return false;
-            }
-            else
-            {
-                if (CNS.CalculateSimilarity(ADSER.Name, NKSER.NCApplicantName) > 0.7)
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
         protected void btnNadakachriBack_Click(object sender, EventArgs e)
         {
-            //divButtonBankDetails.Visible = false;
+            divButtonBankDetails.Visible = false;
             btnViewRDNumber.Visible = false;
             btnVerifyRdNumber.Visible = true;
             divRDNumber.Visible = true;
@@ -462,7 +302,7 @@ namespace KACDC.Schemes.Self_Employment
             if (rbContactAddressYes.Checked == true)
             {
                 divContactAddress.Visible = false;
-                
+
                 btnNadakachriOK.Visible = false;
                 btnSaveContactAddress.Visible = true;
                 ODSE.ContactPinCode = NKSER.NCApplicantCAddressPin;
@@ -536,7 +376,7 @@ namespace KACDC.Schemes.Self_Employment
         protected void drpConst_SelectedIndexChanged(object sender, EventArgs e)
         {
             NKSER.NCConstituency = drpConst.SelectedValue;
-            if (NKSER.NCDistrictName == "Bengaluru" || NKSER.NCDistrictName == "Bengaluru Uttara" || NKSER.NCDistrictName == "Bengaluru Dakshina" || NKSER.NCDistrictName == "ಬೆಂಗಳೂರು")
+            if (NKSER.NCDistrictName == "Bengaluru" || NKSER.NCDistrictName == "Bengaluru Uttara" || NKSER.NCDistrictName == "Bengaluru Dakshina")
             {
                 using (SqlConnection kvdConn = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString))
                 {
@@ -553,7 +393,6 @@ namespace KACDC.Schemes.Self_Employment
                             NKSER.NCDistrictName = sdr["DistrictName"].ToString();
                         }
                         kvdConn.Close();
-                        DisplayAlert(NKSER.NCDistrictName, this);
                     }
 
                 }
@@ -587,17 +426,18 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnSaveContactAddress_Click(object sender, EventArgs e)
         {
-            
-            if (drpConst.SelectedIndex!=0) {
+
+            if (drpConst.SelectedIndex != 0)
+            {
                 if (rbContactAddressNo.Checked == true)
                 {
                     if (txtContactAddress.Text.Trim() != "" && txtContactAddress.Text.Trim() != null)
                     {
                         if (txtContactAddress.Text.Trim().Length >= 10)
                         {
-                            if (drpContDistrict.SelectedValue != "" && drpContDistrict.SelectedValue != null && drpContDistrict.SelectedIndex!=0)
+                            if (drpContDistrict.SelectedValue != "" && drpContDistrict.SelectedValue != null && drpContDistrict.SelectedIndex != 0)
                             {
-                                if (drpContTaluk.SelectedValue != "" && drpContTaluk.SelectedValue != null && drpContTaluk.SelectedIndex!=0)
+                                if (drpContTaluk.SelectedValue != "" && drpContTaluk.SelectedValue != null && drpContTaluk.SelectedIndex != 0)
                                 {
                                     if (txtContPincode.Text.Trim() != "" && txtContPincode.Text.Trim() != null)
                                     {
@@ -647,7 +487,7 @@ namespace KACDC.Schemes.Self_Employment
                 CasteCertificatePopup.Show();
             }
         }
-        
+
         protected void btnNextDisplayBankDetails_Click(object sender, EventArgs e)
         {
             btnViewRDNumber.Visible = true;
@@ -664,7 +504,7 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnGetBankDetails_Click(object sender, EventArgs e)
         {
-            if(txtAccountNumber.Text.Trim()!=null && txtAccountNumber.Text.Trim() != "")
+            if (txtAccountNumber.Text.Trim() != null && txtAccountNumber.Text.Trim() != "")
             {
                 if (Regex.IsMatch(txtAccountNumber.Text.Trim(), @"^\d+$"))
                 {
@@ -976,7 +816,7 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void rbMarriedYes_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             if (rbMarriedYes.Checked == true)
             {
                 divFemaleMarriedOption.Visible = true;
@@ -1088,8 +928,8 @@ namespace KACDC.Schemes.Self_Employment
             lblGender.Text = NDAR.NCGender;
             lblDOB.Text = ADSER.DOB;
             lblRDNum.Text = "VERIFIED";
-            lblWidowed.Text = ODSE.Widow==null ? "NA" : ODSE.Widow;
-            lblDivorced.Text = ODSE.Divorced==null ? "NA" : ODSE.Divorced;
+            lblWidowed.Text = ODSE.Widow == null ? "NA" : ODSE.Widow;
+            lblDivorced.Text = ODSE.Divorced == null ? "NA" : ODSE.Divorced;
             lblPurpose.Text = ODSE.PurposeOfLoan;
             lblLoanDescription.Text = ODSE.LoanDESCRIPTION;
             lblPhysicallyCha.Text = ODSE.PersonWithDisabilities;
@@ -1132,12 +972,12 @@ namespace KACDC.Schemes.Self_Employment
         {
             //ODSE.ApplicationDateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm:sss");
             ODSE.ApplicationDateTime = DateTime.Now.ToString();
-            if(SaveApplicationDB())
+            if (SaveApplicationDB())
             {
                 btnPreviewEditOtherDetails.Visible = false;
                 //btnPreviewSubmitApplication.Visible = false;
                 divSubmitandEdit.Visible = false;
-                File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/"+ODSE.GeneratedApplicationNumber+"_"+ADSER.AadhaarVaultToken + ".png"), ADSER.Photo);
+                File.WriteAllBytes(Server.MapPath("~/Files_SelfEmployment/AadhaarApplicantPhoto/" + ODSE.GeneratedApplicationNumber + ".png"), ADSER.Photo);
                 if (GenerateApplicantPDF())
                 {
                     //if (SendSMSEmail())
@@ -1174,7 +1014,7 @@ namespace KACDC.Schemes.Self_Employment
             //Response.Write("<br />ApplicationDateTime: " + ODSE.ApplicationDateTime);
             //Response.Write("<br />DOB: "+ ADSER.DOB);
 
-            if (ODSE.GeneratedApplicationNumber.Contains("KACDCSE")) 
+            if (ODSE.GeneratedApplicationNumber.Contains("KACDCSE"))
             {
                 return true;
             }
@@ -1193,10 +1033,10 @@ namespace KACDC.Schemes.Self_Employment
             {
                 string SelfEnglish = "I hereby certify that the above furnished information is true to my knowledge. I shall abide by the terms and conditions of the sanction of the Self Employment Loan. If any discrepancies are found later, I agree to take legal action against me.";
                 string SelfKannada = "\n ಈ ಮೇಲ್ಕಂಡ ಮಾಹಿತಿಗಳು  ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು  ಸರಿಯಾಗಿವೆಯೆಂದು ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ.  ಒಂದು ವೇಳೆ ಮೇಲ್ಕಂಡ  ಮಾಹಿತಿಗಳು ಸುಳ್ಳು ಎಂದು \n ಕಂಡುಬಂದಲ್ಲಿ ನನ್ನ ವಿರುದ್ಧ ಕಾನೂನು ರೀತಿಯ ಕ್ರಮ ಜರುಗಿಸಲು ಒಪ್ಪಿರುತ್ತೇನೆ.";
-                string AadhaarEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation LTD (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
-                string AadhaarKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ (ನಿ)(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
-                string ShareEnglish = "I hereby Certify that the above furnished information is true to my Knowledge. I shall give concurrence to share my details to any other Govt Organizations also for awareness of Government Scheme.";
-                string ShareKannada = "\n ಮೇಲಿನ ಮಾಹಿತಿಯು ನನಗೆ ತಿಳಿದ ಮಟ್ಟಿಗೆ ಸತ್ಯವಾಗಿದೆ ಎಂದು ನಾನು ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ. ಸರ್ಕಾರಿ ಯೋಜನೆಯ ಅರಿವಿಗಾಗಿ ಬೇರೆ ಯಾವುದೇ ಸರ್ಕಾರಿ ಸಂಸ್ಥೆಗಳಿಗೆ\n ನನ್ನ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ನಾನು ಸಮ್ಮತಿಸುತ್ತೇನೆ.";
+                string AadhaarEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+                string AadhaarKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
+                string ShareEnglish = "I hereby provide my consent to Karnataka Arya Vysya Community Development Corporation (Government of Karnataka Undertaking) to use my Aadhaar Number for performing all such validations, which may be required to verify the correctness of the data either provided by me or associated with me under schemes with whom I am enrolled for. I understand that the use of my Aadhaar Number will be restricted to the extent required for efficient delivery of benefits to me by the State Government.";
+                string ShareKannada = "\n ಕರ್ನಾಟಕ ಆರ್ಯ ವೈಶ್ಯ ಸಮುದಾಯ ಅಭಿವೃದ್ಧಿ ನಿಗಮ(ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ) ಕ್ಕೆ ನನ್ನ  ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಲು  ಈ ಮೂಲಕ ನಾನು ಒಪ್ಪಿಗೆಯನ್ನು\n ನೀಡುತ್ತಿದ್ದೇನೆ. ನನ್ನಿಂದ ಒದಗಿಸಲಾದ ಅಥವಾ ನನ್ನೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಮಾಹಿತಿ ನಿಖರತೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅಗತ್ಯವಿರುವ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು \n ನಿರ್ವಹಿಸಲು ಅಗತ್ಯವಾಗಿರುವುದರಿಂದ ನನ್ನ ಆಧಾರ್ ಸಂಖ್ಯೆಯ ಬಳಕೆಯನ್ನು ರಾಜ್ಯ ಸರ್ಕಾರವು ನನಗೆ ಸವಲತ್ತುಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ತಲುಪಿಸಲು ಮಿತಗೊಂಡಿರುತ್ತದೆ \n ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿರುತ್ತೇನೆ.";
 
                 PdfPTable HeadingTable = null;
                 HeadingTable = new PdfPTable(4);
@@ -1205,7 +1045,7 @@ namespace KACDC.Schemes.Self_Employment
                 Table = new PdfPTable(4);
                 Table = APPLITAB.SEApplicantMainTable(Table, ODSE.GeneratedApplicationNumber, ADSER.Name, NDAR.NCApplicantFatherName, ADSER.Gender, ODSE.Widow, ODSE.Divorced, ODSE.PersonWithDisabilities, NDAR.NCAnnualIncome, NDAR.NCGSCNumber, ODSE.EmailID, ODSE.MobileNumber, ODSE.AlternateMobileNumber,
             ADSER.DOB, ODSE.PurposeOfLoan, ADSER.AadhaarVaultToken, "", ODSE.ContactFullAddress, ODSE.ContactDistrictName, ODSE.ContactPinCode, NDAR.NCFullAddress, NDAR.NCDistrictName, NKSER.NCConstituency, NDAR.NCApplicantCAddressPin,
-             (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage, ODSE.GeneratedApplicationNumber + "_" + ADSER.AadhaarVaultToken);
+             (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), (Convert.ToDateTime(ODSE.ApplicationDateTime)).ToString("MM/dd/yyyy hh:mm:sss tt"), NDAR.NCTalukName, ODSE.ContactTalukName, ODSE.LoanDESCRIPTION, NDAR.NCApplicantName, NKSER.NCLanguage);
                 PdfPTable BankTable = null;
                 BankTable = new PdfPTable(4);
                 BankTable = BT.GenerateBankTable(BankTable, ADSER.Name, BD.AccountNumber, BD.BANK, BD.BRANCH, BD.IFSC, BD.ADDRESS);
@@ -1234,12 +1074,12 @@ namespace KACDC.Schemes.Self_Employment
 
                     SaveFile SV = new SaveFile();
                     SV.SavingFileOnServer(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/"), ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf", bytes);
-                    if (File.Exists(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/")+ ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"))
+                    if (File.Exists(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"))
                     {
                         SendSMSEmail();
                     }
                     Response.ContentEncoding = System.Text.Encoding.UTF8;
-                    Response.AddHeader("Content-Disposition", "attachment; filename=" + ODSE.GeneratedApplicationNumber+"_"+ ADSER.Name + ".pdf");
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
                     Response.ContentType = "application/pdf";
                     Response.Buffer = true;
                     Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -1249,9 +1089,9 @@ namespace KACDC.Schemes.Self_Employment
                 }
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.Write("File Creation: "+ex.ToString());
+                Response.Write("File Creation: " + ex.ToString());
                 return false;
             }
         }
@@ -1261,20 +1101,15 @@ namespace KACDC.Schemes.Self_Employment
             {
                 SubmitApplicationSMS SMS = new SubmitApplicationSMS();
                 ApplicationSubmitEmail EMAIL = new ApplicationSubmitEmail();
-                SendMessage SM = new SendMessage();
-                string Message = "Dear Applicant, " + ADSER.Name + " your Self Employment loan application number " + ODSE.GeneratedApplicationNumber + " is received. We will notify once processed. From:KARNATAKA ARYA VYSYA COMMUNITY DEVELOPMENT CORPORATION";
-
-                //SMS.ApplicantSMSConfirmation(ODSE.MobileNumber, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
-
-                SM.NewMessageRequest(Message, ODSE.MobileNumber, "ACKNOW");
+                SMS.ApplicantSMSConfirmation(ODSE.MobileNumber, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name);
                 EMAIL.ApplicantEmailConfirmation(ODSE.EmailID, ODSE.GeneratedApplicationNumber, "Self Employment", ADSER.Name,
                     File.ReadAllBytes(Server.MapPath("~/Files_SelfEmployment/Application/" + ODSE.FinancialYear + "/") + ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf"),
                     ODSE.GeneratedApplicationNumber + "_" + ADSER.Name + ".pdf");
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.Write("Send mail: "+ex.ToString());
+                Response.Write("Send mail: " + ex.ToString());
                 return false;
             }
         }
@@ -1300,7 +1135,7 @@ namespace KACDC.Schemes.Self_Employment
         //    Document pdfDoc = new Document(PageSize.A4, 0, 0, 35, 0);
         //    //PdfWriter writer = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
         //    Phrase phrase = null;
-        //    //PdfPCell cell = null
+        //    //PdfPCell cell = null;
         //    PdfPTable table = null;
 
         //    PdfPTable BankTable = null;
@@ -1599,8 +1434,8 @@ namespace KACDC.Schemes.Self_Employment
         {
 
         }
-        
-        
+
+
         protected void btnNextShowRDNumber_Click(object sender, EventArgs e)
         {
             divButtonToOtherDetails.Visible = false;
@@ -1616,7 +1451,7 @@ namespace KACDC.Schemes.Self_Employment
             divOtherDetailsNew.Visible = true;
             divOtherDetails.Visible = false;
         }
-        
+
         protected void btnOtherDetailsSaveReturnToPreview_Click(object sender, EventArgs e)
         {
             if (this.VerifyOtherDetails())
@@ -1628,7 +1463,7 @@ namespace KACDC.Schemes.Self_Employment
                 divPreviewApplication.Visible = true;
             }
         }
-        
+
         protected void btnOtherDetailsOk_Click(object sender, EventArgs e)
         {
             divOtherDetailsNew.Visible = false;
