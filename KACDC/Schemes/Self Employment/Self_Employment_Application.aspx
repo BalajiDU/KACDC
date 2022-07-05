@@ -1617,7 +1617,7 @@
                                 <td class="auto-style12">&nbsp;</td>
                             </tr>
                             <tr>
-                               <%-- <td class="auto-style3" colspan="6" style="font-size:20px;text-align:center" ><strong>BANK DETAILS</strong></td>
+                                <td class="auto-style3" colspan="6" style="font-size:20px;text-align:center" ><strong>BANK DETAILS</strong></td>
                                 
                             </tr>
                             <tr>
@@ -1668,7 +1668,7 @@
                                 <td colspan="2" class="auto-style4">&nbsp;</td>
                                 <td colspan="2" class="auto-style7">&nbsp;</td>
                                 <td class="auto-style12">&nbsp;</td>
-                            </tr>--%>
+                            </tr>
 
 
                             <tr>
