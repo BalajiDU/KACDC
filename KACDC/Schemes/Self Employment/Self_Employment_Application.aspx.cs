@@ -121,13 +121,16 @@ namespace KACDC.Schemes.Self_Employment
         }
         protected void btnVerifyAadhaarOTP_Click(object sender, EventArgs e)
         {
+            
             ADSER.AadhaarApplicantOTP = txtOTP.Text.Trim();
             string ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
             if (ipaddress == "" || ipaddress == null)
             { ipaddress = Request.ServerVariables["REMOTE_ADDR"]; }
             string errorLogFilename = "ErrorLog_" + DateTime.Now.ToString("dd-MM-yyyy") + ".txt";
-
-            if (ADAR.VerifyAadhaarOTP(ipaddress, Path.GetFileName(Request.Path), Server.MapPath("~/LogFiles/AadhaarErrorLog/" + errorLogFilename)))
+            string LogFilePath = Server.MapPath("~/LogFiles/AadhaarErrorLog/" + errorLogFilename);
+       
+            Console.Write("LogFilePath:"+LogFilePath);
+            if (ADAR.VerifyAadhaarOTP(ipaddress, Path.GetFileName(Request.Path), LogFilePath ))
             {
                 lblAadhaarPopupDOB.Text = ADSER.DOB;
                 lblAadhaarPopupGender.Text = ADSER.Gender;
